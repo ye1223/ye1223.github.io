@@ -1087,6 +1087,107 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
+    <title>redux-toolkit学习</title>
+    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
+<blockquote>
+<p>摘自官网</p>
+<p><strong><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></strong> 是 Redux 官方强烈推荐，开箱即用的一个高效的 Redux 开发工具集。</p>
+<p>简化最常见场景下的 Redux 开发，</p>
+<p>​	包括配置 store、定义 reducer，不可变的更新逻辑</p>
+<p>​	可以立即创建整个状态的 “切片 slice”，而<strong>无需手动编写任何 action creator 或者 action type</strong></p>
+<p>自带了一些最常用的 Redux 插件，</p>
+<p>​	例如用于异步逻辑 Redux Thunk，</p>
+<p>​	用于编写选择器 selector 的函数 Reselect （可缓存select数据）</p>
+</blockquote>
+<p>在 Redux 中,**切片(Slice)**指的是使用 <strong>createSlice</strong> API 创建的 reducer 和 action 的组合。它是 Redux Toolkit 中的一个核心概念。</p>
+<p>createSlice 接收一个配置对象参数,里面包含:</p>
+<blockquote>
+<ul>
+<li>初始 state</li>
+<li>reducers:包含不同 reducer 的对象</li>
+<li>extraReducers:处理 action 的 reducer 函数</li>
+</ul>
+</blockquote>
+<ul>
+<li>切片让我们可以<strong>把 reducer 与 action 打包在一起</strong></li>
+<li>创建<strong>简化</strong>了编写 <strong>reducer</strong> 的流程</li>
+<li><strong>自动生成 action</strong> 类型</li>
+</ul>
+<p>⚙️ CRA新建一个react项目</p>
+<p><code>create-react-app myapp --template typescript</code></p>
+<p>⚙️ 安装react-redux react-toolkit</p>
+<p><code>npm install @reduxjs/toolkit react-redux </code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目基本结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/07/14/v4muItCeOgTFfaV.png" alt="image-20230714095149784.png" style="zoom:67%;" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>新建状态管理主文件</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slice/counterSlice&quot;</span> <span class="comment">// 由切片导入的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据store本身推断出推断 `RootState` 和 `AppDispatch`类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">RootState</span> = <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> store.<span class="property">getState</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">AppDispatch</span> = <span class="keyword">typeof</span> store.<span class="property">dispatch</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在项目入口文件，给App组件<strong>注入store</strong></li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// index.tsx</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="keyword">import</span> &#123; store &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLElement</span></span><br><span class="line">);</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建切片</li>
+</ul>
+<blockquote>
+<p>之前利用 都要分别写各自actionCreator和各自的reducer， 现在只用一个切片即可管理</p>
+</blockquote>
+<p>😇 React Toolkit 创建的 Slice 状态state本身是 <code>immutable</code> 的，所以可以放心的直接加工使用</p>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/redux/slice/counterSlice.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PayloadAction</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ICounterState</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">initialState</span>: <span class="title class_">ICounterState</span> = &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建切片</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    initialState,</span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> -= <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action: PayloadAction&lt;<span class="built_in">number</span>&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators 会在各自的reducer函数中自动创建， 这里直接导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 💡注意&gt; 默认导出的是reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>尝试在App.tsx组件中使用</li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppDispatch</span>, <span class="title class_">RootState</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/slice/counterSlice&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> disptach = useDispatch&lt;<span class="title class_">AppDispatch</span>&gt;()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(increment())&#125;&gt;点击我+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(decrement())&#125;&gt;点击我-1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(incrementByAmount(100))&#125;&gt;点击我+100<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>✅成功</p>
+<p><img src="https://s2.loli.net/2023/07/14/QKWlncjEVHUgGRN.gif" alt="屏幕录制2023-07-14-上午10.12.15" /></p>
+]]></content>
+      <categories>
+        <category>gallery</category>
+      </categories>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue3数据绑定之-sync</title>
+    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
+    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
+<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
+<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
+<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
+<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
+<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
+<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
+<hr />
+<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
+<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
+<p>而在vue3中这个sync被v-model替代了</p>
+<blockquote>
+<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
+]]></content>
+      <tags>
+        <tag>vue3</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>React小记</title>
     <url>/posts/react%E5%B0%8F%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="react库和框架的区别是什么"><a class="markdownIt-Anchor" href="#react库和框架的区别是什么"></a> React库和框架的区别是什么？</h2>
@@ -1382,107 +1483,6 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>redux-toolkit学习</title>
-    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
-<blockquote>
-<p>摘自官网</p>
-<p><strong><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></strong> 是 Redux 官方强烈推荐，开箱即用的一个高效的 Redux 开发工具集。</p>
-<p>简化最常见场景下的 Redux 开发，</p>
-<p>​	包括配置 store、定义 reducer，不可变的更新逻辑</p>
-<p>​	可以立即创建整个状态的 “切片 slice”，而<strong>无需手动编写任何 action creator 或者 action type</strong></p>
-<p>自带了一些最常用的 Redux 插件，</p>
-<p>​	例如用于异步逻辑 Redux Thunk，</p>
-<p>​	用于编写选择器 selector 的函数 Reselect （可缓存select数据）</p>
-</blockquote>
-<p>在 Redux 中,**切片(Slice)**指的是使用 <strong>createSlice</strong> API 创建的 reducer 和 action 的组合。它是 Redux Toolkit 中的一个核心概念。</p>
-<p>createSlice 接收一个配置对象参数,里面包含:</p>
-<blockquote>
-<ul>
-<li>初始 state</li>
-<li>reducers:包含不同 reducer 的对象</li>
-<li>extraReducers:处理 action 的 reducer 函数</li>
-</ul>
-</blockquote>
-<ul>
-<li>切片让我们可以<strong>把 reducer 与 action 打包在一起</strong></li>
-<li>创建<strong>简化</strong>了编写 <strong>reducer</strong> 的流程</li>
-<li><strong>自动生成 action</strong> 类型</li>
-</ul>
-<p>⚙️ CRA新建一个react项目</p>
-<p><code>create-react-app myapp --template typescript</code></p>
-<p>⚙️ 安装react-redux react-toolkit</p>
-<p><code>npm install @reduxjs/toolkit react-redux </code></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">项目基本结构</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://s2.loli.net/2023/07/14/v4muItCeOgTFfaV.png" alt="image-20230714095149784.png" style="zoom:67%;" /></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>新建状态管理主文件</li>
-</ul>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slice/counterSlice&quot;</span> <span class="comment">// 由切片导入的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据store本身推断出推断 `RootState` 和 `AppDispatch`类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">RootState</span> = <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> store.<span class="property">getState</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">AppDispatch</span> = <span class="keyword">typeof</span> store.<span class="property">dispatch</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>在项目入口文件，给App组件<strong>注入store</strong></li>
-</ul>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// index.tsx</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="keyword">import</span> &#123; store &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLElement</span></span><br><span class="line">);</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建切片</li>
-</ul>
-<blockquote>
-<p>之前利用 都要分别写各自actionCreator和各自的reducer， 现在只用一个切片即可管理</p>
-</blockquote>
-<p>😇 React Toolkit 创建的 Slice 状态state本身是 <code>immutable</code> 的，所以可以放心的直接加工使用</p>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/redux/slice/counterSlice.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PayloadAction</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ICounterState</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">initialState</span>: <span class="title class_">ICounterState</span> = &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建切片</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    initialState,</span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> -= <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action: PayloadAction&lt;<span class="built_in">number</span>&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators 会在各自的reducer函数中自动创建， 这里直接导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 💡注意&gt; 默认导出的是reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>尝试在App.tsx组件中使用</li>
-</ul>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppDispatch</span>, <span class="title class_">RootState</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/slice/counterSlice&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> disptach = useDispatch&lt;<span class="title class_">AppDispatch</span>&gt;()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(increment())&#125;&gt;点击我+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(decrement())&#125;&gt;点击我-1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(incrementByAmount(100))&#125;&gt;点击我+100<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>✅成功</p>
-<p><img src="https://s2.loli.net/2023/07/14/QKWlncjEVHUgGRN.gif" alt="屏幕录制2023-07-14-上午10.12.15" /></p>
-]]></content>
-      <categories>
-        <category>gallery</category>
-      </categories>
-      <tags>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue3数据绑定之-sync</title>
-    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
-    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
-<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
-<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
-<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
-<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
-<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
-<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
-<hr />
-<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
-<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
-<p>而在vue3中这个sync被v-model替代了</p>
-<blockquote>
-<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
