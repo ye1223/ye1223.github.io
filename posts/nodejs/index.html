@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en,zh-CN,default">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Levy Liu">
+
+
+
+
+
+
+
+<title>nodejs | Levy&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/color_mode/classic.css">
+    
+    <link rel="stylesheet" href="/css/color_mode/dark.css">
+    
+    <link rel="stylesheet" href="/lib/viewer/viewer.min.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+    <script src="/js/format.js"></script>
+    
+    <script src="/js/search.js"></script>
+    
+    <script src="/lib/viewer/viewer.min.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <!-- <div class="image-preview-mask">
+    <div class="image-preview-container">
+      <div id="img-preview"></div>
+    </div> -->
+  </div>
+  <div class="mask-border">
+  </div>
+
+  <div class="wrapper">
+
+    <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Levy&#39;s Blog.🦊
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        
+        <ul class="menu-list">
+          
+            <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+            <!-- 高亮显示 -->
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+            <!-- 高亮显示 -->
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+            <!-- 高亮显示 -->
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          <!-- 搜索功能 -->
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+          
+
+          <!-- Some tags or posts doesn't have alternative language version, so we don't render language switcher for them -->
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  /* const button = document.querySelector('button')
+  button.addEventListener('clcik', ()=>{
+    document.body.classList.add('')
+  }) */
+</script>
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+  
+    <div class="post-head">
+    
+    <div class="post-info">
+        <div class="tag-list">
+            
+        </div>
+        <div class="post-title">
+
+            
+                nodejs
+                    
+        </div>
+        <span class="post-date">
+            Jun 1, 2023
+        </span>
+        <span class="post-word-count">
+            185 words / About 2 minutes
+
+            <span class="post-word-count-tooltip">Only English content is counted</sapn>
+        </span>
+
+        
+    </div>
+    <div class="post-img">
+        
+                <div class="h-line-primary"></div>
+                
+    </div>
+</div>
+    <div class="post-content">
+    <!-- <-page.content -->
+    <div class="toc"></div>
+<div class="post-body">
+    <h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
+<ol>
+<li><strong>运行时（Runtime)</strong><br />
+&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
+</ol>
+<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
+<ol start="2">
+<li>
+<p><strong>运行时库（Runtime Library）</strong><br />
+运行时库就是程序运行的时候所需要依赖的库。</p>
+</li>
+<li>
+<p><strong>运行时环境（Runtime environment）</strong><br />
+运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
+</li>
+</ol>
+<hr />
+<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
+<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
+<p>访问系统内核，访问本地文件，链接服务器…</p>
+<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
+<p><strong>跨平台</strong></p>
+<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
+<blockquote>
+<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
+</blockquote>
+<hr />
+<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
+<p>node <code>global</code></p>
+<p>浏览器 <code>window</code></p>
+<p><code>globalThis</code>根据环境自动判断</p>
+<p>ECMAScript中有的全局，如Math…</p>
+<ul>
+<li>
+<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
+</li>
+<li>
+<p><code>__filename</code> 当前文件路径（绝对路径）</p>
+</li>
+<li>
+<p><code>__extname</code> 文件后缀</p>
+</li>
+<li>
+<p><code>Buffer</code></p>
+</li>
+<li>
+<p><code>process</code>  处理进程</p>
+<ul>
+<li><code>process.argv</code> 获取参数数组</li>
+<li><code>process.cwd()</code> 目录</li>
+<li><code>process.exit()</code> 终止进程</li>
+<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
+<p>（相比，Apache，每一个请求创建一个线程）</p>
+<p>单线程，并发量为1</p>
+<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
+<blockquote>
+<p>主线程是单线程，io是libuv维护的线程池</p>
+</blockquote>
+<br/>
+<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
+<br/>
+<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
+<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
+<br/>  
+<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
+<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
+<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
+<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
+<hr />
+<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
+<ol>
+<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
+<li>I/O操作： 文件读写，数据库操作，网络请求</li>
+<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
+</ol>
+<br/>
+<blockquote>
+<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
+<p>微任务（promise）</p>
+<p>timer</p>
+<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
+<p>check</p>
+</blockquote>
+<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
+<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
+<br/>
+<blockquote>
+<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
+<p>nextTick先于下一个Tick执行</p>
+</blockquote>
+<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
+<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
+<p>为了健壮性：捕获并处理每一个错误</p>
+<ul>
+<li>
+<p>同步代码 try catch</p>
+</li>
+<li>
+<p>异步代码</p>
+<ul>
+<li>Promise (catch)</li>
+<li>async await trycatch</li>
+</ul>
+</li>
+</ul>
+<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
+<p>回调函数 --&gt; Promise —&gt; async await</p>
+<br/>
+<p>node官方的库</p>
+<p>遵循，错误优先风格</p>
+<br/>
+<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
+<br/>
+<blockquote>
+<p>平行</p>
+<p>顺序</p>
+</blockquote>
+<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
+<p>module并不是全局变量，每一个模块有他相应的模块</p>
+<br/>
+<p>核心模块（随着node）</p>
+<p>第三方模块</p>
+<p>自定义模块（引用路径）</p>
+<br/>
+<p>运行时加载 cmj，知道运行时候再报错</p>
+<p>编译时加载 esm</p>
+<p><code>import from</code> 写在模块顶层</p>
+<p><code>import()</code> （异步，返回promise）</p>
+<br/>
+<p><code>V8</code></p>
+<p>预编译阶段 （ESM</p>
+<p>-分配内存空间</p>
+<p>-确定作用域链…</p>
+<p>执行阶段 （CMJ</p>
+ <br/>
+<hr />
+<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
+<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
+<br/>
+<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<hr />
+<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
+<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
+<br/>
+<p>i/o操作</p>
+<p>端到端数据交换</p>
+<br/>
+<p>加载 缓冲区 处理</p>
+<p>流模式 加载一点处理一点</p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
+<hr />
+<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
+<ul>
+<li>
+<p>TDK</p>
+<ul>
+<li>title</li>
+<li>description (meta)</li>
+<li>Key(meta)</li>
+</ul>
+</li>
+<li>
+<p>语义化标签</p>
+</li>
+<li>
+<p><code>&lt;a/&gt;</code> href</p>
+</li>
+<li>
+<p><code>&lt;img/&gt;</code> href alt</p>
+</li>
+<li>
+<p>一个页面一个h1 和 main标签</p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
+
+</div>
+<div class="toc-menu-container">
+    <img class="icon toc-menu" alt="">
+</div>
+
+<script>
+    // const toc = document.querySelector('.toc')
+    // const tocmenu = document.querySelector('.toc-menu-container')
+    // tocmenu.addEventListener('click', ()=>{
+    //     toc.style.display === 'block' ? toc.style.display = 'none' : toc.style.display = 'block'
+    // })
+    const tocRight = getComputedStyle(document.documentElement).getPropertyValue('--toc-right');
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const toc = document.querySelector('.toc')
+
+        // 如果没有相关h标签，隐藏目录
+        if (!document.querySelector('h1, h2, h3, h4, h5, h6')) {
+            toc.style.display = 'none'
+        }
+
+        const tocmenu = document.querySelector('.toc-menu-container')
+        // 解决直接写入css文件的媒体查询，而是用js控制集中内容导致样式失效的方法
+        const mediaQuery = window.matchMedia('(max-width: 1200px)')
+
+        function handleTableOfContentsDisplay(e) {
+            if (e.matches) { // If media query matches
+                // toc.style.display = 'none'
+                toc.style.right = '-100%'
+                toc.style.transition = 'right .5s ease-in-out'
+            } else {
+                // toc.style.right = '20px'
+                toc.style.right = tocRight
+            }
+        }
+        //运行时调用
+        handleTableOfContentsDisplay(mediaQuery)
+        // 绑定媒体查询事件监听
+        mediaQuery.addListener(handleTableOfContentsDisplay)
+
+
+        const img = document.querySelector('.toc-menu')
+        let timer
+        tocmenu.addEventListener('click', () => {
+            tocmenu.classList.add('scale-up-center')
+            toc.style.right.includes('%') ? toc.style.right = tocRight : toc.style.right = '-100%'
+            // 异步移除
+            // if(timer) clearTimeout(timer)
+            timer = setTimeout(() => {
+                tocmenu.classList.remove('scale-up-center')
+            }, 500)
+            // img.classList.toggle('active')
+            // if(img.classList.contains('active')){
+            //     img.style.maskImage = "url('../../../source/css/icon/arrow-right.svg')"
+            // }
+        })
+    })
+</script>
+
+
+<!-- 引入tocbot -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        tocbot.init({
+            tocSelector: '.toc',
+            contentSelector: '.post-body',
+            listClass: 'toc-list', //toc ol列表class名
+            linkClass: 'toc-link', //li 中a标签的class名
+            headingSelector: 'h1 ,h2, h3, h4, h5',
+            collapseDepth: '6',
+            // isCollapsedClass: 'is-collapsed',
+        });
+    });
+</script>
+</div>
+
+<script>
+    // View a list of images.
+    // Note: All images within the container will be found by calling `element.querySelectorAll('img')`.
+    const gallery = new Viewer(document.querySelector('.post-body'), {
+        slideOnTouch: true,
+        toolbar: {
+            zoomIn: 1,
+            zoomOut: 1,
+            oneToOne: 0,
+            reset: 1,
+            prev: {
+                show: 1,
+                size: 'large'
+            },
+            play: {
+                show: 0,
+                // size: 'large',
+            },
+            next: {
+                show: 1,
+                size: 'large'
+            },
+            rotateLeft: 0,
+            rotateRight: 0,
+            flipHorizontal: 0,
+            flipVertical: 0,
+        },
+    })
+    console.log(gallery)
+    // Then, show one image by click it, or call `gallery.show()`.
+</script>
+
+<!-- <script>
+    const mdImg = document.querySelectorAll('.post-content p img')
+    const imgPreviewMask = document.querySelector('.image-preview-mask')
+    const imgPreview = document.querySelector('#img-preview')
+    window.addEventListener('DOMContentLoaded', ()=>{
+        console.log(mdImg, imgPreview)
+    })
+    mdImg.forEach(item => {
+        item.addEventListener('click', () => {
+            imgPreviewMask.style.display = 'block'
+            imgPreview.classList.add('image-preview');
+            imgPreview.style.backgroundImage = `url(${item.src})`;
+
+        })
+    })
+
+    imgPreviewMask.addEventListener('click', ()=>{
+        imgPreview.classList.remove('image-preview')
+        imgPreviewMask.style.display = 'none'
+    })
+
+</script> -->
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/posts/hello-world/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+    
+        
+            <div id="vcomments"></div>
+            <!-- <script>
+                var META = ['nick', 'mail', 'link'];
+                var meta = 'nick,mail';
+                meta = meta.split(',').filter(item => {
+                    return META.includes(item);
+                });
+                new Valine({
+                    el: '#vcomments',
+                    appId: '',
+                    appKey: '',
+                    lang: 'en',
+                    placeholder: 'Say something',
+                    avatar: 'mp',
+                    meta: meta
+                })
+            </script> -->
+            
+
+                
+                    
+                        <div id="disqus_thread"></div>
+                        <div id='tip' style="display: none; color: gray; font-style: italic; font-size: 0.9em;">" Please use a proxy to
+                            use the comment function in 🇨🇳"</div>
+                        <script>
+                            /**
+                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+
+                            /* var disqus_config = function () {
+                                this.page.url = 'http://example.com/posts/nodejs/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/nodejs/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.language = 'en'
+                            }; */
+
+                            /* (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-ye1223-github-io.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })(); */
+
+
+
+
+                            function loadDisqus() {
+                                // 检测是否存在评论
+                                if (!document.querySelector('#disqus_thread iframe')) {
+                                    document.getElementById('tip').style.display = 'block'
+                                } else {
+                                    document.getElementById('tip').style.display = 'none'
+                                }
+                                // Disqus 安装代码
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-ye1223-github-io.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                                window.disqus_config = function () {
+                                    this.page.url = 'http://example.com/posts/nodejs/';
+                                    this.page.identifier = 'posts/nodejs/';
+                                    this.language = 'en'
+                                };
+                                // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
+                            }
+
+                            // 通过检查 window 对象确认是否在浏览器中运行
+                            var runningOnBrowser = typeof window !== "undefined";
+                            // 通过检查 scroll 事件 API 和 User-Agent 来匹配爬虫
+                            var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+                            // 检查当前浏览器是否支持 IntersectionObserver API
+                            var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+
+                            // 检测
+                            /* const iframeObserver = new IntersectionObserver((entries)=>{
+                                if(entries[0].isIntersecting){
+                                    iframeObserver.disconnect()
+                                }
+                            })
+                            iframeObserver.observe(document.querySelector('#disqus_thread iframe')) */
+
+                            // 一个小 hack，将耗时任务包裹在 setTimeout(() => { }, 1) 中，可以推迟到 Event Loop 的任务队列中、等待主调用栈清空后才执行，在绝大部分浏览器中都有效
+                            // 其实这个 hack 本来是用于优化骨架屏显示的。一些浏览器总是等 JavaScript 执行完了才开始页面渲染，导致骨架屏起不到降低 FCP 的优化效果，所以通过 hack 将耗时函数放到骨架屏渲染完成后再进行。
+                            setTimeout(function () {
+                                if (!isBot && supportsIntersectionObserver) {
+                                    // 当前环境不是爬虫、并且浏览器兼容 IntersectionObserver API
+                                    var disqus_observer = new IntersectionObserver(function (entries) {
+                                        // 当前视窗中已出现 Disqus 评论框所在位置
+                                        if (entries[0].isIntersecting) {
+                                            // 加载 Disqus
+                                            loadDisqus();
+                                            // 停止当前的 Observer
+                                            disqus_observer.disconnect();
+                                        }
+                                    }, { threshold: [0] });
+                                    // 设置让 Observer 观察 #disqus_thread 元素
+                                    disqus_observer.observe(document.getElementById('disqus_thread'));
+                                } else {
+                                    // 当前环境是爬虫、或当前浏览器其不兼容 IntersectionObserver API
+                                    // 直接加载 Disqus
+                                    loadDisqus();
+                                }
+                            }, 1)
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a
+                                target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        
+
+
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+               ©️<a target="_blank" rel="noopener" href="https://github.com/ye1223 ">Levy Liu</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame.</a>
+                
+        </div>
+    </div>
+</div>
+
+      <!-- mermaid语法支持 -->
+      
+        <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+      
+
+  </div>
+
+  
+    <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+      
+
+</body>
+
+</html>
