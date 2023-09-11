@@ -15,7 +15,7 @@
 
 
 
-<title>HTTP summary | Levy&#39;s Blog</title>
+<title>TCP | Levy&#39;s Blog</title>
 
 
 
@@ -167,25 +167,19 @@
                         </a>
                     </span>
                     
-                    <span class="post-tag">
-                        <a href="/tags/http/">
-                            http
-                        </a>
-                    </span>
-                    
                         
         </div>
         <div class="post-title">
 
             
-                HTTP summary
+                TCP
                     
         </div>
         <span class="post-date">
-            Sep 8, 2023
+            Sep 11, 2023
         </span>
         <span class="post-word-count">
-            150 words / About 1 minute
+            37 words / About 48 seconds
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -194,100 +188,49 @@
     </div>
     <div class="post-img">
         
-                <div class="h-line-primary"></div>
-                
+            <img src="https://s2.loli.net/2023/09/11/BDjuH9SE2dNXpQg.png" alt="featured_image">
+            
     </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <h2 id="http"><a class="markdownIt-Anchor" href="#http"></a> <mark>HTTP</mark></h2>
-<p><strong>Hyper Text Transfer Protocol</strong></p>
-<img src="https://s2.loli.net/2023/09/08/7HasE3ePGXuqtYn.png" alt="image-20230908155626605" style="width:50%;" />
-<ul>
-<li><strong style="color:red;">Stateless</strong> : every Request is <strong>INDEPENDENT</strong>
-<ul>
-<li>regard each request as a single transaction</li>
-<li>use <code>cookie</code>  <code>session</code> <code>localStorage</code> … to enhance user experience( <u>memorize the state from the user</u> )</li>
-</ul>
-</li>
-</ul>
-<h2 id="https"><a class="markdownIt-Anchor" href="#https"></a> <mark>HTTPS</mark></h2>
-<p><strong>Hyper Text Transfer Protocol <u>Secure</u></strong></p>
-<ul>
-<li>Data sent is <strong>encrypt</strong>
-<ul>
-<li><strong>SSL</strong> – Secure Sockets Layer</li>
-<li><strong>TLS</strong> –  Transfer Layer Security</li>
-</ul>
-</li>
-<li>install certificate on web host to use HTTPs</li>
-</ul>
-<h2 id="message"><a class="markdownIt-Anchor" href="#message"></a> Message</h2>
-<img src="https://s2.loli.net/2023/09/08/u6OS2icBACHrtFf.png" alt="image-20230908164003822" style="width:50%;" />
-<h3 id="headers"><a class="markdownIt-Anchor" href="#headers"></a> Headers</h3>
-<ul>
-<li>General
-<ul>
-<li>Request URL、Request Method、Status Code、Remote Address、Referrer Policy</li>
-</ul>
-</li>
-<li>Request
-<ul>
-<li>Cookies、Accept-xxx、Content-Type、Content-Length、Auhurization、User-Agent、Referrer</li>
-</ul>
-</li>
-<li>Response
-<ul>
-<li>Server、Set-Cookie、Content-Type、Content-Length、Date</li>
-</ul>
-</li>
-</ul>
-<h2 id="status-code"><a class="markdownIt-Anchor" href="#status-code"></a> Status Code</h2>
-<table>
-<thead>
-<tr>
-<th>Status Code</th>
-<th>Means</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1xx</td>
-<td>request received / processing</td>
-</tr>
-<tr>
-<td>2xx</td>
-<td>Success received, understood, accepted</td>
-</tr>
-<tr>
-<td>3xx</td>
-<td>Further action must be taken / redirect</td>
-</tr>
-<tr>
-<td>4xx</td>
-<td>Client error</td>
-</tr>
-<tr>
-<td>5xx</td>
-<td>Server error</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>200 - OK</li>
-<li>201 - OK created</li>
-<li>301 - Move to new URL</li>
-<li>304 - Not Modified (Cached version)</li>
-<li>400 - Bad Request （❌ not sending correct data）</li>
-<li>401 - Unauthorized （missing token）</li>
-<li>404 - Not Found (resources do not exsist)</li>
-<li>500 - Internal Server Error</li>
-</ul>
-<h2 id="http2"><a class="markdownIt-Anchor" href="#http2"></a> HTTP2</h2>
-<p><code>multiplexing</code></p>
-<img src="https://s2.loli.net/2023/09/08/sf8H6glXiCnzEA2.png" alt="image-20230908164925817" style="width:50%;" />
+    <p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
+<p><strong>全双工（Full Duplex）</strong></p>
+<ol>
+<li>双向传输:TCP连接的两端都可以同时发送和接收数据包。</li>
+<li>双向流量控制:发送方和接收方都可以通过滑动窗口机制控制数据流量,防止对方缓冲区溢出。</li>
+<li>双向确认:发送的数据包可以得到对方的确认应答ACK。接收方也可以通过ACK告知发送方自己已经正确接收了数据。</li>
+<li>双向重传:如果任意一方没有收到确认或数据包丢失,都可以触发重传机制,直到数据正确发送。</li>
+<li>全双工通信:TCP的全双工特性使得双方可以同时进行发言而不会相互干扰,就像电话通话一样。</li>
+</ol>
+<blockquote>
+<p><code>ACK</code> 和<code>FIN</code> 是 TCP 协议中两个重要的控制标志(control flag)</p>
+<p><code>ACK(Acknowledgement) </code>确认号，表示确认号,确认接收端已正确接收到前面的数据</p>
+<p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
+</blockquote>
+<h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
+<img src="https://s2.loli.net/2023/09/11/NLjszmY1wcoOpty.png" alt="三次挥手示意图" style="width:50%" />
+<h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
+<p>一包数据可能被拆为多包数据发送</p>
+<p><strong>丢包问题？乱序问题？</strong></p>
+<p>TCP为每个链接建立了一个<mark>发送缓冲区</mark></p>
+<img src="https://s2.loli.net/2023/09/11/ACj3KLUHcNiVIMs.png" style="width:50%;" alt="传输示意图" />
+<blockquote>
+<p>一问一答的方式发送接收（发送端一次也可以发送多包数据，接收端只用回复一次ACK）</p>
+</blockquote>
+<blockquote>
+<p>发送端可以切割发送，接收端利用序列号和长度重组出完整的数据</p>
+</blockquote>
+<blockquote>
+<p>丢失了某个数据包，接收端可以要求发送端重传。</p>
+<p>接收端向发送端发送ACK=xxx，发送端重传，接收端收到再<strong>补齐</strong>数据</p>
+</blockquote>
+<h2 id="四次挥手"><a class="markdownIt-Anchor" href="#四次挥手"></a> 四次挥手👋🏻</h2>
+<p>这里以客户端取消l为例</p>
+<img src="https://s2.loli.net/2023/09/11/nrxG86lYUf7CqMX.png" alt="四次挥手示意图" style="width:50%;" />
+<p>Client等待一段时间，目的为了确保ACK成功发送给Server，否则Server重新发送FIN给client，再重新执行</p>
 
 </div>
 <div class="toc-menu-container">
@@ -429,17 +372,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/posts/TCP/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/%E6%9D%82%E9%A1%B9/">Next</a>  
+                  <a href="/posts/http/">Next</a>  
                 </div>  
             
         </div>
@@ -480,8 +418,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/http/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/http/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/TCP/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/TCP/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -508,8 +446,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/http/';
-                                    this.page.identifier = 'posts/http/';
+                                    this.page.url = 'http://example.com/posts/TCP/';
+                                    this.page.identifier = 'posts/TCP/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
