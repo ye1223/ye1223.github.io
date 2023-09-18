@@ -15,7 +15,7 @@
 
 
 
-<title>TCP | Levy&#39;s Blog</title>
+<title>JS类型转换 | Levy&#39;s Blog</title>
 
 
 
@@ -162,8 +162,14 @@
 
                 
                     <span class="post-tag">
-                        <a href="/tags/Computer-Network/">
-                            Computer Network
+                        <a href="/tags/JavaScript/">
+                            JavaScript
+                        </a>
+                    </span>
+                    
+                    <span class="post-tag">
+                        <a href="/tags/Preparation/">
+                            Preparation
                         </a>
                     </span>
                     
@@ -172,14 +178,14 @@
         <div class="post-title">
 
             
-                TCP
+                JS类型转换
                     
         </div>
         <span class="post-date">
-            Sep 11, 2023
+            Sep 18, 2023
         </span>
         <span class="post-word-count">
-            37 words / About 48 seconds
+            19 words / About 10 seconds
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -188,49 +194,58 @@
     </div>
     <div class="post-img">
         
-            <img src="https://s2.loli.net/2023/09/18/as3J7Y8ePvRCAjg.png" alt="featured_image">
-            
+                <div class="h-line-primary"></div>
+                
     </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
-<p><strong>全双工（Full Duplex）</strong></p>
-<ol>
-<li>双向传输:TCP连接的两端都可以同时发送和接收数据包。</li>
-<li>双向流量控制:发送方和接收方都可以通过滑动窗口机制控制数据流量,防止对方缓冲区溢出。</li>
-<li>双向确认:发送的数据包可以得到对方的确认应答ACK。接收方也可以通过ACK告知发送方自己已经正确接收了数据。</li>
-<li>双向重传:如果任意一方没有收到确认或数据包丢失,都可以触发重传机制,直到数据正确发送。</li>
-<li>全双工通信:TCP的全双工特性使得双方可以同时进行发言而不会相互干扰,就像电话通话一样。</li>
-</ol>
+    <p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
+<p>而<font color=red>各种<strong>运算符</strong>对数据类型是有要求的</font>，所以就会触发类型转换机制（no matter 人为 or 隐式触发）</p>
+<h2 id="显示转换"><a class="markdownIt-Anchor" href="#显示转换"></a> 显示转换：</h2>
+<p>​	通过JS内置的函数<strong>明确转换的数据类型</strong></p>
+<ul>
+<li>
+<p>Number</p>
+</li>
+<li>
+<p>parseInt(string, ?进制) 比Number宽松，一位一位解析遇到不能解析的停止</p>
+</li>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Boolean</p>
+</li>
+</ul>
+<h2 id="隐式转换"><a class="markdownIt-Anchor" href="#隐式转换"></a> 隐式转换：</h2>
+<p>​	运算操作符两边数据类型不一致（比较运算符、算术运算符）</p>
+<ul>
+<li>
+<p>转为Boolean (需要布尔值的地方，借助的<code>Boolean()</code>函数)</p>
+<ul>
+<li>falsely变量：<code>undefined</code>、<code>null</code>、<code>false</code>、<code>+/-0</code>、<code>NAN</code>、<code>&quot;&quot;</code></li>
+</ul>
+</li>
+<li>
+<p>转为String （复合类型—&gt;原始类型----&gt;字符串）</p>
+<ul>
+<li>常发生在，如 <code>&quot;5&quot; + xxx</code> 的加法运算中</li>
+</ul>
+</li>
+<li>
+<p>转为Number</p>
+<ul>
+<li>除了加法运算符号，其他都有可能</li>
+</ul>
+</li>
+</ul>
+<h2 id="other"><a class="markdownIt-Anchor" href="#other"></a> other</h2>
 <blockquote>
-<p><code>ACK</code> 和<code>FIN</code> 是 TCP 协议中两个重要的控制标志(control flag)</p>
-<p><code>ACK(Acknowledgement) </code>确认号，表示确认号,确认接收端已正确接收到前面的数据</p>
-<p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
+<p><code>=== </code>在不进行类型转换情况下，双方的类型与值都相等</p>
 </blockquote>
-<h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
-<img src="https://s2.loli.net/2023/09/11/NLjszmY1wcoOpty.png" alt="三次挥手示意图" style="width:50%" />
-<h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
-<p>一包数据可能被拆为多包数据发送</p>
-<p><strong>丢包问题？乱序问题？</strong></p>
-<p>TCP为每个链接建立了一个<mark>发送缓冲区</mark></p>
-<img src="https://s2.loli.net/2023/09/11/ACj3KLUHcNiVIMs.png" style="width:50%;" alt="传输示意图" />
-<blockquote>
-<p>一问一答的方式发送接收（发送端一次也可以发送多包数据，接收端只用回复一次ACK）</p>
-</blockquote>
-<blockquote>
-<p>发送端可以切割发送，接收端利用序列号和长度重组出完整的数据</p>
-</blockquote>
-<blockquote>
-<p>丢失了某个数据包，接收端可以要求发送端重传。</p>
-<p>接收端向发送端发送ACK=xxx，发送端重传，接收端收到再<strong>补齐</strong>数据</p>
-</blockquote>
-<h2 id="四次挥手"><a class="markdownIt-Anchor" href="#四次挥手"></a> 四次挥手👋🏻</h2>
-<p>这里以客户端取消l为例</p>
-<img src="https://s2.loli.net/2023/09/11/nrxG86lYUf7CqMX.png" alt="四次挥手示意图" style="width:50%;" />
-<p>Client等待一段时间，目的为了确保ACK成功发送给Server，否则Server重新发送FIN给client，再重新执行</p>
 
 </div>
 <div class="toc-menu-container">
@@ -372,17 +387,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/http/">Next</a>  
+                  <a href="/posts/TCP/">Next</a>  
                 </div>  
             
         </div>
@@ -423,8 +433,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/TCP/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/TCP/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/JS类型转换/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -451,8 +461,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/TCP/';
-                                    this.page.identifier = 'posts/TCP/';
+                                    this.page.url = 'http://example.com/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/';
+                                    this.page.identifier = 'posts/JS类型转换/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})

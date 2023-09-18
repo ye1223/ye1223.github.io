@@ -1004,6 +1004,21 @@ dl dd {
 .post-head .post-img {
   margin-top: 2rem;
 }
+@media (max-width: 480px) {
+  .post-head .post-info .post-word-count {
+    box-sizing: border-box;
+  }
+  .post-head .post-info .post-word-count .post-word-count-tooltip {
+    position: absolute;
+    left: 8em;
+    padding: 0.0625rem;
+    margin: 0;
+    margin-top: -3em;
+  }
+  .post-head .post-info:hover .post-word-count-tooltip {
+    visibility: visible;
+  }
+}
 .post-footer {
   margin-top: 3.5rem;
 }
