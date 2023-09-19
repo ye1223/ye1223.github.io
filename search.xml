@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JS类型转换</title>
+    <url>/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
+<p>而<font color=red>各种<strong>运算符</strong>对数据类型是有要求的</font>，所以就会触发类型转换机制（no matter 人为 or 隐式触发）</p>
+<h2 id="显示转换"><a class="markdownIt-Anchor" href="#显示转换"></a> 显示转换：</h2>
+<p>​	通过JS内置的函数<strong>明确转换的数据类型</strong></p>
+<ul>
+<li>
+<p>Number</p>
+</li>
+<li>
+<p>parseInt(string, ?进制) 比Number宽松，一位一位解析遇到不能解析的停止</p>
+</li>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Boolean</p>
+</li>
+</ul>
+<h2 id="隐式转换"><a class="markdownIt-Anchor" href="#隐式转换"></a> 隐式转换：</h2>
+<p>​	运算操作符两边数据类型不一致（比较运算符、算术运算符）</p>
+<ul>
+<li>
+<p>转为Boolean (需要布尔值的地方，借助的<code>Boolean()</code>函数)</p>
+<ul>
+<li>falsely变量：<code>undefined</code>、<code>null</code>、<code>false</code>、<code>+/-0</code>、<code>NAN</code>、<code>&quot;&quot;</code></li>
+</ul>
+</li>
+<li>
+<p>转为String （复合类型—&gt;原始类型----&gt;字符串）</p>
+<ul>
+<li>常发生在，如 <code>&quot;5&quot; + xxx</code> 的加法运算中</li>
+</ul>
+</li>
+<li>
+<p>转为Number</p>
+<ul>
+<li>除了加法运算符号，其他都有可能</li>
+</ul>
+</li>
+</ul>
+<h2 id="other"><a class="markdownIt-Anchor" href="#other"></a> other</h2>
+<blockquote>
+<p><code>=== </code>在不进行类型转换情况下，双方的类型与值都相等</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Preparation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cookie &amp; Session</title>
     <url>/posts/CookieSession/</url>
     <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
@@ -96,57 +149,23 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>JS类型转换</title>
-    <url>/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
-<p>而<font color=red>各种<strong>运算符</strong>对数据类型是有要求的</font>，所以就会触发类型转换机制（no matter 人为 or 隐式触发）</p>
-<h2 id="显示转换"><a class="markdownIt-Anchor" href="#显示转换"></a> 显示转换：</h2>
-<p>​	通过JS内置的函数<strong>明确转换的数据类型</strong></p>
-<ul>
-<li>
-<p>Number</p>
-</li>
-<li>
-<p>parseInt(string, ?进制) 比Number宽松，一位一位解析遇到不能解析的停止</p>
-</li>
-<li>
-<p>String</p>
-</li>
-<li>
-<p>Boolean</p>
-</li>
-</ul>
-<h2 id="隐式转换"><a class="markdownIt-Anchor" href="#隐式转换"></a> 隐式转换：</h2>
-<p>​	运算操作符两边数据类型不一致（比较运算符、算术运算符）</p>
-<ul>
-<li>
-<p>转为Boolean (需要布尔值的地方，借助的<code>Boolean()</code>函数)</p>
-<ul>
-<li>falsely变量：<code>undefined</code>、<code>null</code>、<code>false</code>、<code>+/-0</code>、<code>NAN</code>、<code>&quot;&quot;</code></li>
-</ul>
-</li>
-<li>
-<p>转为String （复合类型—&gt;原始类型----&gt;字符串）</p>
-<ul>
-<li>常发生在，如 <code>&quot;5&quot; + xxx</code> 的加法运算中</li>
-</ul>
-</li>
-<li>
-<p>转为Number</p>
-<ul>
-<li>除了加法运算符号，其他都有可能</li>
-</ul>
-</li>
-</ul>
-<h2 id="other"><a class="markdownIt-Anchor" href="#other"></a> other</h2>
-<blockquote>
-<p><code>=== </code>在不进行类型转换情况下，双方的类型与值都相等</p>
-</blockquote>
+    <title>Hello World</title>
+    <url>/posts/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
+<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Preparation</tag>
-      </tags>
   </entry>
   <entry>
     <title>TCP</title>
@@ -166,7 +185,7 @@ F --> L[结束]</pre>
 <p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
 </blockquote>
 <h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
-<img src="https://s2.loli.net/2023/09/11/NLjszmY1wcoOpty.png" alt="三次挥手示意图" style="width:50%" />
+<img src="https://i.imgur.com/bJWYomc.png" alt="三次挥手示意图" style="width:50%" />
 <h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
 <p>一包数据可能被拆为多包数据发送</p>
 <p><strong>丢包问题？乱序问题？</strong></p>
@@ -190,25 +209,6 @@ F --> L[结束]</pre>
       <tags>
         <tag>Computer Network</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/posts/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>HTTP summary</title>
@@ -1010,6 +1010,14 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
+    <title>杂项</title>
+    <url>/posts/%E6%9D%82%E9%A1%B9/</url>
+    <content><![CDATA[<p><mark>highlight</mark><br />
+​🈂️​</p>
+<h4 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
     <title>vue3数据绑定之-sync</title>
     <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
     <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
@@ -1035,14 +1043,6 @@ F --> L[结束]</pre>
         <tag>vue3</tag>
         <tag>vue</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>杂项</title>
-    <url>/posts/%E6%9D%82%E9%A1%B9/</url>
-    <content><![CDATA[<p><mark>highlight</mark><br />
-​🈂️​</p>
-<h4 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>滑动验证</title>
