@@ -15,7 +15,7 @@
 
 
 
-<title>表格导出为excel | Levy&#39;s Blog</title>
+<title>大理 | Levy&#39;s Blog</title>
 
 
 
@@ -159,27 +159,18 @@
     <div class="post-info">
         <div class="tag-list">
             
-
-                
-                    <span class="post-tag">
-                        <a href="/tags/enhanced/">
-                            enhanced
-                        </a>
-                    </span>
-                    
-                        
         </div>
         <div class="post-title">
 
             
-                表格导出为excel
+                大理
                     
         </div>
         <span class="post-date">
-            Aug 10, 2023
+            Aug 10, 2022
         </span>
         <span class="post-word-count">
-            204 words / About 59 seconds
+            58 words / About 1 minute
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -188,24 +179,47 @@
     </div>
     <div class="post-img">
         
-                <div class="h-line-primary"></div>
-                
+            <img src="https://i.imgur.com/d4Cyuoh.jpg" alt="featured_image">
+            
     </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <p><strong>配合xlsx模块 + fileSaver模块</strong></p>
-<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
-<p><code>yarn add xlsx file-saver</code></p>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
+    <hr />
+<p style="font-style: italic; font-size: 20px; font-weight:bold;">
+永远怀念那一个自由的夏天
+</p>
+<hr />
+<br />
+<h2 id="洱海傍晚"><a class="markdownIt-Anchor" href="#洱海傍晚"></a> 洱海傍晚</h2>
+<div style='text-align='center''>
+<img src='https://i.imgur.com/YVNCcZb.jpg' alt='洱海傍晚' style="display: block;" />
+<p style='font-size: 0.8em;'>我最好的一张摄影作品🫣（just shot on the mobile device）</p>
+</div>
+<h2 id="喜洲稻田"><a class="markdownIt-Anchor" href="#喜洲稻田"></a> 喜洲稻田</h2>
+<img src='https://i.imgur.com/QGuARFO.jpg' alt='喜洲稻田'/>
+<h2 id="洱海午后"><a class="markdownIt-Anchor" href="#洱海午后"></a> 洱海午后</h2>
+<img src='https://i.imgur.com/HBOvej0.jpg' alt='洱海午后'/>
+<h2 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> 其他</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://i.imgur.com/nC3dGRX.jpg" alt="栓q" style="zoom:50%;" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://i.imgur.com/KfS295U.jpg" alt="cat-🍮" style="zoom:50%;" /></td>
+</tr>
+<tr>
+<td><img src="https://i.imgur.com/6FZtChd.jpg" alt="sip" style="zoom: 50%;" /></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
-</blockquote>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
+<p>I think this is the life, but <strong>august</strong> always slipped away into moment in time 🎯</p>
 </blockquote>
 
 </div>
@@ -353,16 +367,11 @@
            
                 <div class="icon arrow-left"></div>
                 <div class="post-link">
-                    <a href="/posts/%E9%9D%A2%E8%AF%951/">Prev</a>
+                    <a href="/posts/nodejs/">Prev</a>
                 </div>
             
         </div>
         <div class="next-item">
-            
-                <div class="icon arrow-right"></div>
-                <div class="post-link">
-                  <a href="/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/">Next</a>  
-                </div>  
             
         </div>
     </nav>
@@ -402,8 +411,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/表格导出为excel/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/gallery-%E5%A4%A7%E7%90%86/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/gallery-大理/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -430,8 +439,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/';
-                                    this.page.identifier = 'posts/表格导出为excel/';
+                                    this.page.url = 'http://example.com/posts/gallery-%E5%A4%A7%E7%90%86/';
+                                    this.page.identifier = 'posts/gallery-大理/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})

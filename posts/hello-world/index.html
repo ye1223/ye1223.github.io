@@ -217,12 +217,15 @@
     window.addEventListener('DOMContentLoaded', (event) => {
         const toc = document.querySelector('.toc')
 
+    
+        const tocmenu = document.querySelector('.toc-menu-container')
+
         // 如果没有相关h标签，隐藏目录
         if (!document.querySelector('h1, h2, h3, h4, h5, h6')) {
             toc.style.display = 'none'
+            tocmenu.style.display = 'none'
         }
 
-        const tocmenu = document.querySelector('.toc-menu-container')
         // 解决直接写入css文件的媒体查询，而是用js控制集中内容导致样式失效的方法
         const mediaQuery = window.matchMedia('(max-width: 1200px)')
 
