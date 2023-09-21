@@ -262,6 +262,33 @@ body {
   padding: 0;
   margin: 0;
 }
+.tip-toast {
+  width: 50%;
+  margin-top: 4.375rem;
+  padding: 0;
+  position: fixed;
+  right: -100%;
+  border: 2px solid #373633;
+  background-color: rgba(255,255,255,0.8);
+}
+.tip-toast .close {
+  width: 1em;
+  position: absolute;
+  right: -2px;
+  top: -2px;
+  border: 2px solid #373633;
+}
+.tip-toast p {
+  font-family: 'Roboto Mono', menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 0;
+  line-height: #373633;
+}
+@media (max-width: 1200px) {
+  body .tip-toast {
+    width: 90%;
+  }
+}
 div {
   display: block;
   padding: 0;

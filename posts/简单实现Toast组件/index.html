@@ -69,8 +69,8 @@
   <!-- <div class="image-preview-mask">
     <div class="image-preview-container">
       <div id="img-preview"></div>
-    </div> -->
-  </div>
+    </div>
+  </div> -->
   <div class="mask-border">
   </div>
 
@@ -508,15 +508,73 @@
     </div>
 </div>
 
-      <!-- mermaid语法支持 -->
-      
-        <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+
+        <!-- 提示词 -->
+
+        <div class="tip-toast">
+          <!-- <img class="close" src=`${location.origin}icon/close-btn.svg` alt=""> -->
+          <img class="close" src="https://ye1223.github.io/icon/close-btn.svg" alt="">
+          <p>You'd better use a PROXY to enhance your browser experience</p>
+        </div>
+
+        <!-- 创建toast提示框 -->
         <script>
-          if (window.mermaid) {
-            mermaid.initialize({theme: 'forest'});
-          }
+          window.addEventListener('DOMContentLoaded', () => {
+            // const tipToast = document.createElement('div')
+            // tipToast.innerHTML = `<p>You'd better use a PROXY to enhance your browser experience</p>`
+            // tipToast.classList.add('tip-toast')
+            // document.body.appendChild(tipToast)
+
+            const tipToast = document.querySelector('.tip-toast')
+            const closeIcon = document.querySelector('.tip-toast .close')
+            let timer = null
+
+            // localStorage是否有tipToast（用于跨页面判断）
+            // if(localStorage.getItem('tipToast')){
+            //   // 有的话--设为false
+            //   localStorage.setItem('tipToast', false)
+            // } else {
+            //   localStorage.setItem('tipToast', true)
+            // }
+            localStorage.getItem('tipToast') ? localStorage.setItem('tipToast', false) : localStorage.setItem('tipToast', true)
+
+            if (localStorage.getItem('tipToast') === 'false') {
+              tipToast.style.display = 'none'
+              return
+
+            } else {
+              // 开始呼出tip
+              tipToast.style.right = '10px'
+              tipToast.style.transition = 'right .5s ease-in-out'
+
+              // 时间到了隐藏tip
+              timer = setTimeout(() => {
+                // tipToast.style.right = '-100%'
+                tipToast.style.transition = 'right .5s ease-in-out'
+                localStorage.setItem('tipToast', false)
+              }, 3000)
+            }
+
+            closeIcon.addEventListener('click', () => {
+              tipToast.style.right = '-100%'
+              tipToast.style.transition = 'right .5s ease-in-out'
+              timer = null
+              localStorage.setItem('tipToast', false)
+            })
+
+
+          })
         </script>
-      
+
+        <!-- mermaid语法支持 -->
+        
+          <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+          <script>
+            if (window.mermaid) {
+              mermaid.initialize({ theme: 'forest' });
+            }
+          </script>
+          
 
   </div>
 
