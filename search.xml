@@ -149,25 +149,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/posts/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>TCP</title>
     <url>/posts/TCP/</url>
     <content><![CDATA[<p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
@@ -209,6 +190,25 @@ F --> L[结束]</pre>
       <tags>
         <tag>Computer Network</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/posts/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
+<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>HTTP summary</title>
@@ -496,6 +496,146 @@ F --> L[结束]</pre>
 </ul>
 <p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>npm</title>
+    <url>/posts/npm/</url>
+    <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
+<p>安装、卸载、更新、发布</p>
+<p><strong>version</strong> <strong>版本号x,y,z</strong></p>
+<p>主 次 补丁</p>
+<dl>
+<dt>^ 锁定从左边数第一个非0的</dt>
+<dd>锁定主版本or次版本</dd>
+</dl>
+<p>latest 最新版本</p>
+<h1 id="依赖"><a class="markdownIt-Anchor" href="#依赖"></a> 依赖</h1>
+<p>dependecies</p>
+<p>devDependencies 开发依赖</p>
+<p>peerDependencies 对等依赖，（插件不能凭空运行，需要依赖某一模块）</p>
+<h1 id="一些常用命令"><a class="markdownIt-Anchor" href="#一些常用命令"></a> 一些常用命令</h1>
+<ul>
+<li><code>npm config list</code> 查看npm配置信息</li>
+</ul>
+<img src="https://s2.loli.net/2023/09/02/cZmUGLrlnh74v9Y.png" alt="image-20230902172055264" style="width:50%;" />
+<ul>
+<li><code>npm get registry</code>  查看镜像源</li>
+<li><code>npm set registry xxxx</code>设置镜像源</li>
+<li><code>npm ls (-g)</code> 当前（全局）安装的可执行文件</li>
+</ul>
+<h1 id="npm-install-原理"><a class="markdownIt-Anchor" href="#npm-install-原理"></a> npm install 原理</h1>
+<p>安装依赖存放于根目录<code>node_modules</code>文件夹</p>
+<p>排序: .bin @系列 abcd排序</p>
+<p>广度优先，扁平化（理想情况下）处理下载</p>
+<blockquote>
+<p>非理想： node_modules下a b 模块依赖不同版本的c模块，会给b模块下再建立一个node_modules文件夹</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/09/02/ybEQgwSzVoL2kA3.png" alt="img" /></p>
+<blockquote>
+<p>pakage-lock.json</p>
+<p>锁定版本号</p>
+<p>缓存： intergrity + verion + name 生成唯一的key，这个key在缓存文件中,</p>
+<p><code>npm config list</code> 查看中的cache</p>
+<p>index-v5 索引目录，记录content-v2的索引位置，对应的 intergrity + verion + name由算法生成的哈希值</p>
+<p>对应得上，就将这个加密的包解压到node_modules中</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>pakage-lock.json pakage.json</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不一致</td>
+<td>按照pakage中的版本下载，并更新lock中的版本号</td>
+</tr>
+<tr>
+<td>一直</td>
+<td>先找缓存，没有再下载资源</td>
+</tr>
+</tbody>
+</table>
+<h1 id="npm-run"><a class="markdownIt-Anchor" href="#npm-run"></a> npm run</h1>
+<p>可执行命令都存在node_modules下的<code>.bin</code>文件夹中</p>
+<ol>
+<li>
+<p>当前项目node_modules/.bin 中查找</p>
+</li>
+<li>
+<p>全局的node_modules查找</p>
+</li>
+<li>
+<p>环境变量中查找</p>
+</li>
+<li>
+<p>报错</p>
+</li>
+</ol>
+<p>也是有生命周期的</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;predev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 1.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 2.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postdev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 3.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>运行 <code>npm run dev</code>, 自动执行了 1.js 2.js 3.js</p>
+<blockquote>
+<p>比如一个打包命令，之前可以做一个清理的任务，最后做一个发布的工作，比如写一个CI脚本顺便把代码提交了</p>
+<p>Vue-cli也是用了生命周期pretest: ‘yarn clean’</p>
+</blockquote>
+<h1 id="npx"><a class="markdownIt-Anchor" href="#npx"></a> npx</h1>
+<p>npm高版本自带的命令行工具</p>
+<p><strong>运行node_modules/.bin 下的可执行文件</strong></p>
+<blockquote>
+<p>之前通过package.json 中的scripts 配合npm run实现，现在可通过npx运行不需要安装这个依赖包运行命令</p>
+</blockquote>
+<ul>
+<li>
+<p>避免全局安装</p>
+<ul>
+<li>当前项目node_modules/.bin —&gt; 全局modules/.bin —&gt; 官网下载，用完删除（需要联网），减少内存占用</li>
+</ul>
+</li>
+<li>
+<p>总是使用最新版本</p>
+</li>
+<li>
+<p>执行任意npm包</p>
+</li>
+</ul>
+<blockquote>
+<p>在一个项目中，<code>npm i vite</code></p>
+<p>没有全局安装，直接运行vite肯定是不行的，</p>
+<p>此时配合npx， <code>npx vite</code> 在项目中的node_modules/.bin中查找运行</p>
+</blockquote>
+<h2 id="与npm区别"><a class="markdownIt-Anchor" href="#与npm区别"></a> 与npm区别</h2>
+<p>npx侧重执行命令</p>
+<p>npm侧重安装或卸载某个模块，不具备执行某个模块的功能</p>
+<h1 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h1>
+<ul>
+<li><code>npm addUser</code>（创建npm账号）</li>
+<li><code>npm login</code> 登录( 使用<strong>官方的源</strong>，而不是第三方镜像源)</li>
+<li><code>npm publish</code>  发布（同版本号不能重新发布，包名唯一）</li>
+</ul>
+<h1 id="构建npm私服"><a class="markdownIt-Anchor" href="#构建npm私服"></a> 构建npm私服</h1>
+<ul>
+<li>部署到内网集群，离线使用</li>
+<li>安全性</li>
+<li>提高包下载速度</li>
+</ul>
+<p>利用<code>verdaccio</code>库</p>
+<img src="https://s2.loli.net/2023/09/02/PZQCziu4qrKAsRk.png" alt="image-20230902172055264" style="width:50%;" />
+<ul>
+<li><code>npm i verdaccio -g</code></li>
+<li><code>verdaccio --listen 5000</code> 开启服务</li>
+<li>发包流程与之前的差不多
+<ul>
+<li>
+<img src="https://s2.loli.net/2023/09/02/zYhy9muZv8cWD3H.png" alt="image-20230902172055264" style="width:50%;" /></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>nodejs</tag>
+      </tags>
   </entry>
   <entry>
     <title>React小记</title>
@@ -796,146 +936,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>npm</title>
-    <url>/posts/npm/</url>
-    <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
-<p>安装、卸载、更新、发布</p>
-<p><strong>version</strong> <strong>版本号x,y,z</strong></p>
-<p>主 次 补丁</p>
-<dl>
-<dt>^ 锁定从左边数第一个非0的</dt>
-<dd>锁定主版本or次版本</dd>
-</dl>
-<p>latest 最新版本</p>
-<h1 id="依赖"><a class="markdownIt-Anchor" href="#依赖"></a> 依赖</h1>
-<p>dependecies</p>
-<p>devDependencies 开发依赖</p>
-<p>peerDependencies 对等依赖，（插件不能凭空运行，需要依赖某一模块）</p>
-<h1 id="一些常用命令"><a class="markdownIt-Anchor" href="#一些常用命令"></a> 一些常用命令</h1>
-<ul>
-<li><code>npm config list</code> 查看npm配置信息</li>
-</ul>
-<img src="https://s2.loli.net/2023/09/02/cZmUGLrlnh74v9Y.png" alt="image-20230902172055264" style="width:50%;" />
-<ul>
-<li><code>npm get registry</code>  查看镜像源</li>
-<li><code>npm set registry xxxx</code>设置镜像源</li>
-<li><code>npm ls (-g)</code> 当前（全局）安装的可执行文件</li>
-</ul>
-<h1 id="npm-install-原理"><a class="markdownIt-Anchor" href="#npm-install-原理"></a> npm install 原理</h1>
-<p>安装依赖存放于根目录<code>node_modules</code>文件夹</p>
-<p>排序: .bin @系列 abcd排序</p>
-<p>广度优先，扁平化（理想情况下）处理下载</p>
-<blockquote>
-<p>非理想： node_modules下a b 模块依赖不同版本的c模块，会给b模块下再建立一个node_modules文件夹</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2023/09/02/ybEQgwSzVoL2kA3.png" alt="img" /></p>
-<blockquote>
-<p>pakage-lock.json</p>
-<p>锁定版本号</p>
-<p>缓存： intergrity + verion + name 生成唯一的key，这个key在缓存文件中,</p>
-<p><code>npm config list</code> 查看中的cache</p>
-<p>index-v5 索引目录，记录content-v2的索引位置，对应的 intergrity + verion + name由算法生成的哈希值</p>
-<p>对应得上，就将这个加密的包解压到node_modules中</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>pakage-lock.json pakage.json</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>不一致</td>
-<td>按照pakage中的版本下载，并更新lock中的版本号</td>
-</tr>
-<tr>
-<td>一直</td>
-<td>先找缓存，没有再下载资源</td>
-</tr>
-</tbody>
-</table>
-<h1 id="npm-run"><a class="markdownIt-Anchor" href="#npm-run"></a> npm run</h1>
-<p>可执行命令都存在node_modules下的<code>.bin</code>文件夹中</p>
-<ol>
-<li>
-<p>当前项目node_modules/.bin 中查找</p>
-</li>
-<li>
-<p>全局的node_modules查找</p>
-</li>
-<li>
-<p>环境变量中查找</p>
-</li>
-<li>
-<p>报错</p>
-</li>
-</ol>
-<p>也是有生命周期的</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;predev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 1.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 2.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postdev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 3.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>运行 <code>npm run dev</code>, 自动执行了 1.js 2.js 3.js</p>
-<blockquote>
-<p>比如一个打包命令，之前可以做一个清理的任务，最后做一个发布的工作，比如写一个CI脚本顺便把代码提交了</p>
-<p>Vue-cli也是用了生命周期pretest: ‘yarn clean’</p>
-</blockquote>
-<h1 id="npx"><a class="markdownIt-Anchor" href="#npx"></a> npx</h1>
-<p>npm高版本自带的命令行工具</p>
-<p><strong>运行node_modules/.bin 下的可执行文件</strong></p>
-<blockquote>
-<p>之前通过package.json 中的scripts 配合npm run实现，现在可通过npx运行不需要安装这个依赖包运行命令</p>
-</blockquote>
-<ul>
-<li>
-<p>避免全局安装</p>
-<ul>
-<li>当前项目node_modules/.bin —&gt; 全局modules/.bin —&gt; 官网下载，用完删除（需要联网），减少内存占用</li>
-</ul>
-</li>
-<li>
-<p>总是使用最新版本</p>
-</li>
-<li>
-<p>执行任意npm包</p>
-</li>
-</ul>
-<blockquote>
-<p>在一个项目中，<code>npm i vite</code></p>
-<p>没有全局安装，直接运行vite肯定是不行的，</p>
-<p>此时配合npx， <code>npx vite</code> 在项目中的node_modules/.bin中查找运行</p>
-</blockquote>
-<h2 id="与npm区别"><a class="markdownIt-Anchor" href="#与npm区别"></a> 与npm区别</h2>
-<p>npx侧重执行命令</p>
-<p>npm侧重安装或卸载某个模块，不具备执行某个模块的功能</p>
-<h1 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h1>
-<ul>
-<li><code>npm addUser</code>（创建npm账号）</li>
-<li><code>npm login</code> 登录( 使用<strong>官方的源</strong>，而不是第三方镜像源)</li>
-<li><code>npm publish</code>  发布（同版本号不能重新发布，包名唯一）</li>
-</ul>
-<h1 id="构建npm私服"><a class="markdownIt-Anchor" href="#构建npm私服"></a> 构建npm私服</h1>
-<ul>
-<li>部署到内网集群，离线使用</li>
-<li>安全性</li>
-<li>提高包下载速度</li>
-</ul>
-<p>利用<code>verdaccio</code>库</p>
-<img src="https://s2.loli.net/2023/09/02/PZQCziu4qrKAsRk.png" alt="image-20230902172055264" style="width:50%;" />
-<ul>
-<li><code>npm i verdaccio -g</code></li>
-<li><code>verdaccio --listen 5000</code> 开启服务</li>
-<li>发包流程与之前的差不多
-<ul>
-<li>
-<img src="https://s2.loli.net/2023/09/02/zYhy9muZv8cWD3H.png" alt="image-20230902172055264" style="width:50%;" /></li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>redux-toolkit学习</title>
     <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
@@ -1042,33 +1042,6 @@ F --> L[结束]</pre>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
-    <title>滑动验证</title>
-    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
-    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
-<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
-<hr />
-<ul>
-<li>
-<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
-</li>
-</ul>
-<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
-<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
-<blockquote>
-<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
-<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>简单实现Toast组件</title>
     <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<blockquote>
@@ -1163,6 +1136,33 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>Interview</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>滑动验证</title>
+    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
+    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
+<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
+<hr />
+<ul>
+<li>
+<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
+</li>
+</ul>
+<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
+<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
+<blockquote>
+<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
+<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
+]]></content>
+      <tags>
+        <tag>vue3</tag>
+        <tag>enhanced</tag>
       </tags>
   </entry>
   <entry>
