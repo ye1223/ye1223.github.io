@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JS类型转换</title>
+    <url>/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
+<p>而<font color=red>各种<strong>运算符</strong>对数据类型是有要求的</font>，所以就会触发类型转换机制（no matter 人为 or 隐式触发）</p>
+<h2 id="显示转换"><a class="markdownIt-Anchor" href="#显示转换"></a> 显示转换：</h2>
+<p>​	通过JS内置的函数<strong>明确转换的数据类型</strong></p>
+<ul>
+<li>
+<p>Number</p>
+</li>
+<li>
+<p>parseInt(string, ?进制) 比Number宽松，一位一位解析遇到不能解析的停止</p>
+</li>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Boolean</p>
+</li>
+</ul>
+<h2 id="隐式转换"><a class="markdownIt-Anchor" href="#隐式转换"></a> 隐式转换：</h2>
+<p>​	运算操作符两边数据类型不一致（比较运算符、算术运算符）</p>
+<ul>
+<li>
+<p>转为Boolean (需要布尔值的地方，借助的<code>Boolean()</code>函数)</p>
+<ul>
+<li>falsely变量：<code>undefined</code>、<code>null</code>、<code>false</code>、<code>+/-0</code>、<code>NAN</code>、<code>&quot;&quot;</code></li>
+</ul>
+</li>
+<li>
+<p>转为String （复合类型—&gt;原始类型----&gt;字符串）</p>
+<ul>
+<li>常发生在，如 <code>&quot;5&quot; + xxx</code> 的加法运算中</li>
+</ul>
+</li>
+<li>
+<p>转为Number</p>
+<ul>
+<li>除了加法运算符号，其他都有可能</li>
+</ul>
+</li>
+</ul>
+<h2 id="other"><a class="markdownIt-Anchor" href="#other"></a> other</h2>
+<blockquote>
+<p><code>=== </code>在不进行类型转换情况下，双方的类型与值都相等</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Preparation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cookie &amp; Session</title>
     <url>/posts/CookieSession/</url>
     <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
@@ -93,59 +146,6 @@ F --> L[结束]</pre>
       <tags>
         <tag>Computer Network</tag>
         <tag>http</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS类型转换</title>
-    <url>/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
-<p>而<font color=red>各种<strong>运算符</strong>对数据类型是有要求的</font>，所以就会触发类型转换机制（no matter 人为 or 隐式触发）</p>
-<h2 id="显示转换"><a class="markdownIt-Anchor" href="#显示转换"></a> 显示转换：</h2>
-<p>​	通过JS内置的函数<strong>明确转换的数据类型</strong></p>
-<ul>
-<li>
-<p>Number</p>
-</li>
-<li>
-<p>parseInt(string, ?进制) 比Number宽松，一位一位解析遇到不能解析的停止</p>
-</li>
-<li>
-<p>String</p>
-</li>
-<li>
-<p>Boolean</p>
-</li>
-</ul>
-<h2 id="隐式转换"><a class="markdownIt-Anchor" href="#隐式转换"></a> 隐式转换：</h2>
-<p>​	运算操作符两边数据类型不一致（比较运算符、算术运算符）</p>
-<ul>
-<li>
-<p>转为Boolean (需要布尔值的地方，借助的<code>Boolean()</code>函数)</p>
-<ul>
-<li>falsely变量：<code>undefined</code>、<code>null</code>、<code>false</code>、<code>+/-0</code>、<code>NAN</code>、<code>&quot;&quot;</code></li>
-</ul>
-</li>
-<li>
-<p>转为String （复合类型—&gt;原始类型----&gt;字符串）</p>
-<ul>
-<li>常发生在，如 <code>&quot;5&quot; + xxx</code> 的加法运算中</li>
-</ul>
-</li>
-<li>
-<p>转为Number</p>
-<ul>
-<li>除了加法运算符号，其他都有可能</li>
-</ul>
-</li>
-</ul>
-<h2 id="other"><a class="markdownIt-Anchor" href="#other"></a> other</h2>
-<blockquote>
-<p><code>=== </code>在不进行类型转换情况下，双方的类型与值都相等</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Preparation</tag>
       </tags>
   </entry>
   <entry>
@@ -306,198 +306,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>nodejs</title>
-    <url>/posts/nodejs/</url>
-    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
-<ol>
-<li><strong>运行时（Runtime)</strong><br />
-&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
-</ol>
-<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
-<ol start="2">
-<li>
-<p><strong>运行时库（Runtime Library）</strong><br />
-运行时库就是程序运行的时候所需要依赖的库。</p>
-</li>
-<li>
-<p><strong>运行时环境（Runtime environment）</strong><br />
-运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
-</li>
-</ol>
-<hr />
-<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
-<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
-<p>访问系统内核，访问本地文件，链接服务器…</p>
-<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
-<p><strong>跨平台</strong></p>
-<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
-<blockquote>
-<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
-</blockquote>
-<hr />
-<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
-<p>node <code>global</code></p>
-<p>浏览器 <code>window</code></p>
-<p><code>globalThis</code>根据环境自动判断</p>
-<p>ECMAScript中有的全局，如Math…</p>
-<ul>
-<li>
-<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
-</li>
-<li>
-<p><code>__filename</code> 当前文件路径（绝对路径）</p>
-</li>
-<li>
-<p><code>__extname</code> 文件后缀</p>
-</li>
-<li>
-<p><code>Buffer</code></p>
-</li>
-<li>
-<p><code>process</code>  处理进程</p>
-<ul>
-<li><code>process.argv</code> 获取参数数组</li>
-<li><code>process.cwd()</code> 目录</li>
-<li><code>process.exit()</code> 终止进程</li>
-<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
-<p>（相比，Apache，每一个请求创建一个线程）</p>
-<p>单线程，并发量为1</p>
-<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
-<blockquote>
-<p>主线程是单线程，io是libuv维护的线程池</p>
-</blockquote>
-<br/>
-<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
-<br/>
-<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
-<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
-<br/>  
-<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
-<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
-<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
-<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
-<hr />
-<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
-<ol>
-<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
-<li>I/O操作： 文件读写，数据库操作，网络请求</li>
-<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
-</ol>
-<br/>
-<blockquote>
-<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
-<p>微任务（promise）</p>
-<p>timer</p>
-<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
-<p>check</p>
-</blockquote>
-<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
-<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
-<br/>
-<blockquote>
-<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
-<p>nextTick先于下一个Tick执行</p>
-</blockquote>
-<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
-<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
-<p>为了健壮性：捕获并处理每一个错误</p>
-<ul>
-<li>
-<p>同步代码 try catch</p>
-</li>
-<li>
-<p>异步代码</p>
-<ul>
-<li>Promise (catch)</li>
-<li>async await trycatch</li>
-</ul>
-</li>
-</ul>
-<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
-<p>回调函数 --&gt; Promise —&gt; async await</p>
-<br/>
-<p>node官方的库</p>
-<p>遵循，错误优先风格</p>
-<br/>
-<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
-<br/>
-<blockquote>
-<p>平行</p>
-<p>顺序</p>
-</blockquote>
-<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
-<p>module并不是全局变量，每一个模块有他相应的模块</p>
-<br/>
-<p>核心模块（随着node）</p>
-<p>第三方模块</p>
-<p>自定义模块（引用路径）</p>
-<br/>
-<p>运行时加载 cmj，知道运行时候再报错</p>
-<p>编译时加载 esm</p>
-<p><code>import from</code> 写在模块顶层</p>
-<p><code>import()</code> （异步，返回promise）</p>
-<br/>
-<p><code>V8</code></p>
-<p>预编译阶段 （ESM</p>
-<p>-分配内存空间</p>
-<p>-确定作用域链…</p>
-<p>执行阶段 （CMJ</p>
- <br/>
-<hr />
-<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
-<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
-<br/>
-<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<hr />
-<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
-<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
-<br/>
-<p>i/o操作</p>
-<p>端到端数据交换</p>
-<br/>
-<p>加载 缓冲区 处理</p>
-<p>流模式 加载一点处理一点</p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
-<hr />
-<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
-<ul>
-<li>
-<p>TDK</p>
-<ul>
-<li>title</li>
-<li>description (meta)</li>
-<li>Key(meta)</li>
-</ul>
-</li>
-<li>
-<p>语义化标签</p>
-</li>
-<li>
-<p><code>&lt;a/&gt;</code> href</p>
-</li>
-<li>
-<p><code>&lt;img/&gt;</code> href alt</p>
-</li>
-<li>
-<p>一个页面一个h1 和 main标签</p>
-</li>
-<li>
-<p>…</p>
-</li>
-</ul>
-<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
-]]></content>
-  </entry>
-  <entry>
     <title>npm</title>
     <url>/posts/npm/</url>
     <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
@@ -635,6 +443,77 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>redux-toolkit学习</title>
+    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
+<blockquote>
+<p>摘自官网</p>
+<p><strong><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></strong> 是 Redux 官方强烈推荐，开箱即用的一个高效的 Redux 开发工具集。</p>
+<p>简化最常见场景下的 Redux 开发，</p>
+<p>​	包括配置 store、定义 reducer，不可变的更新逻辑</p>
+<p>​	可以立即创建整个状态的 “切片 slice”，而<strong>无需手动编写任何 action creator 或者 action type</strong></p>
+<p>自带了一些最常用的 Redux 插件，</p>
+<p>​	例如用于异步逻辑 Redux Thunk，</p>
+<p>​	用于编写选择器 selector 的函数 Reselect （可缓存select数据）</p>
+</blockquote>
+<p>在 Redux 中,**切片(Slice)**指的是使用 <strong>createSlice</strong> API 创建的 reducer 和 action 的组合。它是 Redux Toolkit 中的一个核心概念。</p>
+<p>createSlice 接收一个配置对象参数,里面包含:</p>
+<blockquote>
+<ul>
+<li>初始 state</li>
+<li>reducers:包含不同 reducer 的对象</li>
+<li>extraReducers:处理 action 的 reducer 函数</li>
+</ul>
+</blockquote>
+<ul>
+<li>切片让我们可以<strong>把 reducer 与 action 打包在一起</strong></li>
+<li>创建<strong>简化</strong>了编写 <strong>reducer</strong> 的流程</li>
+<li><strong>自动生成 action</strong> 类型</li>
+</ul>
+<p>⚙️ CRA新建一个react项目</p>
+<p><code>create-react-app myapp --template typescript</code></p>
+<p>⚙️ 安装react-redux react-toolkit</p>
+<p><code>npm install @reduxjs/toolkit react-redux </code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目基本结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/07/14/v4muItCeOgTFfaV.png" alt="image-20230714095149784.png" style="zoom:67%;" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>新建状态管理主文件</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slice/counterSlice&quot;</span> <span class="comment">// 由切片导入的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据store本身推断出推断 `RootState` 和 `AppDispatch`类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">RootState</span> = <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> store.<span class="property">getState</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">AppDispatch</span> = <span class="keyword">typeof</span> store.<span class="property">dispatch</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在项目入口文件，给App组件<strong>注入store</strong></li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// index.tsx</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="keyword">import</span> &#123; store &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLElement</span></span><br><span class="line">);</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建切片</li>
+</ul>
+<blockquote>
+<p>之前利用 都要分别写各自actionCreator和各自的reducer， 现在只用一个切片即可管理</p>
+</blockquote>
+<p>😇 React Toolkit 创建的 Slice 状态state本身是 <code>immutable</code> 的，所以可以放心的直接加工使用</p>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/redux/slice/counterSlice.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PayloadAction</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ICounterState</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">initialState</span>: <span class="title class_">ICounterState</span> = &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建切片</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    initialState,</span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> -= <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action: PayloadAction&lt;<span class="built_in">number</span>&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators 会在各自的reducer函数中自动创建， 这里直接导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 💡注意&gt; 默认导出的是reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>尝试在App.tsx组件中使用</li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppDispatch</span>, <span class="title class_">RootState</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/slice/counterSlice&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> disptach = useDispatch&lt;<span class="title class_">AppDispatch</span>&gt;()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(increment())&#125;&gt;点击我+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(decrement())&#125;&gt;点击我-1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(incrementByAmount(100))&#125;&gt;点击我+100<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>✅成功</p>
+<p><img src="https://s2.loli.net/2023/07/14/QKWlncjEVHUgGRN.gif" alt="屏幕录制2023-07-14-上午10.12.15" /></p>
+]]></content>
+      <tags>
+        <tag>react</tag>
       </tags>
   </entry>
   <entry>
@@ -936,77 +815,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>redux-toolkit学习</title>
-    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
-<blockquote>
-<p>摘自官网</p>
-<p><strong><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></strong> 是 Redux 官方强烈推荐，开箱即用的一个高效的 Redux 开发工具集。</p>
-<p>简化最常见场景下的 Redux 开发，</p>
-<p>​	包括配置 store、定义 reducer，不可变的更新逻辑</p>
-<p>​	可以立即创建整个状态的 “切片 slice”，而<strong>无需手动编写任何 action creator 或者 action type</strong></p>
-<p>自带了一些最常用的 Redux 插件，</p>
-<p>​	例如用于异步逻辑 Redux Thunk，</p>
-<p>​	用于编写选择器 selector 的函数 Reselect （可缓存select数据）</p>
-</blockquote>
-<p>在 Redux 中,**切片(Slice)**指的是使用 <strong>createSlice</strong> API 创建的 reducer 和 action 的组合。它是 Redux Toolkit 中的一个核心概念。</p>
-<p>createSlice 接收一个配置对象参数,里面包含:</p>
-<blockquote>
-<ul>
-<li>初始 state</li>
-<li>reducers:包含不同 reducer 的对象</li>
-<li>extraReducers:处理 action 的 reducer 函数</li>
-</ul>
-</blockquote>
-<ul>
-<li>切片让我们可以<strong>把 reducer 与 action 打包在一起</strong></li>
-<li>创建<strong>简化</strong>了编写 <strong>reducer</strong> 的流程</li>
-<li><strong>自动生成 action</strong> 类型</li>
-</ul>
-<p>⚙️ CRA新建一个react项目</p>
-<p><code>create-react-app myapp --template typescript</code></p>
-<p>⚙️ 安装react-redux react-toolkit</p>
-<p><code>npm install @reduxjs/toolkit react-redux </code></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">项目基本结构</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://s2.loli.net/2023/07/14/v4muItCeOgTFfaV.png" alt="image-20230714095149784.png" style="zoom:67%;" /></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>新建状态管理主文件</li>
-</ul>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slice/counterSlice&quot;</span> <span class="comment">// 由切片导入的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据store本身推断出推断 `RootState` 和 `AppDispatch`类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">RootState</span> = <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> store.<span class="property">getState</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">AppDispatch</span> = <span class="keyword">typeof</span> store.<span class="property">dispatch</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>在项目入口文件，给App组件<strong>注入store</strong></li>
-</ul>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// index.tsx</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="keyword">import</span> &#123; store &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLElement</span></span><br><span class="line">);</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建切片</li>
-</ul>
-<blockquote>
-<p>之前利用 都要分别写各自actionCreator和各自的reducer， 现在只用一个切片即可管理</p>
-</blockquote>
-<p>😇 React Toolkit 创建的 Slice 状态state本身是 <code>immutable</code> 的，所以可以放心的直接加工使用</p>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/redux/slice/counterSlice.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PayloadAction</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ICounterState</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">initialState</span>: <span class="title class_">ICounterState</span> = &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建切片</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    initialState,</span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> -= <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action: PayloadAction&lt;<span class="built_in">number</span>&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators 会在各自的reducer函数中自动创建， 这里直接导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 💡注意&gt; 默认导出的是reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>尝试在App.tsx组件中使用</li>
-</ul>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppDispatch</span>, <span class="title class_">RootState</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/slice/counterSlice&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> disptach = useDispatch&lt;<span class="title class_">AppDispatch</span>&gt;()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(increment())&#125;&gt;点击我+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(decrement())&#125;&gt;点击我-1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(incrementByAmount(100))&#125;&gt;点击我+100<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>✅成功</p>
-<p><img src="https://s2.loli.net/2023/07/14/QKWlncjEVHUgGRN.gif" alt="屏幕录制2023-07-14-上午10.12.15" /></p>
-]]></content>
-      <tags>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue3数据绑定之-sync</title>
     <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
     <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
@@ -1042,6 +850,52 @@ F --> L[结束]</pre>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
+    <title>滑动验证</title>
+    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
+    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
+<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
+<hr />
+<ul>
+<li>
+<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
+</li>
+</ul>
+<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
+<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
+<blockquote>
+<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
+<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
+]]></content>
+      <tags>
+        <tag>vue3</tag>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>表格导出为excel</title>
+    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
+    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
+<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
+<p><code>yarn add xlsx file-saver</code></p>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
+<blockquote>
+<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>简单实现Toast组件</title>
     <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<blockquote>
@@ -1064,25 +918,6 @@ F --> L[结束]</pre>
 <h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 👨‍💻使用</h2>
 <figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Toast</span>.<span class="title function_">success</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="title class_">Toast</span>.<span class="title function_">error</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2023/08/17/ewqEhulLyJmUCKH.gif" alt="toast.gif" /></p>
-]]></content>
-      <tags>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>表格导出为excel</title>
-    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
-    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
-<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
-<p><code>yarn add xlsx file-saver</code></p>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
-<blockquote>
-<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
-</blockquote>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
-</blockquote>
 ]]></content>
       <tags>
         <tag>enhanced</tag>
@@ -1136,33 +971,6 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>Interview</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>滑动验证</title>
-    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
-    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
-<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
-<hr />
-<ul>
-<li>
-<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
-</li>
-</ul>
-<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
-<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
-<blockquote>
-<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
-<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-        <tag>enhanced</tag>
       </tags>
   </entry>
   <entry>
@@ -1264,6 +1072,198 @@ F --> L[结束]</pre>
     <title>&#39;tag&#39;</title>
     <url>/posts/zh-CN-tag-index/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>nodejs</title>
+    <url>/posts/nodejs/</url>
+    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
+<ol>
+<li><strong>运行时（Runtime)</strong><br />
+&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
+</ol>
+<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
+<ol start="2">
+<li>
+<p><strong>运行时库（Runtime Library）</strong><br />
+运行时库就是程序运行的时候所需要依赖的库。</p>
+</li>
+<li>
+<p><strong>运行时环境（Runtime environment）</strong><br />
+运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
+</li>
+</ol>
+<hr />
+<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
+<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
+<p>访问系统内核，访问本地文件，链接服务器…</p>
+<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
+<p><strong>跨平台</strong></p>
+<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
+<blockquote>
+<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
+</blockquote>
+<hr />
+<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
+<p>node <code>global</code></p>
+<p>浏览器 <code>window</code></p>
+<p><code>globalThis</code>根据环境自动判断</p>
+<p>ECMAScript中有的全局，如Math…</p>
+<ul>
+<li>
+<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
+</li>
+<li>
+<p><code>__filename</code> 当前文件路径（绝对路径）</p>
+</li>
+<li>
+<p><code>__extname</code> 文件后缀</p>
+</li>
+<li>
+<p><code>Buffer</code></p>
+</li>
+<li>
+<p><code>process</code>  处理进程</p>
+<ul>
+<li><code>process.argv</code> 获取参数数组</li>
+<li><code>process.cwd()</code> 目录</li>
+<li><code>process.exit()</code> 终止进程</li>
+<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
+<p>（相比，Apache，每一个请求创建一个线程）</p>
+<p>单线程，并发量为1</p>
+<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
+<blockquote>
+<p>主线程是单线程，io是libuv维护的线程池</p>
+</blockquote>
+<br/>
+<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
+<br/>
+<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
+<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
+<br/>  
+<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
+<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
+<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
+<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
+<hr />
+<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
+<ol>
+<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
+<li>I/O操作： 文件读写，数据库操作，网络请求</li>
+<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
+</ol>
+<br/>
+<blockquote>
+<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
+<p>微任务（promise）</p>
+<p>timer</p>
+<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
+<p>check</p>
+</blockquote>
+<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
+<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
+<br/>
+<blockquote>
+<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
+<p>nextTick先于下一个Tick执行</p>
+</blockquote>
+<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
+<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
+<p>为了健壮性：捕获并处理每一个错误</p>
+<ul>
+<li>
+<p>同步代码 try catch</p>
+</li>
+<li>
+<p>异步代码</p>
+<ul>
+<li>Promise (catch)</li>
+<li>async await trycatch</li>
+</ul>
+</li>
+</ul>
+<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
+<p>回调函数 --&gt; Promise —&gt; async await</p>
+<br/>
+<p>node官方的库</p>
+<p>遵循，错误优先风格</p>
+<br/>
+<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
+<br/>
+<blockquote>
+<p>平行</p>
+<p>顺序</p>
+</blockquote>
+<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
+<p>module并不是全局变量，每一个模块有他相应的模块</p>
+<br/>
+<p>核心模块（随着node）</p>
+<p>第三方模块</p>
+<p>自定义模块（引用路径）</p>
+<br/>
+<p>运行时加载 cmj，知道运行时候再报错</p>
+<p>编译时加载 esm</p>
+<p><code>import from</code> 写在模块顶层</p>
+<p><code>import()</code> （异步，返回promise）</p>
+<br/>
+<p><code>V8</code></p>
+<p>预编译阶段 （ESM</p>
+<p>-分配内存空间</p>
+<p>-确定作用域链…</p>
+<p>执行阶段 （CMJ</p>
+ <br/>
+<hr />
+<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
+<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
+<br/>
+<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<hr />
+<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
+<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
+<br/>
+<p>i/o操作</p>
+<p>端到端数据交换</p>
+<br/>
+<p>加载 缓冲区 处理</p>
+<p>流模式 加载一点处理一点</p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
+<hr />
+<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
+<ul>
+<li>
+<p>TDK</p>
+<ul>
+<li>title</li>
+<li>description (meta)</li>
+<li>Key(meta)</li>
+</ul>
+</li>
+<li>
+<p>语义化标签</p>
+</li>
+<li>
+<p><code>&lt;a/&gt;</code> href</p>
+</li>
+<li>
+<p><code>&lt;img/&gt;</code> href alt</p>
+</li>
+<li>
+<p>一个页面一个h1 和 main标签</p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
+]]></content>
   </entry>
   <entry>
     <title>js红宝书</title>

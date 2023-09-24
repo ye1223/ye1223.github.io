@@ -544,16 +544,16 @@
             const closeIcon = document.querySelector('.tip-toast .close')
             let timer = null
 
-            // localStorage是否有tipToast（用于跨页面判断）
-            // if(localStorage.getItem('tipToast')){
+            // sessionStorage是否有tipToast（用于跨页面判断）
+            // if(sessionStorage.getItem('tipToast')){
             //   // 有的话--设为false
-            //   localStorage.setItem('tipToast', false)
+            //   sessionStorage.setItem('tipToast', false)
             // } else {
-            //   localStorage.setItem('tipToast', true)
+            //   sessionStorage.setItem('tipToast', true)
             // }
-            localStorage.getItem('tipToast') ? localStorage.setItem('tipToast', false) : localStorage.setItem('tipToast', true)
+            sessionStorage.getItem('tipToast') ? sessionStorage.setItem('tipToast', false) : sessionStorage.setItem('tipToast', true)
 
-            if (localStorage.getItem('tipToast') === 'false') {
+            if (sessionStorage.getItem('tipToast') === 'false') {
               tipToast.style.display = 'none'
               return
 
@@ -566,15 +566,15 @@
               timer = setTimeout(() => {
                 tipToast.style.right = '-100%'
                 tipToast.style.transition = 'right .5s ease-in-out'
-                localStorage.setItem('tipToast', false)
-              }, 3000)
+                sessionStorage.setItem('tipToast', false)
+              }, 6000)
             }
 
             closeIcon.addEventListener('click', () => {
               tipToast.style.right = '-100%'
               tipToast.style.transition = 'right .5s ease-in-out'
               timer = null
-              localStorage.setItem('tipToast', false)
+              sessionStorage.setItem('tipToast', false)
             })
 
 
