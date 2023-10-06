@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>JS类型转换</title>
+    <url>/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
+<p>而<font color=red>各种<strong>运算符</strong>对数据类型是有要求的</font>，所以就会触发类型转换机制（no matter 人为 or 隐式触发）</p>
+<h2 id="显示转换"><a class="markdownIt-Anchor" href="#显示转换"></a> 显示转换：</h2>
+<p>​	通过JS内置的函数<strong>明确转换的数据类型</strong></p>
+<ul>
+<li>
+<p>Number</p>
+</li>
+<li>
+<p>parseInt(string, ?进制) 比Number宽松，一位一位解析遇到不能解析的停止</p>
+</li>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Boolean</p>
+</li>
+</ul>
+<h2 id="隐式转换"><a class="markdownIt-Anchor" href="#隐式转换"></a> 隐式转换：</h2>
+<p>​	运算操作符两边数据类型不一致（比较运算符、算术运算符）</p>
+<ul>
+<li>
+<p>转为Boolean (需要布尔值的地方，借助的<code>Boolean()</code>函数)</p>
+<ul>
+<li>falsely变量：<code>undefined</code>、<code>null</code>、<code>false</code>、<code>+/-0</code>、<code>NAN</code>、<code>&quot;&quot;</code></li>
+</ul>
+</li>
+<li>
+<p>转为String （复合类型—&gt;原始类型----&gt;字符串）</p>
+<ul>
+<li>常发生在，如 <code>&quot;5&quot; + xxx</code> 的加法运算中</li>
+</ul>
+</li>
+<li>
+<p>转为Number</p>
+<ul>
+<li>除了加法运算符号，其他都有可能</li>
+</ul>
+</li>
+</ul>
+<h2 id="other"><a class="markdownIt-Anchor" href="#other"></a> other</h2>
+<blockquote>
+<p><code>=== </code>在不进行类型转换情况下，双方的类型与值都相等</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>Preparation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cookie &amp; Session</title>
     <url>/posts/CookieSession/</url>
     <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
@@ -96,25 +149,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/posts/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
-<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>TCP</title>
     <url>/posts/TCP/</url>
     <content><![CDATA[<p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
@@ -156,6 +190,25 @@ F --> L[结束]</pre>
       <tags>
         <tag>Computer Network</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/posts/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
+<h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>HTTP summary</title>
@@ -1130,165 +1183,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>redux-toolkit学习</title>
-    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
-<blockquote>
-<p>摘自官网</p>
-<p><strong><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></strong> 是 Redux 官方强烈推荐，开箱即用的一个高效的 Redux 开发工具集。</p>
-<p>简化最常见场景下的 Redux 开发，</p>
-<p>​	包括配置 store、定义 reducer，不可变的更新逻辑</p>
-<p>​	可以立即创建整个状态的 “切片 slice”，而<strong>无需手动编写任何 action creator 或者 action type</strong></p>
-<p>自带了一些最常用的 Redux 插件，</p>
-<p>​	例如用于异步逻辑 Redux Thunk，</p>
-<p>​	用于编写选择器 selector 的函数 Reselect （可缓存select数据）</p>
-</blockquote>
-<p>在 Redux 中,**切片(Slice)**指的是使用 <strong>createSlice</strong> API 创建的 reducer 和 action 的组合。它是 Redux Toolkit 中的一个核心概念。</p>
-<p>createSlice 接收一个配置对象参数,里面包含:</p>
-<blockquote>
-<ul>
-<li>初始 state</li>
-<li>reducers:包含不同 reducer 的对象</li>
-<li>extraReducers:处理 action 的 reducer 函数</li>
-</ul>
-</blockquote>
-<ul>
-<li>切片让我们可以<strong>把 reducer 与 action 打包在一起</strong></li>
-<li>创建<strong>简化</strong>了编写 <strong>reducer</strong> 的流程</li>
-<li><strong>自动生成 action</strong> 类型</li>
-</ul>
-<p>⚙️ CRA新建一个react项目</p>
-<p><code>create-react-app myapp --template typescript</code></p>
-<p>⚙️ 安装react-redux react-toolkit</p>
-<p><code>npm install @reduxjs/toolkit react-redux </code></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">项目基本结构</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://s2.loli.net/2023/07/14/v4muItCeOgTFfaV.png" alt="image-20230714095149784.png" style="zoom:67%;" /></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>新建状态管理主文件</li>
-</ul>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slice/counterSlice&quot;</span> <span class="comment">// 由切片导入的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据store本身推断出推断 `RootState` 和 `AppDispatch`类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">RootState</span> = <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> store.<span class="property">getState</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">AppDispatch</span> = <span class="keyword">typeof</span> store.<span class="property">dispatch</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>在项目入口文件，给App组件<strong>注入store</strong></li>
-</ul>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// index.tsx</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="keyword">import</span> &#123; store &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLElement</span></span><br><span class="line">);</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建切片</li>
-</ul>
-<blockquote>
-<p>之前利用 都要分别写各自actionCreator和各自的reducer， 现在只用一个切片即可管理</p>
-</blockquote>
-<p>😇 React Toolkit 创建的 Slice 状态state本身是 <code>immutable</code> 的，所以可以放心的直接加工使用</p>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/redux/slice/counterSlice.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PayloadAction</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ICounterState</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">initialState</span>: <span class="title class_">ICounterState</span> = &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建切片</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    initialState,</span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> -= <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action: PayloadAction&lt;<span class="built_in">number</span>&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators 会在各自的reducer函数中自动创建， 这里直接导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 💡注意&gt; 默认导出的是reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>尝试在App.tsx组件中使用</li>
-</ul>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppDispatch</span>, <span class="title class_">RootState</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/slice/counterSlice&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> disptach = useDispatch&lt;<span class="title class_">AppDispatch</span>&gt;()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(increment())&#125;&gt;点击我+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(decrement())&#125;&gt;点击我-1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(incrementByAmount(100))&#125;&gt;点击我+100<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>✅成功</p>
-<p><img src="https://s2.loli.net/2023/07/14/QKWlncjEVHUgGRN.gif" alt="屏幕录制2023-07-14-上午10.12.15" /></p>
-]]></content>
-      <tags>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue3数据绑定之-sync</title>
-    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
-    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
-<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
-<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
-<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
-<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
-<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
-<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
-<hr />
-<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
-<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
-<p>而在vue3中这个sync被v-model替代了</p>
-<blockquote>
-<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>杂项</title>
-    <url>/posts/%E6%9D%82%E9%A1%B9/</url>
-    <content><![CDATA[<p><mark>highlight</mark><br />
-​🈂️​</p>
-<h4 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>JS类型转换</title>
-    <url>/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
-<p>而<font color=red>各种<strong>运算符</strong>对数据类型是有要求的</font>，所以就会触发类型转换机制（no matter 人为 or 隐式触发）</p>
-<h2 id="显示转换"><a class="markdownIt-Anchor" href="#显示转换"></a> 显示转换：</h2>
-<p>​	通过JS内置的函数<strong>明确转换的数据类型</strong></p>
-<ul>
-<li>
-<p>Number</p>
-</li>
-<li>
-<p>parseInt(string, ?进制) 比Number宽松，一位一位解析遇到不能解析的停止</p>
-</li>
-<li>
-<p>String</p>
-</li>
-<li>
-<p>Boolean</p>
-</li>
-</ul>
-<h2 id="隐式转换"><a class="markdownIt-Anchor" href="#隐式转换"></a> 隐式转换：</h2>
-<p>​	运算操作符两边数据类型不一致（比较运算符、算术运算符）</p>
-<ul>
-<li>
-<p>转为Boolean (需要布尔值的地方，借助的<code>Boolean()</code>函数)</p>
-<ul>
-<li>falsely变量：<code>undefined</code>、<code>null</code>、<code>false</code>、<code>+/-0</code>、<code>NAN</code>、<code>&quot;&quot;</code></li>
-</ul>
-</li>
-<li>
-<p>转为String （复合类型—&gt;原始类型----&gt;字符串）</p>
-<ul>
-<li>常发生在，如 <code>&quot;5&quot; + xxx</code> 的加法运算中</li>
-</ul>
-</li>
-<li>
-<p>转为Number</p>
-<ul>
-<li>除了加法运算符号，其他都有可能</li>
-</ul>
-</li>
-</ul>
-<h2 id="other"><a class="markdownIt-Anchor" href="#other"></a> other</h2>
-<blockquote>
-<p><code>=== </code>在不进行类型转换情况下，双方的类型与值都相等</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>Preparation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>React小记</title>
     <url>/posts/react%E5%B0%8F%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="react库和框架的区别是什么"><a class="markdownIt-Anchor" href="#react库和框架的区别是什么"></a> React库和框架的区别是什么？</h2>
@@ -1587,6 +1481,73 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
+    <title>vue3数据绑定之-sync</title>
+    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
+    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
+<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
+<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
+<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
+<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
+<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
+<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
+<hr />
+<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
+<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
+<p>而在vue3中这个sync被v-model替代了</p>
+<blockquote>
+<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
+]]></content>
+      <tags>
+        <tag>vue3</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一键速通菲区Spotify</title>
+    <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
+    <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
+<p>菲区电话卡、菲区梯子🪜</p>
+<h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
+<ol start="0">
+<li>
+<p>Spotify换区（挂上🇵🇭🪜）</p>
+</li>
+<li>
+<p>某宝下单菲律宾电话卡（推荐Globe卡￥20+）</p>
+</li>
+<li>
+<p>话费充值（推荐易付宝， Google Play下载）</p>
+</li>
+<li>
+<p>登录进入<strong>手机端Spotify</strong>，选择套餐通过<strong>话费充值</strong></p>
+</li>
+</ol>
+<h3 id="切记"><a class="markdownIt-Anchor" href="#切记"></a> 切记💡</h3>
+<ul>
+<li><strong>第三步</strong>，必须在手机端中操作，账号登录成功后不要挂任何🪜，网络直连就行</li>
+</ul>
+<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
+<p>也可以试试<code>GCash</code>支付，需要实名。</p>
+<p>应填写真实的信息（护照等），不然一个月之内检测被封。（谷歌搜有相应的教程）</p>
+]]></content>
+      <tags>
+        <tag>utils</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>杂项</title>
+    <url>/posts/%E6%9D%82%E9%A1%B9/</url>
+    <content><![CDATA[<p><mark>highlight</mark><br />
+​🈂️​</p>
+<h4 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
     <title>滑动验证</title>
     <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
     <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
@@ -1642,6 +1603,96 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
+    <title>redux-toolkit学习</title>
+    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
+<blockquote>
+<p>摘自官网</p>
+<p><strong><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></strong> 是 Redux 官方强烈推荐，开箱即用的一个高效的 Redux 开发工具集。</p>
+<p>简化最常见场景下的 Redux 开发，</p>
+<p>​	包括配置 store、定义 reducer，不可变的更新逻辑</p>
+<p>​	可以立即创建整个状态的 “切片 slice”，而<strong>无需手动编写任何 action creator 或者 action type</strong></p>
+<p>自带了一些最常用的 Redux 插件，</p>
+<p>​	例如用于异步逻辑 Redux Thunk，</p>
+<p>​	用于编写选择器 selector 的函数 Reselect （可缓存select数据）</p>
+</blockquote>
+<p>在 Redux 中,**切片(Slice)**指的是使用 <strong>createSlice</strong> API 创建的 reducer 和 action 的组合。它是 Redux Toolkit 中的一个核心概念。</p>
+<p>createSlice 接收一个配置对象参数,里面包含:</p>
+<blockquote>
+<ul>
+<li>初始 state</li>
+<li>reducers:包含不同 reducer 的对象</li>
+<li>extraReducers:处理 action 的 reducer 函数</li>
+</ul>
+</blockquote>
+<ul>
+<li>切片让我们可以<strong>把 reducer 与 action 打包在一起</strong></li>
+<li>创建<strong>简化</strong>了编写 <strong>reducer</strong> 的流程</li>
+<li><strong>自动生成 action</strong> 类型</li>
+</ul>
+<p>⚙️ CRA新建一个react项目</p>
+<p><code>create-react-app myapp --template typescript</code></p>
+<p>⚙️ 安装react-redux react-toolkit</p>
+<p><code>npm install @reduxjs/toolkit react-redux </code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目基本结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/07/14/v4muItCeOgTFfaV.png" alt="image-20230714095149784.png" style="zoom:67%;" /></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>新建状态管理主文件</li>
+</ul>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slice/counterSlice&quot;</span> <span class="comment">// 由切片导入的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据store本身推断出推断 `RootState` 和 `AppDispatch`类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">RootState</span> = <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> store.<span class="property">getState</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">AppDispatch</span> = <span class="keyword">typeof</span> store.<span class="property">dispatch</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在项目入口文件，给App组件<strong>注入store</strong></li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// index.tsx</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="keyword">import</span> &#123; store &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLElement</span></span><br><span class="line">);</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建切片</li>
+</ul>
+<blockquote>
+<p>之前利用 都要分别写各自actionCreator和各自的reducer， 现在只用一个切片即可管理</p>
+</blockquote>
+<p>😇 React Toolkit 创建的 Slice 状态state本身是 <code>immutable</code> 的，所以可以放心的直接加工使用</p>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/redux/slice/counterSlice.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PayloadAction</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ICounterState</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">initialState</span>: <span class="title class_">ICounterState</span> = &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建切片</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    initialState,</span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> -= <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action: PayloadAction&lt;<span class="built_in">number</span>&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators 会在各自的reducer函数中自动创建， 这里直接导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 💡注意&gt; 默认导出的是reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>尝试在App.tsx组件中使用</li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppDispatch</span>, <span class="title class_">RootState</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/slice/counterSlice&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> disptach = useDispatch&lt;<span class="title class_">AppDispatch</span>&gt;()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(increment())&#125;&gt;点击我+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(decrement())&#125;&gt;点击我-1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(incrementByAmount(100))&#125;&gt;点击我+100<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>✅成功</p>
+<p><img src="https://s2.loli.net/2023/07/14/QKWlncjEVHUgGRN.gif" alt="屏幕录制2023-07-14-上午10.12.15" /></p>
+]]></content>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>表格导出为excel</title>
+    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
+    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
+<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
+<p><code>yarn add xlsx file-saver</code></p>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
+<blockquote>
+<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面试1</title>
     <url>/posts/%E9%9D%A2%E8%AF%951/</url>
     <content><![CDATA[<p>主要围绕简历展开</p>
@@ -1689,25 +1740,6 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>Interview</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>表格导出为excel</title>
-    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
-    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
-<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
-<p><code>yarn add xlsx file-saver</code></p>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
-<blockquote>
-<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
-</blockquote>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>enhanced</tag>
       </tags>
   </entry>
   <entry>
