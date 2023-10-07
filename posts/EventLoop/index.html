@@ -15,7 +15,7 @@
 
 
 
-<title>一键速通菲区Spotify | Levy&#39;s Blog</title>
+<title>Event Loop | Levy&#39;s Blog</title>
 
 
 
@@ -162,8 +162,14 @@
 
                 
                     <span class="post-tag">
-                        <a href="/tags/utils/">
-                            utils
+                        <a href="/tags/JavaScript/">
+                            JavaScript
+                        </a>
+                    </span>
+                    
+                    <span class="post-tag">
+                        <a href="/tags/nodejs/">
+                            nodejs
                         </a>
                     </span>
                     
@@ -172,14 +178,14 @@
         <div class="post-title">
 
             
-                一键速通菲区Spotify
+                Event Loop
                     
         </div>
         <span class="post-date">
             Oct 7, 2023
         </span>
         <span class="post-word-count">
-            12 words / About 8 seconds
+            55 words / About 42 seconds
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -188,38 +194,59 @@
     </div>
     <div class="post-img">
         
-            <img src="https://s2.loli.net/2023/10/07/7ueLifWkTYtVSMP.png" alt="featured_image">
-            
+                <div class="h-line-primary"></div>
+                
     </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
-<p>菲区电话卡、菲区梯子🪜</p>
-<h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
-<ol start="0">
-<li>
-<p>Spotify换区（挂上🇵🇭🪜）</p>
-</li>
-<li>
-<p>某宝下单菲律宾电话卡（推荐Globe卡￥20+）</p>
-</li>
-<li>
-<p>话费充值（推荐易付宝， Google Play下载）</p>
-</li>
-<li>
-<p>登录进入<strong>手机端Spotify</strong>，选择套餐通过<strong>话费充值</strong></p>
+    <p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
+<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
+<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
+<ol>
+<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
+<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
+<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
+<li>Event Loop轮询查找Callback Queue中是否有可执行代码
+<ol>
+<li>有，将代码送入Call Stack执行</li>
+<li>没有，将继续轮询查找</li>
+</ol>
 </li>
 </ol>
-<h3 id="切记"><a class="markdownIt-Anchor" href="#切记"></a> 切记💡</h3>
-<ul>
-<li><strong>第三步</strong>，必须在手机端中操作，账号登录成功后不要挂任何🪜，网络直连就行</li>
-</ul>
-<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
-<p>也可以试试<code>GCash</code>支付，需要实名。</p>
-<p>应填写真实的信息（护照等），不然一个月之内检测被封。（谷歌搜有相应的教程）</p>
+<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
+<p>微任务： Promise, async/await</p>
+<p>宏任务： 定时器、Ajax、DOM事件</p>
+<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
+<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
+<p>Node异步API</p>
+<table>
+<thead>
+<tr>
+<th>定时器</th>
+<th>I/O操作</th>
+<th>node独有</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setTimeout<br />setInterval</td>
+<td>文件读写<br />数据库操作<br />网络请求…</td>
+<td>process.nextTick<br />setImmediate</td>
+</tr>
+</tbody>
+</table>
+<p>设计上，事件循环优先处理执行I/O事件</p>
+<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
+<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
+<p>从Timer到Check为一个Tick</p>
+<blockquote>
+<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
+<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
+<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
+</blockquote>
 
 </div>
 <div class="toc-menu-container">
@@ -364,17 +391,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/posts/EventLoop/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">Next</a>  
+                  <a href="/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/">Next</a>  
                 </div>  
             
         </div>
@@ -415,8 +437,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/一键速通菲区Spotify/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/EventLoop/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/EventLoop/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -443,8 +465,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/';
-                                    this.page.identifier = 'posts/一键速通菲区Spotify/';
+                                    this.page.url = 'http://example.com/posts/EventLoop/';
+                                    this.page.identifier = 'posts/EventLoop/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
