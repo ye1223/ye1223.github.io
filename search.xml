@@ -96,6 +96,60 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
+    <title>Event Loop</title>
+    <url>/posts/EventLoop/</url>
+    <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
+<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
+<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
+<ol>
+<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
+<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
+<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
+<li>Event Loop轮询查找Callback Queue中是否有可执行代码
+<ol>
+<li>有，将代码送入Call Stack执行</li>
+<li>没有，将继续轮询查找</li>
+</ol>
+</li>
+</ol>
+<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
+<p>微任务： Promise, async/await</p>
+<p>宏任务： 定时器、Ajax、DOM事件</p>
+<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
+<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
+<p>Node异步API</p>
+<table>
+<thead>
+<tr>
+<th>定时器</th>
+<th>I/O操作</th>
+<th>node独有</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setTimeout<br />setInterval</td>
+<td>文件读写<br />数据库操作<br />网络请求…</td>
+<td>process.nextTick<br />setImmediate</td>
+</tr>
+</tbody>
+</table>
+<p>设计上，事件循环优先处理执行I/O事件</p>
+<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
+<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
+<p>从Timer到Check为一个Tick</p>
+<blockquote>
+<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
+<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
+<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS类型转换</title>
     <url>/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
@@ -192,57 +246,32 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Event Loop</title>
-    <url>/posts/EventLoop/</url>
-    <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
-<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
-<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
-<ol>
-<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
-<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
-<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
-<li>Event Loop轮询查找Callback Queue中是否有可执行代码
-<ol>
-<li>有，将代码送入Call Stack执行</li>
-<li>没有，将继续轮询查找</li>
-</ol>
-</li>
-</ol>
-<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
-<p>微任务： Promise, async/await</p>
-<p>宏任务： 定时器、Ajax、DOM事件</p>
-<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
-<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
-<p>Node异步API</p>
-<table>
-<thead>
-<tr>
-<th>定时器</th>
-<th>I/O操作</th>
-<th>node独有</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>setTimeout<br />setInterval</td>
-<td>文件读写<br />数据库操作<br />网络请求…</td>
-<td>process.nextTick<br />setImmediate</td>
-</tr>
-</tbody>
-</table>
-<p>设计上，事件循环优先处理执行I/O事件</p>
-<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
-<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
-<p>从Timer到Check为一个Tick</p>
-<blockquote>
-<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
-<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
-<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
-</blockquote>
+    <title>computed与watch</title>
+    <url>/posts/computed%E4%B8%8Ewatch/</url>
+    <content><![CDATA[<h1 id="computed与watch"><a class="markdownIt-Anchor" href="#computed与watch"></a> Computed与Watch</h1>
+<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
+<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
+<ul>
+<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
+<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
+<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
+<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
+<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
+<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
+<ul>
+<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
+<li>watch<mark>支持异步</mark>；</li>
+<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
+<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
+<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>JavaScript</tag>
-        <tag>nodejs</tag>
+        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -263,6 +292,101 @@ F --> L[结束]</pre>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>HTTP summary</title>
+    <url>/posts/http/</url>
+    <content><![CDATA[<h2 id="http"><a class="markdownIt-Anchor" href="#http"></a> <mark>HTTP</mark></h2>
+<p><strong>Hyper Text Transfer Protocol</strong></p>
+<img src="https://s2.loli.net/2023/09/08/7HasE3ePGXuqtYn.png" alt="image-20230908155626605" style="width:50%;" />
+<ul>
+<li><strong style="color:red;">Stateless</strong> : every Request is <strong>INDEPENDENT</strong>
+<ul>
+<li>regard each request as a single transaction</li>
+<li>use <code>cookie</code>  <code>session</code> <code>localStorage</code> … to enhance user experience( <u>memorize the state from the user</u> )</li>
+</ul>
+</li>
+</ul>
+<h2 id="https"><a class="markdownIt-Anchor" href="#https"></a> <mark>HTTPS</mark></h2>
+<p><strong>Hyper Text Transfer Protocol <u>Secure</u></strong></p>
+<ul>
+<li>Data sent is <strong>encrypt</strong>
+<ul>
+<li><strong>SSL</strong> – Secure Sockets Layer</li>
+<li><strong>TLS</strong> –  Transfer Layer Security</li>
+</ul>
+</li>
+<li>install certificate on web host to use HTTPs</li>
+</ul>
+<h2 id="message"><a class="markdownIt-Anchor" href="#message"></a> Message</h2>
+<img src="https://s2.loli.net/2023/09/08/u6OS2icBACHrtFf.png" alt="image-20230908164003822" style="width:50%;" />
+<h3 id="headers"><a class="markdownIt-Anchor" href="#headers"></a> Headers</h3>
+<ul>
+<li>General
+<ul>
+<li>Request URL、Request Method、Status Code、Remote Address、Referrer Policy</li>
+</ul>
+</li>
+<li>Request
+<ul>
+<li>Cookies、Accept-xxx、Content-Type、Content-Length、Auhurization、User-Agent、Referrer</li>
+</ul>
+</li>
+<li>Response
+<ul>
+<li>Server、Set-Cookie、Content-Type、Content-Length、Date</li>
+</ul>
+</li>
+</ul>
+<h2 id="status-code"><a class="markdownIt-Anchor" href="#status-code"></a> Status Code</h2>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1xx</td>
+<td>request received / processing</td>
+</tr>
+<tr>
+<td>2xx</td>
+<td>Success received, understood, accepted</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>Further action must be taken / redirect</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>Client error</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>Server error</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>200 - OK</li>
+<li>201 - OK created</li>
+<li>301 - Move to new URL</li>
+<li>304 - Not Modified (Cached version)</li>
+<li>400 - Bad Request （❌ not sending correct data）</li>
+<li>401 - Unauthorized （missing token）</li>
+<li>404 - Not Found (resources do not exsist)</li>
+<li>500 - Internal Server Error</li>
+</ul>
+<h2 id="http2"><a class="markdownIt-Anchor" href="#http2"></a> HTTP2</h2>
+<p><code>multiplexing</code></p>
+<img src="https://s2.loli.net/2023/09/08/sf8H6glXiCnzEA2.png" alt="image-20230908164925817" style="width:50%;" />
+]]></content>
+      <tags>
+        <tag>Computer Network</tag>
+        <tag>http</tag>
+      </tags>
   </entry>
   <entry>
     <title>js红宝书</title>
@@ -810,6 +934,198 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
+    <title>nodejs</title>
+    <url>/posts/nodejs/</url>
+    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
+<ol>
+<li><strong>运行时（Runtime)</strong><br />
+&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
+</ol>
+<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
+<ol start="2">
+<li>
+<p><strong>运行时库（Runtime Library）</strong><br />
+运行时库就是程序运行的时候所需要依赖的库。</p>
+</li>
+<li>
+<p><strong>运行时环境（Runtime environment）</strong><br />
+运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
+</li>
+</ol>
+<hr />
+<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
+<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
+<p>访问系统内核，访问本地文件，链接服务器…</p>
+<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
+<p><strong>跨平台</strong></p>
+<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
+<blockquote>
+<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
+</blockquote>
+<hr />
+<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
+<p>node <code>global</code></p>
+<p>浏览器 <code>window</code></p>
+<p><code>globalThis</code>根据环境自动判断</p>
+<p>ECMAScript中有的全局，如Math…</p>
+<ul>
+<li>
+<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
+</li>
+<li>
+<p><code>__filename</code> 当前文件路径（绝对路径）</p>
+</li>
+<li>
+<p><code>__extname</code> 文件后缀</p>
+</li>
+<li>
+<p><code>Buffer</code></p>
+</li>
+<li>
+<p><code>process</code>  处理进程</p>
+<ul>
+<li><code>process.argv</code> 获取参数数组</li>
+<li><code>process.cwd()</code> 目录</li>
+<li><code>process.exit()</code> 终止进程</li>
+<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
+<p>（相比，Apache，每一个请求创建一个线程）</p>
+<p>单线程，并发量为1</p>
+<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
+<blockquote>
+<p>主线程是单线程，io是libuv维护的线程池</p>
+</blockquote>
+<br/>
+<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
+<br/>
+<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
+<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
+<br/>  
+<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
+<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
+<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
+<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
+<hr />
+<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
+<ol>
+<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
+<li>I/O操作： 文件读写，数据库操作，网络请求</li>
+<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
+</ol>
+<br/>
+<blockquote>
+<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
+<p>微任务（promise）</p>
+<p>timer</p>
+<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
+<p>check</p>
+</blockquote>
+<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
+<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
+<br/>
+<blockquote>
+<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
+<p>nextTick先于下一个Tick执行</p>
+</blockquote>
+<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
+<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
+<p>为了健壮性：捕获并处理每一个错误</p>
+<ul>
+<li>
+<p>同步代码 try catch</p>
+</li>
+<li>
+<p>异步代码</p>
+<ul>
+<li>Promise (catch)</li>
+<li>async await trycatch</li>
+</ul>
+</li>
+</ul>
+<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
+<p>回调函数 --&gt; Promise —&gt; async await</p>
+<br/>
+<p>node官方的库</p>
+<p>遵循，错误优先风格</p>
+<br/>
+<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
+<br/>
+<blockquote>
+<p>平行</p>
+<p>顺序</p>
+</blockquote>
+<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
+<p>module并不是全局变量，每一个模块有他相应的模块</p>
+<br/>
+<p>核心模块（随着node）</p>
+<p>第三方模块</p>
+<p>自定义模块（引用路径）</p>
+<br/>
+<p>运行时加载 cmj，知道运行时候再报错</p>
+<p>编译时加载 esm</p>
+<p><code>import from</code> 写在模块顶层</p>
+<p><code>import()</code> （异步，返回promise）</p>
+<br/>
+<p><code>V8</code></p>
+<p>预编译阶段 （ESM</p>
+<p>-分配内存空间</p>
+<p>-确定作用域链…</p>
+<p>执行阶段 （CMJ</p>
+ <br/>
+<hr />
+<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
+<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
+<br/>
+<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<hr />
+<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
+<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
+<br/>
+<p>i/o操作</p>
+<p>端到端数据交换</p>
+<br/>
+<p>加载 缓冲区 处理</p>
+<p>流模式 加载一点处理一点</p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
+<hr />
+<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
+<ul>
+<li>
+<p>TDK</p>
+<ul>
+<li>title</li>
+<li>description (meta)</li>
+<li>Key(meta)</li>
+</ul>
+</li>
+<li>
+<p>语义化标签</p>
+</li>
+<li>
+<p><code>&lt;a/&gt;</code> href</p>
+</li>
+<li>
+<p><code>&lt;img/&gt;</code> href alt</p>
+</li>
+<li>
+<p>一个页面一个h1 和 main标签</p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
+]]></content>
+  </entry>
+  <entry>
     <title>npm</title>
     <url>/posts/npm/</url>
     <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
@@ -1248,225 +1564,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>nodejs</title>
-    <url>/posts/nodejs/</url>
-    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
-<ol>
-<li><strong>运行时（Runtime)</strong><br />
-&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
-</ol>
-<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
-<ol start="2">
-<li>
-<p><strong>运行时库（Runtime Library）</strong><br />
-运行时库就是程序运行的时候所需要依赖的库。</p>
-</li>
-<li>
-<p><strong>运行时环境（Runtime environment）</strong><br />
-运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
-</li>
-</ol>
-<hr />
-<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
-<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
-<p>访问系统内核，访问本地文件，链接服务器…</p>
-<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
-<p><strong>跨平台</strong></p>
-<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
-<blockquote>
-<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
-</blockquote>
-<hr />
-<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
-<p>node <code>global</code></p>
-<p>浏览器 <code>window</code></p>
-<p><code>globalThis</code>根据环境自动判断</p>
-<p>ECMAScript中有的全局，如Math…</p>
-<ul>
-<li>
-<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
-</li>
-<li>
-<p><code>__filename</code> 当前文件路径（绝对路径）</p>
-</li>
-<li>
-<p><code>__extname</code> 文件后缀</p>
-</li>
-<li>
-<p><code>Buffer</code></p>
-</li>
-<li>
-<p><code>process</code>  处理进程</p>
-<ul>
-<li><code>process.argv</code> 获取参数数组</li>
-<li><code>process.cwd()</code> 目录</li>
-<li><code>process.exit()</code> 终止进程</li>
-<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
-<p>（相比，Apache，每一个请求创建一个线程）</p>
-<p>单线程，并发量为1</p>
-<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
-<blockquote>
-<p>主线程是单线程，io是libuv维护的线程池</p>
-</blockquote>
-<br/>
-<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
-<br/>
-<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
-<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
-<br/>  
-<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
-<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
-<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
-<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
-<hr />
-<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
-<ol>
-<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
-<li>I/O操作： 文件读写，数据库操作，网络请求</li>
-<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
-</ol>
-<br/>
-<blockquote>
-<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
-<p>微任务（promise）</p>
-<p>timer</p>
-<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
-<p>check</p>
-</blockquote>
-<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
-<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
-<br/>
-<blockquote>
-<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
-<p>nextTick先于下一个Tick执行</p>
-</blockquote>
-<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
-<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
-<p>为了健壮性：捕获并处理每一个错误</p>
-<ul>
-<li>
-<p>同步代码 try catch</p>
-</li>
-<li>
-<p>异步代码</p>
-<ul>
-<li>Promise (catch)</li>
-<li>async await trycatch</li>
-</ul>
-</li>
-</ul>
-<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
-<p>回调函数 --&gt; Promise —&gt; async await</p>
-<br/>
-<p>node官方的库</p>
-<p>遵循，错误优先风格</p>
-<br/>
-<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
-<br/>
-<blockquote>
-<p>平行</p>
-<p>顺序</p>
-</blockquote>
-<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
-<p>module并不是全局变量，每一个模块有他相应的模块</p>
-<br/>
-<p>核心模块（随着node）</p>
-<p>第三方模块</p>
-<p>自定义模块（引用路径）</p>
-<br/>
-<p>运行时加载 cmj，知道运行时候再报错</p>
-<p>编译时加载 esm</p>
-<p><code>import from</code> 写在模块顶层</p>
-<p><code>import()</code> （异步，返回promise）</p>
-<br/>
-<p><code>V8</code></p>
-<p>预编译阶段 （ESM</p>
-<p>-分配内存空间</p>
-<p>-确定作用域链…</p>
-<p>执行阶段 （CMJ</p>
- <br/>
-<hr />
-<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
-<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
-<br/>
-<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<hr />
-<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
-<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
-<br/>
-<p>i/o操作</p>
-<p>端到端数据交换</p>
-<br/>
-<p>加载 缓冲区 处理</p>
-<p>流模式 加载一点处理一点</p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
-<hr />
-<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
-<ul>
-<li>
-<p>TDK</p>
-<ul>
-<li>title</li>
-<li>description (meta)</li>
-<li>Key(meta)</li>
-</ul>
-</li>
-<li>
-<p>语义化标签</p>
-</li>
-<li>
-<p><code>&lt;a/&gt;</code> href</p>
-</li>
-<li>
-<p><code>&lt;img/&gt;</code> href alt</p>
-</li>
-<li>
-<p>一个页面一个h1 和 main标签</p>
-</li>
-<li>
-<p>…</p>
-</li>
-</ul>
-<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>vue3数据绑定之-sync</title>
-    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
-    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
-<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
-<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
-<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
-<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
-<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
-<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
-<hr />
-<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
-<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
-<p>而在vue3中这个sync被v-model替代了</p>
-<blockquote>
-<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>redux-toolkit学习</title>
     <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
@@ -1538,98 +1635,30 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>HTTP summary</title>
-    <url>/posts/http/</url>
-    <content><![CDATA[<h2 id="http"><a class="markdownIt-Anchor" href="#http"></a> <mark>HTTP</mark></h2>
-<p><strong>Hyper Text Transfer Protocol</strong></p>
-<img src="https://s2.loli.net/2023/09/08/7HasE3ePGXuqtYn.png" alt="image-20230908155626605" style="width:50%;" />
-<ul>
-<li><strong style="color:red;">Stateless</strong> : every Request is <strong>INDEPENDENT</strong>
-<ul>
-<li>regard each request as a single transaction</li>
-<li>use <code>cookie</code>  <code>session</code> <code>localStorage</code> … to enhance user experience( <u>memorize the state from the user</u> )</li>
-</ul>
-</li>
-</ul>
-<h2 id="https"><a class="markdownIt-Anchor" href="#https"></a> <mark>HTTPS</mark></h2>
-<p><strong>Hyper Text Transfer Protocol <u>Secure</u></strong></p>
-<ul>
-<li>Data sent is <strong>encrypt</strong>
-<ul>
-<li><strong>SSL</strong> – Secure Sockets Layer</li>
-<li><strong>TLS</strong> –  Transfer Layer Security</li>
-</ul>
-</li>
-<li>install certificate on web host to use HTTPs</li>
-</ul>
-<h2 id="message"><a class="markdownIt-Anchor" href="#message"></a> Message</h2>
-<img src="https://s2.loli.net/2023/09/08/u6OS2icBACHrtFf.png" alt="image-20230908164003822" style="width:50%;" />
-<h3 id="headers"><a class="markdownIt-Anchor" href="#headers"></a> Headers</h3>
-<ul>
-<li>General
-<ul>
-<li>Request URL、Request Method、Status Code、Remote Address、Referrer Policy</li>
-</ul>
-</li>
-<li>Request
-<ul>
-<li>Cookies、Accept-xxx、Content-Type、Content-Length、Auhurization、User-Agent、Referrer</li>
-</ul>
-</li>
-<li>Response
-<ul>
-<li>Server、Set-Cookie、Content-Type、Content-Length、Date</li>
-</ul>
-</li>
-</ul>
-<h2 id="status-code"><a class="markdownIt-Anchor" href="#status-code"></a> Status Code</h2>
-<table>
-<thead>
-<tr>
-<th>Status Code</th>
-<th>Means</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1xx</td>
-<td>request received / processing</td>
-</tr>
-<tr>
-<td>2xx</td>
-<td>Success received, understood, accepted</td>
-</tr>
-<tr>
-<td>3xx</td>
-<td>Further action must be taken / redirect</td>
-</tr>
-<tr>
-<td>4xx</td>
-<td>Client error</td>
-</tr>
-<tr>
-<td>5xx</td>
-<td>Server error</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>200 - OK</li>
-<li>201 - OK created</li>
-<li>301 - Move to new URL</li>
-<li>304 - Not Modified (Cached version)</li>
-<li>400 - Bad Request （❌ not sending correct data）</li>
-<li>401 - Unauthorized （missing token）</li>
-<li>404 - Not Found (resources do not exsist)</li>
-<li>500 - Internal Server Error</li>
-</ul>
-<h2 id="http2"><a class="markdownIt-Anchor" href="#http2"></a> HTTP2</h2>
-<p><code>multiplexing</code></p>
-<img src="https://s2.loli.net/2023/09/08/sf8H6glXiCnzEA2.png" alt="image-20230908164925817" style="width:50%;" />
+    <title>vue3数据绑定之-sync</title>
+    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
+    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
+<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
+<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
+<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
+<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
+<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
+<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
+<hr />
+<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
+<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
+<p>而在vue3中这个sync被v-model替代了</p>
+<blockquote>
+<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
 ]]></content>
       <tags>
-        <tag>Computer Network</tag>
-        <tag>http</tag>
+        <tag>vue</tag>
+        <tag>vue3</tag>
       </tags>
   </entry>
   <entry>
@@ -1797,53 +1826,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>大理</title>
-    <url>/posts/gallery-%E5%A4%A7%E7%90%86/</url>
-    <content><![CDATA[<hr />
-<p style="font-style: italic; font-size: 20px; font-weight:bold;">
-永远怀念那一个自由的夏天
-</p>
-<hr />
-<br />
-<h2 id="洱海傍晚"><a class="markdownIt-Anchor" href="#洱海傍晚"></a> 洱海傍晚</h2>
-<div style='text-align='center''>
-<img src='https://i.imgur.com/YVNCcZb.jpg' alt='洱海傍晚' style="display: block;" />
-<p style='font-size: 0.8em;'>我最好的一张摄影作品🫣（just shot on the mobile device）</p>
-</div>
-<h2 id="喜洲稻田"><a class="markdownIt-Anchor" href="#喜洲稻田"></a> 喜洲稻田</h2>
-<img src='https://i.imgur.com/QGuARFO.jpg' alt='喜洲稻田'/>
-<h2 id="洱海午后"><a class="markdownIt-Anchor" href="#洱海午后"></a> 洱海午后</h2>
-<img src='https://i.imgur.com/HBOvej0.jpg' alt='洱海午后'/>
-<h2 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> 其他</h2>
-<table>
-<thead>
-<tr>
-<th><img src="https://i.imgur.com/nC3dGRX.jpg" alt="栓q" style="zoom:50%;" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://i.imgur.com/KfS295U.jpg" alt="cat-🍮" style="zoom:50%;" /></td>
-</tr>
-<tr>
-<td><img src="https://i.imgur.com/6FZtChd.jpg" alt="sip" style="zoom: 50%;" /></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>I think this is the life, but <strong>august</strong> always slipped away into moment in time 🎯</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>gallery</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>&#39;tag&#39;</title>
-    <url>/posts/zh-CN-tag-index/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>乐山</title>
     <url>/posts/gallery-%E4%B9%90%E5%B1%B1/</url>
     <content><![CDATA[<p>寒假终于有机会出游（<strong>蹭的</strong>）（特别感谢我哥和我嫂子）🫰</p>
@@ -1895,5 +1877,52 @@ F --> L[结束]</pre>
       <categories>
         <category>gallery</category>
       </categories>
+  </entry>
+  <entry>
+    <title>大理</title>
+    <url>/posts/gallery-%E5%A4%A7%E7%90%86/</url>
+    <content><![CDATA[<hr />
+<p style="font-style: italic; font-size: 20px; font-weight:bold;">
+永远怀念那一个自由的夏天
+</p>
+<hr />
+<br />
+<h2 id="洱海傍晚"><a class="markdownIt-Anchor" href="#洱海傍晚"></a> 洱海傍晚</h2>
+<div style='text-align='center''>
+<img src='https://i.imgur.com/YVNCcZb.jpg' alt='洱海傍晚' style="display: block;" />
+<p style='font-size: 0.8em;'>我最好的一张摄影作品🫣（just shot on the mobile device）</p>
+</div>
+<h2 id="喜洲稻田"><a class="markdownIt-Anchor" href="#喜洲稻田"></a> 喜洲稻田</h2>
+<img src='https://i.imgur.com/QGuARFO.jpg' alt='喜洲稻田'/>
+<h2 id="洱海午后"><a class="markdownIt-Anchor" href="#洱海午后"></a> 洱海午后</h2>
+<img src='https://i.imgur.com/HBOvej0.jpg' alt='洱海午后'/>
+<h2 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> 其他</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://i.imgur.com/nC3dGRX.jpg" alt="栓q" style="zoom:50%;" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://i.imgur.com/KfS295U.jpg" alt="cat-🍮" style="zoom:50%;" /></td>
+</tr>
+<tr>
+<td><img src="https://i.imgur.com/6FZtChd.jpg" alt="sip" style="zoom: 50%;" /></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>I think this is the life, but <strong>august</strong> always slipped away into moment in time 🎯</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>gallery</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>&#39;tag&#39;</title>
+    <url>/posts/zh-CN-tag-index/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
