@@ -248,8 +248,7 @@ F --> L[结束]</pre>
   <entry>
     <title>computed与watch</title>
     <url>/posts/computed%E4%B8%8Ewatch/</url>
-    <content><![CDATA[<h1 id="computed与watch"><a class="markdownIt-Anchor" href="#computed与watch"></a> Computed与Watch</h1>
-<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
+    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
 <p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
 <ul>
 <li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
