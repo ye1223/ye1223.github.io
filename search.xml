@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Event Loop</title>
+    <url>/posts/EventLoop/</url>
+    <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
+<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
+<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
+<ol>
+<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
+<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
+<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
+<li>Event Loop轮询查找Callback Queue中是否有可执行代码
+<ol>
+<li>有，将代码送入Call Stack执行</li>
+<li>没有，将继续轮询查找</li>
+</ol>
+</li>
+</ol>
+<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
+<p>微任务： Promise, async/await</p>
+<p>宏任务： 定时器、Ajax、DOM事件</p>
+<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
+<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
+<p>Node异步API</p>
+<table>
+<thead>
+<tr>
+<th>定时器</th>
+<th>I/O操作</th>
+<th>node独有</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setTimeout<br />setInterval</td>
+<td>文件读写<br />数据库操作<br />网络请求…</td>
+<td>process.nextTick<br />setImmediate</td>
+</tr>
+</tbody>
+</table>
+<p>设计上，事件循环优先处理执行I/O事件</p>
+<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
+<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
+<p>从Timer到Check为一个Tick</p>
+<blockquote>
+<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
+<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
+<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cookie &amp; Session</title>
     <url>/posts/CookieSession/</url>
     <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
@@ -96,58 +150,9 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Event Loop</title>
-    <url>/posts/EventLoop/</url>
-    <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
-<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
-<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
-<ol>
-<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
-<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
-<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
-<li>Event Loop轮询查找Callback Queue中是否有可执行代码
-<ol>
-<li>有，将代码送入Call Stack执行</li>
-<li>没有，将继续轮询查找</li>
-</ol>
-</li>
-</ol>
-<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
-<p>微任务： Promise, async/await</p>
-<p>宏任务： 定时器、Ajax、DOM事件</p>
-<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
-<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
-<p>Node异步API</p>
-<table>
-<thead>
-<tr>
-<th>定时器</th>
-<th>I/O操作</th>
-<th>node独有</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>setTimeout<br />setInterval</td>
-<td>文件读写<br />数据库操作<br />网络请求…</td>
-<td>process.nextTick<br />setImmediate</td>
-</tr>
-</tbody>
-</table>
-<p>设计上，事件循环优先处理执行I/O事件</p>
-<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
-<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
-<p>从Timer到Check为一个Tick</p>
-<blockquote>
-<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
-<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
-<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>nodejs</tag>
-      </tags>
+    <title>GPTPlus速通</title>
+    <url>/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>JS类型转换</title>
