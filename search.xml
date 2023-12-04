@@ -96,29 +96,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Create-React-App项目Template</title>
-    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
-    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
-<br /></p>
-<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
-<br/>
-<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
-<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
-<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
-<p>​	<code>yarn add -D prettier</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
-<p>​	<code>yarn add -D husky</code></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
-<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
-<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<br />
-<strong> 静候补充... </strong>]]></content>
-  </entry>
-  <entry>
     <title>Event Loop</title>
     <url>/posts/EventLoop/</url>
     <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
@@ -171,6 +148,29 @@ F --> L[结束]</pre>
         <tag>JavaScript</tag>
         <tag>nodejs</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Create-React-App项目Template</title>
+    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
+    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
+<br /></p>
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
+<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
+<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
+<p>​	<code>yarn add -D prettier</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
+<p>​	<code>yarn add -D husky</code></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
+<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
+<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<br />
+<strong> 静候补充... </strong>]]></content>
   </entry>
   <entry>
     <title>GPTPlus速通</title>
@@ -271,34 +271,6 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>Computer Network</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>computed与watch</title>
-    <url>/posts/computed%E4%B8%8Ewatch/</url>
-    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
-<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
-<ul>
-<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
-<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
-<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
-<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
-<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
-<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
-<ul>
-<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
-<li>watch<mark>支持异步</mark>；</li>
-<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
-<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
-<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -413,6 +385,34 @@ F --> L[结束]</pre>
       <tags>
         <tag>Computer Network</tag>
         <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>computed与watch</title>
+    <url>/posts/computed%E4%B8%8Ewatch/</url>
+    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
+<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
+<ul>
+<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
+<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
+<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
+<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
+<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
+<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
+<ul>
+<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
+<li>watch<mark>支持异步</mark>；</li>
+<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
+<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
+<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -1591,12 +1591,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/posts/test/</url>
-    <content><![CDATA[<p>aaaaaaaa</p>
-]]></content>
-  </entry>
-  <entry>
     <title>redux-toolkit学习</title>
     <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
@@ -1666,6 +1660,12 @@ F --> L[结束]</pre>
       <tags>
         <tag>react</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/posts/test/</url>
+    <content><![CDATA[<p>aaaaaaaa</p>
+]]></content>
   </entry>
   <entry>
     <title>vue3数据绑定之-sync</title>
@@ -1809,56 +1809,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>面试1</title>
-    <url>/posts/%E9%9D%A2%E8%AF%951/</url>
-    <content><![CDATA[<p>主要围绕简历展开</p>
-<h2 id="自我介绍"><a class="markdownIt-Anchor" href="#自我介绍"></a> 自我介绍</h2>
-<blockquote>
-<p>​	从未准备过，每次都是“面试官你好，我是来自xx学校xx学院的学生，学习前端xx年了”，然后就戛然而止。。。</p>
-</blockquote>
-<h2 id="项目"><a class="markdownIt-Anchor" href="#项目"></a> 项目</h2>
-<ul>
-<li>
-<p>实习项目简介</p>
-</li>
-<li>
-<p>实习负责板块介绍</p>
-</li>
-<li>
-<p>难点，遇到什么问题</p>
-</li>
-<li>
-<p>对于技术上手快吗</p>
-</li>
-</ul>
-<h2 id="计网"><a class="markdownIt-Anchor" href="#计网"></a> 计网</h2>
-<ul>
-<li>Ajax 工作方式</li>
-<li>http请求响应过程</li>
-</ul>
-<h2 id="杂项"><a class="markdownIt-Anchor" href="#杂项"></a> 杂项</h2>
-<ul>
-<li>JWT
-<ul>
-<li>前端axios拦截 后端加密解密~</li>
-</ul>
-</li>
-<li>vue react 区别</li>
-<li>会不会后端（❓</li>
-<li>是否接受加班</li>
-</ul>
-<h2 id="反问"><a class="markdownIt-Anchor" href="#反问"></a> 反问</h2>
-<ul>
-<li>公司产品（自研？</li>
-<li>工作地点 &amp; 加班</li>
-<li>。。。</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Interview</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>乐山</title>
     <url>/posts/gallery-%E4%B9%90%E5%B1%B1/</url>
     <content><![CDATA[<p>寒假终于有机会出游（<strong>蹭的</strong>）（特别感谢我哥和我嫂子）🫰</p>
@@ -1910,6 +1860,56 @@ F --> L[结束]</pre>
       <categories>
         <category>gallery</category>
       </categories>
+  </entry>
+  <entry>
+    <title>面试1</title>
+    <url>/posts/%E9%9D%A2%E8%AF%951/</url>
+    <content><![CDATA[<p>主要围绕简历展开</p>
+<h2 id="自我介绍"><a class="markdownIt-Anchor" href="#自我介绍"></a> 自我介绍</h2>
+<blockquote>
+<p>​	从未准备过，每次都是“面试官你好，我是来自xx学校xx学院的学生，学习前端xx年了”，然后就戛然而止。。。</p>
+</blockquote>
+<h2 id="项目"><a class="markdownIt-Anchor" href="#项目"></a> 项目</h2>
+<ul>
+<li>
+<p>实习项目简介</p>
+</li>
+<li>
+<p>实习负责板块介绍</p>
+</li>
+<li>
+<p>难点，遇到什么问题</p>
+</li>
+<li>
+<p>对于技术上手快吗</p>
+</li>
+</ul>
+<h2 id="计网"><a class="markdownIt-Anchor" href="#计网"></a> 计网</h2>
+<ul>
+<li>Ajax 工作方式</li>
+<li>http请求响应过程</li>
+</ul>
+<h2 id="杂项"><a class="markdownIt-Anchor" href="#杂项"></a> 杂项</h2>
+<ul>
+<li>JWT
+<ul>
+<li>前端axios拦截 后端加密解密~</li>
+</ul>
+</li>
+<li>vue react 区别</li>
+<li>会不会后端（❓</li>
+<li>是否接受加班</li>
+</ul>
+<h2 id="反问"><a class="markdownIt-Anchor" href="#反问"></a> 反问</h2>
+<ul>
+<li>公司产品（自研？</li>
+<li>工作地点 &amp; 加班</li>
+<li>。。。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Interview</tag>
+      </tags>
   </entry>
   <entry>
     <title>大理</title>
