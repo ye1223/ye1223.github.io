@@ -15,7 +15,7 @@
 
 
 
-<title>GPTPlus速通 | Levy&#39;s Blog</title>
+<title>Create-React-App项目Template | Levy&#39;s Blog</title>
 
 
 
@@ -163,14 +163,14 @@
         <div class="post-title">
 
             
-                GPTPlus速通
+                Create-React-App项目Template
                     
         </div>
         <span class="post-date">
-            Nov 15, 2023
+            Dec 4, 2023
         </span>
         <span class="post-word-count">
-            0 words / About 5 seconds
+            253 words / About 1 minute
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -187,7 +187,25 @@
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    
+    <p><a target="_blank" rel="noopener" href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
+<br /></p>
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
+<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
+<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
+<p>​	<code>yarn add -D prettier</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
+<p>​	<code>yarn add -D husky</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
+<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
+<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<br />
+<strong> 静候补充... </strong>
 </div>
 <div class="toc-menu-container">
     <img class="icon toc-menu" alt="">
@@ -331,17 +349,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/computed%E4%B8%8Ewatch/">Next</a>  
+                  <a href="/posts/GPTPlus%E9%80%9F%E9%80%9A/">Next</a>  
                 </div>  
             
         </div>
@@ -382,8 +395,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/GPTPlus%E9%80%9F%E9%80%9A/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/GPTPlus速通/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/Create-React-App项目Template/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -410,8 +423,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/GPTPlus%E9%80%9F%E9%80%9A/';
-                                    this.page.identifier = 'posts/GPTPlus速通/';
+                                    this.page.url = 'http://example.com/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/';
+                                    this.page.identifier = 'posts/Create-React-App项目Template/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
