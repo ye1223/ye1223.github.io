@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Create-React-App项目Template</title>
+    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
+    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
+<br /></p>
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
+<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
+<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
+<p>​	<code>yarn add -D prettier</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
+<p>​	<code>yarn add -D husky</code></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
+<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
+<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<br />
+<strong> 静候补充... </strong>]]></content>
+  </entry>
+  <entry>
+    <title>Event Loop</title>
+    <url>/posts/EventLoop/</url>
+    <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
+<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
+<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
+<ol>
+<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
+<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
+<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
+<li>Event Loop轮询查找Callback Queue中是否有可执行代码
+<ol>
+<li>有，将代码送入Call Stack执行</li>
+<li>没有，将继续轮询查找</li>
+</ol>
+</li>
+</ol>
+<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
+<p>微任务： Promise, async/await</p>
+<p>宏任务： 定时器、Ajax、DOM事件</p>
+<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
+<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
+<p>Node异步API</p>
+<table>
+<thead>
+<tr>
+<th>定时器</th>
+<th>I/O操作</th>
+<th>node独有</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setTimeout<br />setInterval</td>
+<td>文件读写<br />数据库操作<br />网络请求…</td>
+<td>process.nextTick<br />setImmediate</td>
+</tr>
+</tbody>
+</table>
+<p>设计上，事件循环优先处理执行I/O事件</p>
+<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
+<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
+<p>从Timer到Check为一个Tick</p>
+<blockquote>
+<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
+<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
+<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cookie &amp; Session</title>
     <url>/posts/CookieSession/</url>
     <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
@@ -94,83 +171,6 @@ F --> L[结束]</pre>
         <tag>Computer Network</tag>
         <tag>http</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Event Loop</title>
-    <url>/posts/EventLoop/</url>
-    <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
-<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
-<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
-<ol>
-<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
-<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
-<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
-<li>Event Loop轮询查找Callback Queue中是否有可执行代码
-<ol>
-<li>有，将代码送入Call Stack执行</li>
-<li>没有，将继续轮询查找</li>
-</ol>
-</li>
-</ol>
-<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
-<p>微任务： Promise, async/await</p>
-<p>宏任务： 定时器、Ajax、DOM事件</p>
-<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
-<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
-<p>Node异步API</p>
-<table>
-<thead>
-<tr>
-<th>定时器</th>
-<th>I/O操作</th>
-<th>node独有</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>setTimeout<br />setInterval</td>
-<td>文件读写<br />数据库操作<br />网络请求…</td>
-<td>process.nextTick<br />setImmediate</td>
-</tr>
-</tbody>
-</table>
-<p>设计上，事件循环优先处理执行I/O事件</p>
-<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
-<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
-<p>从Timer到Check为一个Tick</p>
-<blockquote>
-<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
-<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
-<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Create-React-App项目Template</title>
-    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
-    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
-<br /></p>
-<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
-<br/>
-<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
-<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
-<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
-<p>​	<code>yarn add -D prettier</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
-<p>​	<code>yarn add -D husky</code></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
-<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
-<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<br />
-<strong> 静候补充... </strong>]]></content>
   </entry>
   <entry>
     <title>GPTPlus速通</title>
@@ -271,6 +271,34 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>Computer Network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>computed与watch</title>
+    <url>/posts/computed%E4%B8%8Ewatch/</url>
+    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
+<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
+<ul>
+<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
+<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
+<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
+<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
+<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
+<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
+<ul>
+<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
+<li>watch<mark>支持异步</mark>；</li>
+<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
+<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
+<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -385,579 +413,6 @@ F --> L[结束]</pre>
       <tags>
         <tag>Computer Network</tag>
         <tag>http</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>computed与watch</title>
-    <url>/posts/computed%E4%B8%8Ewatch/</url>
-    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
-<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
-<ul>
-<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
-<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
-<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
-<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
-<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
-<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
-<ul>
-<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
-<li>watch<mark>支持异步</mark>；</li>
-<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
-<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
-<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>js红宝书</title>
-    <url>/posts/js%E7%BA%A2%E5%AE%9D%E4%B9%A6/</url>
-    <content><![CDATA[<h3 id="script标签"><a class="markdownIt-Anchor" href="#script标签"></a> <code>&lt;script&gt;</code>标签</h3>
-<ul>
-<li>
-<p>一些属性</p>
-<ul>
-<li>defer 推迟</li>
-<li>async 异步  期间不要动DOM</li>
-<li>intergrity 检查安全</li>
-</ul>
-</li>
-<li>
-<p>src GET 跨域</p>
-</li>
-<li>
-<p>引入外部文件文件，行内代码写了没用</p>
-</li>
-</ul>
-<blockquote>
-<p>MIME 代码块中的脚本语言内容类型</p>
-</blockquote>
-<ul>
-<li><code>&lt;noscript&gt;&lt;/noscript&gt;</code></li>
-</ul>
-<h3 id="严格模式es5增加"><a class="markdownIt-Anchor" href="#严格模式es5增加"></a> 严格模式（ES5增加）</h3>
-<p>遵守的是es3的语法</p>
-<p>开启严格模式，脚本开头写上<code>&quot;use strict&quot;;</code> ，也可写在函数内部开头，单独开启严格模式</p>
-<h3 id="变量"><a class="markdownIt-Anchor" href="#变量"></a> 变量</h3>
-<p>​	<code>var</code>变量提升hoist ，函数作用域,全局声明成为window对象属性</p>
-<p>​	<code>let</code>，块级作用域，暂存性死区（temporal dead zone)</p>
-<p>​	<code>let</code>和<code>var</code> 只是指出变量在相关作用域如何让存在</p>
-<p>​	<code>const</code> 适用于for-in(对象属性名)、for-of（数组）</p>
-<h5 id="声明风格"><a class="markdownIt-Anchor" href="#声明风格"></a> 声明风格</h5>
-<p>​		不使用<code>var</code>，<code> const</code>优先，<code>let</code>次之</p>
-<h3 id="34-数据类型"><a class="markdownIt-Anchor" href="#34-数据类型"></a> 3.4 数据类型</h3>
-<p>​	<strong>Undefined、Null、Boolean、Number、String、Symbol、Object</strong></p>
-<p>​	<strong>typeof 操作符</strong></p>
-<p>​		typeof null =&gt; onject (null被认为是空对象的引用)</p>
-<p>​	<strong>Number</strong><br />
-​		八进制: 0111 在严格模式下报错、0o111可以</p>
-<p>​		<code>1.</code> 和 1.0 为整数，1.1、1.2浮点数</p>
-<p>​		ES会将小数点后至少包括<u>6个0</u>的浮点值转换成科学计数法</p>
-<p>​	<strong>String</strong></p>
-<p>​		ECMAScript中的字符串是<strong>不可变的immutable</strong></p>
-<p>​		<code>toString</code>  返回自身的一个副本</p>
-<p>​			除了<font color=red><code>null</code></font> 和<font color=red> <code>undefined</code></font>都有<code>toString</code>方法。对于数值类型可以传参(转换<u>进制数</u>)</p>
-<p>​		对于变量未知类型的，转为字符串，利用**<code>String()</code>转型函数**</p>
-<p>​		<strong>模板字面量 ``</strong></p>
-<p>​			保留换行字符，跨行定义字符串</p>
-<p>​			字符串插值 ``${js表达式}` ，调用了toString方法强制转换为字符串</p>
-<p>​			标签函数<code>(模板字面量隔开形成的字符串数组，...模板字面量的值)</code></p>
-<p>​			原始字符串<code>String.raw</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`\u00A9`</span>) <span class="comment">//© (输出转义后的符号</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>.<span class="property">raw</span><span class="string">`\u00A9`</span>) <span class="comment">//\u00A9 (输出原始的字符串</span></span><br></pre></td></tr></table></figure>
-<p>​		<strong>Symbol</strong></p>
-<p>​			在编程中一个幂等操作的特点是其任意多次执行所产生的影响均与一次执行的影响相同</p>
-<p>​			全局符号：</p>
-<p>​				symbol.for()执行幂等操作，第一次操作会检查全局运行时注册表，是否存在对应的symbol.for()</p>
-<p>​				查询全局注册表<code>Symbol.keyFor(参数)</code>  (参数必须为symbol类型，否则抛出typeError)</p>
-<p>​					查询成功返回symbol值，否则返回undefined</p>
-<p>​			作为对象<code>[属性]</code>使用</p>
-<p>​				defineProperty添加symbol类的值作为属性（在node下不能）</p>
-<p>​			内置符号（不可写，不可枚举，不可配置）</p>
-<p>​				<code>Symbol.iterator</code> for-of循环会使用这个属性</p>
-<p>​				<code>Symbol.asyncIterator</code> for-await-of使用，异步迭代器</p>
-<p>​				<code>Symbol.hasInstance</code>定义在Function的原型身上</p>
-<p>​				<code>Symbol.isConcatSpreadable</code>（默认值undefined） <strong>控制Array.prorotype.concat是否“打平”连接</strong></p>
-<p>​					对于数组对象(默认打平），设置为falsely变量，不会打平连接，会让整个对象追加到数组末尾</p>
-<p>​					对于类数组对象（默认不打平），设置为truely变变量，会打平连接，到数组实例</p>
-<p>​			<strong>Object</strong></p>
-<p>​				ECMAScript只要求给构造函数提供参数时使用括号</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span> <span class="comment">//合法，但不推荐</span></span><br></pre></td></tr></table></figure>
-<p>​				<code>hasOwnProperty</code></p>
-<p>​				<code>valueof()</code> 定义在对象里的方法。 return的值，</p>
-<p>​						显示获取：<code>obj.valueOf()</code></p>
-<p>​						隐式获取：<code>++obj </code> 对obj进行<strong>数学运算</strong>，直接调用的<code>valueOf()</code>方法</p>
-<h3 id="35-操作符"><a class="markdownIt-Anchor" href="#35-操作符"></a> 3.5 操作符</h3>
-<p>​	一元操作符</p>
-<p>​		自增、自减、+、-</p>
-<p>​			<code>+</code> 拼接字符串，<code>-</code> 先<code>Number()</code>转换，在减法操作</p>
-<p>​	位操作符</p>
-<p>​		ECMAScript 数值 以IEEE 745 64位格式存储</p>
-<p>​		位操作，将值转为32位整数，再进行操作，最后再把结果转为64位</p>
-<p>········</p>
-<h3 id="36-语句"><a class="markdownIt-Anchor" href="#36-语句"></a> 3.6 语句</h3>
-<p>​	<code>for-in</code> 严格迭代语句，遍历对象的<u>可枚举</u><u>非symbol类型</u>属性</p>
-<p>​	<code>for-of</code> 严格迭代语句，遍历可迭代对象</p>
-<p>​	标签语句 配合continue和break使用</p>
-<p>​	<code>with</code>语句，将代码的作用域设定为特殊的对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = process.<span class="property">pid</span></span><br><span class="line"><span class="keyword">const</span> b = process.<span class="property">ppid</span></span><br><span class="line"><span class="keyword">const</span> c = process.<span class="property">title</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c)</span><br><span class="line"></span><br><span class="line"><span class="title function_">with</span>(<span class="params">process</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(pid, ppid, title)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//严格模式不支持with，影响性能，难于调试，不推荐使用</span></span><br></pre></td></tr></table></figure>
-<p>​	switch 全等操作符，不会强制转换类型</p>
-<h2 id="第四章-变量-作用域与内存"><a class="markdownIt-Anchor" href="#第四章-变量-作用域与内存"></a> 第四章 变量、作用域与内存</h2>
-<h3 id="41-原始值与引用值"><a class="markdownIt-Anchor" href="#41-原始值与引用值"></a> 4.1 原始值与引用值</h3>
-<p>​	原始值（基础数据类型值）</p>
-<p>​	引用值，保存在内存中的对象</p>
-<p>​	ECMAScript函数参数传递是<strong>按值传递</strong>，（传递的是值的副本而非值本身）</p>
-<p>​	确定类型：</p>
-<p>​		<strong><code>instanceof</code></strong> <strong>运算符</strong>用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链上</p>
-<p>​		<code>typeof</code>…etc</p>
-<h3 id="42-执行上下文与作用域"><a class="markdownIt-Anchor" href="#42-执行上下文与作用域"></a> 4.2 执行上下文与作用域</h3>
-<p>​	<code>var</code>的函数作用域声明：变量会添加到<strong>最近的上下文</strong>，<em>作用域提升</em></p>
-<p>​	<code>with</code>语句中var声明的变量为在<strong>全局</strong>作用域中</p>
-<p>​	<code>let</code>、<code>const</code>  {}块级作用域</p>
-<blockquote>
-<p>使用<code>const</code>变量有助于JS引擎(谷歌V8引擎)优化，<strong>编译时</strong>就将所有实例替换成<strong>实际的值</strong>，而不会通过查询表进行变量查找</p>
-</blockquote>
-<p>​	标识符查找：沿作用域链查找</p>
-<h3 id="43-垃圾回收️"><a class="markdownIt-Anchor" href="#43-垃圾回收️"></a> 4.3 垃圾回收♻️</h3>
-<p>​	基本思路：确定那个变量不会再使用，然后释放他占用的空间。（<strong>周期性自动运行</strong>）</p>
-<p>​	主要标记策略</p>
-<p>​		<strong>标记清理</strong>：</p>
-<p>​			标记内存中的所有变量 ➡️ 去掉上下文或者上下文引用的变量的标记 ➡️ （这时候再被加上标记的变量就是待删除的了，任何上下文的变量都访问不到它们了）回收</p>
-<pre><code>	**引用计数**(❗️导致循环引用)
-</code></pre>
-<p>​			变量声明并赋引用值，引用数为1；</p>
-<p>​			如果同一个值又被赋值给另一个，引用数+1；</p>
-<p>​			该引用值被其他值覆盖，则引用数-1。</p>
-<p>​			当引用值为0时，就会被垃圾回收</p>
-<p>​	将变量设为<code>null</code>，切断变量与其之前引用值之间的关系。</p>
-<p>​	<strong>性能</strong>：</p>
-<p>​		现代垃圾回收程序根据<strong>运行时的环境</strong>来决定何时运行（以前IE是达到设定的阈值，就执行回收）</p>
-<p>​		也有浏览器提供方法可以<u>主动触发垃圾回收</u>（❌）</p>
-<p>​		提升性能：</p>
-<p>​			使用<code>const let</code>声明变量：相对于函数作用域的<code>var</code>，块级作用域<strong>可能</strong>会更早终止，会让垃圾回收程序接介入，尽早回收内存</p>
-<p>​			隐藏类和删除操作<code>delete</code></p>
-<p>​				V8引擎将JS<strong>代码</strong>编译成实际的<strong>机器码</strong>会利用”隐藏类”，<strong style="color:red">能够共享隐藏类的对象性能更高</strong></p>
-<p>​					<strong>动态<font color=blue>添加、删除</font>属性导致不共享一个隐藏类</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = <span class="string">&#x27;iam foo&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 两个实例共用一个相同的隐藏类，因为两个实例共享一个共同的构造函数</span></span><br><span class="line"><span class="keyword">let</span> f1 = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"><span class="keyword">let</span> f2 = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//‼️但是如此修改（这种操作的频率和隐藏类的大小对性能产生明显影响</span></span><br><span class="line">f2.<span class="property">name</span> = <span class="string">&#x27;iamf2&#x27;</span><span class="comment">//Foo实例对应两个 不同 的隐藏类。</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//✅解决方案： 先创建再补充</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params">name</span>)&#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这样对应相同的隐藏类</span></span><br><span class="line"><span class="keyword">let</span> f1 = <span class="keyword">new</span> <span class="title class_">Foo</span>(<span class="string">&#x27;iamf1&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> f2 = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//‼️但是，使用delete关键字动态删除属性导致，不再共享一个隐藏类</span></span><br><span class="line"><span class="keyword">delete</span> f1.<span class="property">name</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//✅解决方案 把不想要的属性设置为null</span></span><br><span class="line">f1.<span class="property">name</span> = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
-<p>​		内存泄漏</p>
-<p>​			意外声明全局变量</p>
-<p>​			定时器回调引用外部变量</p>
-<p>​			使用闭包</p>
-<p>​		<strong>静态分配与对象池</strong></p>
-<h2 id="第五章-基本引用类型"><a class="markdownIt-Anchor" href="#第五章-基本引用类型"></a> 第五章 基本引用类型</h2>
-<h3 id="51-date"><a class="markdownIt-Anchor" href="#51-date"></a> 5.1 Date</h3>
-<blockquote>
-<p>UTC 协调世界时 GMT格林威治平时</p>
-</blockquote>
-<p>​</p>
-<p>​	<code>Date.parse(创建的是本地日期)</code>  <code>Date.UTC(创建的是GMT日期)</code>  将一个表示日期的字符串解析为对应的时间戳（毫秒数）</p>
-<p>​	new Date(传入时间字符串) ，根据字符串格式隐式调用上面两个构造函数</p>
-<p>​	Date类重写了toLocaleString toString valueOf(返回时间戳)</p>
-<h3 id="52-正则"><a class="markdownIt-Anchor" href="#52-正则"></a> ❓5.2 正则</h3>
-<h3 id="53-原始值包装类型"><a class="markdownIt-Anchor" href="#53-原始值包装类型"></a> 5.3 原始值包装类型</h3>
-<blockquote>
-<p>ECMAScript提供了3种特殊的引用类型，<code>Boolean</code> <code>String</code> <code>Number</code></p>
-</blockquote>
-<p>​	正常来说原始值本身不是对象，按逻辑上不应该有方法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="string">&#x27;some text&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s1.<span class="title function_">substring</span>(<span class="number">2</span>)) <span class="comment">//me text</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>包装类型让原始值拥有对象行为</p>
-<p>​	创建一个String类型实例</p>
-<p>​	调用实例上的方法</p>
-<p>​	销毁实例</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 显示创建原始值包装类型(不推荐)</span></span><br><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&#x27;i am a string&#x27;</span>)<span class="comment">//构造函数</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> s) <span class="comment">//object</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> s = <span class="string">&#x27;i am a string&#x27;</span> </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> s) <span class="comment">//string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> s = <span class="title class_">String</span>(<span class="string">&#x27;i am a string&#x27;</span>) <span class="comment">//转型函数</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> s) <span class="comment">//string</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// object工厂方法创建</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> os = <span class="keyword">new</span> <span class="title class_">Object</span>(<span class="string">&#x27;i am a string&#x27;</span>)</span><br><span class="line"><span class="comment">// 创建的是一个String实例</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> os, os <span class="keyword">instanceof</span> <span class="title class_">String</span>)<span class="comment">// object true</span></span><br></pre></td></tr></table></figure>
-<h4 id="number"><a class="markdownIt-Anchor" href="#number"></a> number</h4>
-<p>​		toFixed方法，返回的字符串保留几位小数（0~20位+，超过，四舍五入）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="number">10</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toFixed</span>(<span class="number">2</span>))<span class="comment">//10.00</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="number">10.005</span>).<span class="title function_">toFixed</span>(<span class="number">2</span>))<span class="comment">//10.01</span></span><br></pre></td></tr></table></figure>
-<p>​	toPrecision返回最合理的数值(1-21小数位)</p>
-<h4 id="string"><a class="markdownIt-Anchor" href="#string"></a> String</h4>
-<p>​	JS 一个字符16位</p>
-<p>​	与模式匹配相关的方法: match search replace split</p>
-<h3 id="54-单例内置对象"><a class="markdownIt-Anchor" href="#54-单例内置对象"></a> 5.4 单例内置对象</h3>
-<h4 id="global"><a class="markdownIt-Anchor" href="#global"></a> Global</h4>
-<p>​	eval函数（⛔️XSS攻击）</p>
-<p>​		这个函数就是个完整的ECMAScript解释器</p>
-<p>​		定义在eval函数中的变量和函数，不存在函数提升</p>
-<p>​		开启严格模式够，外部访问不到eval函数里的数据</p>
-<h3 id="math"><a class="markdownIt-Anchor" href="#math"></a> Math</h3>
-<h2 id="第六章-集合引用类型"><a class="markdownIt-Anchor" href="#第六章-集合引用类型"></a> 第六章 集合引用类型</h2>
-<h3 id="61-object"><a class="markdownIt-Anchor" href="#61-object"></a> 6.1 Object</h3>
-<p>​	字面量{}形式创建一个对象，并不会new Object()</p>
-<h3 id="62-array"><a class="markdownIt-Anchor" href="#62-array"></a> 6.2 Array</h3>
-<p>​	字面量[]形式创建一个数组，也不会new Array()</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">20</span>) <span class="comment">//定义数组长度为20</span></span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Array.from()</td>
-<td>将<strong>伪数组</strong>转为真数组</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">Array.of()</td>
-<td>将一系列参数转为数组</td>
-<td><code>Array.of( 1, 2, 3)</code> ➡️ [1, 2, 3]</td>
-</tr>
-</tbody>
-</table>
-<h4 id="数组空位"><a class="markdownIt-Anchor" href="#数组空位"></a> 数组空位</h4>
-<p>​		字面量一串<strong>逗号形式</strong>创建空位</p>
-<p>​			<img src="JS红宝书.assets/image-20230616144658231.png" alt="image-20230616144658231" style="zoom:50%;" /></p>
-<p>​		ES6新增的方法和迭代器，将空位当成存在的元素，值为<code>undefined</code></p>
-<p>​			<img src="JS红宝书.assets/image-20230616145322099.png" alt="image-20230616145322099" style="zoom:50%;" /></p>
-<p>​		ES6之前的方法， 忽略空位（具体的行为因方法而异）</p>
-<p>​			<code>map</code>跳过空位，<code>join</code>将空位视为空字符串</p>
-<p>​		<img src="JS红宝书.assets/image-20230616145451935.png" alt="image-20230616145451935" style="zoom:50%;" /></p>
-<h4 id="数组索引"><a class="markdownIt-Anchor" href="#数组索引"></a> 数组索引</h4>
-<p>​		<font color=red>数组的length不是只读的</font>，利用这个特性删除数组末尾元素（当然也可添加数组空位）</p>
-<p>​		<img src="JS红宝书.assets/image-20230616145938663.png" alt="image-20230616145938663" style="zoom:50%;" /></p>
-<h4 id="检测数组"><a class="markdownIt-Anchor" href="#检测数组"></a> 检测数组</h4>
-<p>​		在一个全局上下文中，使用<code>instanceof</code>。</p>
-<blockquote>
-<p>多个 iframe多个全局上下文。然后每个里面都有 Array 这个对象。他们并不相等。</p>
-<p>本质来讲 <code>instanceof</code> 是去找 prototype 之类的，看看是否有继承。</p>
-</blockquote>
-<p>​		<strong><code>Array.isArray()</code></strong></p>
-<h4 id="迭代器方法"><a class="markdownIt-Anchor" href="#迭代器方法"></a> 迭代器方法</h4>
-<p>​		<code>arr.keys()</code> 返回数组索引的迭代器</p>
-<p>​		<code>values() </code>返回数组元素的迭代器</p>
-<p>​		<code>entries()</code> 返回 索引/值 对的迭代器</p>
-<p>​	<em><strong><u>alert期待字符串</u></strong></em></p>
-<h4 id="排序方法"><a class="markdownIt-Anchor" href="#排序方法"></a> <strong>排序方法</strong></h4>
-<p>​		<code>sort</code> ，事先对数组中的没项元素都使用的<code>String转型函数</code></p>
-<p>​			升序：compare(val1, val2) val1 &gt; val2 return 1</p>
-<p>​			降序：compare(val1, val2) val1 &gt; val2 return -1</p>
-<h4 id="操作方法"><a class="markdownIt-Anchor" href="#操作方法"></a> 操作方法</h4>
-<p>​	<code>concat</code> <code>splice</code></p>
-<h4 id="搜索方法"><a class="markdownIt-Anchor" href="#搜索方法"></a> 搜索方法</h4>
-<p>​	<code>indexof</code> <code>lastIndexOf</code> <code>includes</code></p>
-<p>​	<code>find</code> <code>findIndex</code></p>
-<h4 id="迭代方法"><a class="markdownIt-Anchor" href="#迭代方法"></a> 迭代方法</h4>
-<p>​	<code>every</code> <code>some</code></p>
-<p>​	<code>filter</code> <code>map</code> <code>forEach</code></p>
-<h4 id="归并方法"><a class="markdownIt-Anchor" href="#归并方法"></a> 归并方法</h4>
-<p><code>reduce</code> <code>reduceRight</code></p>
-<h3 id="63-定型数组"><a class="markdownIt-Anchor" href="#63-定型数组"></a> 6.3 定型数组</h3>
-<h3 id="64-map-set"><a class="markdownIt-Anchor" href="#64-map-set"></a> 6.4 Map Set</h3>
-<p>​	定义时都接受一个可迭代对象初始化映射</p>
-<p>​	使用<code>forEach</code>，<code>for-of</code>迭代值</p>
-<h3 id="65-weakmap-weakset"><a class="markdownIt-Anchor" href="#65-weakmap-weakset"></a> 6.5 weakMap weakSet</h3>
-<blockquote>
-<p>​	weakMap存储键值对的<strong>键</strong>必须为引用类型数据</p>
-</blockquote>
-<p>如果键的指向为空，自动称为垃圾回收的目标</p>
-<p>weakMap实现真正的私有变量</p>
-<p>都不可迭代值</p>
-<h3 id="68-迭代与扩展操作"><a class="markdownIt-Anchor" href="#68-迭代与扩展操作"></a> 6.8 迭代与扩展操作</h3>
-<p>​	定义的默认迭代器（<code>Array</code> <code>定型数组</code> <code>Map</code> <code>Set</code>）</p>
-<p>​	支持for-of顺序迭代、兼容扩展操作符</p>
-<blockquote>
-<p>浅复制：只会复制对象的引用</p>
-</blockquote>
-<h2 id="第七章-迭代器与生成器"><a class="markdownIt-Anchor" href="#第七章-迭代器与生成器"></a> 第七章 迭代器与生成器</h2>
-<p>​	迭代：按顺序反复执行一段程序</p>
-<p>​	循环是迭代的基础</p>
-<h3 id="迭代器模式"><a class="markdownIt-Anchor" href="#迭代器模式"></a> 迭代器模式</h3>
-<p>​	开发者无需知道如何迭代就能实现迭代操作</p>
-<p>​	实现可迭代iterable接口的对象，都能被事件iterator接口的结构消费</p>
-<p>​	<strong>内置iterable接口的类型：<code>Stirng</code> <code>Array </code> <code>Map</code> <code>Set</code> <code>arguments对象</code> <code>NodeList等DOM集合类型</code></strong></p>
-<p>​	<strong>接受可迭代对象的原生语言特性</strong></p>
-<p>​		<code>for-of </code> <code>数组解构</code> <code>扩展操作符</code></p>
-<p>​		<code>Array.from</code> <code>new Set/Map</code></p>
-<p>​		<code>Promise.all / race</code> <code>yeild*操作符</code></p>
-<p><em>给对象添加可迭代的iterable接口，</em></p>
-  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">list</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">    [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]() &#123;</span><br><span class="line">        <span class="keyword">let</span> count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">const</span> &#123; length &#125; = <span class="variable language_">this</span>.<span class="property">list</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">next</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123; <span class="attr">done</span>: count === length ? <span class="literal">true</span> : <span class="literal">false</span>, <span class="attr">value</span>: <span class="variable language_">this</span>.<span class="property">list</span>[count++] &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">          	<span class="comment">//提前终止，调用return方法</span></span><br><span class="line">          	<span class="keyword">return</span>() &#123;</span><br><span class="line">            	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Exiting Early!&#x27;</span>)</span><br><span class="line">           	 	<span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;</span><br><span class="line">         	 	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接收迭代器实例</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> iter = obj[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(iter.<span class="title function_">next</span>()) <span class="comment">//调用next方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(iter.<span class="title function_">next</span>())</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>不同迭代器实例之间没有联系</p>
-<p>迭代器不与对象某时刻的快照绑定，也可根据实际情况动态变化</p>
-<p>迭代器维护一个指向可迭代对象的引用，⛔️<strong>阻止</strong>垃圾回收可迭代对象</p>
-</blockquote>
-<h4 id="提前终止迭代器"><a class="markdownIt-Anchor" href="#提前终止迭代器"></a> <strong>提前终止迭代器</strong></h4>
-<p>​	如上<code>return</code>方法指定迭代器提前关闭时执行的逻辑</p>
-<p>​		<strong>for-of 循环 在 break continue return throw时，触发提前终止逻辑</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> val <span class="keyword">of</span> obj)&#123;</span><br><span class="line">    <span class="keyword">if</span>(val === <span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(val)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// Exiting Early!</span></span><br></pre></td></tr></table></figure>
-<p>​		 <strong>解构操作并未消费所有的值时</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [item1, item2] = obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(item1, item2)</span><br><span class="line"><span class="comment">// Exiting Early!</span></span><br><span class="line"><span class="comment">// 1 2</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果迭代器没有关闭，可以从上次离开的地方继续迭代（数组的迭代器不能关闭）</p>
-<p>return() 方法是可选的</p>
-<p>仅仅给一个不可关闭的迭代器器增加一个return方法并不能让他关闭。调用return方法并不会强制迭代器进入关闭状态。</p>
-</blockquote>
-<h3 id="生成器模式"><a class="markdownIt-Anchor" href="#生成器模式"></a> 生成器模式</h3>
-<blockquote>
-<p>临时的可迭代对象称为生成器</p>
-</blockquote>
-<p>​	生成器拥有在<u>函数块</u>内<strong>暂停</strong>和<strong>恢复代码</strong>执行的能力 <font color=gray>可以用于自定义迭代器和实现协程</font></p>
-<h4 id="定义生成器"><a class="markdownIt-Anchor" href="#定义生成器"></a> 💬定义生成器</h4>
-<p>​	函数名前加『 *』，箭头函数不可用于定义生成器函数</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="comment">//函数表达式方式 对象方法 类方法 类静态方法。。。</span></span><br></pre></td></tr></table></figure>
-<p>​	调用生成器函数产生生成器对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> g = <span class="title function_">generatorFn</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g)<span class="comment">//</span></span><br></pre></td></tr></table></figure>
-<div style="text-align:center; padding: 0 100px; overflow: hidden;">
-  <div style="float: left; font-weight: bold;">开始暂时处于暂停执行状态，生成器对象也实现了iterator接口，具有next方法</div>
-  <img src="JS红宝书.assets/image-20230617162726562.png" alt="image-20230617162726562" style="zoom:50%; display:block; float: right;" />
-</div>
-<p>初次调用next()方法指明开始调用生成器</p>
-<p>value属性是生成器返回值，默认undefined</p>
-<h4 id="yeild中断执行"><a class="markdownIt-Anchor" href="#yeild中断执行"></a> 🛑yeild中断执行</h4>
-<p>yeild关键字只能在生成器函数中使用</p>
-<h4 id="作为可迭代对象使用"><a class="markdownIt-Anchor" href="#作为可迭代对象使用"></a> 作为可迭代对象使用</h4>
-<p>生成器显示调用next方法用处不大。</p>
-<p>将生成器对象作为可迭代对象使用</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> *<span class="title function_">genneratorFn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> val <span class="keyword">of</span> <span class="title function_">genneratorFn</span>())&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="yeild实现输入输出"><a class="markdownIt-Anchor" href="#yeild实现输入输出"></a> yeild实现输入输出</h4>
-<p>yeild产出的值传给g.next()</p>
-<p>g.next()传入的参数，作为是yeild的返回值</p>
-<h4 id="产生可迭代对象"><a class="markdownIt-Anchor" href="#产生可迭代对象"></a> 产生可迭代对象</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">yeild *[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
-<p>yeild* 其实也就是将可迭代对象序列化为一串可以单独产出的值</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">genneratorFnA</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> val <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])&#123;</span><br><span class="line">        <span class="keyword">yield</span> val</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 等价！！！</span></span><br><span class="line"><span class="keyword">function</span>* <span class="title function_">genneratorFnB</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">yield</span>* [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="作为默认迭代器使用"><a class="markdownIt-Anchor" href="#作为默认迭代器使用"></a> ✅作为默认迭代器使用</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">list</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    * [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]()&#123;</span><br><span class="line">        <span class="keyword">yield</span>* <span class="variable language_">this</span>.<span class="property">list</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> f = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> val <span class="keyword">of</span> f)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="提前终止生成器"><a class="markdownIt-Anchor" href="#提前终止生成器"></a> 提前终止生成器</h4>
-<p><code>return() </code>强制生成器进入关闭状态</p>
-<img src="JS红宝书.assets/image-20230617170419253.png" alt="image-20230617170419253" style="zoom:50%;" />
-<p><code>throw()</code> 将一个错误注入到生成器中</p>
-<table>
-<thead>
-<tr>
-<th>如果生成器没处理这个错误，生成器会closed</th>
-<th>生成器内部处理了这个错误生成器就不会关闭，而且会恢复执行<br />（只是跳过了这个值）</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="JS红宝书.assets/image-20230617170721610.png" alt="image-20230617170721610" style="zoom:50%;" /></td>
-<td><img src="JS红宝书.assets/image-20230617171023335.png" alt="image-20230617171023335" style="zoom:50%;" /></td>
-</tr>
-</tbody>
-</table>
-<h2 id="第八章-对象-类与面向对象编程"><a class="markdownIt-Anchor" href="#第八章-对象-类与面向对象编程"></a> 第八章 对象、类与面向对象编程</h2>
-<h3 id="81-对象"><a class="markdownIt-Anchor" href="#81-对象"></a> 8.1 对象</h3>
-<h4 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h4>
-<p>​	构造函数、字面量形式</p>
-<h4 id="对象属性"><a class="markdownIt-Anchor" href="#对象属性"></a> 对象属性</h4>
-<h5 id="数据属性默认都为true"><a class="markdownIt-Anchor" href="#数据属性默认都为true"></a> 数据属性（默认都为true)</h5>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><code>Configurable</code></th>
-<th><span style="font-weight: normal;">属性可由delete删除</span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong><code>Enumerable</code></strong></td>
-<td>是否可由<code>for-in</code>枚举</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><code> Writable</code></strong></td>
-<td>是否可被修改</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><code> Value</code></strong></td>
-<td>包含实际值，默认undefined</td>
-</tr>
-</tbody>
-</table>
-<p>​	<strong>使用<code>Object.defineProperty</code>对对象属性属性修改（不配置值，默认为fasle）</strong></p>
-<img src="JS红宝书.assets/image-20230617174454670.png" alt="image-20230617174454670" style="zoom:50%;" />
-<p>(严格模式下： 尝试对configurable: false; witable: false；的值修改，会抛出错误。)</p>
-<p>不能对同一个属性，定义多次Object.defineProperty()</p>
-<h5 id="访问器属性"><a class="markdownIt-Anchor" href="#访问器属性"></a> 访问器属性</h5>
-<p><code>getter</code> <code> setter</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">        <span class="attr">_name</span>: <span class="string">&#x27;levy_init&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;尝试修改name&#x27;</span>)</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_name</span> = newVal</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;修改成功&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">        <span class="attr">_name</span>: <span class="string">&#x27;levyy&#x27;</span>,</span><br><span class="line">        <span class="keyword">get</span> <span class="title function_">name</span>() &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;尝试修改name&#x27;</span>)</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_name</span> = newVal</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;修改成功&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong><code>Object.defineProperties</code> 对一个对象的多个属性一次性进行描述符规定</strong></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">_name</span>: <span class="string">&#x27;levy&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperties</span>(obj, &#123;</span><br><span class="line">    <span class="attr">name</span>: &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">age</span>: &#123;</span><br><span class="line">        <span class="attr">value</span>: <span class="number">21</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="读取属性特性"><a class="markdownIt-Anchor" href="#读取属性特性"></a> 读取属性特性</h4>
-<p>​	读取对象某一个： <code>Object.getOwnProperty(obj, 'aProperty')</code></p>
-<p>​	读取对象全部属性的特性：<code>Object.getOwnProperties(obj)</code> //其实也是对每个属性调用了上面的方法，在一个新对象返回</p>
-<h4 id="合并对象混入"><a class="markdownIt-Anchor" href="#合并对象混入"></a> 合并对象（混入）</h4>
-<p><code>Object.assign()</code>浅复制，只复制可枚举(PropertyIsEnumerable)、自身(hasOwnPropery)属性</p>
-<p>不复制属性的getter setter</p>
-<blockquote>
-<p>没有回滚之前赋值的状态，尽力赋值</p>
-</blockquote>
-<h4 id="相等判断"><a class="markdownIt-Anchor" href="#相等判断"></a> 相等判断</h4>
-<p><code>Object.is()</code></p>
-<img src="JS红宝书.assets/image-20230617185929270.png" alt="image-20230617185929270" style="zoom:50%;float:left;" />
-<h4 id="增强语法"><a class="markdownIt-Anchor" href="#增强语法"></a> 增强语法</h4>
-<p>属性值简写、可计算属性、方法简写、对象解构</p>
-<h3 id="82-创建对象"><a class="markdownIt-Anchor" href="#82-创建对象"></a> 8.2 创建对象</h3>
-<blockquote>
-<p>ES6 Class Extends也是基于ES5原型链继承的语法糖</p>
-</blockquote>
-<h4 id="工厂模式"><a class="markdownIt-Anchor" href="#工厂模式"></a> 工厂模式</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createPerson</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> o = <span class="keyword">new</span> <span class="title class_">Object</span>() <span class="comment">//显式创建对象</span></span><br><span class="line">    o.<span class="property">name</span> = name</span><br><span class="line">    o.<span class="property">age</span> = age</span><br><span class="line">    o.<span class="property">sayName</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> o.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o <span class="comment">//return 对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="title function_">createPerson</span>(<span class="string">&#x27;小明&#x27;</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="构造函数模式"><a class="markdownIt-Anchor" href="#构造函数模式"></a> 构造函数模式</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">sayName</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;小红&#x27;</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>new操作符</p>
-<ol>
-<li>内存中创建一个新对象</li>
-<li>这个新对象的内部的[[Prototype]]属性赋值为构造函数的prototype属性</li>
-<li>构造函数内部的this被赋值为这个新对象（this指向新对象）</li>
-<li>执行构造函数内部代码（给新对象添加属性）</li>
-<li>如果构造函数返回<strong>非空对象</strong>，则返回该对象；否则，返回刚创建的对象</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">myNew</span> = (<span class="params">constructor, ...args</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> o = <span class="keyword">new</span> <span class="title class_">Object</span>()</span><br><span class="line">    o.<span class="property">__proto__</span> = constructor.<span class="property"><span class="keyword">prototype</span></span></span><br><span class="line">    <span class="keyword">const</span> res = constructor.<span class="title function_">apply</span>(o, args)</span><br><span class="line">    <span class="keyword">return</span> res <span class="keyword">instanceof</span> <span class="title class_">Object</span> ? res : o</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>​	构造函数如果不传参可以不用写括号</p>
-<h5 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h5>
-<p>​	不同实例上的方法不是同一个，方法都是做同样的事，没必要定义两个不同的Function实例。</p>
-<p>​	解决可以把方法定义在构造函数外部，构造函数内部方法直接引用</p>
-<h4 id="原型模式"><a class="markdownIt-Anchor" href="#原型模式"></a> 原型模式</h4>
-<p>在构造函数原型定义的属性方法可以被实例共享</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">name</span> = <span class="string">&#x27;小小&#x27;</span></span><br><span class="line">    <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayName</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">name</span>, p.<span class="property">sayName</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简化写法：</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;小小&#x27;</span>,</span><br><span class="line">    <span class="title function_">sayName</span>(<span class="params"></span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(<span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>, <span class="string">&#x27;constructor&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">value</span>: <span class="title class_">Person</span>,</span><br><span class="line">  <span class="attr">enumerable</span>: <span class="literal">false</span> <span class="comment">//原生constructor不可枚举，用这种方式定义</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><code>isPrototypeOf 检查原型</code> 原型链</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">isPrototypeOf</span>(p) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p><code>Object.getPrototypeOf()</code> 获取原型对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(p) === <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p><strong>更改原型对象</strong></p>
-<p>​	<code>Object.setPrototypeOf()</code> 影响性能</p>
-<p>​	<code>Object.create</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;a&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">setPrototypeOf</span>(a, b)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(a) === b) <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">__proto__</span> === b) <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="title class_">Object</span>.<span class="title function_">create</span>(a)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(c) === a)<span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="property">__proto__</span> === a)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>实例可以通过原型链查找属性</p>
-<p>确定属性在自身还是是原型链上的 <code>hasOwnProperty()</code></p>
-<p><code>in</code> 操作符是在自身以及原型链上查找</p>
-<p><code>Object.keys()</code> 遍历实例可枚举属性</p>
-<p><code>Object.getOwnPropertyNames()</code> 遍历实例无论是否可枚举属性（除了Symbol ）</p>
-<p><code>Object.getOwnPropertySymbols()</code></p>
-<p>遍历顺序</p>
-<p>for-in Object.keys() 无序</p>
-<h4 id="对象迭代"><a class="markdownIt-Anchor" href="#对象迭代"></a> 对象迭代</h4>
-<p><code>Object.values() </code> <code>Object.entries() </code></p>
-<p>浅复制对象、不迭代Symbol</p>
-<h3 id="83-继承"><a class="markdownIt-Anchor" href="#83-继承"></a> 8.3 继承</h3>
-<p><a href="https://juejin.cn/post/6844903696111763470">参考掘金</a></p>
-<h4 id="原型链继承"><a class="markdownIt-Anchor" href="#原型链继承"></a> 原型链继承</h4>
-<p>每个构造函数有一个<font color=red>原型</font>对象prototype， 这个<font color=red>原型</font>对象有个属性constructor指向构造函数本身。</p>
-<p>而这个构造函数实例有一个内部指针<code>__proto__</code>，指向这个<font color=red>原型</font></p>
-<p>那如果这个原型是另一个类型的实例，就意味着这和<font color=red>原型</font>本身有个指针指向<font color=blue>另一个原型</font>，相应另一个原型也有个指针指向另一个构造函数。</p>
-<p>这样形成了实例与原型之前的<strong>原型链</strong></p>
-<h4 id="盗用构造函数"><a class="markdownIt-Anchor" href="#盗用构造函数"></a> 盗用构造函数</h4>
-<h4 id="组合继承"><a class="markdownIt-Anchor" href="#组合继承"></a> 组合继承</h4>
-<h4 id="原型式继承"><a class="markdownIt-Anchor" href="#原型式继承"></a> 原型式继承</h4>
-<h4 id="寄生式继承"><a class="markdownIt-Anchor" href="#寄生式继承"></a> 寄生式继承</h4>
-<h4 id="寄生组合继承"><a class="markdownIt-Anchor" href="#寄生组合继承"></a> 寄生组合继承</h4>
-<p>寄生式继承父类原型，然后将返回的对象赋值给子类原型</p>
-<h4 id="混入式继承"><a class="markdownIt-Anchor" href="#混入式继承"></a> 混入式继承</h4>
-<h4 id="class-继承"><a class="markdownIt-Anchor" href="#class-继承"></a> Class 继承</h4>
-<h3 id="84-类"><a class="markdownIt-Anchor" href="#84-类"></a> 8.4 类</h3>
-<p>定义方式：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 类声明</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Foo</span>&#123;&#125;</span><br><span class="line"><span class="comment">// 类表达式</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Foo1</span> = <span class="keyword">class</span> <span class="title class_">FooName</span>&#123; <span class="comment">//表达式类名FooName可选</span></span><br><span class="line">        <span class="title function_">identify</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Foo1</span>.<span class="property">name</span> ,<span class="title class_">Foo2</span>.<span class="property">name</span>) <span class="comment">//name字段获取类名</span></span><br><span class="line">          	<span class="comment">// class后定义了类名就是指定类名FooName，否则类名就是Foo1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>类是一种特殊的函数<code>typeof</code>，但是并不会有作用域提升</p>
-<p>类声明受块级作用域影响，而函数生命则受函数作用域影响</p>
-<h4 id="constructor构造函数"><a class="markdownIt-Anchor" href="#constructor构造函数"></a> <code>constructor</code>构造函数</h4>
-<p>构造函数默认返回this，<strong>构造函数返回的对象用作实例化的对象</strong></p>
-<p>如果这个构造函数返回的不是this对象，而是其他对象，那么通过<code>instanceof</code>操作符不会检测出这个对象与这个类有关。</p>
-<blockquote>
-<p>因为在<code>new</code>操作时，会自动绑定this，如果</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">override</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">foo</span> = <span class="string">&#x27;foo&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> (override) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> foo1 = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo1 <span class="keyword">instanceof</span> <span class="title class_">Foo</span>) <span class="comment">// true</span></span><br><span class="line"><span class="keyword">const</span> foo2 = <span class="keyword">new</span> <span class="title class_">Foo</span>(<span class="literal">true</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo2 <span class="keyword">instanceof</span> <span class="title class_">Foo</span>)<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<p>类中定义的方法成为原型方法</p>
-<p><strong><em>类块</em>中定义的方法都会定义在类的原型上</strong></p>
-<p>静态类方法</p>
-<p>迭代器、生成器</p>
-<h4 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h4>
-<p><code>extends</code> 继承一个类或者一个普通的构造函数</p>
-<p>super只能在<strong>派生类构造函数和静态方法</strong>中使用</p>
-<p>调用super()函数会调用父类构造函数，并将返回的实例赋值给this</p>
-<p>给父类传参，super()手动传参</p>
-<p>在类构造函数中不能在super()之前调用this</p>
-<p>在派生类中显示定义了构造函数，必须要调用super或者返回一个对象</p>
-<h4 id="抽象基类"><a class="markdownIt-Anchor" href="#抽象基类"></a> 抽象基类</h4>
-<p>供其它类继承，却不被实例化</p>
-<p>利用new.target实现</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">new</span>.<span class="property">target</span>) <span class="comment">//返回Foo类</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">new</span>.<span class="property">target</span> === <span class="title class_">Foo</span>)&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Foo 不能直接被实例化&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> f = <span class="keyword">new</span> <span class="title class_">Foo</span>() <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
-<h2 id="第九章-代理与反射"><a class="markdownIt-Anchor" href="#第九章-代理与反射"></a> 第九章 代理与反射</h2>
-<h3 id="91-代理"><a class="markdownIt-Anchor" href="#91-代理"></a> 9.1 代理</h3>
-<p>用作目标对象的替身，但独立于对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Proxy</span>(target, handlerObj) <span class="comment">//参数两者缺一不可</span></span><br></pre></td></tr></table></figure>
-<p><code>Proxy.proptotype</code> 为undefined，所以不能使用<code>instanceof</code>操作符</p>
-<p><code>===</code>严格相等可以用来区分代理和目标</p>
-<h4 id="捕获器"><a class="markdownIt-Anchor" href="#捕获器"></a> 捕获器</h4>
-<p><code>get</code></p>
-<p>​	接受参数（目标对象，要查询的属性，代理对象)</p>
-<p>重建被捕获的原始行为：</p>
-<p>使用捕获器，被代理的属性如果同时not Configurable and not Writable，则TypeError报错</p>
-<blockquote>
-<p>反射API Reflect</p>
-<p>delete函数属性—&gt;Refelect.deleteProperty</p>
-<p>name in obj —&gt; Reflect.has(obj, ‘name’)</p>
-</blockquote>
-<p>可撤销代理</p>
-<p><strong>撤销函数</strong>和<strong>代理对象</strong>是同时在实例化时生成的</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构 代理对象和撤回函数</span></span><br><span class="line"><span class="keyword">const</span> &#123; proxy, revoke &#125; =<span class="title class_">Proxy</span>.<span class="title function_">revocable</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;1234&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy.<span class="property">foo</span>)<span class="comment">//1234</span></span><br><span class="line"><span class="title function_">revoke</span>() <span class="comment">//撤销代理</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy)<span class="comment">//error</span></span><br></pre></td></tr></table></figure>
-<h4 id="实用反射reflect-api"><a class="markdownIt-Anchor" href="#实用反射reflect-api"></a> 实用反射Reflect API</h4>
-<p>反射API不局限于捕获程序处理</p>
-<p>代替Object上的方法（错误必须try catch捕获 到 反射API返回布尔值）</p>
-<blockquote>
-<p>反射方法return 的值称为“状态标记”的布尔值</p>
-</blockquote>
-<p>代替一些操作符</p>
-<table>
-<thead>
-<tr>
-<th>Reflect.</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>get</td>
-<td>in</td>
-</tr>
-<tr>
-<td>set</td>
-<td>= 赋值操作符</td>
-</tr>
-<tr>
-<td>has</td>
-<td>in 或者 with()</td>
-</tr>
-<tr>
-<td>deleteProperty</td>
-<td>delete</td>
-</tr>
-<tr>
-<td>Construct</td>
-<td>new</td>
-</tr>
-</tbody>
-</table>
-<p>使用<code>Reflect.apply</code>调用函数(被调用函数，this指向，[实参…])</p>
-<h4 id="构建多层拦截网"><a class="markdownIt-Anchor" href="#构建多层拦截网"></a> 构建多层拦截网</h4>
-<p>​	代理另一个代理</p>
-<h4 id="代理模式"><a class="markdownIt-Anchor" href="#代理模式"></a> 代理模式</h4>
-<p>一种编程模式</p>
-<h5 id="跟踪属性访问"><a class="markdownIt-Anchor" href="#跟踪属性访问"></a> 跟踪属性访问</h5>
-<h5 id="隐藏属性"><a class="markdownIt-Anchor" href="#隐藏属性"></a> 隐藏属性</h5>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> hiddenProperties = [<span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;sex&#x27;</span>]</span><br><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(person, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params">TrapTarget, property</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(hiddenProperties.<span class="title function_">includes</span>(property))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">has</span>(<span class="params">target, property</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(hiddenProperties.<span class="title function_">includes</span>(property))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy.<span class="property">name</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy.<span class="property">age</span>) <span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> proxy) <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sex&#x27;</span> <span class="keyword">in</span> proxy)<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<h5 id="属性验证"><a class="markdownIt-Anchor" href="#属性验证"></a> 属性验证</h5>
-<p>​	赋值操作触发<code>set</code>，根据情况决定赋值</p>
-<h5 id="函数与构造函数参数验证"><a class="markdownIt-Anchor" href="#函数与构造函数参数验证"></a> 函数与构造函数参数验证</h5>
-<h5 id="数据绑定和可观察对象"><a class="markdownIt-Anchor" href="#数据绑定和可观察对象"></a> 数据绑定和可观察对象</h5>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1662,6 +1117,551 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
+    <title>js红宝书</title>
+    <url>/posts/js%E7%BA%A2%E5%AE%9D%E4%B9%A6/</url>
+    <content><![CDATA[<h3 id="script标签"><a class="markdownIt-Anchor" href="#script标签"></a> <code>&lt;script&gt;</code>标签</h3>
+<ul>
+<li>
+<p>一些属性</p>
+<ul>
+<li>defer 推迟</li>
+<li>async 异步  期间不要动DOM</li>
+<li>intergrity 检查安全</li>
+</ul>
+</li>
+<li>
+<p>src GET 跨域</p>
+</li>
+<li>
+<p>引入外部文件文件，行内代码写了没用</p>
+</li>
+</ul>
+<blockquote>
+<p>MIME 代码块中的脚本语言内容类型</p>
+</blockquote>
+<ul>
+<li><code>&lt;noscript&gt;&lt;/noscript&gt;</code></li>
+</ul>
+<h3 id="严格模式es5增加"><a class="markdownIt-Anchor" href="#严格模式es5增加"></a> 严格模式（ES5增加）</h3>
+<p>遵守的是es3的语法</p>
+<p>开启严格模式，脚本开头写上<code>&quot;use strict&quot;;</code> ，也可写在函数内部开头，单独开启严格模式</p>
+<h3 id="变量"><a class="markdownIt-Anchor" href="#变量"></a> 变量</h3>
+<p>​	<code>var</code>变量提升hoist ，函数作用域,全局声明成为window对象属性</p>
+<p>​	<code>let</code>，块级作用域，暂存性死区（temporal dead zone)</p>
+<p>​	<code>let</code>和<code>var</code> 只是指出变量在相关作用域如何让存在</p>
+<p>​	<code>const</code> 适用于for-in(对象属性名)、for-of（数组）</p>
+<h5 id="声明风格"><a class="markdownIt-Anchor" href="#声明风格"></a> 声明风格</h5>
+<p>​		不使用<code>var</code>，<code> const</code>优先，<code>let</code>次之</p>
+<h3 id="34-数据类型"><a class="markdownIt-Anchor" href="#34-数据类型"></a> 3.4 数据类型</h3>
+<p>​	<strong>Undefined、Null、Boolean、Number、String、Symbol、Object</strong></p>
+<p>​	<strong>typeof 操作符</strong></p>
+<p>​		typeof null =&gt; onject (null被认为是空对象的引用)</p>
+<p>​	<strong>Number</strong><br />
+​		八进制: 0111 在严格模式下报错、0o111可以</p>
+<p>​		<code>1.</code> 和 1.0 为整数，1.1、1.2浮点数</p>
+<p>​		ES会将小数点后至少包括<u>6个0</u>的浮点值转换成科学计数法</p>
+<p>​	<strong>String</strong></p>
+<p>​		ECMAScript中的字符串是<strong>不可变的immutable</strong></p>
+<p>​		<code>toString</code>  返回自身的一个副本</p>
+<p>​			除了<font color=red><code>null</code></font> 和<font color=red> <code>undefined</code></font>都有<code>toString</code>方法。对于数值类型可以传参(转换<u>进制数</u>)</p>
+<p>​		对于变量未知类型的，转为字符串，利用**<code>String()</code>转型函数**</p>
+<p>​		<strong>模板字面量 ``</strong></p>
+<p>​			保留换行字符，跨行定义字符串</p>
+<p>​			字符串插值 ``${js表达式}` ，调用了toString方法强制转换为字符串</p>
+<p>​			标签函数<code>(模板字面量隔开形成的字符串数组，...模板字面量的值)</code></p>
+<p>​			原始字符串<code>String.raw</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`\u00A9`</span>) <span class="comment">//© (输出转义后的符号</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>.<span class="property">raw</span><span class="string">`\u00A9`</span>) <span class="comment">//\u00A9 (输出原始的字符串</span></span><br></pre></td></tr></table></figure>
+<p>​		<strong>Symbol</strong></p>
+<p>​			在编程中一个幂等操作的特点是其任意多次执行所产生的影响均与一次执行的影响相同</p>
+<p>​			全局符号：</p>
+<p>​				symbol.for()执行幂等操作，第一次操作会检查全局运行时注册表，是否存在对应的symbol.for()</p>
+<p>​				查询全局注册表<code>Symbol.keyFor(参数)</code>  (参数必须为symbol类型，否则抛出typeError)</p>
+<p>​					查询成功返回symbol值，否则返回undefined</p>
+<p>​			作为对象<code>[属性]</code>使用</p>
+<p>​				defineProperty添加symbol类的值作为属性（在node下不能）</p>
+<p>​			内置符号（不可写，不可枚举，不可配置）</p>
+<p>​				<code>Symbol.iterator</code> for-of循环会使用这个属性</p>
+<p>​				<code>Symbol.asyncIterator</code> for-await-of使用，异步迭代器</p>
+<p>​				<code>Symbol.hasInstance</code>定义在Function的原型身上</p>
+<p>​				<code>Symbol.isConcatSpreadable</code>（默认值undefined） <strong>控制Array.prorotype.concat是否“打平”连接</strong></p>
+<p>​					对于数组对象(默认打平），设置为falsely变量，不会打平连接，会让整个对象追加到数组末尾</p>
+<p>​					对于类数组对象（默认不打平），设置为truely变变量，会打平连接，到数组实例</p>
+<p>​			<strong>Object</strong></p>
+<p>​				ECMAScript只要求给构造函数提供参数时使用括号</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span> <span class="comment">//合法，但不推荐</span></span><br></pre></td></tr></table></figure>
+<p>​				<code>hasOwnProperty</code></p>
+<p>​				<code>valueof()</code> 定义在对象里的方法。 return的值，</p>
+<p>​						显示获取：<code>obj.valueOf()</code></p>
+<p>​						隐式获取：<code>++obj </code> 对obj进行<strong>数学运算</strong>，直接调用的<code>valueOf()</code>方法</p>
+<h3 id="35-操作符"><a class="markdownIt-Anchor" href="#35-操作符"></a> 3.5 操作符</h3>
+<p>​	一元操作符</p>
+<p>​		自增、自减、+、-</p>
+<p>​			<code>+</code> 拼接字符串，<code>-</code> 先<code>Number()</code>转换，在减法操作</p>
+<p>​	位操作符</p>
+<p>​		ECMAScript 数值 以IEEE 745 64位格式存储</p>
+<p>​		位操作，将值转为32位整数，再进行操作，最后再把结果转为64位</p>
+<p>········</p>
+<h3 id="36-语句"><a class="markdownIt-Anchor" href="#36-语句"></a> 3.6 语句</h3>
+<p>​	<code>for-in</code> 严格迭代语句，遍历对象的<u>可枚举</u><u>非symbol类型</u>属性</p>
+<p>​	<code>for-of</code> 严格迭代语句，遍历可迭代对象</p>
+<p>​	标签语句 配合continue和break使用</p>
+<p>​	<code>with</code>语句，将代码的作用域设定为特殊的对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a = process.<span class="property">pid</span></span><br><span class="line"><span class="keyword">const</span> b = process.<span class="property">ppid</span></span><br><span class="line"><span class="keyword">const</span> c = process.<span class="property">title</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c)</span><br><span class="line"></span><br><span class="line"><span class="title function_">with</span>(<span class="params">process</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(pid, ppid, title)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//严格模式不支持with，影响性能，难于调试，不推荐使用</span></span><br></pre></td></tr></table></figure>
+<p>​	switch 全等操作符，不会强制转换类型</p>
+<h2 id="第四章-变量-作用域与内存"><a class="markdownIt-Anchor" href="#第四章-变量-作用域与内存"></a> 第四章 变量、作用域与内存</h2>
+<h3 id="41-原始值与引用值"><a class="markdownIt-Anchor" href="#41-原始值与引用值"></a> 4.1 原始值与引用值</h3>
+<p>​	原始值（基础数据类型值）</p>
+<p>​	引用值，保存在内存中的对象</p>
+<p>​	ECMAScript函数参数传递是<strong>按值传递</strong>，（传递的是值的副本而非值本身）</p>
+<p>​	确定类型：</p>
+<p>​		<strong><code>instanceof</code></strong> <strong>运算符</strong>用于检测构造函数的 <code>prototype</code> 属性是否出现在某个实例对象的原型链上</p>
+<p>​		<code>typeof</code>…etc</p>
+<h3 id="42-执行上下文与作用域"><a class="markdownIt-Anchor" href="#42-执行上下文与作用域"></a> 4.2 执行上下文与作用域</h3>
+<p>​	<code>var</code>的函数作用域声明：变量会添加到<strong>最近的上下文</strong>，<em>作用域提升</em></p>
+<p>​	<code>with</code>语句中var声明的变量为在<strong>全局</strong>作用域中</p>
+<p>​	<code>let</code>、<code>const</code>  {}块级作用域</p>
+<blockquote>
+<p>使用<code>const</code>变量有助于JS引擎(谷歌V8引擎)优化，<strong>编译时</strong>就将所有实例替换成<strong>实际的值</strong>，而不会通过查询表进行变量查找</p>
+</blockquote>
+<p>​	标识符查找：沿作用域链查找</p>
+<h3 id="43-垃圾回收️"><a class="markdownIt-Anchor" href="#43-垃圾回收️"></a> 4.3 垃圾回收♻️</h3>
+<p>​	基本思路：确定那个变量不会再使用，然后释放他占用的空间。（<strong>周期性自动运行</strong>）</p>
+<p>​	主要标记策略</p>
+<p>​		<strong>标记清理</strong>：</p>
+<p>​			标记内存中的所有变量 ➡️ 去掉上下文或者上下文引用的变量的标记 ➡️ （这时候再被加上标记的变量就是待删除的了，任何上下文的变量都访问不到它们了）回收</p>
+<pre><code>	**引用计数**(❗️导致循环引用)
+</code></pre>
+<p>​			变量声明并赋引用值，引用数为1；</p>
+<p>​			如果同一个值又被赋值给另一个，引用数+1；</p>
+<p>​			该引用值被其他值覆盖，则引用数-1。</p>
+<p>​			当引用值为0时，就会被垃圾回收</p>
+<p>​	将变量设为<code>null</code>，切断变量与其之前引用值之间的关系。</p>
+<p>​	<strong>性能</strong>：</p>
+<p>​		现代垃圾回收程序根据<strong>运行时的环境</strong>来决定何时运行（以前IE是达到设定的阈值，就执行回收）</p>
+<p>​		也有浏览器提供方法可以<u>主动触发垃圾回收</u>（❌）</p>
+<p>​		提升性能：</p>
+<p>​			使用<code>const let</code>声明变量：相对于函数作用域的<code>var</code>，块级作用域<strong>可能</strong>会更早终止，会让垃圾回收程序接介入，尽早回收内存</p>
+<p>​			隐藏类和删除操作<code>delete</code></p>
+<p>​				V8引擎将JS<strong>代码</strong>编译成实际的<strong>机器码</strong>会利用”隐藏类”，<strong style="color:red">能够共享隐藏类的对象性能更高</strong></p>
+<p>​					<strong>动态<font color=blue>添加、删除</font>属性导致不共享一个隐藏类</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = <span class="string">&#x27;iam foo&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 两个实例共用一个相同的隐藏类，因为两个实例共享一个共同的构造函数</span></span><br><span class="line"><span class="keyword">let</span> f1 = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"><span class="keyword">let</span> f2 = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//‼️但是如此修改（这种操作的频率和隐藏类的大小对性能产生明显影响</span></span><br><span class="line">f2.<span class="property">name</span> = <span class="string">&#x27;iamf2&#x27;</span><span class="comment">//Foo实例对应两个 不同 的隐藏类。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//✅解决方案： 先创建再补充</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params">name</span>)&#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这样对应相同的隐藏类</span></span><br><span class="line"><span class="keyword">let</span> f1 = <span class="keyword">new</span> <span class="title class_">Foo</span>(<span class="string">&#x27;iamf1&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> f2 = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//‼️但是，使用delete关键字动态删除属性导致，不再共享一个隐藏类</span></span><br><span class="line"><span class="keyword">delete</span> f1.<span class="property">name</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//✅解决方案 把不想要的属性设置为null</span></span><br><span class="line">f1.<span class="property">name</span> = <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<p>​		内存泄漏</p>
+<p>​			意外声明全局变量</p>
+<p>​			定时器回调引用外部变量</p>
+<p>​			使用闭包</p>
+<p>​		<strong>静态分配与对象池</strong></p>
+<h2 id="第五章-基本引用类型"><a class="markdownIt-Anchor" href="#第五章-基本引用类型"></a> 第五章 基本引用类型</h2>
+<h3 id="51-date"><a class="markdownIt-Anchor" href="#51-date"></a> 5.1 Date</h3>
+<blockquote>
+<p>UTC 协调世界时 GMT格林威治平时</p>
+</blockquote>
+<p>​</p>
+<p>​	<code>Date.parse(创建的是本地日期)</code>  <code>Date.UTC(创建的是GMT日期)</code>  将一个表示日期的字符串解析为对应的时间戳（毫秒数）</p>
+<p>​	new Date(传入时间字符串) ，根据字符串格式隐式调用上面两个构造函数</p>
+<p>​	Date类重写了toLocaleString toString valueOf(返回时间戳)</p>
+<h3 id="52-正则"><a class="markdownIt-Anchor" href="#52-正则"></a> ❓5.2 正则</h3>
+<h3 id="53-原始值包装类型"><a class="markdownIt-Anchor" href="#53-原始值包装类型"></a> 5.3 原始值包装类型</h3>
+<blockquote>
+<p>ECMAScript提供了3种特殊的引用类型，<code>Boolean</code> <code>String</code> <code>Number</code></p>
+</blockquote>
+<p>​	正常来说原始值本身不是对象，按逻辑上不应该有方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s1 = <span class="string">&#x27;some text&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(s1.<span class="title function_">substring</span>(<span class="number">2</span>)) <span class="comment">//me text</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>包装类型让原始值拥有对象行为</p>
+<p>​	创建一个String类型实例</p>
+<p>​	调用实例上的方法</p>
+<p>​	销毁实例</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 显示创建原始值包装类型(不推荐)</span></span><br><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&#x27;i am a string&#x27;</span>)<span class="comment">//构造函数</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> s) <span class="comment">//object</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> s = <span class="string">&#x27;i am a string&#x27;</span> </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> s) <span class="comment">//string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> s = <span class="title class_">String</span>(<span class="string">&#x27;i am a string&#x27;</span>) <span class="comment">//转型函数</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> s) <span class="comment">//string</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// object工厂方法创建</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> os = <span class="keyword">new</span> <span class="title class_">Object</span>(<span class="string">&#x27;i am a string&#x27;</span>)</span><br><span class="line"><span class="comment">// 创建的是一个String实例</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> os, os <span class="keyword">instanceof</span> <span class="title class_">String</span>)<span class="comment">// object true</span></span><br></pre></td></tr></table></figure>
+<h4 id="number"><a class="markdownIt-Anchor" href="#number"></a> number</h4>
+<p>​		toFixed方法，返回的字符串保留几位小数（0~20位+，超过，四舍五入）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="number">10</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toFixed</span>(<span class="number">2</span>))<span class="comment">//10.00</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(<span class="number">10.005</span>).<span class="title function_">toFixed</span>(<span class="number">2</span>))<span class="comment">//10.01</span></span><br></pre></td></tr></table></figure>
+<p>​	toPrecision返回最合理的数值(1-21小数位)</p>
+<h4 id="string"><a class="markdownIt-Anchor" href="#string"></a> String</h4>
+<p>​	JS 一个字符16位</p>
+<p>​	与模式匹配相关的方法: match search replace split</p>
+<h3 id="54-单例内置对象"><a class="markdownIt-Anchor" href="#54-单例内置对象"></a> 5.4 单例内置对象</h3>
+<h4 id="global"><a class="markdownIt-Anchor" href="#global"></a> Global</h4>
+<p>​	eval函数（⛔️XSS攻击）</p>
+<p>​		这个函数就是个完整的ECMAScript解释器</p>
+<p>​		定义在eval函数中的变量和函数，不存在函数提升</p>
+<p>​		开启严格模式够，外部访问不到eval函数里的数据</p>
+<h3 id="math"><a class="markdownIt-Anchor" href="#math"></a> Math</h3>
+<h2 id="第六章-集合引用类型"><a class="markdownIt-Anchor" href="#第六章-集合引用类型"></a> 第六章 集合引用类型</h2>
+<h3 id="61-object"><a class="markdownIt-Anchor" href="#61-object"></a> 6.1 Object</h3>
+<p>​	字面量{}形式创建一个对象，并不会new Object()</p>
+<h3 id="62-array"><a class="markdownIt-Anchor" href="#62-array"></a> 6.2 Array</h3>
+<p>​	字面量[]形式创建一个数组，也不会new Array()</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">20</span>) <span class="comment">//定义数组长度为20</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Array.from()</td>
+<td>将<strong>伪数组</strong>转为真数组</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">Array.of()</td>
+<td>将一系列参数转为数组</td>
+<td><code>Array.of( 1, 2, 3)</code> ➡️ [1, 2, 3]</td>
+</tr>
+</tbody>
+</table>
+<h4 id="数组空位"><a class="markdownIt-Anchor" href="#数组空位"></a> 数组空位</h4>
+<p>​		字面量一串<strong>逗号形式</strong>创建空位</p>
+<p>​			<img src="JS红宝书.assets/image-20230616144658231.png" alt="image-20230616144658231" style="zoom:50%;" /></p>
+<p>​		ES6新增的方法和迭代器，将空位当成存在的元素，值为<code>undefined</code></p>
+<p>​			<img src="JS红宝书.assets/image-20230616145322099.png" alt="image-20230616145322099" style="zoom:50%;" /></p>
+<p>​		ES6之前的方法， 忽略空位（具体的行为因方法而异）</p>
+<p>​			<code>map</code>跳过空位，<code>join</code>将空位视为空字符串</p>
+<p>​		<img src="JS红宝书.assets/image-20230616145451935.png" alt="image-20230616145451935" style="zoom:50%;" /></p>
+<h4 id="数组索引"><a class="markdownIt-Anchor" href="#数组索引"></a> 数组索引</h4>
+<p>​		<font color=red>数组的length不是只读的</font>，利用这个特性删除数组末尾元素（当然也可添加数组空位）</p>
+<p>​		<img src="JS红宝书.assets/image-20230616145938663.png" alt="image-20230616145938663" style="zoom:50%;" /></p>
+<h4 id="检测数组"><a class="markdownIt-Anchor" href="#检测数组"></a> 检测数组</h4>
+<p>​		在一个全局上下文中，使用<code>instanceof</code>。</p>
+<blockquote>
+<p>多个 iframe多个全局上下文。然后每个里面都有 Array 这个对象。他们并不相等。</p>
+<p>本质来讲 <code>instanceof</code> 是去找 prototype 之类的，看看是否有继承。</p>
+</blockquote>
+<p>​		<strong><code>Array.isArray()</code></strong></p>
+<h4 id="迭代器方法"><a class="markdownIt-Anchor" href="#迭代器方法"></a> 迭代器方法</h4>
+<p>​		<code>arr.keys()</code> 返回数组索引的迭代器</p>
+<p>​		<code>values() </code>返回数组元素的迭代器</p>
+<p>​		<code>entries()</code> 返回 索引/值 对的迭代器</p>
+<p>​	<em><strong><u>alert期待字符串</u></strong></em></p>
+<h4 id="排序方法"><a class="markdownIt-Anchor" href="#排序方法"></a> <strong>排序方法</strong></h4>
+<p>​		<code>sort</code> ，事先对数组中的没项元素都使用的<code>String转型函数</code></p>
+<p>​			升序：compare(val1, val2) val1 &gt; val2 return 1</p>
+<p>​			降序：compare(val1, val2) val1 &gt; val2 return -1</p>
+<h4 id="操作方法"><a class="markdownIt-Anchor" href="#操作方法"></a> 操作方法</h4>
+<p>​	<code>concat</code> <code>splice</code></p>
+<h4 id="搜索方法"><a class="markdownIt-Anchor" href="#搜索方法"></a> 搜索方法</h4>
+<p>​	<code>indexof</code> <code>lastIndexOf</code> <code>includes</code></p>
+<p>​	<code>find</code> <code>findIndex</code></p>
+<h4 id="迭代方法"><a class="markdownIt-Anchor" href="#迭代方法"></a> 迭代方法</h4>
+<p>​	<code>every</code> <code>some</code></p>
+<p>​	<code>filter</code> <code>map</code> <code>forEach</code></p>
+<h4 id="归并方法"><a class="markdownIt-Anchor" href="#归并方法"></a> 归并方法</h4>
+<p><code>reduce</code> <code>reduceRight</code></p>
+<h3 id="63-定型数组"><a class="markdownIt-Anchor" href="#63-定型数组"></a> 6.3 定型数组</h3>
+<h3 id="64-map-set"><a class="markdownIt-Anchor" href="#64-map-set"></a> 6.4 Map Set</h3>
+<p>​	定义时都接受一个可迭代对象初始化映射</p>
+<p>​	使用<code>forEach</code>，<code>for-of</code>迭代值</p>
+<h3 id="65-weakmap-weakset"><a class="markdownIt-Anchor" href="#65-weakmap-weakset"></a> 6.5 weakMap weakSet</h3>
+<blockquote>
+<p>​	weakMap存储键值对的<strong>键</strong>必须为引用类型数据</p>
+</blockquote>
+<p>如果键的指向为空，自动称为垃圾回收的目标</p>
+<p>weakMap实现真正的私有变量</p>
+<p>都不可迭代值</p>
+<h3 id="68-迭代与扩展操作"><a class="markdownIt-Anchor" href="#68-迭代与扩展操作"></a> 6.8 迭代与扩展操作</h3>
+<p>​	定义的默认迭代器（<code>Array</code> <code>定型数组</code> <code>Map</code> <code>Set</code>）</p>
+<p>​	支持for-of顺序迭代、兼容扩展操作符</p>
+<blockquote>
+<p>浅复制：只会复制对象的引用</p>
+</blockquote>
+<h2 id="第七章-迭代器与生成器"><a class="markdownIt-Anchor" href="#第七章-迭代器与生成器"></a> 第七章 迭代器与生成器</h2>
+<p>​	迭代：按顺序反复执行一段程序</p>
+<p>​	循环是迭代的基础</p>
+<h3 id="迭代器模式"><a class="markdownIt-Anchor" href="#迭代器模式"></a> 迭代器模式</h3>
+<p>​	开发者无需知道如何迭代就能实现迭代操作</p>
+<p>​	实现可迭代iterable接口的对象，都能被事件iterator接口的结构消费</p>
+<p>​	<strong>内置iterable接口的类型：<code>Stirng</code> <code>Array </code> <code>Map</code> <code>Set</code> <code>arguments对象</code> <code>NodeList等DOM集合类型</code></strong></p>
+<p>​	<strong>接受可迭代对象的原生语言特性</strong></p>
+<p>​		<code>for-of </code> <code>数组解构</code> <code>扩展操作符</code></p>
+<p>​		<code>Array.from</code> <code>new Set/Map</code></p>
+<p>​		<code>Promise.all / race</code> <code>yeild*操作符</code></p>
+<p><em>给对象添加可迭代的iterable接口，</em></p>
+  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">list</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],</span><br><span class="line">    [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]() &#123;</span><br><span class="line">        <span class="keyword">let</span> count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">const</span> &#123; length &#125; = <span class="variable language_">this</span>.<span class="property">list</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">next</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123; <span class="attr">done</span>: count === length ? <span class="literal">true</span> : <span class="literal">false</span>, <span class="attr">value</span>: <span class="variable language_">this</span>.<span class="property">list</span>[count++] &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">          	<span class="comment">//提前终止，调用return方法</span></span><br><span class="line">          	<span class="keyword">return</span>() &#123;</span><br><span class="line">            	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Exiting Early!&#x27;</span>)</span><br><span class="line">           	 	<span class="keyword">return</span> &#123; <span class="attr">done</span>: <span class="literal">true</span> &#125;</span><br><span class="line">         	 	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接收迭代器实例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> iter = obj[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(iter.<span class="title function_">next</span>()) <span class="comment">//调用next方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(iter.<span class="title function_">next</span>())</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不同迭代器实例之间没有联系</p>
+<p>迭代器不与对象某时刻的快照绑定，也可根据实际情况动态变化</p>
+<p>迭代器维护一个指向可迭代对象的引用，⛔️<strong>阻止</strong>垃圾回收可迭代对象</p>
+</blockquote>
+<h4 id="提前终止迭代器"><a class="markdownIt-Anchor" href="#提前终止迭代器"></a> <strong>提前终止迭代器</strong></h4>
+<p>​	如上<code>return</code>方法指定迭代器提前关闭时执行的逻辑</p>
+<p>​		<strong>for-of 循环 在 break continue return throw时，触发提前终止逻辑</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> val <span class="keyword">of</span> obj)&#123;</span><br><span class="line">    <span class="keyword">if</span>(val === <span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(val)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// Exiting Early!</span></span><br></pre></td></tr></table></figure>
+<p>​		 <strong>解构操作并未消费所有的值时</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> [item1, item2] = obj</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(item1, item2)</span><br><span class="line"><span class="comment">// Exiting Early!</span></span><br><span class="line"><span class="comment">// 1 2</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果迭代器没有关闭，可以从上次离开的地方继续迭代（数组的迭代器不能关闭）</p>
+<p>return() 方法是可选的</p>
+<p>仅仅给一个不可关闭的迭代器器增加一个return方法并不能让他关闭。调用return方法并不会强制迭代器进入关闭状态。</p>
+</blockquote>
+<h3 id="生成器模式"><a class="markdownIt-Anchor" href="#生成器模式"></a> 生成器模式</h3>
+<blockquote>
+<p>临时的可迭代对象称为生成器</p>
+</blockquote>
+<p>​	生成器拥有在<u>函数块</u>内<strong>暂停</strong>和<strong>恢复代码</strong>执行的能力 <font color=gray>可以用于自定义迭代器和实现协程</font></p>
+<h4 id="定义生成器"><a class="markdownIt-Anchor" href="#定义生成器"></a> 💬定义生成器</h4>
+<p>​	函数名前加『 *』，箭头函数不可用于定义生成器函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> * <span class="title function_">generatorFn</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="comment">//函数表达式方式 对象方法 类方法 类静态方法。。。</span></span><br></pre></td></tr></table></figure>
+<p>​	调用生成器函数产生生成器对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> g = <span class="title function_">generatorFn</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g)<span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<div style="text-align:center; padding: 0 100px; overflow: hidden;">
+  <div style="float: left; font-weight: bold;">开始暂时处于暂停执行状态，生成器对象也实现了iterator接口，具有next方法</div>
+  <img src="JS红宝书.assets/image-20230617162726562.png" alt="image-20230617162726562" style="zoom:50%; display:block; float: right;" />
+</div>
+<p>初次调用next()方法指明开始调用生成器</p>
+<p>value属性是生成器返回值，默认undefined</p>
+<h4 id="yeild中断执行"><a class="markdownIt-Anchor" href="#yeild中断执行"></a> 🛑yeild中断执行</h4>
+<p>yeild关键字只能在生成器函数中使用</p>
+<h4 id="作为可迭代对象使用"><a class="markdownIt-Anchor" href="#作为可迭代对象使用"></a> 作为可迭代对象使用</h4>
+<p>生成器显示调用next方法用处不大。</p>
+<p>将生成器对象作为可迭代对象使用</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> *<span class="title function_">genneratorFn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> val <span class="keyword">of</span> <span class="title function_">genneratorFn</span>())&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="yeild实现输入输出"><a class="markdownIt-Anchor" href="#yeild实现输入输出"></a> yeild实现输入输出</h4>
+<p>yeild产出的值传给g.next()</p>
+<p>g.next()传入的参数，作为是yeild的返回值</p>
+<h4 id="产生可迭代对象"><a class="markdownIt-Anchor" href="#产生可迭代对象"></a> 产生可迭代对象</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">yeild *[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<p>yeild* 其实也就是将可迭代对象序列化为一串可以单独产出的值</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">genneratorFnA</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> val <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])&#123;</span><br><span class="line">        <span class="keyword">yield</span> val</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 等价！！！</span></span><br><span class="line"><span class="keyword">function</span>* <span class="title function_">genneratorFnB</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">yield</span>* [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="作为默认迭代器使用"><a class="markdownIt-Anchor" href="#作为默认迭代器使用"></a> ✅作为默认迭代器使用</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">list</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    * [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]()&#123;</span><br><span class="line">        <span class="keyword">yield</span>* <span class="variable language_">this</span>.<span class="property">list</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> f = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> val <span class="keyword">of</span> f)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="提前终止生成器"><a class="markdownIt-Anchor" href="#提前终止生成器"></a> 提前终止生成器</h4>
+<p><code>return() </code>强制生成器进入关闭状态</p>
+<img src="JS红宝书.assets/image-20230617170419253.png" alt="image-20230617170419253" style="zoom:50%;" />
+<p><code>throw()</code> 将一个错误注入到生成器中</p>
+<table>
+<thead>
+<tr>
+<th>如果生成器没处理这个错误，生成器会closed</th>
+<th>生成器内部处理了这个错误生成器就不会关闭，而且会恢复执行<br />（只是跳过了这个值）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="JS红宝书.assets/image-20230617170721610.png" alt="image-20230617170721610" style="zoom:50%;" /></td>
+<td><img src="JS红宝书.assets/image-20230617171023335.png" alt="image-20230617171023335" style="zoom:50%;" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="第八章-对象-类与面向对象编程"><a class="markdownIt-Anchor" href="#第八章-对象-类与面向对象编程"></a> 第八章 对象、类与面向对象编程</h2>
+<h3 id="81-对象"><a class="markdownIt-Anchor" href="#81-对象"></a> 8.1 对象</h3>
+<h4 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h4>
+<p>​	构造函数、字面量形式</p>
+<h4 id="对象属性"><a class="markdownIt-Anchor" href="#对象属性"></a> 对象属性</h4>
+<h5 id="数据属性默认都为true"><a class="markdownIt-Anchor" href="#数据属性默认都为true"></a> 数据属性（默认都为true)</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><code>Configurable</code></th>
+<th><span style="font-weight: normal;">属性可由delete删除</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong><code>Enumerable</code></strong></td>
+<td>是否可由<code>for-in</code>枚举</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code> Writable</code></strong></td>
+<td>是否可被修改</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code> Value</code></strong></td>
+<td>包含实际值，默认undefined</td>
+</tr>
+</tbody>
+</table>
+<p>​	<strong>使用<code>Object.defineProperty</code>对对象属性属性修改（不配置值，默认为fasle）</strong></p>
+<img src="JS红宝书.assets/image-20230617174454670.png" alt="image-20230617174454670" style="zoom:50%;" />
+<p>(严格模式下： 尝试对configurable: false; witable: false；的值修改，会抛出错误。)</p>
+<p>不能对同一个属性，定义多次Object.defineProperty()</p>
+<h5 id="访问器属性"><a class="markdownIt-Anchor" href="#访问器属性"></a> 访问器属性</h5>
+<p><code>getter</code> <code> setter</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">        <span class="attr">_name</span>: <span class="string">&#x27;levy_init&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(obj, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;尝试修改name&#x27;</span>)</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_name</span> = newVal</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;修改成功&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">        <span class="attr">_name</span>: <span class="string">&#x27;levyy&#x27;</span>,</span><br><span class="line">        <span class="keyword">get</span> <span class="title function_">name</span>() &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;尝试修改name&#x27;</span>)</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_name</span> = newVal</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;修改成功&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong><code>Object.defineProperties</code> 对一个对象的多个属性一次性进行描述符规定</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">_name</span>: <span class="string">&#x27;levy&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperties</span>(obj, &#123;</span><br><span class="line">    <span class="attr">name</span>: &#123;</span><br><span class="line">        <span class="title function_">get</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">age</span>: &#123;</span><br><span class="line">        <span class="attr">value</span>: <span class="number">21</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="读取属性特性"><a class="markdownIt-Anchor" href="#读取属性特性"></a> 读取属性特性</h4>
+<p>​	读取对象某一个： <code>Object.getOwnProperty(obj, 'aProperty')</code></p>
+<p>​	读取对象全部属性的特性：<code>Object.getOwnProperties(obj)</code> //其实也是对每个属性调用了上面的方法，在一个新对象返回</p>
+<h4 id="合并对象混入"><a class="markdownIt-Anchor" href="#合并对象混入"></a> 合并对象（混入）</h4>
+<p><code>Object.assign()</code>浅复制，只复制可枚举(PropertyIsEnumerable)、自身(hasOwnPropery)属性</p>
+<p>不复制属性的getter setter</p>
+<blockquote>
+<p>没有回滚之前赋值的状态，尽力赋值</p>
+</blockquote>
+<h4 id="相等判断"><a class="markdownIt-Anchor" href="#相等判断"></a> 相等判断</h4>
+<p><code>Object.is()</code></p>
+<img src="JS红宝书.assets/image-20230617185929270.png" alt="image-20230617185929270" style="zoom:50%;float:left;" />
+<h4 id="增强语法"><a class="markdownIt-Anchor" href="#增强语法"></a> 增强语法</h4>
+<p>属性值简写、可计算属性、方法简写、对象解构</p>
+<h3 id="82-创建对象"><a class="markdownIt-Anchor" href="#82-创建对象"></a> 8.2 创建对象</h3>
+<blockquote>
+<p>ES6 Class Extends也是基于ES5原型链继承的语法糖</p>
+</blockquote>
+<h4 id="工厂模式"><a class="markdownIt-Anchor" href="#工厂模式"></a> 工厂模式</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createPerson</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> o = <span class="keyword">new</span> <span class="title class_">Object</span>() <span class="comment">//显式创建对象</span></span><br><span class="line">    o.<span class="property">name</span> = name</span><br><span class="line">    o.<span class="property">age</span> = age</span><br><span class="line">    o.<span class="property">sayName</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> o.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o <span class="comment">//return 对象</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="title function_">createPerson</span>(<span class="string">&#x27;小明&#x27;</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="构造函数模式"><a class="markdownIt-Anchor" href="#构造函数模式"></a> 构造函数模式</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">sayName</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p2 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;小红&#x27;</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>new操作符</p>
+<ol>
+<li>内存中创建一个新对象</li>
+<li>这个新对象的内部的[[Prototype]]属性赋值为构造函数的prototype属性</li>
+<li>构造函数内部的this被赋值为这个新对象（this指向新对象）</li>
+<li>执行构造函数内部代码（给新对象添加属性）</li>
+<li>如果构造函数返回<strong>非空对象</strong>，则返回该对象；否则，返回刚创建的对象</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">myNew</span> = (<span class="params">constructor, ...args</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> o = <span class="keyword">new</span> <span class="title class_">Object</span>()</span><br><span class="line">    o.<span class="property">__proto__</span> = constructor.<span class="property"><span class="keyword">prototype</span></span></span><br><span class="line">    <span class="keyword">const</span> res = constructor.<span class="title function_">apply</span>(o, args)</span><br><span class="line">    <span class="keyword">return</span> res <span class="keyword">instanceof</span> <span class="title class_">Object</span> ? res : o</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>​	构造函数如果不传参可以不用写括号</p>
+<h5 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h5>
+<p>​	不同实例上的方法不是同一个，方法都是做同样的事，没必要定义两个不同的Function实例。</p>
+<p>​	解决可以把方法定义在构造函数外部，构造函数内部方法直接引用</p>
+<h4 id="原型模式"><a class="markdownIt-Anchor" href="#原型模式"></a> 原型模式</h4>
+<p>在构造函数原型定义的属性方法可以被实例共享</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">name</span> = <span class="string">&#x27;小小&#x27;</span></span><br><span class="line">    <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayName</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">name</span>, p.<span class="property">sayName</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简化写法：</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span> = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;小小&#x27;</span>,</span><br><span class="line">    <span class="title function_">sayName</span>(<span class="params"></span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(<span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>, <span class="string">&#x27;constructor&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">value</span>: <span class="title class_">Person</span>,</span><br><span class="line">  <span class="attr">enumerable</span>: <span class="literal">false</span> <span class="comment">//原生constructor不可枚举，用这种方式定义</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>isPrototypeOf 检查原型</code> 原型链</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">isPrototypeOf</span>(p) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><code>Object.getPrototypeOf()</code> 获取原型对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(p) === <span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><strong>更改原型对象</strong></p>
+<p>​	<code>Object.setPrototypeOf()</code> 影响性能</p>
+<p>​	<code>Object.create</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;a&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> b = &#123;</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">setPrototypeOf</span>(a, b)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(a) === b) <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">__proto__</span> === b) <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="title class_">Object</span>.<span class="title function_">create</span>(a)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(c) === a)<span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c.<span class="property">__proto__</span> === a)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>实例可以通过原型链查找属性</p>
+<p>确定属性在自身还是是原型链上的 <code>hasOwnProperty()</code></p>
+<p><code>in</code> 操作符是在自身以及原型链上查找</p>
+<p><code>Object.keys()</code> 遍历实例可枚举属性</p>
+<p><code>Object.getOwnPropertyNames()</code> 遍历实例无论是否可枚举属性（除了Symbol ）</p>
+<p><code>Object.getOwnPropertySymbols()</code></p>
+<p>遍历顺序</p>
+<p>for-in Object.keys() 无序</p>
+<h4 id="对象迭代"><a class="markdownIt-Anchor" href="#对象迭代"></a> 对象迭代</h4>
+<p><code>Object.values() </code> <code>Object.entries() </code></p>
+<p>浅复制对象、不迭代Symbol</p>
+<h3 id="83-继承"><a class="markdownIt-Anchor" href="#83-继承"></a> 8.3 继承</h3>
+<p><a href="https://juejin.cn/post/6844903696111763470">参考掘金</a></p>
+<h4 id="原型链继承"><a class="markdownIt-Anchor" href="#原型链继承"></a> 原型链继承</h4>
+<p>每个构造函数有一个<font color=red>原型</font>对象prototype， 这个<font color=red>原型</font>对象有个属性constructor指向构造函数本身。</p>
+<p>而这个构造函数实例有一个内部指针<code>__proto__</code>，指向这个<font color=red>原型</font></p>
+<p>那如果这个原型是另一个类型的实例，就意味着这和<font color=red>原型</font>本身有个指针指向<font color=blue>另一个原型</font>，相应另一个原型也有个指针指向另一个构造函数。</p>
+<p>这样形成了实例与原型之前的<strong>原型链</strong></p>
+<h4 id="盗用构造函数"><a class="markdownIt-Anchor" href="#盗用构造函数"></a> 盗用构造函数</h4>
+<h4 id="组合继承"><a class="markdownIt-Anchor" href="#组合继承"></a> 组合继承</h4>
+<h4 id="原型式继承"><a class="markdownIt-Anchor" href="#原型式继承"></a> 原型式继承</h4>
+<h4 id="寄生式继承"><a class="markdownIt-Anchor" href="#寄生式继承"></a> 寄生式继承</h4>
+<h4 id="寄生组合继承"><a class="markdownIt-Anchor" href="#寄生组合继承"></a> 寄生组合继承</h4>
+<p>寄生式继承父类原型，然后将返回的对象赋值给子类原型</p>
+<h4 id="混入式继承"><a class="markdownIt-Anchor" href="#混入式继承"></a> 混入式继承</h4>
+<h4 id="class-继承"><a class="markdownIt-Anchor" href="#class-继承"></a> Class 继承</h4>
+<h3 id="84-类"><a class="markdownIt-Anchor" href="#84-类"></a> 8.4 类</h3>
+<p>定义方式：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 类声明</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Foo</span>&#123;&#125;</span><br><span class="line"><span class="comment">// 类表达式</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title class_">Foo1</span> = <span class="keyword">class</span> <span class="title class_">FooName</span>&#123; <span class="comment">//表达式类名FooName可选</span></span><br><span class="line">        <span class="title function_">identify</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Foo1</span>.<span class="property">name</span> ,<span class="title class_">Foo2</span>.<span class="property">name</span>) <span class="comment">//name字段获取类名</span></span><br><span class="line">          	<span class="comment">// class后定义了类名就是指定类名FooName，否则类名就是Foo1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>类是一种特殊的函数<code>typeof</code>，但是并不会有作用域提升</p>
+<p>类声明受块级作用域影响，而函数生命则受函数作用域影响</p>
+<h4 id="constructor构造函数"><a class="markdownIt-Anchor" href="#constructor构造函数"></a> <code>constructor</code>构造函数</h4>
+<p>构造函数默认返回this，<strong>构造函数返回的对象用作实例化的对象</strong></p>
+<p>如果这个构造函数返回的不是this对象，而是其他对象，那么通过<code>instanceof</code>操作符不会检测出这个对象与这个类有关。</p>
+<blockquote>
+<p>因为在<code>new</code>操作时，会自动绑定this，如果</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">override</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">foo</span> = <span class="string">&#x27;foo&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> (override) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> foo1 = <span class="keyword">new</span> <span class="title class_">Foo</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo1 <span class="keyword">instanceof</span> <span class="title class_">Foo</span>) <span class="comment">// true</span></span><br><span class="line"><span class="keyword">const</span> foo2 = <span class="keyword">new</span> <span class="title class_">Foo</span>(<span class="literal">true</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(foo2 <span class="keyword">instanceof</span> <span class="title class_">Foo</span>)<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>类中定义的方法成为原型方法</p>
+<p><strong><em>类块</em>中定义的方法都会定义在类的原型上</strong></p>
+<p>静态类方法</p>
+<p>迭代器、生成器</p>
+<h4 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h4>
+<p><code>extends</code> 继承一个类或者一个普通的构造函数</p>
+<p>super只能在<strong>派生类构造函数和静态方法</strong>中使用</p>
+<p>调用super()函数会调用父类构造函数，并将返回的实例赋值给this</p>
+<p>给父类传参，super()手动传参</p>
+<p>在类构造函数中不能在super()之前调用this</p>
+<p>在派生类中显示定义了构造函数，必须要调用super或者返回一个对象</p>
+<h4 id="抽象基类"><a class="markdownIt-Anchor" href="#抽象基类"></a> 抽象基类</h4>
+<p>供其它类继承，却不被实例化</p>
+<p>利用new.target实现</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Foo</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">new</span>.<span class="property">target</span>) <span class="comment">//返回Foo类</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">new</span>.<span class="property">target</span> === <span class="title class_">Foo</span>)&#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Foo 不能直接被实例化&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> f = <span class="keyword">new</span> <span class="title class_">Foo</span>() <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+<h2 id="第九章-代理与反射"><a class="markdownIt-Anchor" href="#第九章-代理与反射"></a> 第九章 代理与反射</h2>
+<h3 id="91-代理"><a class="markdownIt-Anchor" href="#91-代理"></a> 9.1 代理</h3>
+<p>用作目标对象的替身，但独立于对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Proxy</span>(target, handlerObj) <span class="comment">//参数两者缺一不可</span></span><br></pre></td></tr></table></figure>
+<p><code>Proxy.proptotype</code> 为undefined，所以不能使用<code>instanceof</code>操作符</p>
+<p><code>===</code>严格相等可以用来区分代理和目标</p>
+<h4 id="捕获器"><a class="markdownIt-Anchor" href="#捕获器"></a> 捕获器</h4>
+<p><code>get</code></p>
+<p>​	接受参数（目标对象，要查询的属性，代理对象)</p>
+<p>重建被捕获的原始行为：</p>
+<p>使用捕获器，被代理的属性如果同时not Configurable and not Writable，则TypeError报错</p>
+<blockquote>
+<p>反射API Reflect</p>
+<p>delete函数属性—&gt;Refelect.deleteProperty</p>
+<p>name in obj —&gt; Reflect.has(obj, ‘name’)</p>
+</blockquote>
+<p>可撤销代理</p>
+<p><strong>撤销函数</strong>和<strong>代理对象</strong>是同时在实例化时生成的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构 代理对象和撤回函数</span></span><br><span class="line"><span class="keyword">const</span> &#123; proxy, revoke &#125; =<span class="title class_">Proxy</span>.<span class="title function_">revocable</span>(obj, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;1234&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy.<span class="property">foo</span>)<span class="comment">//1234</span></span><br><span class="line"><span class="title function_">revoke</span>() <span class="comment">//撤销代理</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy)<span class="comment">//error</span></span><br></pre></td></tr></table></figure>
+<h4 id="实用反射reflect-api"><a class="markdownIt-Anchor" href="#实用反射reflect-api"></a> 实用反射Reflect API</h4>
+<p>反射API不局限于捕获程序处理</p>
+<p>代替Object上的方法（错误必须try catch捕获 到 反射API返回布尔值）</p>
+<blockquote>
+<p>反射方法return 的值称为“状态标记”的布尔值</p>
+</blockquote>
+<p>代替一些操作符</p>
+<table>
+<thead>
+<tr>
+<th>Reflect.</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get</td>
+<td>in</td>
+</tr>
+<tr>
+<td>set</td>
+<td>= 赋值操作符</td>
+</tr>
+<tr>
+<td>has</td>
+<td>in 或者 with()</td>
+</tr>
+<tr>
+<td>deleteProperty</td>
+<td>delete</td>
+</tr>
+<tr>
+<td>Construct</td>
+<td>new</td>
+</tr>
+</tbody>
+</table>
+<p>使用<code>Reflect.apply</code>调用函数(被调用函数，this指向，[实参…])</p>
+<h4 id="构建多层拦截网"><a class="markdownIt-Anchor" href="#构建多层拦截网"></a> 构建多层拦截网</h4>
+<p>​	代理另一个代理</p>
+<h4 id="代理模式"><a class="markdownIt-Anchor" href="#代理模式"></a> 代理模式</h4>
+<p>一种编程模式</p>
+<h5 id="跟踪属性访问"><a class="markdownIt-Anchor" href="#跟踪属性访问"></a> 跟踪属性访问</h5>
+<h5 id="隐藏属性"><a class="markdownIt-Anchor" href="#隐藏属性"></a> 隐藏属性</h5>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> hiddenProperties = [<span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;sex&#x27;</span>]</span><br><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">sex</span>: <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;小明&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(person, &#123;</span><br><span class="line">    <span class="title function_">get</span>(<span class="params">TrapTarget, property</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(hiddenProperties.<span class="title function_">includes</span>(property))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(...<span class="variable language_">arguments</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">has</span>(<span class="params">target, property</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(hiddenProperties.<span class="title function_">includes</span>(property))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy.<span class="property">name</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(proxy.<span class="property">age</span>) <span class="comment">//undefined</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> proxy) <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sex&#x27;</span> <span class="keyword">in</span> proxy)<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h5 id="属性验证"><a class="markdownIt-Anchor" href="#属性验证"></a> 属性验证</h5>
+<p>​	赋值操作触发<code>set</code>，根据情况决定赋值</p>
+<h5 id="函数与构造函数参数验证"><a class="markdownIt-Anchor" href="#函数与构造函数参数验证"></a> 函数与构造函数参数验证</h5>
+<h5 id="数据绑定和可观察对象"><a class="markdownIt-Anchor" href="#数据绑定和可观察对象"></a> 数据绑定和可观察对象</h5>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>test</title>
     <url>/posts/test/</url>
     <content><![CDATA[<p>aaaaaaaa</p>
@@ -1727,41 +1727,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>杂项</title>
-    <url>/posts/%E6%9D%82%E9%A1%B9/</url>
-    <content><![CDATA[<p><mark>highlight</mark><br />
-​🈂️​</p>
-<h4 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>滑动验证</title>
-    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
-    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
-<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
-<hr />
-<ul>
-<li>
-<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
-</li>
-</ul>
-<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
-<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
-<blockquote>
-<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
-<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>简单实现Toast组件</title>
     <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<blockquote>
@@ -1788,6 +1753,14 @@ F --> L[结束]</pre>
       <tags>
         <tag>enhanced</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>杂项</title>
+    <url>/posts/%E6%9D%82%E9%A1%B9/</url>
+    <content><![CDATA[<p><mark>highlight</mark><br />
+​🈂️​</p>
+<h4 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>表格导出为excel</title>
@@ -1957,5 +1930,32 @@ F --> L[结束]</pre>
     <title>&#39;tag&#39;</title>
     <url>/posts/zh-CN-tag-index/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>滑动验证</title>
+    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
+    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
+<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
+<hr />
+<ul>
+<li>
+<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
+</li>
+</ul>
+<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
+<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
+<blockquote>
+<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
+<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
+]]></content>
+      <tags>
+        <tag>vue3</tag>
+        <tag>enhanced</tag>
+      </tags>
   </entry>
 </search>
