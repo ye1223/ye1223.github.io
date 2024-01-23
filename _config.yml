@@ -109,7 +109,7 @@ theme: frame
 deploy:
   type: git
   repo: https://github.com/ye1223/ye1223.github.io.git
-  branch: deploy
+  branch: main
 
 readtime: ## plugin config. Only define this if you need to override the built-in fs.
   defaultTime: auto ## Time unit used for calculating read time. Options: auto | seconds | minutes | days | months | years
