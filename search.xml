@@ -124,6 +124,11 @@ F --> L[结束]</pre>
 <strong> 静候补充... </strong>]]></content>
   </entry>
   <entry>
+    <title>GPTPlus速通</title>
+    <url>/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Event Loop</title>
     <url>/posts/EventLoop/</url>
     <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
@@ -176,11 +181,6 @@ F --> L[结束]</pre>
         <tag>JavaScript</tag>
         <tag>nodejs</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>GPTPlus速通</title>
-    <url>/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>JS类型转换</title>
@@ -276,34 +276,6 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>Computer Network</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>computed与watch</title>
-    <url>/posts/computed%E4%B8%8Ewatch/</url>
-    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
-<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
-<ul>
-<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
-<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
-<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
-<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
-<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
-<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
-<ul>
-<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
-<li>watch<mark>支持异步</mark>；</li>
-<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
-<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
-<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -418,6 +390,34 @@ F --> L[结束]</pre>
       <tags>
         <tag>Computer Network</tag>
         <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>computed与watch</title>
+    <url>/posts/computed%E4%B8%8Ewatch/</url>
+    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
+<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
+<ul>
+<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
+<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
+<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
+<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
+<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
+<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
+<ul>
+<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
+<li>watch<mark>支持异步</mark>；</li>
+<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
+<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
+<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -966,6 +966,146 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
+    <title>npm</title>
+    <url>/posts/npm/</url>
+    <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
+<p>安装、卸载、更新、发布</p>
+<p><strong>version</strong> <strong>版本号x,y,z</strong></p>
+<p>主 次 补丁</p>
+<dl>
+<dt>^ 锁定从左边数第一个非0的</dt>
+<dd>锁定主版本or次版本</dd>
+</dl>
+<p>latest 最新版本</p>
+<h1 id="依赖"><a class="markdownIt-Anchor" href="#依赖"></a> 依赖</h1>
+<p>dependecies</p>
+<p>devDependencies 开发依赖</p>
+<p>peerDependencies 对等依赖，（插件不能凭空运行，需要依赖某一模块）</p>
+<h1 id="一些常用命令"><a class="markdownIt-Anchor" href="#一些常用命令"></a> 一些常用命令</h1>
+<ul>
+<li><code>npm config list</code> 查看npm配置信息</li>
+</ul>
+<img src="https://s2.loli.net/2023/09/02/cZmUGLrlnh74v9Y.png" alt="image-20230902172055264" style="width:50%;" />
+<ul>
+<li><code>npm get registry</code>  查看镜像源</li>
+<li><code>npm set registry xxxx</code>设置镜像源</li>
+<li><code>npm ls (-g)</code> 当前（全局）安装的可执行文件</li>
+</ul>
+<h1 id="npm-install-原理"><a class="markdownIt-Anchor" href="#npm-install-原理"></a> npm install 原理</h1>
+<p>安装依赖存放于根目录<code>node_modules</code>文件夹</p>
+<p>排序: .bin @系列 abcd排序</p>
+<p>广度优先，扁平化（理想情况下）处理下载</p>
+<blockquote>
+<p>非理想： node_modules下a b 模块依赖不同版本的c模块，会给b模块下再建立一个node_modules文件夹</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/09/02/ybEQgwSzVoL2kA3.png" alt="img" /></p>
+<blockquote>
+<p>pakage-lock.json</p>
+<p>锁定版本号</p>
+<p>缓存： intergrity + verion + name 生成唯一的key，这个key在缓存文件中,</p>
+<p><code>npm config list</code> 查看中的cache</p>
+<p>index-v5 索引目录，记录content-v2的索引位置，对应的 intergrity + verion + name由算法生成的哈希值</p>
+<p>对应得上，就将这个加密的包解压到node_modules中</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>pakage-lock.json pakage.json</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不一致</td>
+<td>按照pakage中的版本下载，并更新lock中的版本号</td>
+</tr>
+<tr>
+<td>一直</td>
+<td>先找缓存，没有再下载资源</td>
+</tr>
+</tbody>
+</table>
+<h1 id="npm-run"><a class="markdownIt-Anchor" href="#npm-run"></a> npm run</h1>
+<p>可执行命令都存在node_modules下的<code>.bin</code>文件夹中</p>
+<ol>
+<li>
+<p>当前项目node_modules/.bin 中查找</p>
+</li>
+<li>
+<p>全局的node_modules查找</p>
+</li>
+<li>
+<p>环境变量中查找</p>
+</li>
+<li>
+<p>报错</p>
+</li>
+</ol>
+<p>也是有生命周期的</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;predev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 1.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 2.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postdev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 3.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>运行 <code>npm run dev</code>, 自动执行了 1.js 2.js 3.js</p>
+<blockquote>
+<p>比如一个打包命令，之前可以做一个清理的任务，最后做一个发布的工作，比如写一个CI脚本顺便把代码提交了</p>
+<p>Vue-cli也是用了生命周期pretest: ‘yarn clean’</p>
+</blockquote>
+<h1 id="npx"><a class="markdownIt-Anchor" href="#npx"></a> npx</h1>
+<p>npm高版本自带的命令行工具</p>
+<p><strong>运行node_modules/.bin 下的可执行文件</strong></p>
+<blockquote>
+<p>之前通过package.json 中的scripts 配合npm run实现，现在可通过npx运行不需要安装这个依赖包运行命令</p>
+</blockquote>
+<ul>
+<li>
+<p>避免全局安装</p>
+<ul>
+<li>当前项目node_modules/.bin —&gt; 全局modules/.bin —&gt; 官网下载，用完删除（需要联网），减少内存占用</li>
+</ul>
+</li>
+<li>
+<p>总是使用最新版本</p>
+</li>
+<li>
+<p>执行任意npm包</p>
+</li>
+</ul>
+<blockquote>
+<p>在一个项目中，<code>npm i vite</code></p>
+<p>没有全局安装，直接运行vite肯定是不行的，</p>
+<p>此时配合npx， <code>npx vite</code> 在项目中的node_modules/.bin中查找运行</p>
+</blockquote>
+<h2 id="与npm区别"><a class="markdownIt-Anchor" href="#与npm区别"></a> 与npm区别</h2>
+<p>npx侧重执行命令</p>
+<p>npm侧重安装或卸载某个模块，不具备执行某个模块的功能</p>
+<h1 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h1>
+<ul>
+<li><code>npm addUser</code>（创建npm账号）</li>
+<li><code>npm login</code> 登录( 使用<strong>官方的源</strong>，而不是第三方镜像源)</li>
+<li><code>npm publish</code>  发布（同版本号不能重新发布，包名唯一）</li>
+</ul>
+<h1 id="构建npm私服"><a class="markdownIt-Anchor" href="#构建npm私服"></a> 构建npm私服</h1>
+<ul>
+<li>部署到内网集群，离线使用</li>
+<li>安全性</li>
+<li>提高包下载速度</li>
+</ul>
+<p>利用<code>verdaccio</code>库</p>
+<img src="https://s2.loli.net/2023/09/02/PZQCziu4qrKAsRk.png" alt="image-20230902172055264" style="width:50%;" />
+<ul>
+<li><code>npm i verdaccio -g</code></li>
+<li><code>verdaccio --listen 5000</code> 开启服务</li>
+<li>发包流程与之前的差不多
+<ul>
+<li>
+<img src="https://s2.loli.net/2023/09/02/zYhy9muZv8cWD3H.png" alt="image-20230902172055264" style="width:50%;" /></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nodejs</title>
     <url>/posts/nodejs/</url>
     <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
@@ -1158,143 +1298,133 @@ F --> L[结束]</pre>
 ]]></content>
   </entry>
   <entry>
-    <title>npm</title>
-    <url>/posts/npm/</url>
-    <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
-<p>安装、卸载、更新、发布</p>
-<p><strong>version</strong> <strong>版本号x,y,z</strong></p>
-<p>主 次 补丁</p>
-<dl>
-<dt>^ 锁定从左边数第一个非0的</dt>
-<dd>锁定主版本or次版本</dd>
-</dl>
-<p>latest 最新版本</p>
-<h1 id="依赖"><a class="markdownIt-Anchor" href="#依赖"></a> 依赖</h1>
-<p>dependecies</p>
-<p>devDependencies 开发依赖</p>
-<p>peerDependencies 对等依赖，（插件不能凭空运行，需要依赖某一模块）</p>
-<h1 id="一些常用命令"><a class="markdownIt-Anchor" href="#一些常用命令"></a> 一些常用命令</h1>
-<ul>
-<li><code>npm config list</code> 查看npm配置信息</li>
-</ul>
-<img src="https://s2.loli.net/2023/09/02/cZmUGLrlnh74v9Y.png" alt="image-20230902172055264" style="width:50%;" />
-<ul>
-<li><code>npm get registry</code>  查看镜像源</li>
-<li><code>npm set registry xxxx</code>设置镜像源</li>
-<li><code>npm ls (-g)</code> 当前（全局）安装的可执行文件</li>
-</ul>
-<h1 id="npm-install-原理"><a class="markdownIt-Anchor" href="#npm-install-原理"></a> npm install 原理</h1>
-<p>安装依赖存放于根目录<code>node_modules</code>文件夹</p>
-<p>排序: .bin @系列 abcd排序</p>
-<p>广度优先，扁平化（理想情况下）处理下载</p>
+    <title>redux-toolkit学习</title>
+    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
 <blockquote>
-<p>非理想： node_modules下a b 模块依赖不同版本的c模块，会给b模块下再建立一个node_modules文件夹</p>
+<p>摘自官网</p>
+<p><strong><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></strong> 是 Redux 官方强烈推荐，开箱即用的一个高效的 Redux 开发工具集。</p>
+<p>简化最常见场景下的 Redux 开发，</p>
+<p>​	包括配置 store、定义 reducer，不可变的更新逻辑</p>
+<p>​	可以立即创建整个状态的 “切片 slice”，而<strong>无需手动编写任何 action creator 或者 action type</strong></p>
+<p>自带了一些最常用的 Redux 插件，</p>
+<p>​	例如用于异步逻辑 Redux Thunk，</p>
+<p>​	用于编写选择器 selector 的函数 Reselect （可缓存select数据）</p>
 </blockquote>
-<p><img src="https://s2.loli.net/2023/09/02/ybEQgwSzVoL2kA3.png" alt="img" /></p>
+<p>在 Redux 中,**切片(Slice)**指的是使用 <strong>createSlice</strong> API 创建的 reducer 和 action 的组合。它是 Redux Toolkit 中的一个核心概念。</p>
+<p>createSlice 接收一个配置对象参数,里面包含:</p>
 <blockquote>
-<p>pakage-lock.json</p>
-<p>锁定版本号</p>
-<p>缓存： intergrity + verion + name 生成唯一的key，这个key在缓存文件中,</p>
-<p><code>npm config list</code> 查看中的cache</p>
-<p>index-v5 索引目录，记录content-v2的索引位置，对应的 intergrity + verion + name由算法生成的哈希值</p>
-<p>对应得上，就将这个加密的包解压到node_modules中</p>
+<ul>
+<li>初始 state</li>
+<li>reducers:包含不同 reducer 的对象</li>
+<li>extraReducers:处理 action 的 reducer 函数</li>
+</ul>
 </blockquote>
+<ul>
+<li>切片让我们可以<strong>把 reducer 与 action 打包在一起</strong></li>
+<li>创建<strong>简化</strong>了编写 <strong>reducer</strong> 的流程</li>
+<li><strong>自动生成 action</strong> 类型</li>
+</ul>
+<p>⚙️ CRA新建一个react项目</p>
+<p><code>create-react-app myapp --template typescript</code></p>
+<p>⚙️ 安装react-redux react-toolkit</p>
+<p><code>npm install @reduxjs/toolkit react-redux </code></p>
 <table>
 <thead>
 <tr>
-<th>pakage-lock.json pakage.json</th>
-<th></th>
+<th style="text-align:center">项目基本结构</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>不一致</td>
-<td>按照pakage中的版本下载，并更新lock中的版本号</td>
-</tr>
-<tr>
-<td>一直</td>
-<td>先找缓存，没有再下载资源</td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/07/14/v4muItCeOgTFfaV.png" alt="image-20230714095149784.png" style="zoom:67%;" /></td>
 </tr>
 </tbody>
 </table>
-<h1 id="npm-run"><a class="markdownIt-Anchor" href="#npm-run"></a> npm run</h1>
-<p>可执行命令都存在node_modules下的<code>.bin</code>文件夹中</p>
-<ol>
-<li>
-<p>当前项目node_modules/.bin 中查找</p>
-</li>
-<li>
-<p>全局的node_modules查找</p>
-</li>
-<li>
-<p>环境变量中查找</p>
-</li>
-<li>
-<p>报错</p>
-</li>
-</ol>
-<p>也是有生命周期的</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;predev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 1.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 2.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postdev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 3.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>运行 <code>npm run dev</code>, 自动执行了 1.js 2.js 3.js</p>
-<blockquote>
-<p>比如一个打包命令，之前可以做一个清理的任务，最后做一个发布的工作，比如写一个CI脚本顺便把代码提交了</p>
-<p>Vue-cli也是用了生命周期pretest: ‘yarn clean’</p>
-</blockquote>
-<h1 id="npx"><a class="markdownIt-Anchor" href="#npx"></a> npx</h1>
-<p>npm高版本自带的命令行工具</p>
-<p><strong>运行node_modules/.bin 下的可执行文件</strong></p>
-<blockquote>
-<p>之前通过package.json 中的scripts 配合npm run实现，现在可通过npx运行不需要安装这个依赖包运行命令</p>
-</blockquote>
 <ul>
-<li>
-<p>避免全局安装</p>
-<ul>
-<li>当前项目node_modules/.bin —&gt; 全局modules/.bin —&gt; 官网下载，用完删除（需要联网），减少内存占用</li>
+<li>新建状态管理主文件</li>
 </ul>
-</li>
-<li>
-<p>总是使用最新版本</p>
-</li>
-<li>
-<p>执行任意npm包</p>
-</li>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slice/counterSlice&quot;</span> <span class="comment">// 由切片导入的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据store本身推断出推断 `RootState` 和 `AppDispatch`类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">RootState</span> = <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> store.<span class="property">getState</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">AppDispatch</span> = <span class="keyword">typeof</span> store.<span class="property">dispatch</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在项目入口文件，给App组件<strong>注入store</strong></li>
+</ul>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// index.tsx</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="keyword">import</span> &#123; store &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLElement</span></span><br><span class="line">);</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建切片</li>
 </ul>
 <blockquote>
-<p>在一个项目中，<code>npm i vite</code></p>
-<p>没有全局安装，直接运行vite肯定是不行的，</p>
-<p>此时配合npx， <code>npx vite</code> 在项目中的node_modules/.bin中查找运行</p>
+<p>之前利用 都要分别写各自actionCreator和各自的reducer， 现在只用一个切片即可管理</p>
 </blockquote>
-<h2 id="与npm区别"><a class="markdownIt-Anchor" href="#与npm区别"></a> 与npm区别</h2>
-<p>npx侧重执行命令</p>
-<p>npm侧重安装或卸载某个模块，不具备执行某个模块的功能</p>
-<h1 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h1>
+<p>😇 React Toolkit 创建的 Slice 状态state本身是 <code>immutable</code> 的，所以可以放心的直接加工使用</p>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/redux/slice/counterSlice.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PayloadAction</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ICounterState</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">initialState</span>: <span class="title class_">ICounterState</span> = &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建切片</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    initialState,</span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> -= <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action: PayloadAction&lt;<span class="built_in">number</span>&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators 会在各自的reducer函数中自动创建， 这里直接导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 💡注意&gt; 默认导出的是reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><code>npm addUser</code>（创建npm账号）</li>
-<li><code>npm login</code> 登录( 使用<strong>官方的源</strong>，而不是第三方镜像源)</li>
-<li><code>npm publish</code>  发布（同版本号不能重新发布，包名唯一）</li>
+<li>尝试在App.tsx组件中使用</li>
 </ul>
-<h1 id="构建npm私服"><a class="markdownIt-Anchor" href="#构建npm私服"></a> 构建npm私服</h1>
-<ul>
-<li>部署到内网集群，离线使用</li>
-<li>安全性</li>
-<li>提高包下载速度</li>
-</ul>
-<p>利用<code>verdaccio</code>库</p>
-<img src="https://s2.loli.net/2023/09/02/PZQCziu4qrKAsRk.png" alt="image-20230902172055264" style="width:50%;" />
-<ul>
-<li><code>npm i verdaccio -g</code></li>
-<li><code>verdaccio --listen 5000</code> 开启服务</li>
-<li>发包流程与之前的差不多
-<ul>
-<li>
-<img src="https://s2.loli.net/2023/09/02/zYhy9muZv8cWD3H.png" alt="image-20230902172055264" style="width:50%;" /></li>
-</ul>
-</li>
-</ul>
+<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppDispatch</span>, <span class="title class_">RootState</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/slice/counterSlice&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> disptach = useDispatch&lt;<span class="title class_">AppDispatch</span>&gt;()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(increment())&#125;&gt;点击我+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(decrement())&#125;&gt;点击我-1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(incrementByAmount(100))&#125;&gt;点击我+100<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>✅成功</p>
+<p><img src="https://s2.loli.net/2023/07/14/QKWlncjEVHUgGRN.gif" alt="屏幕录制2023-07-14-上午10.12.15" /></p>
 ]]></content>
       <tags>
-        <tag>nodejs</tag>
+        <tag>react</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue3数据绑定之-sync</title>
+    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
+    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
+<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
+<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
+<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
+<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
+<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
+<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
+<hr />
+<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
+<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
+<p>而在vue3中这个sync被v-model替代了</p>
+<blockquote>
+<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
+]]></content>
+      <tags>
+        <tag>vue</tag>
+        <tag>vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一键速通菲区Spotify</title>
+    <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
+    <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
+<p>菲区电话卡、菲区梯子🪜</p>
+<h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
+<ol start="0">
+<li>
+<p>Spotify换区（挂上🇵🇭🪜）</p>
+</li>
+<li>
+<p>某宝下单菲律宾电话卡（推荐Globe卡￥20+）</p>
+</li>
+<li>
+<p>话费充值（推荐易付宝， Google Play下载）</p>
+</li>
+<li>
+<p>登录进入<strong>手机端Spotify</strong>，选择套餐通过<strong>话费充值</strong></p>
+</li>
+</ol>
+<h3 id="切记"><a class="markdownIt-Anchor" href="#切记"></a> 切记💡</h3>
+<ul>
+<li><strong>第三步</strong>，必须在手机端中操作，账号登录成功后不要挂任何🪜，网络直连就行</li>
+</ul>
+<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
+<p>也可以试试<code>GCash</code>支付，需要实名。</p>
+<p>应填写真实的信息（护照等），不然一个月之内检测被封。（谷歌搜有相应的教程）</p>
+]]></content>
+      <tags>
+        <tag>utils</tag>
       </tags>
   </entry>
   <entry>
@@ -1596,136 +1726,6 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>redux-toolkit学习</title>
-    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
-<blockquote>
-<p>摘自官网</p>
-<p><strong><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></strong> 是 Redux 官方强烈推荐，开箱即用的一个高效的 Redux 开发工具集。</p>
-<p>简化最常见场景下的 Redux 开发，</p>
-<p>​	包括配置 store、定义 reducer，不可变的更新逻辑</p>
-<p>​	可以立即创建整个状态的 “切片 slice”，而<strong>无需手动编写任何 action creator 或者 action type</strong></p>
-<p>自带了一些最常用的 Redux 插件，</p>
-<p>​	例如用于异步逻辑 Redux Thunk，</p>
-<p>​	用于编写选择器 selector 的函数 Reselect （可缓存select数据）</p>
-</blockquote>
-<p>在 Redux 中,**切片(Slice)**指的是使用 <strong>createSlice</strong> API 创建的 reducer 和 action 的组合。它是 Redux Toolkit 中的一个核心概念。</p>
-<p>createSlice 接收一个配置对象参数,里面包含:</p>
-<blockquote>
-<ul>
-<li>初始 state</li>
-<li>reducers:包含不同 reducer 的对象</li>
-<li>extraReducers:处理 action 的 reducer 函数</li>
-</ul>
-</blockquote>
-<ul>
-<li>切片让我们可以<strong>把 reducer 与 action 打包在一起</strong></li>
-<li>创建<strong>简化</strong>了编写 <strong>reducer</strong> 的流程</li>
-<li><strong>自动生成 action</strong> 类型</li>
-</ul>
-<p>⚙️ CRA新建一个react项目</p>
-<p><code>create-react-app myapp --template typescript</code></p>
-<p>⚙️ 安装react-redux react-toolkit</p>
-<p><code>npm install @reduxjs/toolkit react-redux </code></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">项目基本结构</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><img src="https://s2.loli.net/2023/07/14/v4muItCeOgTFfaV.png" alt="image-20230714095149784.png" style="zoom:67%;" /></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>新建状态管理主文件</li>
-</ul>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./slice/counterSlice&quot;</span> <span class="comment">// 由切片导入的reducer</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据store本身推断出推断 `RootState` 和 `AppDispatch`类型</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">RootState</span> = <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> store.<span class="property">getState</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">AppDispatch</span> = <span class="keyword">typeof</span> store.<span class="property">dispatch</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>在项目入口文件，给App组件<strong>注入store</strong></li>
-</ul>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// index.tsx</span></span><br><span class="line"><span class="comment">//....</span></span><br><span class="line"><span class="keyword">import</span> &#123; store &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>) <span class="keyword">as</span> <span class="title class_">HTMLElement</span></span><br><span class="line">);</span><br><span class="line">root.<span class="title function_">render</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建切片</li>
-</ul>
-<blockquote>
-<p>之前利用 都要分别写各自actionCreator和各自的reducer， 现在只用一个切片即可管理</p>
-</blockquote>
-<p>😇 React Toolkit 创建的 Slice 状态state本身是 <code>immutable</code> 的，所以可以放心的直接加工使用</p>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/redux/slice/counterSlice.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PayloadAction</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ICounterState</span> &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">initialState</span>: <span class="title class_">ICounterState</span> = &#123;</span><br><span class="line">    <span class="attr">value</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建切片</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> counterSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;counter&#x27;</span>,</span><br><span class="line">    initialState,</span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="attr">increment</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">decrement</span>: <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> -= <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">incrementByAmount</span>: <span class="function">(<span class="params">state, action: PayloadAction&lt;<span class="built_in">number</span>&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">            state.<span class="property">value</span> += action.<span class="property">payload</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Action creators 会在各自的reducer函数中自动创建， 这里直接导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="property">actions</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 💡注意&gt; 默认导出的是reducer</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> counterSlice.<span class="property">reducer</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>尝试在App.tsx组件中使用</li>
-</ul>
-<figure class="highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AppDispatch</span>, <span class="title class_">RootState</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; decrement, increment, incrementByAmount &#125; <span class="keyword">from</span> <span class="string">&#x27;./redux/slice/counterSlice&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state: RootState</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">value</span>)</span><br><span class="line">  <span class="keyword">const</span> disptach = useDispatch&lt;<span class="title class_">AppDispatch</span>&gt;()</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(increment())&#125;&gt;点击我+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(decrement())&#125;&gt;点击我-1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> disptach(incrementByAmount(100))&#125;&gt;点击我+100<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>✅成功</p>
-<p><img src="https://s2.loli.net/2023/07/14/QKWlncjEVHUgGRN.gif" alt="屏幕录制2023-07-14-上午10.12.15" /></p>
-]]></content>
-      <tags>
-        <tag>react</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue3数据绑定之-sync</title>
-    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
-    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
-<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
-<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
-<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
-<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
-<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
-<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
-<hr />
-<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
-<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
-<p>而在vue3中这个sync被v-model替代了</p>
-<blockquote>
-<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
-]]></content>
-      <tags>
-        <tag>vue</tag>
-        <tag>vue3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一键速通菲区Spotify</title>
-    <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
-    <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
-<p>菲区电话卡、菲区梯子🪜</p>
-<h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
-<ol start="0">
-<li>
-<p>Spotify换区（挂上🇵🇭🪜）</p>
-</li>
-<li>
-<p>某宝下单菲律宾电话卡（推荐Globe卡￥20+）</p>
-</li>
-<li>
-<p>话费充值（推荐易付宝， Google Play下载）</p>
-</li>
-<li>
-<p>登录进入<strong>手机端Spotify</strong>，选择套餐通过<strong>话费充值</strong></p>
-</li>
-</ol>
-<h3 id="切记"><a class="markdownIt-Anchor" href="#切记"></a> 切记💡</h3>
-<ul>
-<li><strong>第三步</strong>，必须在手机端中操作，账号登录成功后不要挂任何🪜，网络直连就行</li>
-</ul>
-<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
-<p>也可以试试<code>GCash</code>支付，需要实名。</p>
-<p>应填写真实的信息（护照等），不然一个月之内检测被封。（谷歌搜有相应的教程）</p>
-]]></content>
-      <tags>
-        <tag>utils</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>杂项</title>
     <url>/posts/%E6%9D%82%E9%A1%B9/</url>
     <content><![CDATA[<p><mark>highlight</mark><br />
@@ -1757,34 +1757,6 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>vue3</tag>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>简单实现Toast组件</title>
-    <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
-    <content><![CDATA[<blockquote>
-<ul>
-<li>一个模版文件Toast.vue</li>
-<li>一个渲染挂载导出方法文件index.ts
-<ul>
-<li>通过Toast.success(‘xxxx’) 调用</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>这里UI使用<code>Flowbite</code>的<a href="https://flowbite.com/docs/components/toast/#colors">Toast</a>组件（需要配合tailwindcss）</p>
-<p><img src="https://s2.loli.net/2023/08/17/hrfHPm5M8LAZcv4.png" alt="image-20230817102433189.png" /></p>
-<h2 id="供给渲染的模板"><a class="markdownIt-Anchor" href="#供给渲染的模板"></a> 供给渲染的模板</h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">interface Props &#123;</span><br><span class="line">	visible: boolean</span><br><span class="line">	type: string</span><br><span class="line">	message: string</span><br><span class="line">&#125;</span><br><span class="line">const props = withDefaults(defineProps&lt;Props&gt;(), &#123;</span><br><span class="line">	visible: false,</span><br><span class="line">	type: &#x27;&#x27;,</span><br><span class="line">	message: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const status = props.type === &#x27;success&#x27; ? &#x27;success&#x27; : &#x27;danger&#x27;</span><br><span class="line">const toast = ref&lt;HTMLDivElement&gt;()</span><br><span class="line">const handleClose = () =&gt; &#123;</span><br><span class="line">	toast.value!.style.display = &#x27;none&#x27;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;Transition</span><br><span class="line">		name=&quot;toast&quot;</span><br><span class="line">		enter-active-class=&quot;transition ease-out duration-300&quot;</span><br><span class="line">		leave-active-class=&quot;transition ease-in duration-300&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;div class=&quot;fixed inset-0 h-0&quot; v-if=&quot;props.visible&quot;&gt;</span><br><span class="line">			&lt;div</span><br><span class="line">				:id=&quot;`toast-$&#123;status&#125;`&quot;</span><br><span class="line">				class=&quot;absolute top-5 left-1/2 -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800&quot;</span><br><span class="line">				role=&quot;alert&quot;</span><br><span class="line">				ref=&quot;toast&quot;</span><br><span class="line">			&gt;</span><br><span class="line">				&lt;div</span><br><span class="line">					v-if=&quot;props.type === &#x27;success&#x27;&quot;</span><br><span class="line">					class=&quot;inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-5 h-5&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;currentColor&quot;</span><br><span class="line">						viewBox=&quot;0 0 20 20&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							d=&quot;M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt; Check icon &lt;/span&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">				&lt;div</span><br><span class="line">					v-else-if=&quot;props.type === &#x27;error&#x27;&quot;</span><br><span class="line">					class=&quot;inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-5 h-5&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;currentColor&quot;</span><br><span class="line">						viewBox=&quot;0 0 20 20&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							d=&quot;M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt; Error icon &lt;/span&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;div class=&quot;ml-3 text-sm font-normal&quot;&gt;</span><br><span class="line">					&lt;!-- &#123;/* 不同 */&#125;  --&gt;</span><br><span class="line">					&#123;&#123; props.message &#125;&#125;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;button</span><br><span class="line">					type=&quot;button&quot;</span><br><span class="line">					class=&quot;ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700&quot;</span><br><span class="line">					data-dismiss-target=&quot;#toast-success&quot;</span><br><span class="line">					aria-label=&quot;Close&quot;</span><br><span class="line">					@click=&quot;handleClose&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt;Close&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-3 h-3&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;none&quot;</span><br><span class="line">						viewBox=&quot;0 0 14 14&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							stroke=&quot;currentColor&quot;</span><br><span class="line">							stroke-linecap=&quot;round&quot;</span><br><span class="line">							stroke-linejoin=&quot;round&quot;</span><br><span class="line">							stroke-width=&quot;2&quot;</span><br><span class="line">							d=&quot;m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">				&lt;/button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/Transition&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.toast-enter-from,</span><br><span class="line">.toast-leave-to &#123;</span><br><span class="line">	opacity: 0;</span><br><span class="line">	transform: translateY(-30px);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="导出toast方法提供给vue进行挂载"><a class="markdownIt-Anchor" href="#导出toast方法提供给vue进行挂载"></a> 导出toast方法，提供给Vue进行挂载</h2>
-<p>index.ts</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">//@ts-nocheck</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp, h &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ToastComponent</span> <span class="keyword">from</span> <span class="string">&#x27;./template/Toast.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ToastProps</span> &#123;</span><br><span class="line">	<span class="attr">visible</span>: <span class="built_in">boolean</span></span><br><span class="line">	<span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span> | <span class="string">&#x27;error&#x27;</span></span><br><span class="line">	<span class="attr">message</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ToastContainer</span> = <span class="title function_">createApp</span>(&#123;</span><br><span class="line">	<span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_">h</span>(<span class="title class_">ToastComponent</span>, <span class="variable language_">this</span>.<span class="property">toastProps</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">toastProps</span>: &#123;</span><br><span class="line">				<span class="attr">visible</span>: <span class="literal">false</span>,</span><br><span class="line">				<span class="attr">type</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">				<span class="attr">message</span>: <span class="string">&#x27;&#x27;</span> </span><br><span class="line">			&#125; <span class="keyword">as</span> <span class="built_in">unknown</span> <span class="keyword">as</span> <span class="title class_">ToastProps</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> toast = <span class="title class_">ToastContainer</span>.<span class="title function_">mount</span>(<span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(toast.<span class="property">$el</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Toast</span> = &#123;</span><br><span class="line">	<span class="title function_">success</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		toast.<span class="property">toastProps</span> = &#123;</span><br><span class="line">			<span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span>,</span><br><span class="line">			message</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			toast.<span class="property">toastProps</span>.<span class="property">visible</span> = <span class="literal">false</span></span><br><span class="line">		&#125;, <span class="number">3000</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">error</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		toast.<span class="property">toastProps</span> = &#123;</span><br><span class="line">			<span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">type</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">			message</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			toast.<span class="property">toastProps</span>.<span class="property">visible</span> = <span class="literal">false</span></span><br><span class="line">		&#125;, <span class="number">3000</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Toast</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 👨‍💻使用</h2>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Toast</span>.<span class="title function_">success</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="title class_">Toast</span>.<span class="title function_">error</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2023/08/17/ewqEhulLyJmUCKH.gif" alt="toast.gif" /></p>
-]]></content>
-      <tags>
         <tag>enhanced</tag>
       </tags>
   </entry>
@@ -1911,6 +1883,11 @@ F --> L[结束]</pre>
       </categories>
   </entry>
   <entry>
+    <title>&#39;tag&#39;</title>
+    <url>/posts/zh-CN-tag-index/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>大理</title>
     <url>/posts/gallery-%E5%A4%A7%E7%90%86/</url>
     <content><![CDATA[<hr />
@@ -1953,8 +1930,31 @@ F --> L[结束]</pre>
       </categories>
   </entry>
   <entry>
-    <title>&#39;tag&#39;</title>
-    <url>/posts/zh-CN-tag-index/</url>
-    <content><![CDATA[]]></content>
+    <title>简单实现Toast组件</title>
+    <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
+    <content><![CDATA[<blockquote>
+<ul>
+<li>一个模版文件Toast.vue</li>
+<li>一个渲染挂载导出方法文件index.ts
+<ul>
+<li>通过Toast.success(‘xxxx’) 调用</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>这里UI使用<code>Flowbite</code>的<a href="https://flowbite.com/docs/components/toast/#colors">Toast</a>组件（需要配合tailwindcss）</p>
+<p><img src="https://s2.loli.net/2023/08/17/hrfHPm5M8LAZcv4.png" alt="image-20230817102433189.png" /></p>
+<h2 id="供给渲染的模板"><a class="markdownIt-Anchor" href="#供给渲染的模板"></a> 供给渲染的模板</h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">interface Props &#123;</span><br><span class="line">	visible: boolean</span><br><span class="line">	type: string</span><br><span class="line">	message: string</span><br><span class="line">&#125;</span><br><span class="line">const props = withDefaults(defineProps&lt;Props&gt;(), &#123;</span><br><span class="line">	visible: false,</span><br><span class="line">	type: &#x27;&#x27;,</span><br><span class="line">	message: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const status = props.type === &#x27;success&#x27; ? &#x27;success&#x27; : &#x27;danger&#x27;</span><br><span class="line">const toast = ref&lt;HTMLDivElement&gt;()</span><br><span class="line">const handleClose = () =&gt; &#123;</span><br><span class="line">	toast.value!.style.display = &#x27;none&#x27;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;Transition</span><br><span class="line">		name=&quot;toast&quot;</span><br><span class="line">		enter-active-class=&quot;transition ease-out duration-300&quot;</span><br><span class="line">		leave-active-class=&quot;transition ease-in duration-300&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;div class=&quot;fixed inset-0 h-0&quot; v-if=&quot;props.visible&quot;&gt;</span><br><span class="line">			&lt;div</span><br><span class="line">				:id=&quot;`toast-$&#123;status&#125;`&quot;</span><br><span class="line">				class=&quot;absolute top-5 left-1/2 -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800&quot;</span><br><span class="line">				role=&quot;alert&quot;</span><br><span class="line">				ref=&quot;toast&quot;</span><br><span class="line">			&gt;</span><br><span class="line">				&lt;div</span><br><span class="line">					v-if=&quot;props.type === &#x27;success&#x27;&quot;</span><br><span class="line">					class=&quot;inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-5 h-5&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;currentColor&quot;</span><br><span class="line">						viewBox=&quot;0 0 20 20&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							d=&quot;M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt; Check icon &lt;/span&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">				&lt;div</span><br><span class="line">					v-else-if=&quot;props.type === &#x27;error&#x27;&quot;</span><br><span class="line">					class=&quot;inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-5 h-5&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;currentColor&quot;</span><br><span class="line">						viewBox=&quot;0 0 20 20&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							d=&quot;M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt; Error icon &lt;/span&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;div class=&quot;ml-3 text-sm font-normal&quot;&gt;</span><br><span class="line">					&lt;!-- &#123;/* 不同 */&#125;  --&gt;</span><br><span class="line">					&#123;&#123; props.message &#125;&#125;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;button</span><br><span class="line">					type=&quot;button&quot;</span><br><span class="line">					class=&quot;ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700&quot;</span><br><span class="line">					data-dismiss-target=&quot;#toast-success&quot;</span><br><span class="line">					aria-label=&quot;Close&quot;</span><br><span class="line">					@click=&quot;handleClose&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt;Close&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-3 h-3&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;none&quot;</span><br><span class="line">						viewBox=&quot;0 0 14 14&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							stroke=&quot;currentColor&quot;</span><br><span class="line">							stroke-linecap=&quot;round&quot;</span><br><span class="line">							stroke-linejoin=&quot;round&quot;</span><br><span class="line">							stroke-width=&quot;2&quot;</span><br><span class="line">							d=&quot;m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">				&lt;/button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/Transition&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.toast-enter-from,</span><br><span class="line">.toast-leave-to &#123;</span><br><span class="line">	opacity: 0;</span><br><span class="line">	transform: translateY(-30px);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="导出toast方法提供给vue进行挂载"><a class="markdownIt-Anchor" href="#导出toast方法提供给vue进行挂载"></a> 导出toast方法，提供给Vue进行挂载</h2>
+<p>index.ts</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">//@ts-nocheck</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp, h &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ToastComponent</span> <span class="keyword">from</span> <span class="string">&#x27;./template/Toast.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ToastProps</span> &#123;</span><br><span class="line">	<span class="attr">visible</span>: <span class="built_in">boolean</span></span><br><span class="line">	<span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span> | <span class="string">&#x27;error&#x27;</span></span><br><span class="line">	<span class="attr">message</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ToastContainer</span> = <span class="title function_">createApp</span>(&#123;</span><br><span class="line">	<span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_">h</span>(<span class="title class_">ToastComponent</span>, <span class="variable language_">this</span>.<span class="property">toastProps</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">toastProps</span>: &#123;</span><br><span class="line">				<span class="attr">visible</span>: <span class="literal">false</span>,</span><br><span class="line">				<span class="attr">type</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">				<span class="attr">message</span>: <span class="string">&#x27;&#x27;</span> </span><br><span class="line">			&#125; <span class="keyword">as</span> <span class="built_in">unknown</span> <span class="keyword">as</span> <span class="title class_">ToastProps</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> toast = <span class="title class_">ToastContainer</span>.<span class="title function_">mount</span>(<span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(toast.<span class="property">$el</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Toast</span> = &#123;</span><br><span class="line">	<span class="title function_">success</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		toast.<span class="property">toastProps</span> = &#123;</span><br><span class="line">			<span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span>,</span><br><span class="line">			message</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			toast.<span class="property">toastProps</span>.<span class="property">visible</span> = <span class="literal">false</span></span><br><span class="line">		&#125;, <span class="number">3000</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">error</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		toast.<span class="property">toastProps</span> = &#123;</span><br><span class="line">			<span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">type</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">			message</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			toast.<span class="property">toastProps</span>.<span class="property">visible</span> = <span class="literal">false</span></span><br><span class="line">		&#125;, <span class="number">3000</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Toast</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 👨‍💻使用</h2>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Toast</span>.<span class="title function_">success</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="title class_">Toast</span>.<span class="title function_">error</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2023/08/17/ewqEhulLyJmUCKH.gif" alt="toast.gif" /></p>
+]]></content>
+      <tags>
+        <tag>enhanced</tag>
+      </tags>
   </entry>
 </search>
