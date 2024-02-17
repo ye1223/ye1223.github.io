@@ -15,7 +15,7 @@
 
 
 
-<title>CSS只显示两行 | Levy&#39;s Blog</title>
+<title>Typora图床 | Levy&#39;s Blog</title>
 
 
 
@@ -159,27 +159,18 @@
     <div class="post-info">
         <div class="tag-list">
             
-
-                
-                    <span class="post-tag">
-                        <a href="/tags/CSS/">
-                            CSS
-                        </a>
-                    </span>
-                    
-                        
         </div>
         <div class="post-title">
 
             
-                CSS只显示两行
+                Typora图床
                     
         </div>
         <span class="post-date">
-            Feb 1, 2024
+            Feb 17, 2024
         </span>
         <span class="post-word-count">
-            48 words / About 30 seconds
+            60 words / About 1 minute
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -188,21 +179,66 @@
     </div>
     <div class="post-img">
         
-                <div class="h-line-primary"></div>
-                
+            <img src="https://s2.loli.net/2024/02/17/StpZoLWv9OGUVFj.png" alt="featured_image">
+            
     </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <p><strong><code>-webkit-line-clamp</code></strong> CSS 属性可以把<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Block">块容器</a>中的内容限制为指定的行数。</p>
-<p>它只有在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 属性设置成 <code>-webkit-box</code> 或者 <code>-webkit-inline-box</code> 并且 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-orient"><code>box-orient</code></a> 属性设置成 <code>vertical</code>时才有效果。</p>
-<p>在大部分情况下，也需要设置 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow"><code>overflow</code></a> 属性为 <code>hidden</code>，否则，里面的内容不会被裁减，并且在内容显示为指定行数后还会显示省略号。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  display: -webkit-box;</span><br><span class="line">  text-overflow: ellipsis;</span><br><span class="line">  -webkit-line-clamp: 2;  /* 两行 */</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">   word-break: break-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果<br />
-<img src="https://s2.loli.net/2024/02/01/ljaoHIB9rkU4uXn.png" alt="css只展示两行png.png" /></p>
-<p>💡 其中， <code>word-break</code> 指定了怎样在单词内断行， 这里 <code>break-all</code> 将单词截断换行，由于这里只能显示 2 行，所以出现图中效果</p>
+    <p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
+<p><strong>图床平台</strong>：<a target="_blank" rel="noopener" href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
+<p><strong>上传服务器</strong>：<a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
+<p>手把手步骤：</p>
+<ul>
+<li>
+<p><strong><a target="_blank" rel="noopener" href="http://sm.ms">sm.ms</a></strong></p>
+<ul>
+<li>注册</li>
+<li>获取<code>Token</code>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>PicGo</strong></p>
+<ul>
+<li>全局下载 CLI：<code>yarn add global picgo</code></li>
+<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
+<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
+<ul>
+<li><code>vim ~/.picgo/config.json</code></li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Typora</strong></p>
+<ul>
+<li>设置 &gt; 图像 &gt; 上传服务设置</li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
+</li>
+</ul>
+</li>
+<li>
+<p><strong>使用</strong></p>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
+</li>
+</ul>
+</li>
+</ul>
+<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
 
 </div>
 <div class="toc-menu-container">
@@ -347,17 +383,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/posts/typora%E5%9B%BE%E5%BA%8A/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/zh-CN-tag-index/">Next</a>  
+                  <a href="/posts/CSS%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%A4%E8%A1%8C/">Next</a>  
                 </div>  
             
         </div>
@@ -398,8 +429,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/CSS%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%A4%E8%A1%8C/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/CSS只显示两行/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/typora%E5%9B%BE%E5%BA%8A/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/typora图床/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -426,8 +457,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/CSS%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%A4%E8%A1%8C/';
-                                    this.page.identifier = 'posts/CSS只显示两行/';
+                                    this.page.url = 'http://example.com/posts/typora%E5%9B%BE%E5%BA%8A/';
+                                    this.page.identifier = 'posts/typora图床/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})

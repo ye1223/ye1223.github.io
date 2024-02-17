@@ -1973,4 +1973,61 @@ F --> L[结束]</pre>
     <url>/posts/zh-CN-tag-index/</url>
     <content><![CDATA[]]></content>
   </entry>
+  <entry>
+    <title>Typora图床</title>
+    <url>/posts/typora%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
+<p><strong>图床平台</strong>：<a href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
+<p><strong>上传服务器</strong>：<a href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
+<p>手把手步骤：</p>
+<ul>
+<li>
+<p><strong><a href="http://sm.ms">sm.ms</a></strong></p>
+<ul>
+<li>注册</li>
+<li>获取<code>Token</code>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>PicGo</strong></p>
+<ul>
+<li>全局下载 CLI：<code>yarn add global picgo</code></li>
+<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
+<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
+<ul>
+<li><code>vim ~/.picgo/config.json</code></li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Typora</strong></p>
+<ul>
+<li>设置 &gt; 图像 &gt; 上传服务设置</li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
+</li>
+</ul>
+</li>
+<li>
+<p><strong>使用</strong></p>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
+</li>
+</ul>
+</li>
+</ul>
+<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
+]]></content>
+  </entry>
 </search>
