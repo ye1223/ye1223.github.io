@@ -110,6 +110,7 @@ deploy:
   type: git
   repo: https://github.com/ye1223/ye1223.github.io.git
   branch: master
+  token: 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
 
 readtime: ## plugin config. Only define this if you need to override the built-in fs.
   defaultTime: auto ## Time unit used for calculating read time. Options: auto | seconds | minutes | days | months | years
