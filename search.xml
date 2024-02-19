@@ -2033,4 +2033,19 @@ F --> L[结束]</pre>
         <tag>utils</tag>
       </tags>
   </entry>
+  <entry>
+    <title>btoa-atob</title>
+    <url>/posts/btoa-atob/</url>
+    <content><![CDATA[<p>今天在找登录token发先存于Cookie的access_token被加密成ASCII字符串，遂找到了两个window下的api</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// base64Encryption</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">encryptToken</span>(<span class="params">token</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> encryptedToken = <span class="title function_">btoa</span>(token)</span><br><span class="line">  <span class="keyword">return</span> encryptedToken</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">decryptToken</span>(<span class="params">encryptedToken</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> decryptedToken = <span class="title function_">atob</span>(encryptedToken)</span><br><span class="line">  <span class="keyword">return</span> decryptedToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Binary To ASCII</strong></p>
+<p><strong><code>btoa()</code></strong> 方法可以将一个<em>二进制字符串</em>（例如，将字符串中的每一个字节都视为一个二进制数据字节）编码为 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Base64">Base64</a> 编码的 ASCII 字符串。</p>
+<p>**ASCII To Binary **</p>
+<p><strong><code>atob()</code></strong> 对经过 base-64 编码的字符串进行解码</p>
+<p><img src="https://s2.loli.net/2024/02/19/6sy4PoWhdcw5BXJ.png" alt="bta atob" /></p>
+]]></content>
+      <tags>
+        <tag>new found</tag>
+      </tags>
+  </entry>
 </search>
