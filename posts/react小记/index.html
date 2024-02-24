@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<!-- <html lang="en,zh-CN,default"> -->
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Levy Liu">
+
+
+
+
+
+
+
+<title>React小记 | Levy&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/color_mode/classic.css">
+    
+    <link rel="stylesheet" href="/css/color_mode/dark.css">
+    
+    <link rel="stylesheet" href="/lib/viewer/viewer.min.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+    <script src="/js/format.js"></script>
+    
+    <script src="/js/search.js"></script>
+    
+    <script src="/lib/viewer/viewer.min.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <!-- <div class="image-preview-mask">
+    <div class="image-preview-container">
+      <div id="img-preview"></div>
+    </div>
+  </div> -->
+  <div class="mask-border">
+  </div>
+
+  <div class="wrapper">
+
+    <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            Levy&#39;s Blog.🦊
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        
+        <ul class="menu-list">
+          
+            <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+            <!-- 高亮显示 -->
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+            <!-- 高亮显示 -->
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+            <!-- 高亮显示 -->
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          <!-- 搜索功能 -->
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+          
+
+          <!-- Some tags or posts doesn't have alternative language version, so we don't render language switcher for them -->
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  /* const button = document.querySelector('button')
+  button.addEventListener('clcik', ()=>{
+    document.body.classList.add('')
+  }) */
+</script>
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+  
+    <div class="post-head">
+    
+    <div class="post-info">
+        <div class="tag-list">
+            
+
+                
+                    <span class="post-tag">
+                        <a href="/tags/react/">
+                            react
+                        </a>
+                    </span>
+                    
+                        
+        </div>
+        <div class="post-title">
+
+            
+                React小记
+                    
+        </div>
+        <span class="post-date">
+            Jul 25, 2023
+        </span>
+        <span class="post-word-count">
+            333 words / About 7 minutes
+
+            <span class="post-word-count-tooltip">Only English content is counted</sapn>
+        </span>
+
+        
+    </div>
+    <div class="post-img">
+        
+                <div class="h-line-primary"></div>
+                
+    </div>
+</div>
+    <div class="post-content">
+    <!-- <-page.content -->
+    <div class="toc"></div>
+<div class="post-body">
+    <h2 id="react库和框架的区别是什么"><a class="markdownIt-Anchor" href="#react库和框架的区别是什么"></a> React库和框架的区别是什么？</h2>
+<ul>
+<li>页面组件化</li>
+<li>数据驱动</li>
+</ul>
+<p>MVC V层</p>
+<blockquote>
+<p>react库</p>
+<p>​	react.js是一个开放的js工具库，用于基于UI自检构建用户界面</p>
+</blockquote>
+<blockquote>
+<p>react框架</p>
+<p>​	通过脚手架工具搭建的一套完善的前端环境，包括：路由、状态管理、数据获取、第三方的UI组件库和第三方Hooks库(ahooks react-use)</p>
+</blockquote>
+<h2 id="严格模式"><a class="markdownIt-Anchor" href="#严格模式"></a> 严格模式</h2>
+<p>​	检查组件是否为<strong>纯函数</strong></p>
+<p>​	及早的发现useEffect中的错误</p>
+<p>​	警告过时的API</p>
+<h2 id="eslint"><a class="markdownIt-Anchor" href="#eslint"></a> ESLint</h2>
+<p>​	代码规范插件</p>
+<blockquote>
+<p>npm run lint</p>
+<p>vite-plugin-eslint （vite构建下）</p>
+</blockquote>
+<h2 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> Prettier</h2>
+<p>​	代码格式化插件</p>
+<h2 id="react模块"><a class="markdownIt-Anchor" href="#react模块"></a> react模块</h2>
+<p>​	核心功能</p>
+<p>​	组件</p>
+<h2 id="react-dom"><a class="markdownIt-Anchor" href="#react-dom"></a> react-dom</h2>
+<p>​	操作浏览器DOM</p>
+<p>​	<code>react-dom/client</code> 客户端渲染使用</p>
+<p>​	<code>react-dom/server </code>服务端渲染使用</p>
+<blockquote>
+<p>分离不同代码库，可跨平台使用</p>
+<p>比如 编写<code>react-native</code>应用，当然不用使用<code>react-dom</code>模块</p>
+</blockquote>
+<p>利用<strong>编译器</strong>编译成中间这种<code>reactElement</code>对象格式(虚拟DOM)，再利用<code>react-dom</code>库完成</p>
+<p><img src="https://s2.loli.net/2023/07/25/cHAiE6MDN71R9pW.png" alt="image-20230719112407499.png" /></p>
+<p><img src="https://s2.loli.net/2023/07/25/94UeQaLNsGli1JP.png" alt="image-20230719140934815.png" /></p>
+<h2 id="fragment"><a class="markdownIt-Anchor" href="#fragment"></a> fragment</h2>
+<p><code>&lt;&gt;&lt;/&gt;</code> 简写，这种方式不能写key</p>
+<h2 id="classnames-控制样式"><a class="markdownIt-Anchor" href="#classnames-控制样式"></a> classnames 控制样式</h2>
+<p><img src="https://s2.loli.net/2023/07/25/no2bQfZGqpJ3rz4.png" alt="image.png" /></p>
+<h2 id="事件"><a class="markdownIt-Anchor" href="#事件"></a> 事件</h2>
+<p>​	合成事件：处理事件有差异（onmouse<u>enter</u> 实际使用的是<u>over</u>）</p>
+<p>​	事件委托：委托到容器’root’元素</p>
+<p><img src="https://s2.loli.net/2023/07/25/4doOvBUxuV2z8fc.png" alt="image-20230719143026471.png" /></p>
+<p>​	传参处理</p>
+<p>​		箭头函数</p>
+<p>​		高阶函数</p>
+<h2 id="条件渲染"><a class="markdownIt-Anchor" href="#条件渲染"></a> 条件渲染</h2>
+<p>​	条件分支if else switch case</p>
+<p>​	三目 ? :</p>
+<p>​	逻辑运算符 || ?? &amp;&amp;</p>
+<blockquote>
+<p>不会渲染的值：null、undefined、boolean、‘’ 、对象、函数</p>
+<p>利用JSON.stringify() 或者 {undefied +‘’}(拼接空串)</p>
+</blockquote>
+<p>​</p>
+<h2 id="数组渲染"><a class="markdownIt-Anchor" href="#数组渲染"></a> 数组渲染</h2>
+<blockquote>
+<p>​	<font color=red>jsx默认对数组进行join()操作</font></p>
+</blockquote>
+<p>​	循环语句</p>
+<p>​	<img src="https://s2.loli.net/2023/07/25/Gc83QLyR5SVbFKW.png" alt="image-20230719144614400.png" /></p>
+<p>​	数组方法（map）</p>
+<blockquote>
+<p>必须写key</p>
+<p>帮助react推断发生了什么，从而得以正确的更新DOM树</p>
+<p>跟踪列表每一项的身份， 唯一标识</p>
+</blockquote>
+<h2 id="组件的u点标记u写法"><a class="markdownIt-Anchor" href="#组件的u点标记u写法"></a> 组件的<u>点标记</u>写法</h2>
+<h3 id="对象形式"><a class="markdownIt-Anchor" href="#对象形式"></a> 对象形式</h3>
+<p>​		组件写为对象的方法</p>
+<p>​		可解构使用</p>
+<p><img src="https://s2.loli.net/2023/07/25/ZSJRGjxKWVdFlE9.png" alt="image-20230719145530569.png" /></p>
+<h3 id="函数形式更好的进行组件分类"><a class="markdownIt-Anchor" href="#函数形式更好的进行组件分类"></a> 函数形式（更好的进行组件分类</h3>
+<p>​	将组件直接挂载在上级组件上</p>
+<p>​		<img src="https://s2.loli.net/2023/07/25/mMoLItqRXs6hyA5.png" alt="image-20230719145906028.png" /></p>
+<h2 id="组件通信方式"><a class="markdownIt-Anchor" href="#组件通信方式"></a> 组件通信方式</h2>
+<p>props传递值</p>
+<p>​	整体接收， 解构接收</p>
+<p>props传递事件</p>
+<p>通过扩展运算符{…}批量上传</p>
+<h2 id="组件组合方式"><a class="markdownIt-Anchor" href="#组件组合方式"></a> 组件组合方式</h2>
+<blockquote>
+<p>插槽</p>
+</blockquote>
+<p>利用props的children属性</p>
+<p><img src="https://s2.loli.net/2023/07/25/fgLQPnTCZsOKjov.png" alt="image-20230719151126002.png" /></p>
+<p>​	指定顺序</p>
+<p><img src="https://s2.loli.net/2023/07/25/l326jsNfERpq4n8.png" alt="image-20230719151821461.png" /></p>
+<p><img src="https://s2.loli.net/2023/07/25/35jOCBYAGLvbMSr.png" alt="image-20230719153233192.png" /></p>
+<h2 id="props默认值"><a class="markdownIt-Anchor" href="#props默认值"></a> props默认值</h2>
+<p>​	利用es6的默认值方式</p>
+<p><img src="https://s2.loli.net/2023/07/25/35jOCBYAGLvbMSr.png" alt="image-20230719153233192.png" /></p>
+<p>​	react的defaultProps</p>
+<p><img src="https://s2.loli.net/2023/07/25/7Mbkav82tCNFzhP.png" alt="image-20230719153301244.png" /></p>
+<h2 id="props类型限定"><a class="markdownIt-Anchor" href="#props类型限定"></a> props类型限定</h2>
+<p>​	使用ts</p>
+<p>​	使用第三方proptypes</p>
+<h2 id="组件纯函数"><a class="markdownIt-Anchor" href="#组件纯函数"></a> 组件纯函数</h2>
+<p>​	只负责自己的任务，不会在更改函数调用前就已存在的对象和变量。（不能修改这个函数组件作用域外的对象和变量）</p>
+<blockquote>
+<p>​	<strong>严格模式</strong>检测当前组件是否为纯函数，对这函数调用两次，检测值是否变化</p>
+</blockquote>
+<p>​	输入相同，则输出相同。纯函数总是返回相同的结果。</p>
+<blockquote>
+<p>​	不管调用多次，函数都输出同一个值，对于<strong>测试</strong>更方便。<strong>增强健壮性</strong></p>
+</blockquote>
+<h2 id="组件的状态"><a class="markdownIt-Anchor" href="#组件的状态"></a> 组件的状态</h2>
+<p>瞬间变化的数据被称为状态（state），状态可以<strong>进行数据驱动</strong></p>
+<p>useState hooks 提供 <u>状态</u> 和 <u>修改状态</u>的方法</p>
+<p>​	普通变量 无法重新渲染JSX</p>
+<p>​	state状态，重新触发函数组件，并且具备<strong>组件的<font color=red>记忆</font></strong>。</p>
+<blockquote>
+<p>​	普通纯函数函数， 多次调用执行结果</p>
+</blockquote>
+<h3 id="状态是如何改变视图的"><a class="markdownIt-Anchor" href="#状态是如何改变视图的"></a> 状态是如何改变视图的</h3>
+<p>渲染与提交的过程</p>
+<p>1️⃣触发一次渲染</p>
+<p>​	💡组件的初次渲染，createRoot.render</p>
+<p>​	🔦内部状态更新，触发渲染送入队列</p>
+<p>2️⃣渲染您的组件</p>
+<p>​	💡在进行初次渲染，react调用根组件<code>&lt;App/&gt;</code></p>
+<p>​	🔦内部状态更新，会渲染对应的函数组件</p>
+<p>3️⃣提交到DOM上</p>
+<p>​	💡初次渲染，appendChild DOM API</p>
+<p>​	🔦内部状态更新，更新差异的DOM节点</p>
+<h3 id="多状态如何正确记忆"><a class="markdownIt-Anchor" href="#多状态如何正确记忆"></a> 多状态如何正确记忆？</h3>
+<p>同一个组件的每次渲染中，useState都依托于一个稳定的调用顺序</p>
+<p>在react内部，每个组件保存了一个数组， 按照索引记忆usestate位置。<code>[&#123;索引，useState对&#125;]</code></p>
+<blockquote>
+<p>所以不要将useState写到一些分支逻辑中，会打乱useState顺序</p>
+</blockquote>
+<p>配合eslint检查，语法是否合规</p>
+<h3 id="状态的快照"><a class="markdownIt-Anchor" href="#状态的快照"></a> 状态的快照</h3>
+<p>本次作用域中的状态不会改变</p>
+<p><img src="https://s2.loli.net/2023/07/25/uh6UXZsLEilwmjY.png" alt="image-20230719163835286.png" /></p>
+<p>点击后，触发三次setcount，但是当前作用域的count都为0</p>
+<p>快照的陷阱，异步的时候造成错觉，其实异步逻辑中的状态还是依赖于这次函数作用域</p>
+<p><img src="https://s2.loli.net/2023/07/25/65ayv4H7KrhLoli.png" alt="image-20230719164801330.png" /></p>
+<p><img src="https://s2.loli.net/2023/07/25/9IhUgbs7ZVlW3Hz.png" alt="image-20230719165254304.png" /></p>
+<blockquote>
+<p>词法作用域，只看定义，不看调用</p>
+</blockquote>
+<h3 id="状态队列与自动批处理"><a class="markdownIt-Anchor" href="#状态队列与自动批处理"></a> 状态队列与自动批处理</h3>
+<p>自动批处理</p>
+<p>​	等事件处理函数中的所有代码都运行完毕再处理你的state更新</p>
+<p>​	队列都执行完毕后，在进行ui更新</p>
+<p>更新函数的写法</p>
+<p><img src="https://s2.loli.net/2023/07/25/iCsuQxMSc71oygb.png" alt="image-20230719170017902.png" /></p>
+<p>形参c来自于react内部，所以这里并不是保存的count快照，连续调用三次后，得到3</p>
+<blockquote>
+<p>更新函数在内部还是以回调的形式，但没使用形参</p>
+</blockquote>
+<h3 id="严格遵守状态不可变"><a class="markdownIt-Anchor" href="#严格遵守状态不可变"></a> 严格遵守状态不可变</h3>
+<p><strong>默认</strong>情况下，修改的状态跟上一次相同的情况下，是不会重新触发渲染</p>
+<h3 id="引用数据类型"><a class="markdownIt-Anchor" href="#引用数据类型"></a> 引用数据类型</h3>
+<p>拷贝</p>
+<p>​	数组，使用相关方法</p>
+<p>​	扩展运算符</p>
+<p>​	深克隆（将没改变的数据也是克隆了一份）</p>
+<p>​	immer useimmer 可以直接对数据进行修改</p>
+<h3 id="惰性初始化状态的值"><a class="markdownIt-Anchor" href="#惰性初始化状态的值"></a> 惰性初始化状态的值</h3>
+<p>当状态的值组要通过复杂计算才能得到的话，可以对其进行惰性初始化</p>
+<blockquote>
+<p>只在初始化的时候执行一次</p>
+</blockquote>
+<h3 id="状态提升解决共享问题"><a class="markdownIt-Anchor" href="#状态提升解决共享问题"></a> 状态提升解决共享问题</h3>
+<p>父组件管理状态，子组件props</p>
+<h3 id="状态的重置处理问题"><a class="markdownIt-Anchor" href="#状态的重置处理问题"></a> 状态的重置处理问题</h3>
+<p>当组件被销毁会时，所对应的状态也会被重置</p>
+<p>当<strong>组件位置</strong>没有发生变化，状态会被保留</p>
+<p><img src="https://s2.loli.net/2023/07/25/hZIvLofTXFxWDYz.gif" alt="状态重置1.gif" /></p>
+<blockquote>
+<p>组件渲染位置发生变化，状态不被保留</p>
+<p><img src="https://s2.loli.net/2023/07/25/7rkxUmafhFbcqGS.gif" alt="状态-不同位置.gif" /></p>
+</blockquote>
+<p>不同的结构体，给组件添加<strong>key属性</strong></p>
+<blockquote>
+<p><font color=red>diff算法，同层级的元素是否发生改变</font></p>
+</blockquote>
+<h3 id="利用状态产生计算变量"><a class="markdownIt-Anchor" href="#利用状态产生计算变量"></a> 利用状态产生计算变量</h3>
+<p>根据<strong>状态会重新渲染组件</strong>的特性，利用当前<strong>状态快照</strong>生成对应的计算变量</p>
+<p><img src="https://s2.loli.net/2023/07/25/BQFsjgh3nrIdA6k.gif" alt="chrome-capture-2023-6-20.gif" /></p>
+<h2 id="受控组件与非受控组件"><a class="markdownIt-Anchor" href="#受控组件与非受控组件"></a> 受控组件与非受控组件</h2>
+<p>通过props控制的组件成为受控，通过state控制的组件称为非受控组件</p>
+<p>react表单内置了受控组件的行为</p>
+<p>​	value + onChange</p>
+<p>​	checked + onChange</p>
+<p>input标签并不是原始的标签</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [value, setValue] = <span class="title function_">useState</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">value</span>=<span class="string">&#123;value&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onChange</span>=<span class="string">&#123;(e)</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">          console.log(e.target.value);</span></span><br><span class="line"><span class="language-xml">          setValue(e.target.value)</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;</span></span><br><span class="line"><span class="language-xml">      /&gt;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="hooks"><a class="markdownIt-Anchor" href="#hooks"></a> Hooks</h1>
+<p>react中以use开头的函数被称为Hook钩子，Hooks被称为use函数的集合，也就是钩子的集合</p>
+<p>Hooks就是一堆功能函数，（像插件</p>
+<p>分为： 内置、自定义、第三方</p>
+<h2 id="useref"><a class="markdownIt-Anchor" href="#useref"></a> useRef</h2>
+<p>使用ref引用一个值，具备记忆功能</p>
+<p>改变ref不会触发重新渲染组件</p>
+<p><img src="https://s2.loli.net/2023/07/25/iyCeFSGRxWDZXlr.png" alt="image-20230720100818798.png" /></p>
+<p><img src="https://s2.loli.net/2023/07/25/XSUFWpV4CJlBMT3.png" alt="image-20230720101032139.png" /></p>
+<p>定时器案例：timer用ref存储，始终引用的同一个值</p>
+<h3 id="useref进行dom操作"><a class="markdownIt-Anchor" href="#useref进行dom操作"></a> useref进行dom操作</h3>
+<p>​	如：让元素获取焦点，滚动到他或测量尺寸位置</p>
+<h3 id="回调写法在逻辑中操作dom"><a class="markdownIt-Anchor" href="#回调写法在逻辑中操作dom"></a> 回调写法，在逻辑中操作dom</h3>
+<p><img src="https://s2.loli.net/2023/07/25/vtEOLCYA8DgBTfR.png" alt="image-20230720102321632.png" /></p>
+<h3 id="forwardref"><a class="markdownIt-Anchor" href="#forwardref"></a> forwardRef</h3>
+<p>给<strong>组件</strong>设置ref需要forwardRef<strong>转发</strong></p>
+<p>forwardRef让您的组件通过ref向父组件公开DOM节点</p>
+<p>直接转发ref给子组件报错</p>
+<p><img src="https://s2.loli.net/2023/07/25/kVQnM81xyLu7oDC.png" alt="image-20230724150124791.png" /></p>
+<p><img src="https://s2.loli.net/2023/07/25/B5Kh6kOrXaLWQdm.png" alt="image-20230724151308635.png" /></p>
+<h3 id="useimperativehandle"><a class="markdownIt-Anchor" href="#useimperativehandle"></a> useImperativeHandle</h3>
+<p>自定义由ref暴露出来的句柄</p>
+<p><img src="https://s2.loli.net/2023/07/25/HSitNEdGyln4KzI.png" alt="image-20230724153237639.png" /></p>
+<p><img src="https://s2.loli.net/2023/07/25/7h8YMuCK4WTOwyz.png" alt="image-20230724153456747.png" /></p>
+<h2 id="纯函数处理useeffect"><a class="markdownIt-Anchor" href="#纯函数处理useeffect"></a> 纯函数处理useEffect</h2>
+<p>纯函数：</p>
+<p>副作用：</p>
+<p>​	函数在执行过程中对外部造成的影响成为副作用，如ajax、dom操作、与外部系统同步</p>
+<p>​	事件可以处理副作用，onclick事件等</p>
+<p>​	处理副作用，借助useEffect钩子</p>
+<p>useEffect触发时机，<strong>jsx渲染后触发</strong></p>
+<p>依赖项，<a target="_blank" rel="noopener" href="http://xn--Object-hs2j6622blval8d.is">内部通过Object.is</a>() 方法判定</p>
+<p>​	当依赖项为空，指挥初始渲染</p>
+<p>​	ESLint会检查依赖项是否正确，包括props state 计算变量</p>
+<h3 id="函数写在useeffect中"><a class="markdownIt-Anchor" href="#函数写在useeffect中"></a> 函数写在useEffect中</h3>
+<p>useCallback</p>
+<p>函数始终是同一个</p>
+<p>每次重新渲染函数，函数指向地址发生改变</p>
+<h3 id="useeffect清理工作"><a class="markdownIt-Anchor" href="#useeffect清理工作"></a> useEffect清理工作</h3>
+<p>严格模式，检测有无做清理工作</p>
+<p>初始化数据时，注意清理操作，</p>
+<p>​	更简洁的方法是使用第三方，ahooks的useRequest</p>
+<h2 id="useeffectevent"><a class="markdownIt-Anchor" href="#useeffectevent"></a> useEffectEvent</h2>
+<p><img src="https://s2.loli.net/2023/07/25/uKlfrvej4UA2OqJ.png" alt="image-20230724162726502.png" /></p>
+<h2 id="uselayouteffect-同步执行状态更新"><a class="markdownIt-Anchor" href="#uselayouteffect-同步执行状态更新"></a> useLayoutEffect 同步执行状态更新</h2>
+<p>useEffect是在渲染之后，更新之前</p>
+<p>如过需要在useEffect中处理DOM，并且改变页面的样式，就需要使用useLayoutEffect，</p>
+<h2 id="useinsertioneffect-dom更新前触发"><a class="markdownIt-Anchor" href="#useinsertioneffect-dom更新前触发"></a> useInsertionEffect DOM更新前触发</h2>
+<p>此时拿不到dom元素</p>
+<p>在css-in-js库中使用的多</p>
+<h2 id="usereducer"><a class="markdownIt-Anchor" href="#usereducer"></a> useReducer</h2>
+<p>局部的状态管理，抽离逻辑</p>
+<h2 id="useimmerreducer"><a class="markdownIt-Anchor" href="#useimmerreducer"></a> useImmerReducer</h2>
+<p>immer类型数据</p>
+<h2 id="context向组件深层次传递数据"><a class="markdownIt-Anchor" href="#context向组件深层次传递数据"></a> Context向组件深层次传递数据</h2>
+<blockquote>
+<p>reducer配合context实现状态数据共享</p>
+<p>更复杂的情况使用第三方库,redux mobx,zuster</p>
+</blockquote>
+<h2 id="memo在props不变时跳过重新渲染"><a class="markdownIt-Anchor" href="#memo在props不变时跳过重新渲染"></a> memo在props不变时跳过重新渲染</h2>
+<p>达到一些性能优化</p>
+<blockquote>
+<p>props改变的情况下，会重新渲染组件</p>
+</blockquote>
+<p>没有props</p>
+<p><img src="https://s2.loli.net/2023/07/25/Prz2fHX5ksuL71b.gif" alt="memo-props1.gif" /></p>
+<p><img src="https://s2.loli.net/2023/07/25/bUIa1KeAVdiRzNg.gif" alt="memo-props2.gif" /></p>
+<h2 id="usememo对计算结果进行缓存"><a class="markdownIt-Anchor" href="#usememo对计算结果进行缓存"></a> useMemo对计算结果进行缓存</h2>
+<p>虽然使用memo，并且props <strong>数组list****值</strong>未变化，但是list的引用地址发生变化，底层使用<code>Object.is([], []) ==&gt;flase</code> 比较，则<strong>props值</strong>改变</p>
+<p><img src="https://s2.loli.net/2023/07/25/G6FMPfQ1NcULiWZ.gif" alt="usememo1.gif" /></p>
+<p>使用useMemo对计算数据进行缓存（类似useCallback缓存函数）</p>
+<h2 id="usecallback对函数进行缓存"><a class="markdownIt-Anchor" href="#usecallback对函数进行缓存"></a> useCallback对函数进行缓存</h2>
+<p>useMemo的一种特殊写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const fn = useMemo(()=&gt; () =&gt; &#123; console.log(1) &#125;)</span><br><span class="line">const fn = useCallback(() =&gt; &#123; console.log(1) &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="starttrasition-方法及并发模式"><a class="markdownIt-Anchor" href="#starttrasition-方法及并发模式"></a> StartTrasition 方法及并发模式</h2>
+<p>​	react18开始，渲染是一个单一的、不间断的、同步的事务，一旦渲染开始，就不能被中断</p>
+<pre><code>react18引入并发模式，允许标记更新作为一个transition，这回告诉react它们可以被中断执行。这样可以把紧急的任务先更新，不紧急的任务后更新
+</code></pre>
+<p><code>任务切换</code></p>
+<h2 id="usetrasition-hook"><a class="markdownIt-Anchor" href="#usetrasition-hook"></a> useTrasition hook</h2>
+<p>提供一个pending状态的布尔值，（配合实现一个loading效果），还有一个startTrasition方法</p>
+<p><img src="https://s2.loli.net/2023/07/25/8l6byIz1rWvnd39.gif" alt="useTransition.gif" /></p>
+<h2 id="usedeferredvalue-延迟"><a class="markdownIt-Anchor" href="#usedeferredvalue-延迟"></a> useDeferredValue 延迟</h2>
+<p>获取该值的延迟版本</p>
+<p><img src="https://s2.loli.net/2023/07/25/UoeJhxVuCiRt2DB.gif" alt="useDeferredValue.gif" /></p>
+<h2 id="useid-产生唯一标识"><a class="markdownIt-Anchor" href="#useid-产生唯一标识"></a> useId 产生唯一标识</h2>
+<p>id 局部前缀</p>
+<p>​	xxx + id (字符串拼接)</p>
+<p>id 全局前缀</p>
+<p>​	createRoot 第二参</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>)!, &#123;</span><br><span class="line">  <span class="attr">identifierPrefix</span>: <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="usedebugvalue"><a class="markdownIt-Anchor" href="#usedebugvalue"></a> useDebugValue</h2>
+<p>在自定义hook中打印信息，devtool</p>
+<h2 id="usesyncexternalstore"><a class="markdownIt-Anchor" href="#usesyncexternalstore"></a> useSyncExternalStore</h2>
+<p>操作状态</p>
+<p>订阅外部 store 的 React Hook。</p>
+
+</div>
+<div class="toc-menu-container">
+    <img class="icon toc-menu" alt="">
+</div>
+
+<script>
+    // const toc = document.querySelector('.toc')
+    // const tocmenu = document.querySelector('.toc-menu-container')
+    // tocmenu.addEventListener('click', ()=>{
+    //     toc.style.display === 'block' ? toc.style.display = 'none' : toc.style.display = 'block'
+    // })
+    const tocRight = getComputedStyle(document.documentElement).getPropertyValue('--toc-right');
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const toc = document.querySelector('.toc')
+
+    
+        const tocmenu = document.querySelector('.toc-menu-container')
+
+        // 如果没有相关h标签，隐藏目录
+        if (!document.querySelector('h1, h2, h3, h4, h5, h6')) {
+            toc.style.display = 'none'
+            tocmenu.style.display = 'none'
+        }
+
+        // 解决直接写入css文件的媒体查询，而是用js控制集中内容导致样式失效的方法
+        const mediaQuery = window.matchMedia('(max-width: 1200px)')
+
+        function handleTableOfContentsDisplay(e) {
+            if (e.matches) { // If media query matches
+                // toc.style.display = 'none'
+                toc.style.right = '-100%'
+                toc.style.transition = 'right .5s ease-in-out'
+            } else {
+                // toc.style.right = '20px'
+                toc.style.right = tocRight
+            }
+        }
+        //运行时调用
+        handleTableOfContentsDisplay(mediaQuery)
+        // 绑定媒体查询事件监听
+        mediaQuery.addListener(handleTableOfContentsDisplay)
+
+
+        const img = document.querySelector('.toc-menu')
+        let timer
+        tocmenu.addEventListener('click', () => {
+            tocmenu.classList.add('scale-up-center')
+            toc.style.right.includes('%') ? toc.style.right = tocRight : toc.style.right = '-100%'
+            // 异步移除
+            // if(timer) clearTimeout(timer)
+            timer = setTimeout(() => {
+                tocmenu.classList.remove('scale-up-center')
+            }, 500)
+            // img.classList.toggle('active')
+            // if(img.classList.contains('active')){
+            //     img.style.maskImage = "url('../../../source/css/icon/arrow-right.svg')"
+            // }
+        })
+    })
+</script>
+
+
+<!-- 引入tocbot -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        tocbot.init({
+            tocSelector: '.toc',
+            contentSelector: '.post-body',
+            listClass: 'toc-list', //toc ol列表class名
+            linkClass: 'toc-link', //li 中a标签的class名
+            headingSelector: 'h1 ,h2, h3, h4, h5',
+            collapseDepth: '6',
+            // isCollapsedClass: 'is-collapsed',
+        });
+    });
+</script>
+</div>
+
+<script>
+    // View a list of images.
+    // Note: All images within the container will be found by calling `element.querySelectorAll('img')`.
+    const gallery = new Viewer(document.querySelector('.post-body'), {
+        slideOnTouch: true,
+        toolbar: {
+            zoomIn: 1,
+            zoomOut: 1,
+            oneToOne: 0,
+            reset: 1,
+            prev: {
+                show: 1,
+                size: 'large'
+            },
+            play: {
+                show: 0,
+                // size: 'large',
+            },
+            next: {
+                show: 1,
+                size: 'large'
+            },
+            rotateLeft: 0,
+            rotateRight: 0,
+            flipHorizontal: 0,
+            flipVertical: 0,
+        },
+    })
+    // Then, show one image by click it, or call `gallery.show()`.
+</script>
+
+<!-- <script>
+    const mdImg = document.querySelectorAll('.post-content p img')
+    const imgPreviewMask = document.querySelector('.image-preview-mask')
+    const imgPreview = document.querySelector('#img-preview')
+    window.addEventListener('DOMContentLoaded', ()=>{
+        console.log(mdImg, imgPreview)
+    })
+    mdImg.forEach(item => {
+        item.addEventListener('click', () => {
+            imgPreviewMask.style.display = 'block'
+            imgPreview.classList.add('image-preview');
+            imgPreview.style.backgroundImage = `url(${item.src})`;
+
+        })
+    })
+
+    imgPreviewMask.addEventListener('click', ()=>{
+        imgPreview.classList.remove('image-preview')
+        imgPreviewMask.style.display = 'none'
+    })
+
+</script> -->
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+    
+        
+            <div id="vcomments"></div>
+            <!-- <script>
+                var META = ['nick', 'mail', 'link'];
+                var meta = 'nick,mail';
+                meta = meta.split(',').filter(item => {
+                    return META.includes(item);
+                });
+                new Valine({
+                    el: '#vcomments',
+                    appId: '',
+                    appKey: '',
+                    lang: 'en',
+                    placeholder: 'Say something',
+                    avatar: 'mp',
+                    meta: meta
+                })
+            </script> -->
+            
+
+                
+                    
+                        <div id="disqus_thread"></div>
+                        <div id='tip' style="display: none; color: gray; font-style: italic; font-size: 0.9em;">" Please use a proxy to
+                            use the comment function in 🇨🇳"</div>
+                        <script>
+                            /**
+                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+
+                            /* var disqus_config = function () {
+                                this.page.url = 'http://example.com/posts/react%E5%B0%8F%E8%AE%B0/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/react小记/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.language = 'en'
+                            }; */
+
+                            /* (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-ye1223-github-io.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })(); */
+
+
+
+
+                            function loadDisqus() {
+                                // 检测是否存在评论
+                                if (!document.querySelector('#disqus_thread iframe')) {
+                                    document.getElementById('tip').style.display = 'block'
+                                } else {
+                                    document.getElementById('tip').style.display = 'none'
+                                }
+                                // Disqus 安装代码
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-ye1223-github-io.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                                window.disqus_config = function () {
+                                    this.page.url = 'http://example.com/posts/react%E5%B0%8F%E8%AE%B0/';
+                                    this.page.identifier = 'posts/react小记/';
+                                    this.language = 'en'
+                                };
+                                // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
+                            }
+
+                            // 通过检查 window 对象确认是否在浏览器中运行
+                            var runningOnBrowser = typeof window !== "undefined";
+                            // 通过检查 scroll 事件 API 和 User-Agent 来匹配爬虫
+                            var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+                            // 检查当前浏览器是否支持 IntersectionObserver API
+                            var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+
+                            // 检测
+                            /* const iframeObserver = new IntersectionObserver((entries)=>{
+                                if(entries[0].isIntersecting){
+                                    iframeObserver.disconnect()
+                                }
+                            })
+                            iframeObserver.observe(document.querySelector('#disqus_thread iframe')) */
+
+                            // 一个小 hack，将耗时任务包裹在 setTimeout(() => { }, 1) 中，可以推迟到 Event Loop 的任务队列中、等待主调用栈清空后才执行，在绝大部分浏览器中都有效
+                            // 其实这个 hack 本来是用于优化骨架屏显示的。一些浏览器总是等 JavaScript 执行完了才开始页面渲染，导致骨架屏起不到降低 FCP 的优化效果，所以通过 hack 将耗时函数放到骨架屏渲染完成后再进行。
+                            setTimeout(function () {
+                                if (!isBot && supportsIntersectionObserver) {
+                                    // 当前环境不是爬虫、并且浏览器兼容 IntersectionObserver API
+                                    var disqus_observer = new IntersectionObserver(function (entries) {
+                                        // 当前视窗中已出现 Disqus 评论框所在位置
+                                        if (entries[0].isIntersecting) {
+                                            // 加载 Disqus
+                                            loadDisqus();
+                                            // 停止当前的 Observer
+                                            disqus_observer.disconnect();
+                                        }
+                                    }, { threshold: [0] });
+                                    // 设置让 Observer 观察 #disqus_thread 元素
+                                    disqus_observer.observe(document.getElementById('disqus_thread'));
+                                } else {
+                                    // 当前环境是爬虫、或当前浏览器其不兼容 IntersectionObserver API
+                                    // 直接加载 Disqus
+                                    loadDisqus();
+                                }
+                            }, 1)
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a
+                                target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        
+
+
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+               ©️<a target="_blank" rel="noopener" href="https://github.com/ye1223 ">Levy Liu</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame.</a>
+                
+        </div>
+    </div>
+</div>
+
+
+        <!-- 提示词 -->
+
+        <div class="tip-toast">
+          <!-- <img class="close" src=`${location.origin}icon/close-btn.svg` alt=""> -->
+          <img class="close" src="https://ye1223.github.io/icon/close-btn.svg" alt="">
+          <p>You'd better use a PROXY to enhance your browsing experience</p>
+        </div>
+
+        <!-- 创建toast提示框 -->
+        <script>
+          window.addEventListener('DOMContentLoaded', () => {
+            // const tipToast = document.createElement('div')
+            // tipToast.innerHTML = `<p>You'd better use a PROXY to enhance your browser experience</p>`
+            // tipToast.classList.add('tip-toast')
+            // document.body.appendChild(tipToast)
+
+            const tipToast = document.querySelector('.tip-toast')
+            const closeIcon = document.querySelector('.tip-toast .close')
+            let timer = null
+
+            // sessionStorage是否有tipToast（用于跨页面判断）
+            // if(sessionStorage.getItem('tipToast')){
+            //   // 有的话--设为false
+            //   sessionStorage.setItem('tipToast', false)
+            // } else {
+            //   sessionStorage.setItem('tipToast', true)
+            // }
+            sessionStorage.getItem('tipToast') ? sessionStorage.setItem('tipToast', false) : sessionStorage.setItem('tipToast', true)
+
+            if (sessionStorage.getItem('tipToast') === 'false') {
+              tipToast.style.display = 'none'
+              return
+
+            } else {
+              // 开始呼出tip
+              tipToast.style.right = '10px'
+              tipToast.style.transition = 'right .5s ease-in-out'
+
+              // 时间到了隐藏tip
+              timer = setTimeout(() => {
+                tipToast.style.right = '-100%'
+                tipToast.style.transition = 'right .5s ease-in-out'
+                sessionStorage.setItem('tipToast', false)
+              }, 30000)
+            }
+
+            closeIcon.addEventListener('click', () => {
+              tipToast.style.right = '-100%'
+              tipToast.style.transition = 'right .5s ease-in-out'
+              timer = null
+              sessionStorage.setItem('tipToast', false)
+            })
+
+
+          })
+        </script>
+
+        <!-- mermaid语法支持 -->
+        
+          <!-- <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script> -->
+          <!-- <script src='https://cdn.jsdelivr.net/npm/mermaid@7.1.2/dist/mermaid.min.js'></script> -->
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.2/mermaid.min.js'></script>
+          <script>
+            if (window.mermaid) {
+              mermaid.initialize({ theme: 'forest' });
+            }
+          </script>
+          
+            <!-- highlight.js csr渲染 -->
+            <!-- <script src="https://cdn.jsdelivr.net/npm/highlightjs"></script>
+            <script src="https://cdn.jsdelivr.net/npm/highlightjs-vue"></script>
+            <script>
+              hljs.registerLanguage("vue", window.hljsDefineVue);
+              hljs.initHighlightingOnLoad();
+            </script> -->
+
+  </div>
+
+  
+    <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.min.js"></script>
+<script src="/js/search.js"></script>
+      
+
+</body>
+
+</html>

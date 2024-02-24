@@ -1,0 +1,12 @@
+.footer {
+  margin-top: $margin-primary;
+  border: $line-secondary $color-text-primary solid;
+}
+.footer .footer-text {
+  margin-top: $margin-m-2;
+  margin-bottom: $margin-m-2;
+}
+.footer .footer-text a {
+  text-decoration: underline;
+  font-weight: bold;
+}
