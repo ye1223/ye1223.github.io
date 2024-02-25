@@ -17,7 +17,7 @@
 
 
 
-<title>btoa-atob | Levy&#39;s Blog</title>
+<title>博客网站搭建 | Levy&#39;s Blog</title>
 
 
 
@@ -164,8 +164,14 @@
 
                 
                     <span class="post-tag">
-                        <a href="/tags/new-found/">
-                            new found
+                        <a href="/tags/blog/">
+                            blog
+                        </a>
+                    </span>
+                    
+                    <span class="post-tag">
+                        <a href="/tags/website/">
+                            website
                         </a>
                     </span>
                     
@@ -174,14 +180,14 @@
         <div class="post-title">
 
             
-                btoa-atob
+                博客网站搭建
                     
         </div>
         <span class="post-date">
-            Feb 19, 2024
+            Feb 25, 2024
         </span>
         <span class="post-word-count">
-            73 words / About 36 seconds
+            25 words / About 12 seconds
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -198,13 +204,27 @@
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <p>今天在找登录token发先存于Cookie的access_token被加密成ASCII字符串，遂找到了两个window下的api</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// base64Encryption</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">encryptToken</span>(<span class="params">token</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> encryptedToken = <span class="title function_">btoa</span>(token)</span><br><span class="line">  <span class="keyword">return</span> encryptedToken</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">decryptToken</span>(<span class="params">encryptedToken</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> decryptedToken = <span class="title function_">atob</span>(encryptedToken)</span><br><span class="line">  <span class="keyword">return</span> decryptedToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Binary To ASCII</strong></p>
-<p><strong><code>btoa()</code></strong> 方法可以将一个<em>二进制字符串</em>（例如，将字符串中的每一个字节都视为一个二进制数据字节）编码为 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Base64">Base64</a> 编码的 ASCII 字符串。</p>
-<p>**ASCII To Binary **</p>
-<p><strong><code>atob()</code></strong> 对经过 base-64 编码的字符串进行解码</p>
-<p><img src="https://s2.loli.net/2024/02/19/6sy4PoWhdcw5BXJ.png" alt="bta atob" /></p>
+    <p><s>一个前端开发者没有一个博客像什么话呢？</s></p>
+<p>因为这个网上搜寻了一番，如何搭建一个博客。</p>
+<p>虽然也没什么好写的，而且分享的东西也只不过是别人嘴里吐出来的话罢了。（管他的， im just a 菜鸡🤡</p>
+<p>大部分人用的<code>hexo</code>这个静态站点生成器，而且也有很多现成的模版</p>
+<p>嘻嘻，最终被我发现了<code>Frame</code>这个主题。虽然开箱即用的功能没其他主题多，胜在这完美的UI，简约高级！！！</p>
+<p>加了一些新功能</p>
+<ul>
+<li>国际化（虽然也just用在了主页</li>
+<li>评论 disqus</li>
+<li>文章TOC</li>
+<li>还有一些小修改。。。</li>
+</ul>
+<p>最后也跟着网上的步骤直接部署在github page上，后也在用vercel一键部署，但是vercel被大陆block了，并且url也带着<code>.vercel</code>，真的有点丑</p>
+<p>后面又想着自己弄一个域名</p>
+<p><strong>秉持着能白嫖就白嫖的理念</strong>🤣</p>
+<p>​	域名平台肯定是想用：久闻盛名的免费域名平台<code>freenom</code>，好景不长，早已关闭了申请通道</p>
+<p>​	最后搜到了<code>namesoli</code>这个平台。第一年，在使用了优惠🐴后<code>.top</code>域名首年只要人民币7块</p>
+<p>​	在加个cdn就完美了</p>
+<p>​		  提到cdn肯定就想到某慈善家<code>cloudflare</code> ，直接选择free plan加速我想部署的vercel项目，利用边缘服务器，直接在大陆也可访问咯，但是感觉速度还是不如githubpage</p>
+<p><font size=5><strong>归根来说就是直接 <code>hexo github vercel namesoli cloudflare</code> 一把子梭哈，时刻羡慕米国人可以直接用上这么好的技术。。。。😇</strong> </font></p>
+<p>参考网站 <a target="_blank" rel="noopener" href="https://blog.naibabiji.com/tutorial/namesilo-yu-ming-jie-xi-geng-huan-dns-jiao-cheng.html">NameSilo域名解析和DNS服务器修改教程</a></p>
 
 </div>
 <div class="toc-menu-container">
@@ -348,17 +368,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/posts/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/typora%E5%9B%BE%E5%BA%8A/">Next</a>  
+                  <a href="/posts/btoa-atob/">Next</a>  
                 </div>  
             
         </div>
@@ -399,8 +414,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/btoa-atob/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/btoa-atob/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/博客网站搭建/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -427,8 +442,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/btoa-atob/';
-                                    this.page.identifier = 'posts/btoa-atob/';
+                                    this.page.url = 'http://example.com/posts/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/';
+                                    this.page.identifier = 'posts/博客网站搭建/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
