@@ -17,7 +17,7 @@
 
 
 
-<title>博客网站搭建 | Levy&#39;s Blog</title>
+<title>FUNNY_ERROR | Levy&#39;s Blog</title>
 
 
 
@@ -161,33 +161,18 @@
     <div class="post-info">
         <div class="tag-list">
             
-
-                
-                    <span class="post-tag">
-                        <a href="/tags/blog/">
-                            blog
-                        </a>
-                    </span>
-                    
-                    <span class="post-tag">
-                        <a href="/tags/website/">
-                            website
-                        </a>
-                    </span>
-                    
-                        
         </div>
         <div class="post-title">
 
             
-                博客网站搭建
+                FUNNY_ERROR
                     
         </div>
         <span class="post-date">
-            Feb 25, 2024
+            Mar 23, 2024
         </span>
         <span class="post-word-count">
-            25 words / About 12 seconds
+            108 words / About 33 seconds
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -204,27 +189,8 @@
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <p><s>一个前端开发者没有一个博客像什么话呢？</s></p>
-<p>因为这个网上搜寻了一番，如何搭建一个博客。</p>
-<p>虽然也没什么好写的，而且分享的东西也只不过是别人嘴里吐出来的话罢了。（管他的， im just a 菜鸡🤡</p>
-<p>大部分人用的<code>hexo</code>这个静态站点生成器，而且也有很多现成的模版</p>
-<p>嘻嘻，最终被我发现了<code>Frame</code>这个主题。虽然开箱即用的功能没其他主题多，胜在这完美的UI，简约高级！！！</p>
-<p>加了一些新功能</p>
-<ul>
-<li>国际化（虽然也just用在了主页</li>
-<li>评论 disqus</li>
-<li>文章TOC</li>
-<li>还有一些小修改。。。</li>
-</ul>
-<p>最后也跟着网上的步骤直接部署在github page上，后也在用vercel一键部署，但是vercel被大陆block了，并且url也带着<code>.vercel</code>，真的有点丑</p>
-<p>后面又想着自己弄一个域名</p>
-<p><strong>秉持着能白嫖就白嫖的理念</strong>🤣</p>
-<p>​	域名平台肯定是想用：久闻盛名的免费域名平台<code>freenom</code>，好景不长，早已关闭了申请通道</p>
-<p>​	最后搜到了<code>namesoli</code>这个平台。第一年，在使用了优惠🐴后<code>.top</code>域名首年只要人民币7块</p>
-<p>​	在加个cdn就完美了</p>
-<p>​		  提到cdn肯定就想到某慈善家<code>cloudflare</code> ，直接选择free plan加速我想部署的vercel项目，利用边缘服务器，直接在大陆也可访问咯，但是感觉速度还是不如githubpage</p>
-<p><font size=5><strong>归根来说就是直接 <code>hexo github vercel namesoli cloudflare</code> 一把子梭哈，时刻羡慕米国人可以直接用上这么好的技术。。。。😇</strong> </font></p>
-<p>参考网站 <a target="_blank" rel="noopener" href="https://blog.naibabiji.com/tutorial/namesilo-yu-ming-jie-xi-geng-huan-dns-jiao-cheng.html">NameSilo域名解析和DNS服务器修改教程</a></p>
+    <h2 id="1-immediate-写错位置-哭晕"><a class="markdownIt-Anchor" href="#1-immediate-写错位置-哭晕"></a> 1、immediate 写错位置 哭晕</h2>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reCompolist = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="title function_">watch</span>(</span><br><span class="line">  <span class="function">() =&gt;</span> props.<span class="property">list</span>,</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ;(reCompolist.<span class="property">value</span> <span class="keyword">as</span> <span class="built_in">any</span>) = props.<span class="property">list</span>.<span class="title function_">map</span>(</span><br><span class="line">      <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="attr">newRow</span>: <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">any</span>&gt; = &#123;&#125;</span><br><span class="line">        props.<span class="property">labels</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">[key, _]</span>) =&gt;</span> &#123;</span><br><span class="line">          newRow[key] = row[key]</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> newRow</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 </div>
 <div class="toc-menu-container">
@@ -368,17 +334,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/posts/FUNNY-ERROR/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/btoa-atob/">Next</a>  
+                  <a href="/posts/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/">Next</a>  
                 </div>  
             
         </div>
@@ -419,8 +380,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/博客网站搭建/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/FUNNY-ERROR/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/FUNNY-ERROR/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -447,8 +408,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/';
-                                    this.page.identifier = 'posts/博客网站搭建/';
+                                    this.page.url = 'http://example.com/posts/FUNNY-ERROR/';
+                                    this.page.identifier = 'posts/FUNNY-ERROR/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})

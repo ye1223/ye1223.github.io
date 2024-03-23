@@ -2078,4 +2078,11 @@ F --> L[结束]</pre>
     <url>/posts/zh-CN-tag-index/</url>
     <content><![CDATA[]]></content>
   </entry>
+  <entry>
+    <title>FUNNY_ERROR</title>
+    <url>/posts/FUNNY-ERROR/</url>
+    <content><![CDATA[<h2 id="1-immediate-写错位置-哭晕"><a class="markdownIt-Anchor" href="#1-immediate-写错位置-哭晕"></a> 1、immediate 写错位置 哭晕</h2>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> reCompolist = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="title function_">watch</span>(</span><br><span class="line">  <span class="function">() =&gt;</span> props.<span class="property">list</span>,</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ;(reCompolist.<span class="property">value</span> <span class="keyword">as</span> <span class="built_in">any</span>) = props.<span class="property">list</span>.<span class="title function_">map</span>(</span><br><span class="line">      <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="attr">newRow</span>: <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">any</span>&gt; = &#123;&#125;</span><br><span class="line">        props.<span class="property">labels</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">[key, _]</span>) =&gt;</span> &#123;</span><br><span class="line">          newRow[key] = row[key]</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> newRow</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
 </search>
