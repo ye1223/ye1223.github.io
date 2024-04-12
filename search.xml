@@ -2855,4 +2855,241 @@ F --> L[结束]</pre>
     <url>/posts/zh-CN-tag-index/</url>
     <content><![CDATA[]]></content>
   </entry>
+  <entry>
+    <title>RENEW-vue2</title>
+    <url>/posts/RENEW-vue2/</url>
+    <content><![CDATA[<h3 id="1-关于生命周期"><a class="markdownIt-Anchor" href="#1-关于生命周期"></a> 1. 关于生命周期</h3>
+<h5 id="11-生命周期有哪些发送请求在created还是mounted"><a class="markdownIt-Anchor" href="#11-生命周期有哪些发送请求在created还是mounted"></a> 1.1 生命周期有哪些？发送请求在created还是mounted？</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请求接口测试：https://fcm.52kfw.cn/index.php?_mall_id=1&amp;r=api/default/district</span><br></pre></td></tr></table></figure>
+<p>Vue2.x系统自带有8个</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br><span class="line">beforeUpdate</span><br><span class="line">updated // DOM 已经更新</span><br><span class="line">beforeDestroy // 实例还在，进行清理任务，比如清除计时器、解绑全局事件监听器</span><br><span class="line">destroyed </span><br></pre></td></tr></table></figure>
+<p>发送请求在created还是mounted？</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">这个问题具体要看项目和业务的情况了，因为组件的加载顺序是，父组件引入了子组件，那么先执行父的前3个生命周期，再执行子的前4个生命周期，那么如果我们的业务是父组件引入子组件，并且==优先加载子组件==的数据，那么在父组件中当前的请求要放=mounted=中，如果当前组件没有依赖关系那么放在哪个生命周期中请求都是可以的。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><mark>生命周期：先执行 父前三，在执行子元素前四</mark></p>
+<p><mark>如果优先加载子组件的数据，就放在mounted中发送请求</mark> ，<mark>确保子组件优先挂载</mark></p>
+</blockquote>
+<h5 id="12-为什么发送请求不在beforecreate里beforecreate和created有什么区别"><a class="markdownIt-Anchor" href="#12-为什么发送请求不在beforecreate里beforecreate和created有什么区别"></a> 1.2 为什么发送请求不在beforeCreate里？beforeCreate和created有什么区别？</h5>
+<p>为什么发送请求不在beforeCreate里？</p>
+<blockquote>
+<p><mark>拿不到methods方法（如果请求封装在methods中）</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">因为：如果请求是在methods封装好了，在beforeCreate调用的时候，beforeCreate阶段是拿不到methods里面的方法的（会报错了）。</span><br></pre></td></tr></table></figure>
+<p>beforeCreate和created有什么区别？</p>
+<blockquote>
+<p><mark>拿不拿得到$data与methods</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate没有$data</span><br><span class="line">created中有$data</span><br><span class="line"></span><br><span class="line">created是可以拿到methods的方法的</span><br><span class="line">beforeCreate拿不到methods的方法</span><br></pre></td></tr></table></figure>
+<h5 id="13-在created中如何获取dom"><a class="markdownIt-Anchor" href="#13-在created中如何获取dom"></a> 1.3 在created中如何获取dom</h5>
+<blockquote>
+<p><mark>异步获取</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 只要写异步代码，获取dom是在异步中获取的，就可以了。</span><br><span class="line">	例如：setTimeout、请求、Promise.xxx()等等...</span><br><span class="line">2. 使用vue系统内置的this.$nextTick</span><br></pre></td></tr></table></figure>
+<h5 id="14-一旦font-colorred进入组件font会执行哪些生命周期"><a class="markdownIt-Anchor" href="#14-一旦font-colorred进入组件font会执行哪些生命周期"></a> 1.4 一旦<font color=red>进入组件</font>会执行哪些生命周期？</h5>
+<blockquote>
+<p>进入组件，组件已经<strong>挂载</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br></pre></td></tr></table></figure>
+<h5 id="15-第二次或者第n次进去组件会执行哪些生命周期"><a class="markdownIt-Anchor" href="#15-第二次或者第n次进去组件会执行哪些生命周期"></a> 1.5 第二次或者第N次进去组件会执行哪些生命周期？</h5>
+<blockquote>
+<p><mark>看是否缓存了组件</mark></p>
+</blockquote>
+<p>如果当前组件加入了<strong>keep-alive</strong>，只会执行一个生命周期</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">activated</span><br></pre></td></tr></table></figure>
+<p>如果没有加入keep-alive</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br></pre></td></tr></table></figure>
+<h5 id="16-父组件引入子组件那么生命周期执行的顺序是"><a class="markdownIt-Anchor" href="#16-父组件引入子组件那么生命周期执行的顺序是"></a> 1.6 父组件引入子组件，那么生命周期执行的顺序是？</h5>
+<blockquote>
+<p><mark>父三 子四</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">父：beforeCreate、created、beforeMount</span><br><span class="line">子：beforeCreate、created、beforeMount、mounted</span><br><span class="line">...</span><br><span class="line">父：mounted</span><br></pre></td></tr></table></figure>
+<h5 id="17-加入keep-alive会执行哪些生命周期"><a class="markdownIt-Anchor" href="#17-加入keep-alive会执行哪些生命周期"></a> 1.7 加入keep-alive会执行哪些生命周期？</h5>
+<p>如果使用了keep-alive组件，当前的组件会额外增加2个生命周期（系统8 + 2 ）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">activated</span><br><span class="line">deactivated</span><br></pre></td></tr></table></figure>
+<p>如果当前组件加入了keep-alive第一次进入这个组件会执行5个生命周期</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br><span class="line">activated</span><br></pre></td></tr></table></figure>
+<h5 id="18-你在什么情况下用过哪些生命周期说一说生命周期使用场景"><a class="markdownIt-Anchor" href="#18-你在什么情况下用过哪些生命周期说一说生命周期使用场景"></a> 1.8 你在什么情况下用过哪些生命周期？说一说生命周期使用场景</h5>
+<blockquote>
+<p>activated 中重新刷新数据 ， 因为使用了缓存组件，后续进入该组件只会运行这一个生命周期</p>
+<p>deacticated 清理定时器相关的</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">created    ===&gt; 单组件请求</span><br><span class="line">mounted    ===&gt; 同步可以获取dom，如果先子组件请求后父组件请求</span><br><span class="line">activated  ===&gt; 判断id是否相等，如果不相同发起请求</span><br><span class="line">destroyed  ===&gt; 关闭页面记录视频播放的时间,初始化的时候从上一次的历史开始播放</span><br></pre></td></tr></table></figure>
+<h3 id="2-关于组件"><a class="markdownIt-Anchor" href="#2-关于组件"></a> 2. 关于组件</h3>
+<blockquote>
+<p>父 -&gt; 子 <mark>props、<a href="http://this.$parent.xxx">this.$parent.xxx</a>(子元素可以直接修改父元素数据)、依赖注入（在配置主题颜色 react中的context上下文 provider）</mark></p>
+<p>子 -&gt; 父 <mark>自定义事件emit、$refs</mark></p>
+<p>兄弟元素： <mark>eventbus （发布订阅模式）</mark></p>
+<p>集中状态管理 vuex pinia</p>
+</blockquote>
+<h5 id="21-组件传值通信的方式"><a class="markdownIt-Anchor" href="#21-组件传值通信的方式"></a> 2.1 组件传值（通信）的方式</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">父传后代 ( 后代拿到了父的数据 )</span><br><span class="line">1. 父组件引入子组件，绑定数据</span><br><span class="line">	 &lt;List :str1=&#x27;str1&#x27;&gt;&lt;/List&gt;</span><br><span class="line">	子组件通过props来接收</span><br><span class="line">	props:&#123;</span><br><span class="line">		str1:&#123;</span><br><span class="line">			type:String,</span><br><span class="line">			default:&#x27;&#x27;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	***这种方式父传子很方便，但是父传给孙子辈分的组件就很麻烦（父=》子=》孙）</span><br><span class="line">	这种方式：子不能直接修改父组件的数据</span><br><span class="line"></span><br><span class="line">2. 子组件直接使用父组件的数据</span><br><span class="line">	子组件通过：this.$parent.xxx使用父组件的数据</span><br><span class="line">	这种方式：子可以直接修改父组件的数据</span><br><span class="line">	</span><br><span class="line">3. 依赖注入</span><br><span class="line">	优势：父组件可以直接向某个后代组件传值(不让一级一级的传递)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">后代传父 （父拿到了后代的数据）</span><br><span class="line">1. 子组件传值给父组件</span><br><span class="line">	子组件定义自定义事件 this.$emit</span><br><span class="line">2. 父组件直接拿到子组件的数据</span><br><span class="line">	&lt;List ref=&#x27;child&#x27;&gt;&lt;/List&gt;</span><br><span class="line">	this.$refs.child</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">平辈之间的传值 ( 兄弟可以拿到数据 ) </span><br><span class="line"></span><br><span class="line">通过新建bus.js文件来做</span><br></pre></td></tr></table></figure>
+<h5 id="22-父组件如何直接修改子组件的值"><a class="markdownIt-Anchor" href="#22-父组件如何直接修改子组件的值"></a> 2.2 父组件如何直接修改子组件的值</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;List ref=&#x27;child&#x27;&gt;&lt;/List&gt;</span><br><span class="line">this.$refs.child.xxx = &#x27;yyyy&#x27;;</span><br></pre></td></tr></table></figure>
+<h5 id="23-子组件如何直接修改父组件的值"><a class="markdownIt-Anchor" href="#23-子组件如何直接修改父组件的值"></a> 2.3 子组件如何直接修改父组件的值</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">子组件中可以使用：this.$parent.xxx去修改</span><br></pre></td></tr></table></figure>
+<h5 id="24-如何找到父组件"><a class="markdownIt-Anchor" href="#24-如何找到父组件"></a> 2.4 如何找到父组件</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$parent</span><br></pre></td></tr></table></figure>
+<h5 id="25-如何找到根组件"><a class="markdownIt-Anchor" href="#25-如何找到根组件"></a> 2.5 如何找到根组件</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$root</span><br></pre></td></tr></table></figure>
+<h5 id="26-keep-alive"><a class="markdownIt-Anchor" href="#26-keep-alive"></a> 2.6 keep-alive</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">keep-alive是什么  ： 缓存当前组件</span><br></pre></td></tr></table></figure>
+<h5 id="27-slot插槽"><a class="markdownIt-Anchor" href="#27-slot插槽"></a> 2.7 slot/插槽</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">匿名插槽 ：插槽没有名字</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">具名插槽 ：插槽有名字</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用域插槽 ： 传值</span><br></pre></td></tr></table></figure>
+<h5 id="28-provideinject"><a class="markdownIt-Anchor" href="#28-provideinject"></a> 2.8 provide/inject</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">provide/inject ===&gt; 依赖注入</span><br></pre></td></tr></table></figure>
+<h5 id="29-如何封装组件"><a class="markdownIt-Anchor" href="#29-如何封装组件"></a> 2.9 如何封装组件</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">组件一定要难点，涉及的知识点：slot、组件通信...</span><br></pre></td></tr></table></figure>
+<h3 id="3-关于vuex"><a class="markdownIt-Anchor" href="#3-关于vuex"></a> 3. 关于Vuex</h3>
+<h5 id="31-vuex有哪些属性"><a class="markdownIt-Anchor" href="#31-vuex有哪些属性"></a> 3.1 Vuex有哪些属性</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">state ==&gt; 全局共享属性</span><br><span class="line">getters ==&gt; 针对于state数据进行二次计算</span><br><span class="line">mutatioins ==&gt; 存放同步方法的</span><br><span class="line">actions    ==&gt; 存放异步方法的，并且是来提交mutations</span><br><span class="line">modules    ==&gt; 把vuex再次进行模块之间的划分</span><br></pre></td></tr></table></figure>
+<h5 id="32-vuex使用state值"><a class="markdownIt-Anchor" href="#32-vuex使用state值"></a> 3.2 Vuex使用state值</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$store.state.xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">辅助函数：mapState</span><br></pre></td></tr></table></figure>
+<p>以上俩种方式都可以拿到state的值，那么区别是什么？</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用this.$store.state.xxx是可以直接修改vuex的state数据的</span><br><span class="line"></span><br><span class="line">使用辅助函数的形式，是不可以修改的</span><br></pre></td></tr></table></figure>
+<h5 id="33-vuex的getters值修改"><a class="markdownIt-Anchor" href="#33-vuex的getters值修改"></a> 3.3 Vuex的getters值修改</h5>
+<p>面试官可能会这样问：组件使用了getters中的内容，组件使用采用v-model的形式会发生什么？</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getters是不可以修改的</span><br></pre></td></tr></table></figure>
+<h5 id="34-vuex的mutations和actions区别"><a class="markdownIt-Anchor" href="#34-vuex的mutations和actions区别"></a> 3.4 Vuex的mutations和actions区别</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">相同点：mutations和actions都是来存放全局方法的，这个全局方法return的值拿不到</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">区别：</span><br><span class="line">	mutations ==》 同步</span><br><span class="line">	actions   ==》 返回的是一个Promise对象，他可以执行相关异步操作</span><br><span class="line">	</span><br><span class="line">mutations是来修改state的值的，actions的作用是来提交mutations</span><br></pre></td></tr></table></figure>
+<h5 id="35-vuex持久化存储-在页面使用了state值1然后把1修改成2然后刷新页面又回到了1为什么"><a class="markdownIt-Anchor" href="#35-vuex持久化存储-在页面使用了state值1然后把1修改成2然后刷新页面又回到了1为什么"></a> 3.5 Vuex持久化存储  ：在页面使用了state值：1，然后把1修改成2，然后刷新页面又回到了1为什么？</h5>
+<blockquote>
+<p><mark>我用的pinia</mark></p>
+<p><mark>state在LS，读取时getItem，修改时setItem</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Vuex本身不是持久化存储的数据。Vuex是一个状态管理仓库（state：全局属性）==》就是存放全局属性的地方。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实现持久化存储：1. 自己写localStorage  2. 使用vuex-persistedstate插件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">插件使用方式：https://www.xuexiluxian.cn/blog/detail/dae4073b07144d3c9abb3e2cc8495922</span><br></pre></td></tr></table></figure>
+<h3 id="4-关于路由"><a class="markdownIt-Anchor" href="#4-关于路由"></a> 4. 关于路由</h3>
+<h5 id="41-路由的模式和区别"><a class="markdownIt-Anchor" href="#41-路由的模式和区别"></a> 4.1 路由的模式和区别</h5>
+<blockquote>
+<p>history 使用HTML5 的history API, <mark><strong><code>pushState(state, title, url)</code></strong></mark> <strong><code>popstate</code></strong> replacestate</p>
+<p>hash检测浏览器url hash值 , <mark>浏览器并不会因为hash值的改变而作响应向服务器发送请求，而是有vuerouter控制客户端作相应的响应，利用onhashchange（window.location.hash）</mark>   同一页面内的不同位置标记</p>
+</blockquote>
+<blockquote>
+<p><font color=red>hash</font></p>
+<p><mark>服务器只需要返回入口页面（通常是 <code>index.html</code>）</mark>, 而后面一切都是由vuerouter在客户端渲染完成的</p>
+<p><font color=red>history</font></p>
+<p>需要在后端额外配置请求的uri地址</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">路由的模式：history、hash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">区别：</span><br><span class="line">1. 关于找不到当前页面发送请求的问题</span><br><span class="line">	history会给后端发送一次请求而hash不会</span><br><span class="line">2. 关于项目打包前端自测问题</span><br><span class="line">	hash是可以看到内容的</span><br><span class="line">	history默认情况是看不到内容的</span><br><span class="line">3. 关于表象不同</span><br><span class="line">	hash:#</span><br><span class="line">	history:/</span><br></pre></td></tr></table></figure>
+<h5 id="42-子路由和动态路由"><a class="markdownIt-Anchor" href="#42-子路由和动态路由"></a> 4.2 子路由和动态路由</h5>
+<blockquote>
+<p>动态路由 /user/:id 占位</p>
+</blockquote>
+<h5 id="43-路由传值"><a class="markdownIt-Anchor" href="#43-路由传值"></a> 4.3 路由传值</h5>
+<blockquote>
+<p>query 和 params 两种</p>
+</blockquote>
+<h5 id="44-导航故障"><a class="markdownIt-Anchor" href="#44-导航故障"></a> 4.4 导航故障</h5>
+<blockquote>
+<p>可以catch捕获，isNavigationFailure 给出相关提示</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">官网说明：https://v3.router.vuejs.org/zh/guide/advanced/navigation-failures.html#%E6%A3%80%E6%B5%8B%E5%AF%BC%E8%88%AA%E6%95%85%E9%9A%9C</span><br></pre></td></tr></table></figure>
+<p>解决：</p>
+<blockquote>
+<p>$router.push跳转到一个相同的路由报错</p>
+<p>重写push方法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import VueRouter from &#x27;vue-router&#x27;</span><br><span class="line">const routerPush = VueRouter.prototype.push</span><br><span class="line">VueRouter.prototype.push = function (location) &#123;</span><br><span class="line">  return routerPush.call(this, location).catch(error =&gt; error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="45-router和route区别"><a class="markdownIt-Anchor" href="#45-router和route区别"></a> 4.5 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi>r</mi><mtext>和</mtext></mrow><annotation encoding="application/x-tex">router和</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord cjk_fallback">和</span></span></span></span>route区别</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$router不仅包含当前路由还包含 ==整个路由的属性和方法==</span><br><span class="line"></span><br><span class="line">$route包含==当前==路由对象</span><br></pre></td></tr></table></figure>
+<h5 id="46-导航守卫"><a class="markdownIt-Anchor" href="#46-导航守卫"></a> 4.6 导航守卫</h5>
+<blockquote>
+<p>beforeResolve</p>
+<p>所有组件内守卫和异步路由组件被解析之后，而在导航被最终确认之前。</p>
+<p>提供了一个<mark>最后的机会</mark>来取消或修改即将发生的路由跳转。 （权限</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 全局守卫</span><br><span class="line"></span><br><span class="line">	beforeEach 路由进入之前</span><br><span class="line">	afterEach 路由进入之后</span><br><span class="line"></span><br><span class="line">2. 路由独享守卫</span><br><span class="line">	</span><br><span class="line">	beforeEnter 路由进入之前</span><br><span class="line"></span><br><span class="line">3. 组件内守卫</span><br><span class="line"></span><br><span class="line">	beforeRouteEnter 路由进入之前</span><br><span class="line">	beforeRouteUpdate 路由更新之前</span><br><span class="line">	beforeRouteLeave 路由离开之前</span><br></pre></td></tr></table></figure>
+<h3 id="5-关于api"><a class="markdownIt-Anchor" href="#5-关于api"></a> 5. 关于API</h3>
+<h5 id="51-set"><a class="markdownIt-Anchor" href="#51-set"></a> 5.1 $set</h5>
+<blockquote>
+<p>给响应式对象添加新属性</p>
+<p>响应式数组对象<strong>不能</strong>直接通过<strong>修改索引</strong>的方式修改数据 ， 利相关方法push pop shift unshift splice sort reverse，更改length</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">面试官：你有没有碰到过，数据更新视图没有更新的问题==》$set</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$set(target,key,修改后的值)</span><br></pre></td></tr></table></figure>
+<h5 id="52-nexttick"><a class="markdownIt-Anchor" href="#52-nexttick"></a> 5.2 $nextTick</h5>
+<blockquote>
+<p><mark>在写单元测试的时候使用过，因为要获取当前最新的DOM，返回promise</mark></p>
+<p>数据更新导致视图变化，（给这个DOM添加动画</p>
+<p>DOM是异步更新的，确保获取最新的DOM借助nexttick</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick返回的参数[函数]，是一个异步的。功能：==获取更新后的dom==</span><br><span class="line"></span><br><span class="line">源码|原理：</span><br><span class="line">$nextTick( callback )&#123;</span><br><span class="line">		return Promise.resolve().then(()=&gt;&#123;</span><br><span class="line">			callback();</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="53-refs"><a class="markdownIt-Anchor" href="#53-refs"></a> 5.3 $refs</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">来获取dom的</span><br></pre></td></tr></table></figure>
+<h5 id="54-el"><a class="markdownIt-Anchor" href="#54-el"></a> 5.4 $el</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$el 获取当前组件的根节点</span><br></pre></td></tr></table></figure>
+<h5 id="55-data"><a class="markdownIt-Anchor" href="#55-data"></a> 5.5 $data</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$data 获取当前组件data数据的</span><br></pre></td></tr></table></figure>
+<h5 id="56-children"><a class="markdownIt-Anchor" href="#56-children"></a> 5.6 $children</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$children 获取到当前组件的所有子组件的</span><br></pre></td></tr></table></figure>
+<h5 id="57-parent"><a class="markdownIt-Anchor" href="#57-parent"></a> 5.7 $parent</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">找到当前组件的父组件，如果找不到返回自身</span><br></pre></td></tr></table></figure>
+<h5 id="58-root"><a class="markdownIt-Anchor" href="#58-root"></a> 5.8 $root</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">找到根组件</span><br></pre></td></tr></table></figure>
+<h5 id="59-data定义数据"><a class="markdownIt-Anchor" href="#59-data定义数据"></a> 5.9 data定义数据</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">数据定义在data的return内和return外的区别：</span><br><span class="line"></span><br><span class="line">1. return外：单纯修改这个数据是不可以修改的，因为没有被get/set</span><br><span class="line">2. reutnr内：是可以修改的</span><br></pre></td></tr></table></figure>
+<h5 id="510-computed计算属性"><a class="markdownIt-Anchor" href="#510-computed计算属性"></a> 5.10 computed计算属性</h5>
+<blockquote>
+<p>getter setter写法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">computed计算属性的结果值，可以修改吗？可以的，需要通过get/set写法</span><br><span class="line"></span><br><span class="line">当前组件v-model绑定的值是computed来的，那么可以修改吗？可以的，需要通过get/set写法</span><br></pre></td></tr></table></figure>
+<h5 id="511-watch"><a class="markdownIt-Anchor" href="#511-watch"></a> 5.11 watch</h5>
+<blockquote>
+<p><mark>可以在其中执行<strong>异步</strong>方法，但是要注意trycatch捕获处理异常</mark></p>
+<p><mark>在组件销毁时清理watch，返回一个销毁函数</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">  obj:&#123;</span><br><span class="line">    handler(newVal,oldVal)&#123;</span><br><span class="line">      console.log( &#x27;obj&#x27;,newVal , oldVal )</span><br><span class="line">    &#125;,</span><br><span class="line">    immediate:true,</span><br><span class="line">    deep:true</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="512-methods和computed区别"><a class="markdownIt-Anchor" href="#512-methods和computed区别"></a> 5.12 methods和computed区别</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">computed是有缓存机制的，methods是没有缓存机制的（调用几次执行几次）</span><br></pre></td></tr></table></figure>
+<h3 id="6-关于指令"><a class="markdownIt-Anchor" href="#6-关于指令"></a> 6. 关于指令</h3>
+<h5 id="61-如何自定义指令"><a class="markdownIt-Anchor" href="#61-如何自定义指令"></a> 6.1 如何自定义指令</h5>
+<blockquote>
+<p><mark>组件权限管理</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">全局：</span><br><span class="line">Vue.directive(&#x27;demo&#x27;, &#123;</span><br><span class="line">  inserted: function (a,b,c) &#123;</span><br><span class="line">    console.log( a,b,c );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">局部：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  directives: &#123;</span><br><span class="line">    demo: &#123;</span><br><span class="line">      bind: function (el) &#123;</span><br><span class="line">        console.log( 1 )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="62-vue单项绑定"><a class="markdownIt-Anchor" href="#62-vue单项绑定"></a> 6.2 vue单项绑定</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">双向绑定：v-model</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">单项绑定：v-bind</span><br></pre></td></tr></table></figure>
+<h5 id="63-v-if和v-for优先级"><a class="markdownIt-Anchor" href="#63-v-if和v-for优先级"></a> 6.3 v-if和v-for优先级</h5>
+<blockquote>
+<p><mark>同时作用在一个元素上，浪费性能，我们其实只想渲染出list其中符合条件的item，事实上我们却把每条item都遍历了一遍</mark></p>
+<p><mark>所以我们应该在vfor之前过滤filter</mark></p>
+</blockquote>
+<blockquote>
+<p>Vue2</p>
+<p>​	利用computed重新生成数组</p>
+<p>Vue3 虽说可以同时使用，但是，vif优先级高，可能不能及时获取到当前的item导致错误</p>
+<p>​	借助vfor template标签</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template v-for=&quot;(item, index) in list&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">         &lt;li v-if=&quot;item.show&quot;&gt;</span><br><span class="line">           &#123;&#123; item.name &#125;&#125;</span><br><span class="line">         &lt;/li&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vue2中：v-for &gt; v-if</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vue3中：v-if &gt; v-for</span><br></pre></td></tr></table></figure>
+<h3 id="7-关于原理"><a class="markdownIt-Anchor" href="#7-关于原理"></a> 7. 关于原理</h3>
+<h5 id="71-nexttick原理"><a class="markdownIt-Anchor" href="#71-nexttick原理"></a> 7.1 $nextTick原理</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick功能：获取更新后的dom</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick( callback )&#123;</span><br><span class="line"></span><br><span class="line">		return Promise.resolve().then(()=&gt;&#123;</span><br><span class="line">			callback();</span><br><span class="line">		&#125;)</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="72-双向绑定原理"><a class="markdownIt-Anchor" href="#72-双向绑定原理"></a> 7.2 双向绑定原理</h5>
+<blockquote>
+<p>双向绑定就是 数据与视图</p>
+</blockquote>
+<p>UI 控件的变化能自动更新数据模型</p>
+<p>vmodel 语法糖，vbind绑定在监听@input or @change事件做出改变</p>
+<h3 id="响应式"><a class="markdownIt-Anchor" href="#响应式"></a> 响应式</h3>
+<p>数据劫持： 当对数据进行取值操作的时候，就会对这个数据进行依赖收集，当这个数据发生改变的时候，就会触发视图更新，刷新页面。</p>
+<p>在get中进行<code>depend</code>依赖收集，在set中进行<code>notify</code>通知依赖的watcher去重新渲染（视图更新）</p>
+<p><code>Object.defineProperty</code>这个api存在着一些问题，比如必须要<strong>深层次递归监听一个对象内所有的属性</strong>，性能并不太好，并且不能监听数组的<code>length</code>改变</p>
+<p>数据代理 （复制一份）</p>
+<p>​	Vue 在组件实例上通过 <code>this</code> 提供对组件数据的直接访问。这是通过将 <code>data</code> 对象中的属性代理到 Vue 实例上实现的。这样，你可以通过 <code>this.propertyName</code> 直接访问数据，而不是 <code>this.data.propertyName </code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(vm.<span class="property">$data</span>).<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(vm, key, &#123;</span><br><span class="line">      <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> vm.<span class="property">$data</span>[key];</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">        vm.<span class="property">$data</span>[key] = newVal;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
 </search>
