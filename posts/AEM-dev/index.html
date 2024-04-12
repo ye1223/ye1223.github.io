@@ -17,7 +17,7 @@
 
 
 
-<title>Typora图床 | Levy&#39;s Blog</title>
+<title>How to Develop AEM Components | Levy&#39;s Blog</title>
 
 
 
@@ -161,27 +161,18 @@
     <div class="post-info">
         <div class="tag-list">
             
-
-                
-                    <span class="post-tag">
-                        <a href="/tags/utils/">
-                            utils
-                        </a>
-                    </span>
-                    
-                        
         </div>
         <div class="post-title">
 
             
-                Typora图床
+                How to Develop AEM Components
                     
         </div>
         <span class="post-date">
-            Feb 17, 2024
+            Feb 10, 2024
         </span>
         <span class="post-word-count">
-            60 words / About 1 minute
+            710 words / About 4 minutes
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -190,66 +181,176 @@
     </div>
     <div class="post-img">
         
-            <img src="https://s2.loli.net/2024/02/17/StpZoLWv9OGUVFj.png" alt="featured_image">
-            
+                <div class="h-line-primary"></div>
+                
     </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
-<p><strong>图床平台</strong>：<a target="_blank" rel="noopener" href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
-<p><strong>上传服务器</strong>：<a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
-<p>手把手步骤：</p>
+    <h2 id="prerequisites"><a class="markdownIt-Anchor" href="#prerequisites"></a> Prerequisites</h2>
+<ul>
+<li>Understanding how to configure components are on AEM pages</li>
+<li>Basic front-end development skills, not limited to HTML, JavaScript, Vue.js</li>
+</ul>
+<blockquote>
+<p>[!TIP]</p>
+<p><strong>Using the CLP project as an example</strong></p>
+</blockquote>
+<p>The top level directory structure of an AEM project is roughly like this. <strong>Frontend component development</strong> mainly focuses on the <code>ui.apps</code> and <code>ui.frontend</code> directories:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">├── all</span><br><span class="line">├── core</span><br><span class="line">├── it.tests</span><br><span class="line">├── ui.apps</span><br><span class="line">├── ui.apps.structure</span><br><span class="line">├── ui.config</span><br><span class="line">├── ui.content</span><br><span class="line">├── ui.frontend</span><br><span class="line">├── ui.tests</span><br><span class="line">├── archetype.properties</span><br><span class="line">└── pom.xml</span><br></pre></td></tr></table></figure>
+<br/>
+<h2 id="uiapps"><a class="markdownIt-Anchor" href="#uiapps"></a> <code>ui.apps</code></h2>
+<blockquote>
+<p>Component dialogs and metadata are defined in <code>ui.apps</code></p>
+</blockquote>
+<p>In <code>ui.apps/src/main/content/jcr_root/apps/clphk-postlogin/components</code>, you can find declared AEM components. Their directory structure is:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">├── _cq_dialog</span><br><span class="line">│   └── .content.xml ①</span><br><span class="line">├── .content.xml ②</span><br><span class="line">└── XXXXX.html</span><br></pre></td></tr></table></figure>
+<h3 id="define-component-dialog"><a class="markdownIt-Anchor" href="#define-component-dialog"></a> 🔦 Define Component Dialog</h3>
 <ul>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="http://sm.ms">sm.ms</a></strong></p>
-<ul>
-<li>注册</li>
-<li>获取<code>Token</code>
+<p><code>_cq_dialog</code> folder defines the component dialog:</p>
 <ul>
 <li>
-<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
+<img src="https://s2.loli.net/2024/04/12/d2v5UMseGuFEKkl.png" alt="image-20240301134106075" style="zoom:30%;float:left" />
+</li>
+<li>
+<p>The dialog pops up when clicking a component in the page editor for configuring component options.</p>
+</li>
+<li>
+<p>①xml defines dialog structure including fields, labels, defaults etc. It follows JCR (Java Content Repository) to describe layout and functions.</p>
+</li>
+<li>
+<pre class="highlight"><code class="xml"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span>
+<span class="tag">&lt;<span class="name">jcr:root</span> <span class="attr">xmlns:sling</span>=<span class="string">&quot;http://sling.apache.org/jcr/sling/1.0&quot;</span>
+          <span class="attr">xmlns:cq</span>=<span class="string">&quot;http://www.day.com/jcr/cq/1.0&quot;</span>
+          <span class="attr">xmlns:jcr</span>=<span class="string">&quot;http://www.jcp.org/jcr/1.0&quot;</span>
+          <span class="attr">xmlns:nt</span>=<span class="string">&quot;http://www.jcp.org/jcr/nt/1.0&quot;</span>
+          <span class="attr">jcr:primaryType</span>=<span class="string">&quot;nt:unstructured&quot;</span>
+          <span class="attr">sling:resourceType</span>=<span class="string">&quot;cq/gui/components/authoring/dialog&quot;</span>
+          <span class="attr">jcr:title</span>=<span class="string">&quot;...DIALOG TITLE&quot;</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">items</span> <span class="attr">jcr:primaryType</span>=<span class="string">&quot;nt:unstructured&quot;</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">tab1</span> <span class="attr">jcr:primaryType</span>=<span class="string">&quot;nt:unstructured&quot;</span>
+              <span class="attr">sling:resourceType</span>=<span class="string">&quot;cq/gui/components/authoring/dialog/tabpanel&quot;</span>
+              <span class="attr">jcr:title</span>=<span class="string">&quot;...TAB 1&quot;</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">items</span> <span class="attr">jcr:primaryType</span>=<span class="string">&quot;nt:unstructured&quot;</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">field1</span> <span class="attr">jcr:primaryType</span>=<span class="string">&quot;nt:unstructured&quot;</span>
+                        <span class="attr">sling:resourceType</span>=<span class="string">&quot;granite/ui/components/foundation/form/textfield&quot;</span>
+                        <span class="attr">fieldLabel</span>=<span class="string">&quot;...FIELD 1&quot;</span>
+                        <span class="attr">name</span>=<span class="string">&quot;./field1&quot;</span>/&gt;</span>
+                <span class="comment">&lt;!-- ...MORE FIELDS HERE --&gt;</span>
+            <span class="tag">&lt;/<span class="name">items</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">tab1</span>&gt;</span>
+        <span class="comment">&lt;!-- ...MORE TABS HERE --&gt;</span>
+    <span class="tag">&lt;/<span class="name">items</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">jcr:root</span>&gt;</span>
+<span class="comment"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 🔦 Define Component</span><br><span class="line"></span><br><span class="line">- ② xml file:</span><br><span class="line"></span><br><span class="line">  - Defines AEM component metadata.</span><br><span class="line"></span><br><span class="line">  - ```xml</span><br><span class="line">    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">    &lt;jcr:root xmlns:cq=&quot;http://www.day.com/jcr/cq/1.0&quot; xmlns:jcr=&quot;http://www.jcp.org/jcr/1.0&quot;</span><br><span class="line">        jcr:primaryType=&quot;cq:Component&quot;</span><br><span class="line">        jcr:title=&quot;CLP Eco Feed Vertical&quot; // Component title</span><br><span class="line">        componentGroup=&quot;CLP HK PostLogin - Develop&quot;/&gt; // Component group</span><br></pre></td></tr></table></figure></span>
+
+</code></pre>
+</li>
+<li>
+<img src="https://s2.loli.net/2024/04/12/RoS9EbPM3ujOIlt.png" alt="image-20240301140937620" style="zoom:40%;float:left" />
 </li>
 </ul>
 </li>
 </ul>
-</li>
-<li>
-<p><strong>PicGo</strong></p>
+<h3 id="define-component-template"><a class="markdownIt-Anchor" href="#define-component-template"></a> 🔦 Define Component Template</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://experienceleague.adobe.com/docs/experience-manager-htl/content/getting-started.html?lang=en">Reference</a></p>
+</blockquote>
+<p>The HTML file uses <strong>HTL</strong> (HTML Template Language) to render custom components in AEM pages (In this project, use Vue.js for joint development).</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sly</span> <span class="attr">data-sly-use.templates</span>=<span class="string">&quot;core/wcm/components/commons/v1/templates.html&quot;</span> <span class="attr">data-sly-set.hasContent</span>=<span class="string">&quot;$&#123;false&#125;&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- aquire modal data --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">sly</span> <span class="attr">data-sly-use.clpecofeed</span>=<span class="string">&quot;com.clp.clphkpostlogin.core.models.CLPEcoFeed&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">sly</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-dom</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- properties is defined by dialog data --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">VUE-COMPONENT</span> <span class="attr">props1</span>=<span class="string">&quot;$&#123;properties.modeltype&#125;&quot;</span> <span class="attr">props2</span>=<span class="string">&quot;$&#123;clpecofeed&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">VUE-COMPONENT</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- in Vue SFC, can get the properties from the `prop` --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">sly</span> <span class="attr">data-sly-call</span>=<span class="string">&quot;$&#123;templates.placeholder @ isEmpty=!hasContent&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">sly</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<br/>
+<h2 id="uifrontend"><a class="markdownIt-Anchor" href="#uifrontend"></a> <code>ui.frontend</code></h2>
+<blockquote>
+<p><code>ui.frontend</code> is built with <strong>webpack</strong> + <strong>Vue</strong> in this project</p>
+</blockquote>
+<h3 id="write-sfc-single-file-component"><a class="markdownIt-Anchor" href="#write-sfc-single-file-component"></a> 🔦 Write SFC (Single File Component)</h3>
 <ul>
-<li>全局下载 CLI：<code>yarn add global picgo</code></li>
-<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
-<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
+<li>Write Vue components in <font color=red><u><strong><code>ui.frontend/src/main/webpack/vue/components</code></strong></u></font> (Please ensure to define <font color=blue><code>name</code> </font>attribute for reference in AEM).</li>
+</ul>
+<blockquote>
+<p><code>componnents directory</code> structure</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- _register</span><br><span class="line">  - common # common components</span><br><span class="line">  - components aem components</span><br><span class="line">  - elementui elementui components</span><br><span class="line">- common</span><br><span class="line">- components match aem naming</span><br><span class="line">- utils common js libs</span><br><span class="line">- main.js entry</span><br></pre></td></tr></table></figure>
+<p>Notes:</p>
+<ol>
+<li>Register needed Element UI components in <code>_register/elementui</code>.</li>
+<li>Register new AEM components in <code>_register/components</code>.</li>
+<li>AEM components can use registered Element UI and common components.</li>
+</ol>
+</blockquote>
+<h3 id="register-components"><a class="markdownIt-Anchor" href="#register-components"></a> 🔦 Register Components</h3>
 <ul>
-<li><code>vim ~/.picgo/config.json</code></li>
-<li>
-<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
-</li>
+<li>Export Vue components in <font color=red><u><strong><code>ui.frontend/src/main/webpack/vue/_register/component</code></strong></u></font> for <code>main.js</code> to import and mount with <code>createApp.component()</code>.</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Typora</strong></p>
-<ul>
-<li>设置 &gt; 图像 &gt; 上传服务设置</li>
-<li>
-<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
-</li>
-</ul>
-</li>
-<li>
-<p><strong>使用</strong></p>
+<br/>
+<h2 id="preview-components"><a class="markdownIt-Anchor" href="#preview-components"></a> 💡 Preview Components</h2>
+<blockquote>
+<p>Please configre the component on AEM page before Preview Components</p>
+</blockquote>
+<h3 id="for-independent-components"><a class="markdownIt-Anchor" href="#for-independent-components"></a> For independent components</h3>
+<blockquote>
+<p>[!TIP]</p>
+<p><strong>independent components</strong> refers to to a component that is developed and previewed <u>standalone</u>, without associations with other components. For example, no need to navigate to other components or pages.</p>
+<p>No need to bundle the entire <code>ui.frontend</code>.</p>
+</blockquote>
 <ul>
 <li>
-<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
+<p>Mount defined component in <font color=red><u><strong><code>ui.frontend/src/main/webpack/templates/local.html</code></strong></u></font>:</p>
+<ul>
+<li>
+<pre class="highlight"><code class="vue">&lt;div id=&quot;localApp&quot; class=&quot;dtt-uf dtt-uf-vc dtt-uf-dc&quot;&gt;
+  &lt;div class=&quot;dtt-uf&quot;&gt;
+    &lt;div data-dom&gt;
+      &lt;CustomComponent /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 </li>
 </ul>
 </li>
+<li>
+<p>Run <code>npm run local</code> and open browser to preview this component.</p>
+<blockquote>
+<p>“local”: “cross-env VUE_APP_MY_ENV=local webpack-dev-server --open --config ./webpack.local.js”</p>
+</blockquote>
+</li>
 </ul>
-<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
+<h3 id="for-associated-components"><a class="markdownIt-Anchor" href="#for-associated-components"></a> For associated components</h3>
+<blockquote>
+<p>[!TIP]</p>
+<p>Need to bundle the <strong><em>entire</em></strong> <code>ui.frontend</code>.</p>
+</blockquote>
+<h4 id="option-1-maven-build"><a class="markdownIt-Anchor" href="#option-1-maven-build"></a> Option 1: Maven build</h4>
+<p><u><strong>Universal but Time-Consuming Solutions</strong></u></p>
+<ul>
+<li>
+<p>In project directoty, run <strong><code>mvn clean install -PautoInstallSinglePackage</code></strong>. Then preview in <strong>AEM system</strong>.</p>
+<blockquote>
+<p><strong>Production environment</strong></p>
+<p>For debug logs during development:</p>
+<p>​ Comment out Terser plugin in <code>webpack</code> prod config that removes <code>console.log</code>.</p>
+<p>​ Or use <code>window.console.log</code>.</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="option-2-aem-sync-plugin-in-vscode"><a class="markdownIt-Anchor" href="#option-2-aem-sync-plugin-in-vscode"></a> Option 2: AEM Sync plugin in VsCode</h4>
+<ul>
+<li>
+<p>Install <code>AEM Sync</code> plugin in VsCode.</p>
+</li>
+<li>
+<p>In <code>ui.frontend</code> directoty, run <code>npm run dev</code>. Plugin will sync build to AEM. Preview in launched server.</p>
+<blockquote>
+<p>“dev”: “webpack -d --env dev --config ./webpack.dev.js &amp;&amp; clientlib --verbose”</p>
+</blockquote>
+<blockquote>
+<p><strong>Development environment</strong></p>
+</blockquote>
+</li>
+</ul>
 
 </div>
 <div class="toc-menu-container">
@@ -395,7 +496,7 @@
            
                 <div class="icon arrow-left"></div>
                 <div class="post-link">
-                    <a href="/posts/btoa-atob/">Prev</a>
+                    <a href="/posts/typora%E5%9B%BE%E5%BA%8A/">Prev</a>
                 </div>
             
         </div>
@@ -403,7 +504,7 @@
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/AEM-dev/">Next</a>  
+                  <a href="/posts/CSS%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%A4%E8%A1%8C/">Next</a>  
                 </div>  
             
         </div>
@@ -444,8 +545,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/typora%E5%9B%BE%E5%BA%8A/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/typora图床/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/AEM-dev/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/AEM-dev/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -472,8 +573,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/typora%E5%9B%BE%E5%BA%8A/';
-                                    this.page.identifier = 'posts/typora图床/';
+                                    this.page.url = 'http://example.com/posts/AEM-dev/';
+                                    this.page.identifier = 'posts/AEM-dev/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
