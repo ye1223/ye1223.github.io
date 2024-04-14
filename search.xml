@@ -284,58 +284,27 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Event Loop</title>
-    <url>/posts/EventLoop/</url>
-    <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
-<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
-<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
-<ol>
-<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
-<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
-<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
-<li>Event Loop轮询查找Callback Queue中是否有可执行代码
-<ol>
-<li>有，将代码送入Call Stack执行</li>
-<li>没有，将继续轮询查找</li>
-</ol>
-</li>
-</ol>
-<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
-<p>微任务： Promise, async/await</p>
-<p>宏任务： 定时器、Ajax、DOM事件</p>
-<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
-<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
-<p>Node异步API</p>
-<table>
-<thead>
-<tr>
-<th>定时器</th>
-<th>I/O操作</th>
-<th>node独有</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>setTimeout<br />setInterval</td>
-<td>文件读写<br />数据库操作<br />网络请求…</td>
-<td>process.nextTick<br />setImmediate</td>
-</tr>
-</tbody>
-</table>
-<p>设计上，事件循环优先处理执行I/O事件</p>
-<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
-<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
-<p>从Timer到Check为一个Tick</p>
-<blockquote>
-<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
-<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
-<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>nodejs</tag>
-      </tags>
+    <title>Create-React-App项目Template</title>
+    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
+    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
+<br /></p>
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
+<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
+<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
+<p>​	<code>yarn add -D prettier</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
+<p>​	<code>yarn add -D husky</code></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
+<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
+<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<br />
+<strong> 静候补充... </strong>]]></content>
   </entry>
   <entry>
     <title>FUNNY_ERROR</title>
@@ -343,11 +312,6 @@ F --> L[结束]</pre>
     <content><![CDATA[<h2 id="1-immediate-写错位置-哭晕"><a class="markdownIt-Anchor" href="#1-immediate-写错位置-哭晕"></a> 1、immediate 写错位置 哭晕</h2>
 <figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> reCompolist = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="title function_">watch</span>(</span><br><span class="line">  <span class="function">() =&gt;</span> props.<span class="property">list</span>,</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ;(reCompolist.<span class="property">value</span> <span class="keyword">as</span> <span class="built_in">any</span>) = props.<span class="property">list</span>.<span class="title function_">map</span>(</span><br><span class="line">      <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="attr">newRow</span>: <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">any</span>&gt; = &#123;&#125;</span><br><span class="line">        props.<span class="property">labels</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">[key, _]</span>) =&gt;</span> &#123;</span><br><span class="line">          newRow[key] = row[key]</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> newRow</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 ]]></content>
-  </entry>
-  <entry>
-    <title>GPTPlus速通</title>
-    <url>/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>JS类型转换</title>
@@ -403,27 +367,343 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>Create-React-App项目Template</title>
-    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
-    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
-<br /></p>
-<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
-<br/>
-<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
-<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
-<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
-<p>​	<code>yarn add -D prettier</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
-<p>​	<code>yarn add -D husky</code></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
-<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
-<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<br />
-<strong> 静候补充... </strong>]]></content>
+    <title>RENEW-vue2</title>
+    <url>/posts/RENEW-vue2/</url>
+    <content><![CDATA[<h3 id="1-关于生命周期"><a class="markdownIt-Anchor" href="#1-关于生命周期"></a> 1. 关于生命周期</h3>
+<h5 id="11-生命周期有哪些发送请求在created还是mounted"><a class="markdownIt-Anchor" href="#11-生命周期有哪些发送请求在created还是mounted"></a> 1.1 生命周期有哪些？发送请求在created还是mounted？</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请求接口测试：https://fcm.52kfw.cn/index.php?_mall_id=1&amp;r=api/default/district</span><br></pre></td></tr></table></figure>
+<p>Vue2.x系统自带有8个</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br><span class="line">beforeUpdate</span><br><span class="line">updated // DOM 已经更新</span><br><span class="line">beforeDestroy // 实例还在，进行清理任务，比如清除计时器、解绑全局事件监听器</span><br><span class="line">destroyed </span><br></pre></td></tr></table></figure>
+<p>发送请求在created还是mounted？</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">这个问题具体要看项目和业务的情况了，因为组件的加载顺序是，父组件引入了子组件，那么先执行父的前3个生命周期，再执行子的前4个生命周期，那么如果我们的业务是父组件引入子组件，并且==优先加载子组件==的数据，那么在父组件中当前的请求要放=mounted=中，如果当前组件没有依赖关系那么放在哪个生命周期中请求都是可以的。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><mark>生命周期：先执行 父前三，在执行子元素前四</mark></p>
+<p><mark>如果优先加载子组件的数据，就放在mounted中发送请求</mark> ，<mark>确保子组件优先挂载</mark></p>
+</blockquote>
+<h5 id="12-为什么发送请求不在beforecreate里beforecreate和created有什么区别"><a class="markdownIt-Anchor" href="#12-为什么发送请求不在beforecreate里beforecreate和created有什么区别"></a> 1.2 为什么发送请求不在beforeCreate里？beforeCreate和created有什么区别？</h5>
+<p>为什么发送请求不在beforeCreate里？</p>
+<blockquote>
+<p><mark>拿不到methods方法（如果请求封装在methods中）</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">因为：如果请求是在methods封装好了，在beforeCreate调用的时候，beforeCreate阶段是拿不到methods里面的方法的（会报错了）。</span><br></pre></td></tr></table></figure>
+<p>beforeCreate和created有什么区别？</p>
+<blockquote>
+<p><mark>拿不拿得到$data与methods</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate没有$data</span><br><span class="line">created中有$data</span><br><span class="line"></span><br><span class="line">created是可以拿到methods的方法的</span><br><span class="line">beforeCreate拿不到methods的方法</span><br></pre></td></tr></table></figure>
+<h5 id="13-在created中如何获取dom"><a class="markdownIt-Anchor" href="#13-在created中如何获取dom"></a> 1.3 在created中如何获取dom</h5>
+<blockquote>
+<p><mark>异步获取</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 只要写异步代码，获取dom是在异步中获取的，就可以了。</span><br><span class="line">	例如：setTimeout、请求、Promise.xxx()等等...</span><br><span class="line">2. 使用vue系统内置的this.$nextTick</span><br></pre></td></tr></table></figure>
+<h5 id="14-一旦font-colorred进入组件font会执行哪些生命周期"><a class="markdownIt-Anchor" href="#14-一旦font-colorred进入组件font会执行哪些生命周期"></a> 1.4 一旦<font color=red>进入组件</font>会执行哪些生命周期？</h5>
+<blockquote>
+<p>进入组件，组件已经<strong>挂载</strong></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br></pre></td></tr></table></figure>
+<h5 id="15-第二次或者第n次进去组件会执行哪些生命周期"><a class="markdownIt-Anchor" href="#15-第二次或者第n次进去组件会执行哪些生命周期"></a> 1.5 第二次或者第N次进去组件会执行哪些生命周期？</h5>
+<blockquote>
+<p><mark>看是否缓存了组件</mark></p>
+</blockquote>
+<p>如果当前组件加入了<strong>keep-alive</strong>，只会执行一个生命周期</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">activated</span><br></pre></td></tr></table></figure>
+<p>如果没有加入keep-alive</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br></pre></td></tr></table></figure>
+<h5 id="16-父组件引入子组件那么生命周期执行的顺序是"><a class="markdownIt-Anchor" href="#16-父组件引入子组件那么生命周期执行的顺序是"></a> 1.6 父组件引入子组件，那么生命周期执行的顺序是？</h5>
+<blockquote>
+<p><mark>父三 子四</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">父：beforeCreate、created、beforeMount</span><br><span class="line">子：beforeCreate、created、beforeMount、mounted</span><br><span class="line">...</span><br><span class="line">父：mounted</span><br></pre></td></tr></table></figure>
+<h5 id="17-加入keep-alive会执行哪些生命周期"><a class="markdownIt-Anchor" href="#17-加入keep-alive会执行哪些生命周期"></a> 1.7 加入keep-alive会执行哪些生命周期？</h5>
+<p>如果使用了keep-alive组件，当前的组件会额外增加2个生命周期（系统8 + 2 ）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">activated</span><br><span class="line">deactivated</span><br></pre></td></tr></table></figure>
+<p>如果当前组件加入了keep-alive第一次进入这个组件会执行5个生命周期</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br><span class="line">activated</span><br></pre></td></tr></table></figure>
+<h5 id="18-你在什么情况下用过哪些生命周期说一说生命周期使用场景"><a class="markdownIt-Anchor" href="#18-你在什么情况下用过哪些生命周期说一说生命周期使用场景"></a> 1.8 你在什么情况下用过哪些生命周期？说一说生命周期使用场景</h5>
+<blockquote>
+<p>activated 中重新刷新数据 ， 因为使用了缓存组件，后续进入该组件只会运行这一个生命周期</p>
+<p>deacticated 清理定时器相关的</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">created    ===&gt; 单组件请求</span><br><span class="line">mounted    ===&gt; 同步可以获取dom，如果先子组件请求后父组件请求</span><br><span class="line">activated  ===&gt; 判断id是否相等，如果不相同发起请求</span><br><span class="line">destroyed  ===&gt; 关闭页面记录视频播放的时间,初始化的时候从上一次的历史开始播放</span><br></pre></td></tr></table></figure>
+<h3 id="2-关于组件"><a class="markdownIt-Anchor" href="#2-关于组件"></a> 2. 关于组件</h3>
+<blockquote>
+<p>父 -&gt; 子 <mark>props、<a href="http://this.$parent.xxx">this.$parent.xxx</a>(子元素可以直接修改父元素数据)、依赖注入（在配置主题颜色 react中的context上下文 provider）</mark></p>
+<p>子 -&gt; 父 <mark>自定义事件emit、$refs</mark></p>
+<p>兄弟元素： <mark>eventbus （发布订阅模式）</mark></p>
+<p>集中状态管理 vuex pinia</p>
+</blockquote>
+<h5 id="21-组件传值通信的方式"><a class="markdownIt-Anchor" href="#21-组件传值通信的方式"></a> 2.1 组件传值（通信）的方式</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">父传后代 ( 后代拿到了父的数据 )</span><br><span class="line">1. 父组件引入子组件，绑定数据</span><br><span class="line">	 &lt;List :str1=&#x27;str1&#x27;&gt;&lt;/List&gt;</span><br><span class="line">	子组件通过props来接收</span><br><span class="line">	props:&#123;</span><br><span class="line">		str1:&#123;</span><br><span class="line">			type:String,</span><br><span class="line">			default:&#x27;&#x27;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	***这种方式父传子很方便，但是父传给孙子辈分的组件就很麻烦（父=》子=》孙）</span><br><span class="line">	这种方式：子不能直接修改父组件的数据</span><br><span class="line"></span><br><span class="line">2. 子组件直接使用父组件的数据</span><br><span class="line">	子组件通过：this.$parent.xxx使用父组件的数据</span><br><span class="line">	这种方式：子可以直接修改父组件的数据</span><br><span class="line">	</span><br><span class="line">3. 依赖注入</span><br><span class="line">	优势：父组件可以直接向某个后代组件传值(不让一级一级的传递)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">后代传父 （父拿到了后代的数据）</span><br><span class="line">1. 子组件传值给父组件</span><br><span class="line">	子组件定义自定义事件 this.$emit</span><br><span class="line">2. 父组件直接拿到子组件的数据</span><br><span class="line">	&lt;List ref=&#x27;child&#x27;&gt;&lt;/List&gt;</span><br><span class="line">	this.$refs.child</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">平辈之间的传值 ( 兄弟可以拿到数据 ) </span><br><span class="line"></span><br><span class="line">通过新建bus.js文件来做</span><br></pre></td></tr></table></figure>
+<h5 id="22-父组件如何直接修改子组件的值"><a class="markdownIt-Anchor" href="#22-父组件如何直接修改子组件的值"></a> 2.2 父组件如何直接修改子组件的值</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;List ref=&#x27;child&#x27;&gt;&lt;/List&gt;</span><br><span class="line">this.$refs.child.xxx = &#x27;yyyy&#x27;;</span><br></pre></td></tr></table></figure>
+<h5 id="23-子组件如何直接修改父组件的值"><a class="markdownIt-Anchor" href="#23-子组件如何直接修改父组件的值"></a> 2.3 子组件如何直接修改父组件的值</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">子组件中可以使用：this.$parent.xxx去修改</span><br></pre></td></tr></table></figure>
+<h5 id="24-如何找到父组件"><a class="markdownIt-Anchor" href="#24-如何找到父组件"></a> 2.4 如何找到父组件</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$parent</span><br></pre></td></tr></table></figure>
+<h5 id="25-如何找到根组件"><a class="markdownIt-Anchor" href="#25-如何找到根组件"></a> 2.5 如何找到根组件</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$root</span><br></pre></td></tr></table></figure>
+<h5 id="26-keep-alive"><a class="markdownIt-Anchor" href="#26-keep-alive"></a> 2.6 keep-alive</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">keep-alive是什么  ： 缓存当前组件</span><br></pre></td></tr></table></figure>
+<h5 id="27-slot插槽"><a class="markdownIt-Anchor" href="#27-slot插槽"></a> 2.7 slot/插槽</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">匿名插槽 ：插槽没有名字</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">具名插槽 ：插槽有名字</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用域插槽 ： 传值</span><br></pre></td></tr></table></figure>
+<h5 id="28-provideinject"><a class="markdownIt-Anchor" href="#28-provideinject"></a> 2.8 provide/inject</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">provide/inject ===&gt; 依赖注入</span><br></pre></td></tr></table></figure>
+<h5 id="29-如何封装组件"><a class="markdownIt-Anchor" href="#29-如何封装组件"></a> 2.9 如何封装组件</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">组件一定要难点，涉及的知识点：slot、组件通信...</span><br></pre></td></tr></table></figure>
+<h3 id="3-关于vuex"><a class="markdownIt-Anchor" href="#3-关于vuex"></a> 3. 关于Vuex</h3>
+<h5 id="31-vuex有哪些属性"><a class="markdownIt-Anchor" href="#31-vuex有哪些属性"></a> 3.1 Vuex有哪些属性</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">state ==&gt; 全局共享属性</span><br><span class="line">getters ==&gt; 针对于state数据进行二次计算</span><br><span class="line">mutatioins ==&gt; 存放同步方法的</span><br><span class="line">actions    ==&gt; 存放异步方法的，并且是来提交mutations</span><br><span class="line">modules    ==&gt; 把vuex再次进行模块之间的划分</span><br></pre></td></tr></table></figure>
+<h5 id="32-vuex使用state值"><a class="markdownIt-Anchor" href="#32-vuex使用state值"></a> 3.2 Vuex使用state值</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$store.state.xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">辅助函数：mapState</span><br></pre></td></tr></table></figure>
+<p>以上俩种方式都可以拿到state的值，那么区别是什么？</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用this.$store.state.xxx是可以直接修改vuex的state数据的</span><br><span class="line"></span><br><span class="line">使用辅助函数的形式，是不可以修改的</span><br></pre></td></tr></table></figure>
+<h5 id="33-vuex的getters值修改"><a class="markdownIt-Anchor" href="#33-vuex的getters值修改"></a> 3.3 Vuex的getters值修改</h5>
+<p>面试官可能会这样问：组件使用了getters中的内容，组件使用采用v-model的形式会发生什么？</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getters是不可以修改的</span><br></pre></td></tr></table></figure>
+<h5 id="34-vuex的mutations和actions区别"><a class="markdownIt-Anchor" href="#34-vuex的mutations和actions区别"></a> 3.4 Vuex的mutations和actions区别</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">相同点：mutations和actions都是来存放全局方法的，这个全局方法return的值拿不到</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">区别：</span><br><span class="line">	mutations ==》 同步</span><br><span class="line">	actions   ==》 返回的是一个Promise对象，他可以执行相关异步操作</span><br><span class="line">	</span><br><span class="line">mutations是来修改state的值的，actions的作用是来提交mutations</span><br></pre></td></tr></table></figure>
+<h5 id="35-vuex持久化存储-在页面使用了state值1然后把1修改成2然后刷新页面又回到了1为什么"><a class="markdownIt-Anchor" href="#35-vuex持久化存储-在页面使用了state值1然后把1修改成2然后刷新页面又回到了1为什么"></a> 3.5 Vuex持久化存储  ：在页面使用了state值：1，然后把1修改成2，然后刷新页面又回到了1为什么？</h5>
+<blockquote>
+<p><mark>我用的pinia</mark></p>
+<p><mark>state在LS，读取时getItem，修改时setItem</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Vuex本身不是持久化存储的数据。Vuex是一个状态管理仓库（state：全局属性）==》就是存放全局属性的地方。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实现持久化存储：1. 自己写localStorage  2. 使用vuex-persistedstate插件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">插件使用方式：https://www.xuexiluxian.cn/blog/detail/dae4073b07144d3c9abb3e2cc8495922</span><br></pre></td></tr></table></figure>
+<h3 id="4-关于路由"><a class="markdownIt-Anchor" href="#4-关于路由"></a> 4. 关于路由</h3>
+<h5 id="41-路由的模式和区别"><a class="markdownIt-Anchor" href="#41-路由的模式和区别"></a> 4.1 路由的模式和区别</h5>
+<blockquote>
+<p>history 使用HTML5 的history API, <mark><strong><code>pushState(state, title, url)</code></strong></mark> <strong><code>popstate</code></strong> replacestate</p>
+<p>hash检测浏览器url hash值 , <mark>浏览器并不会因为hash值的改变而作响应向服务器发送请求，而是有vuerouter控制客户端作相应的响应，利用onhashchange（window.location.hash）</mark>   同一页面内的不同位置标记</p>
+</blockquote>
+<blockquote>
+<p><font color=red>hash</font></p>
+<p><mark>服务器只需要返回入口页面（通常是 <code>index.html</code>）</mark>, 而后面一切都是由vuerouter在客户端渲染完成的</p>
+<p><font color=red>history</font></p>
+<p>需要在后端额外配置请求的uri地址</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">路由的模式：history、hash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">区别：</span><br><span class="line">1. 关于找不到当前页面发送请求的问题</span><br><span class="line">	history会给后端发送一次请求而hash不会</span><br><span class="line">2. 关于项目打包前端自测问题</span><br><span class="line">	hash是可以看到内容的</span><br><span class="line">	history默认情况是看不到内容的</span><br><span class="line">3. 关于表象不同</span><br><span class="line">	hash:#</span><br><span class="line">	history:/</span><br></pre></td></tr></table></figure>
+<h5 id="42-子路由和动态路由"><a class="markdownIt-Anchor" href="#42-子路由和动态路由"></a> 4.2 子路由和动态路由</h5>
+<blockquote>
+<p>动态路由 /user/:id 占位</p>
+</blockquote>
+<h5 id="43-路由传值"><a class="markdownIt-Anchor" href="#43-路由传值"></a> 4.3 路由传值</h5>
+<blockquote>
+<p>query 和 params 两种</p>
+</blockquote>
+<h5 id="44-导航故障"><a class="markdownIt-Anchor" href="#44-导航故障"></a> 4.4 导航故障</h5>
+<blockquote>
+<p>可以catch捕获，isNavigationFailure 给出相关提示</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">官网说明：https://v3.router.vuejs.org/zh/guide/advanced/navigation-failures.html#%E6%A3%80%E6%B5%8B%E5%AF%BC%E8%88%AA%E6%95%85%E9%9A%9C</span><br></pre></td></tr></table></figure>
+<p>解决：</p>
+<blockquote>
+<p>$router.push跳转到一个相同的路由报错</p>
+<p>重写push方法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import VueRouter from &#x27;vue-router&#x27;</span><br><span class="line">const routerPush = VueRouter.prototype.push</span><br><span class="line">VueRouter.prototype.push = function (location) &#123;</span><br><span class="line">  return routerPush.call(this, location).catch(error =&gt; error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="45-router和route区别"><a class="markdownIt-Anchor" href="#45-router和route区别"></a> 4.5 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi>r</mi><mtext>和</mtext></mrow><annotation encoding="application/x-tex">router和</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord cjk_fallback">和</span></span></span></span>route区别</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$router不仅包含当前路由还包含 ==整个路由的属性和方法==</span><br><span class="line"></span><br><span class="line">$route包含==当前==路由对象</span><br></pre></td></tr></table></figure>
+<h5 id="46-导航守卫"><a class="markdownIt-Anchor" href="#46-导航守卫"></a> 4.6 导航守卫</h5>
+<blockquote>
+<p>beforeResolve</p>
+<p>所有组件内守卫和异步路由组件被解析之后，而在导航被最终确认之前。</p>
+<p>提供了一个<mark>最后的机会</mark>来取消或修改即将发生的路由跳转。 （权限</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 全局守卫</span><br><span class="line"></span><br><span class="line">	beforeEach 路由进入之前</span><br><span class="line">	afterEach 路由进入之后</span><br><span class="line"></span><br><span class="line">2. 路由独享守卫</span><br><span class="line">	</span><br><span class="line">	beforeEnter 路由进入之前</span><br><span class="line"></span><br><span class="line">3. 组件内守卫</span><br><span class="line"></span><br><span class="line">	beforeRouteEnter 路由进入之前</span><br><span class="line">	beforeRouteUpdate 路由更新之前</span><br><span class="line">	beforeRouteLeave 路由离开之前</span><br></pre></td></tr></table></figure>
+<h3 id="5-关于api"><a class="markdownIt-Anchor" href="#5-关于api"></a> 5. 关于API</h3>
+<h5 id="51-set"><a class="markdownIt-Anchor" href="#51-set"></a> 5.1 $set</h5>
+<blockquote>
+<p>给响应式对象添加新属性</p>
+<p>响应式数组对象<strong>不能</strong>直接通过<strong>修改索引</strong>的方式修改数据 ， 利相关方法push pop shift unshift splice sort reverse，更改length</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">面试官：你有没有碰到过，数据更新视图没有更新的问题==》$set</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$set(target,key,修改后的值)</span><br></pre></td></tr></table></figure>
+<h5 id="52-nexttick"><a class="markdownIt-Anchor" href="#52-nexttick"></a> 5.2 $nextTick</h5>
+<blockquote>
+<p><mark>在写单元测试的时候使用过，因为要获取当前最新的DOM，返回promise</mark></p>
+<p>数据更新导致视图变化，（给这个DOM添加动画</p>
+<p>DOM是异步更新的，确保获取最新的DOM借助nexttick</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick返回的参数[函数]，是一个异步的。功能：==获取更新后的dom==</span><br><span class="line"></span><br><span class="line">源码|原理：</span><br><span class="line">$nextTick( callback )&#123;</span><br><span class="line">		return Promise.resolve().then(()=&gt;&#123;</span><br><span class="line">			callback();</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="53-refs"><a class="markdownIt-Anchor" href="#53-refs"></a> 5.3 $refs</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">来获取dom的</span><br></pre></td></tr></table></figure>
+<h5 id="54-el"><a class="markdownIt-Anchor" href="#54-el"></a> 5.4 $el</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$el 获取当前组件的根节点</span><br></pre></td></tr></table></figure>
+<h5 id="55-data"><a class="markdownIt-Anchor" href="#55-data"></a> 5.5 $data</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$data 获取当前组件data数据的</span><br></pre></td></tr></table></figure>
+<h5 id="56-children"><a class="markdownIt-Anchor" href="#56-children"></a> 5.6 $children</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$children 获取到当前组件的所有子组件的</span><br></pre></td></tr></table></figure>
+<h5 id="57-parent"><a class="markdownIt-Anchor" href="#57-parent"></a> 5.7 $parent</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">找到当前组件的父组件，如果找不到返回自身</span><br></pre></td></tr></table></figure>
+<h5 id="58-root"><a class="markdownIt-Anchor" href="#58-root"></a> 5.8 $root</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">找到根组件</span><br></pre></td></tr></table></figure>
+<h5 id="59-data定义数据"><a class="markdownIt-Anchor" href="#59-data定义数据"></a> 5.9 data定义数据</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">数据定义在data的return内和return外的区别：</span><br><span class="line"></span><br><span class="line">1. return外：单纯修改这个数据是不可以修改的，因为没有被get/set</span><br><span class="line">2. reutnr内：是可以修改的</span><br></pre></td></tr></table></figure>
+<h5 id="510-computed计算属性"><a class="markdownIt-Anchor" href="#510-computed计算属性"></a> 5.10 computed计算属性</h5>
+<blockquote>
+<p>getter setter写法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">computed计算属性的结果值，可以修改吗？可以的，需要通过get/set写法</span><br><span class="line"></span><br><span class="line">当前组件v-model绑定的值是computed来的，那么可以修改吗？可以的，需要通过get/set写法</span><br></pre></td></tr></table></figure>
+<h5 id="511-watch"><a class="markdownIt-Anchor" href="#511-watch"></a> 5.11 watch</h5>
+<blockquote>
+<p><mark>可以在其中执行<strong>异步</strong>方法，但是要注意trycatch捕获处理异常</mark></p>
+<p><mark>在组件销毁时清理watch，返回一个销毁函数</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">  obj:&#123;</span><br><span class="line">    handler(newVal,oldVal)&#123;</span><br><span class="line">      console.log( &#x27;obj&#x27;,newVal , oldVal )</span><br><span class="line">    &#125;,</span><br><span class="line">    immediate:true,</span><br><span class="line">    deep:true</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="512-methods和computed区别"><a class="markdownIt-Anchor" href="#512-methods和computed区别"></a> 5.12 methods和computed区别</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">computed是有缓存机制的，methods是没有缓存机制的（调用几次执行几次）</span><br></pre></td></tr></table></figure>
+<h3 id="6-关于指令"><a class="markdownIt-Anchor" href="#6-关于指令"></a> 6. 关于指令</h3>
+<h5 id="61-如何自定义指令"><a class="markdownIt-Anchor" href="#61-如何自定义指令"></a> 6.1 如何自定义指令</h5>
+<blockquote>
+<p><mark>组件权限管理</mark></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">全局：</span><br><span class="line">Vue.directive(&#x27;demo&#x27;, &#123;</span><br><span class="line">  inserted: function (a,b,c) &#123;</span><br><span class="line">    console.log( a,b,c );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">局部：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  directives: &#123;</span><br><span class="line">    demo: &#123;</span><br><span class="line">      bind: function (el) &#123;</span><br><span class="line">        console.log( 1 )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="62-vue单项绑定"><a class="markdownIt-Anchor" href="#62-vue单项绑定"></a> 6.2 vue单项绑定</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">双向绑定：v-model</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">单项绑定：v-bind</span><br></pre></td></tr></table></figure>
+<h5 id="63-v-if和v-for优先级"><a class="markdownIt-Anchor" href="#63-v-if和v-for优先级"></a> 6.3 v-if和v-for优先级</h5>
+<blockquote>
+<p><mark>同时作用在一个元素上，浪费性能，我们其实只想渲染出list其中符合条件的item，事实上我们却把每条item都遍历了一遍</mark></p>
+<p><mark>所以我们应该在vfor之前过滤filter</mark></p>
+</blockquote>
+<blockquote>
+<p>Vue2</p>
+<p>​	利用computed重新生成数组</p>
+<p>Vue3 虽说可以同时使用，但是，vif优先级高，可能不能及时获取到当前的item导致错误</p>
+<p>​	借助vfor template标签</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template v-for=&quot;(item, index) in list&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">         &lt;li v-if=&quot;item.show&quot;&gt;</span><br><span class="line">           &#123;&#123; item.name &#125;&#125;</span><br><span class="line">         &lt;/li&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vue2中：v-for &gt; v-if</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vue3中：v-if &gt; v-for</span><br></pre></td></tr></table></figure>
+<h3 id="7-关于原理"><a class="markdownIt-Anchor" href="#7-关于原理"></a> 7. 关于原理</h3>
+<h5 id="71-nexttick原理"><a class="markdownIt-Anchor" href="#71-nexttick原理"></a> 7.1 $nextTick原理</h5>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick功能：获取更新后的dom</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick( callback )&#123;</span><br><span class="line"></span><br><span class="line">		return Promise.resolve().then(()=&gt;&#123;</span><br><span class="line">			callback();</span><br><span class="line">		&#125;)</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="72-双向绑定原理"><a class="markdownIt-Anchor" href="#72-双向绑定原理"></a> 7.2 双向绑定原理</h5>
+<blockquote>
+<p>双向绑定就是 数据与视图</p>
+</blockquote>
+<p>UI 控件的变化能自动更新数据模型</p>
+<p>vmodel 语法糖，vbind绑定在监听@input or @change事件做出改变</p>
+<h3 id="响应式"><a class="markdownIt-Anchor" href="#响应式"></a> 响应式</h3>
+<p>数据劫持： 当对数据进行取值操作的时候，就会对这个数据进行依赖收集，当这个数据发生改变的时候，就会触发视图更新，刷新页面。</p>
+<p>在get中进行<code>depend</code>依赖收集，在set中进行<code>notify</code>通知依赖的watcher去重新渲染（视图更新）</p>
+<p><code>Object.defineProperty</code>这个api存在着一些问题，比如必须要<strong>深层次递归监听一个对象内所有的属性</strong>，性能并不太好，并且不能监听数组的<code>length</code>改变</p>
+<p>数据代理 （复制一份）</p>
+<p>​	Vue 在组件实例上通过 <code>this</code> 提供对组件数据的直接访问。这是通过将 <code>data</code> 对象中的属性代理到 Vue 实例上实现的。这样，你可以通过 <code>this.propertyName</code> 直接访问数据，而不是 <code>this.data.propertyName </code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(vm.<span class="property">$data</span>).<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(vm, key, &#123;</span><br><span class="line">      <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> vm.<span class="property">$data</span>[key];</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">        vm.<span class="property">$data</span>[key] = newVal;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Event Loop</title>
+    <url>/posts/EventLoop/</url>
+    <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
+<p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
+<h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
+<ol>
+<li>同步代码，一行一行在Call Stack中执行（压栈弹栈）</li>
+<li>遇到异步代码，记录下代码，等时机到了将代码入队Callback Queue中</li>
+<li>当同步代码执行为空，Call Stack为空，Event Loop开始工作</li>
+<li>Event Loop轮询查找Callback Queue中是否有可执行代码
+<ol>
+<li>有，将代码送入Call Stack执行</li>
+<li>没有，将继续轮询查找</li>
+</ol>
+</li>
+</ol>
+<p><font color=red>调用栈为空触发Event Loop执行先后顺序：微任务、DOM渲染、宏任务</font></p>
+<p>微任务： Promise, async/await</p>
+<p>宏任务： 定时器、Ajax、DOM事件</p>
+<img src="https://s2.loli.net/2023/10/07/nFwAxKGfkaDUp8b.png" alt="浏览器事件循环" style="width:70%;" />
+<h3 id="node"><a class="markdownIt-Anchor" href="#node"></a> Node</h3>
+<p>Node异步API</p>
+<table>
+<thead>
+<tr>
+<th>定时器</th>
+<th>I/O操作</th>
+<th>node独有</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setTimeout<br />setInterval</td>
+<td>文件读写<br />数据库操作<br />网络请求…</td>
+<td>process.nextTick<br />setImmediate</td>
+</tr>
+</tbody>
+</table>
+<p>设计上，事件循环优先处理执行I/O事件</p>
+<img src="https://s2.loli.net/2023/10/07/Y7yhcei5f86PaS4.png" alt="Node事件循环" style="width:70%;" />
+<p>process.nextTick不属于事件循环一部分，优先于事件循环执行</p>
+<p>从Timer到Check为一个Tick</p>
+<blockquote>
+<p><code>setImediate(()=&gt;&#123;&#125;)</code>、与<code>setTimeout(()=&gt;&#123;&#125;, 0)</code> 中执行时机不确定？</p>
+<p>setTimeout(, 0) —&gt; <code>浏览器 4ms</code>,<code> node 1ms</code></p>
+<p>解决： 将两者放在I/O操作回调中，能保证setImmediate回调先执行</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GPTPlus速通</title>
+    <url>/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>TCP</title>
+    <url>/posts/TCP/</url>
+    <content><![CDATA[<p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
+<p><strong>全双工（Full Duplex）</strong></p>
+<ol>
+<li>双向传输:TCP连接的两端都可以同时发送和接收数据包。</li>
+<li>双向流量控制:发送方和接收方都可以通过滑动窗口机制控制数据流量,防止对方缓冲区溢出。</li>
+<li>双向确认:发送的数据包可以得到对方的确认应答ACK。接收方也可以通过ACK告知发送方自己已经正确接收了数据。</li>
+<li>双向重传:如果任意一方没有收到确认或数据包丢失,都可以触发重传机制,直到数据正确发送。</li>
+<li>全双工通信:TCP的全双工特性使得双方可以同时进行发言而不会相互干扰,就像电话通话一样。</li>
+</ol>
+<blockquote>
+<p><code>ACK</code> 和<code>FIN</code> 是 TCP 协议中两个重要的控制标志(control flag)</p>
+<p><code>ACK(Acknowledgement) </code>确认号，表示确认号,确认接收端已正确接收到前面的数据</p>
+<p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
+</blockquote>
+<h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
+<img src="https://i.imgur.com/bJWYomc.png" alt="三次挥手示意图" style="width:50%" />
+<h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
+<p>一包数据可能被拆为多包数据发送</p>
+<p><strong>丢包问题？乱序问题？</strong></p>
+<p>TCP为每个链接建立了一个<mark>发送缓冲区</mark></p>
+<img src="https://s2.loli.net/2023/09/11/ACj3KLUHcNiVIMs.png" style="width:50%;" alt="传输示意图" />
+<blockquote>
+<p>一问一答的方式发送接收（发送端一次也可以发送多包数据，接收端只用回复一次ACK）</p>
+</blockquote>
+<blockquote>
+<p>发送端可以切割发送，接收端利用序列号和长度重组出完整的数据</p>
+</blockquote>
+<blockquote>
+<p>丢失了某个数据包，接收端可以要求发送端重传。</p>
+<p>接收端向发送端发送ACK=xxx，发送端重传，接收端收到再<strong>补齐</strong>数据</p>
+</blockquote>
+<h2 id="四次挥手"><a class="markdownIt-Anchor" href="#四次挥手"></a> 四次挥手👋🏻</h2>
+<p>这里以客户端取消l为例</p>
+<img src="https://s2.loli.net/2023/09/11/nrxG86lYUf7CqMX.png" alt="四次挥手示意图" style="width:50%;" />
+<p>Client等待一段时间，目的为了确保ACK成功发送给Server，否则Server重新发送FIN给client，再重新执行</p>
+]]></content>
+      <tags>
+        <tag>Computer Network</tag>
+      </tags>
   </entry>
   <entry>
     <title>SUMMARY</title>
@@ -1193,6 +1473,21 @@ F --> L[结束]</pre>
 ]]></content>
       <tags>
         <tag>¡importante!</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>btoa-atob</title>
+    <url>/posts/btoa-atob/</url>
+    <content><![CDATA[<p>今天在找登录token发先存于Cookie的access_token被加密成ASCII字符串，遂找到了两个window下的api</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// base64Encryption</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">encryptToken</span>(<span class="params">token</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> encryptedToken = <span class="title function_">btoa</span>(token)</span><br><span class="line">  <span class="keyword">return</span> encryptedToken</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">decryptToken</span>(<span class="params">encryptedToken</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> decryptedToken = <span class="title function_">atob</span>(encryptedToken)</span><br><span class="line">  <span class="keyword">return</span> decryptedToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Binary To ASCII</strong></p>
+<p><strong><code>btoa()</code></strong> 方法可以将一个<em>二进制字符串</em>（例如，将字符串中的每一个字节都视为一个二进制数据字节）编码为 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Base64">Base64</a> 编码的 ASCII 字符串。</p>
+<p>**ASCII To Binary **</p>
+<p><strong><code>atob()</code></strong> 对经过 base-64 编码的字符串进行解码</p>
+<p><img src="https://s2.loli.net/2024/02/19/6sy4PoWhdcw5BXJ.png" alt="bta atob" /></p>
+]]></content>
+      <tags>
+        <tag>new found</tag>
       </tags>
   </entry>
   <entry>
@@ -2045,298 +2340,31 @@ setInterval最小执行时间是10ms</p>
 ]]></content>
   </entry>
   <entry>
-    <title>btoa-atob</title>
-    <url>/posts/btoa-atob/</url>
-    <content><![CDATA[<p>今天在找登录token发先存于Cookie的access_token被加密成ASCII字符串，遂找到了两个window下的api</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// base64Encryption</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">encryptToken</span>(<span class="params">token</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> encryptedToken = <span class="title function_">btoa</span>(token)</span><br><span class="line">  <span class="keyword">return</span> encryptedToken</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">decryptToken</span>(<span class="params">encryptedToken</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> decryptedToken = <span class="title function_">atob</span>(encryptedToken)</span><br><span class="line">  <span class="keyword">return</span> decryptedToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Binary To ASCII</strong></p>
-<p><strong><code>btoa()</code></strong> 方法可以将一个<em>二进制字符串</em>（例如，将字符串中的每一个字节都视为一个二进制数据字节）编码为 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Base64">Base64</a> 编码的 ASCII 字符串。</p>
-<p>**ASCII To Binary **</p>
-<p><strong><code>atob()</code></strong> 对经过 base-64 编码的字符串进行解码</p>
-<p><img src="https://s2.loli.net/2024/02/19/6sy4PoWhdcw5BXJ.png" alt="bta atob" /></p>
+    <title>computed与watch</title>
+    <url>/posts/computed%E4%B8%8Ewatch/</url>
+    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
+<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
+<ul>
+<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
+<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
+<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
+<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
+<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
+<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
+<ul>
+<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
+<li>watch<mark>支持异步</mark>；</li>
+<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
+<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
+<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>new found</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RENEW-vue2</title>
-    <url>/posts/RENEW-vue2/</url>
-    <content><![CDATA[<h3 id="1-关于生命周期"><a class="markdownIt-Anchor" href="#1-关于生命周期"></a> 1. 关于生命周期</h3>
-<h5 id="11-生命周期有哪些发送请求在created还是mounted"><a class="markdownIt-Anchor" href="#11-生命周期有哪些发送请求在created还是mounted"></a> 1.1 生命周期有哪些？发送请求在created还是mounted？</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请求接口测试：https://fcm.52kfw.cn/index.php?_mall_id=1&amp;r=api/default/district</span><br></pre></td></tr></table></figure>
-<p>Vue2.x系统自带有8个</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br><span class="line">beforeUpdate</span><br><span class="line">updated // DOM 已经更新</span><br><span class="line">beforeDestroy // 实例还在，进行清理任务，比如清除计时器、解绑全局事件监听器</span><br><span class="line">destroyed </span><br></pre></td></tr></table></figure>
-<p>发送请求在created还是mounted？</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">这个问题具体要看项目和业务的情况了，因为组件的加载顺序是，父组件引入了子组件，那么先执行父的前3个生命周期，再执行子的前4个生命周期，那么如果我们的业务是父组件引入子组件，并且==优先加载子组件==的数据，那么在父组件中当前的请求要放=mounted=中，如果当前组件没有依赖关系那么放在哪个生命周期中请求都是可以的。</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><mark>生命周期：先执行 父前三，在执行子元素前四</mark></p>
-<p><mark>如果优先加载子组件的数据，就放在mounted中发送请求</mark> ，<mark>确保子组件优先挂载</mark></p>
-</blockquote>
-<h5 id="12-为什么发送请求不在beforecreate里beforecreate和created有什么区别"><a class="markdownIt-Anchor" href="#12-为什么发送请求不在beforecreate里beforecreate和created有什么区别"></a> 1.2 为什么发送请求不在beforeCreate里？beforeCreate和created有什么区别？</h5>
-<p>为什么发送请求不在beforeCreate里？</p>
-<blockquote>
-<p><mark>拿不到methods方法（如果请求封装在methods中）</mark></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">因为：如果请求是在methods封装好了，在beforeCreate调用的时候，beforeCreate阶段是拿不到methods里面的方法的（会报错了）。</span><br></pre></td></tr></table></figure>
-<p>beforeCreate和created有什么区别？</p>
-<blockquote>
-<p><mark>拿不拿得到$data与methods</mark></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate没有$data</span><br><span class="line">created中有$data</span><br><span class="line"></span><br><span class="line">created是可以拿到methods的方法的</span><br><span class="line">beforeCreate拿不到methods的方法</span><br></pre></td></tr></table></figure>
-<h5 id="13-在created中如何获取dom"><a class="markdownIt-Anchor" href="#13-在created中如何获取dom"></a> 1.3 在created中如何获取dom</h5>
-<blockquote>
-<p><mark>异步获取</mark></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 只要写异步代码，获取dom是在异步中获取的，就可以了。</span><br><span class="line">	例如：setTimeout、请求、Promise.xxx()等等...</span><br><span class="line">2. 使用vue系统内置的this.$nextTick</span><br></pre></td></tr></table></figure>
-<h5 id="14-一旦font-colorred进入组件font会执行哪些生命周期"><a class="markdownIt-Anchor" href="#14-一旦font-colorred进入组件font会执行哪些生命周期"></a> 1.4 一旦<font color=red>进入组件</font>会执行哪些生命周期？</h5>
-<blockquote>
-<p>进入组件，组件已经<strong>挂载</strong></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br></pre></td></tr></table></figure>
-<h5 id="15-第二次或者第n次进去组件会执行哪些生命周期"><a class="markdownIt-Anchor" href="#15-第二次或者第n次进去组件会执行哪些生命周期"></a> 1.5 第二次或者第N次进去组件会执行哪些生命周期？</h5>
-<blockquote>
-<p><mark>看是否缓存了组件</mark></p>
-</blockquote>
-<p>如果当前组件加入了<strong>keep-alive</strong>，只会执行一个生命周期</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">activated</span><br></pre></td></tr></table></figure>
-<p>如果没有加入keep-alive</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br></pre></td></tr></table></figure>
-<h5 id="16-父组件引入子组件那么生命周期执行的顺序是"><a class="markdownIt-Anchor" href="#16-父组件引入子组件那么生命周期执行的顺序是"></a> 1.6 父组件引入子组件，那么生命周期执行的顺序是？</h5>
-<blockquote>
-<p><mark>父三 子四</mark></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">父：beforeCreate、created、beforeMount</span><br><span class="line">子：beforeCreate、created、beforeMount、mounted</span><br><span class="line">...</span><br><span class="line">父：mounted</span><br></pre></td></tr></table></figure>
-<h5 id="17-加入keep-alive会执行哪些生命周期"><a class="markdownIt-Anchor" href="#17-加入keep-alive会执行哪些生命周期"></a> 1.7 加入keep-alive会执行哪些生命周期？</h5>
-<p>如果使用了keep-alive组件，当前的组件会额外增加2个生命周期（系统8 + 2 ）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">activated</span><br><span class="line">deactivated</span><br></pre></td></tr></table></figure>
-<p>如果当前组件加入了keep-alive第一次进入这个组件会执行5个生命周期</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">beforeCreate</span><br><span class="line">created</span><br><span class="line">beforeMount</span><br><span class="line">mounted</span><br><span class="line">activated</span><br></pre></td></tr></table></figure>
-<h5 id="18-你在什么情况下用过哪些生命周期说一说生命周期使用场景"><a class="markdownIt-Anchor" href="#18-你在什么情况下用过哪些生命周期说一说生命周期使用场景"></a> 1.8 你在什么情况下用过哪些生命周期？说一说生命周期使用场景</h5>
-<blockquote>
-<p>activated 中重新刷新数据 ， 因为使用了缓存组件，后续进入该组件只会运行这一个生命周期</p>
-<p>deacticated 清理定时器相关的</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">created    ===&gt; 单组件请求</span><br><span class="line">mounted    ===&gt; 同步可以获取dom，如果先子组件请求后父组件请求</span><br><span class="line">activated  ===&gt; 判断id是否相等，如果不相同发起请求</span><br><span class="line">destroyed  ===&gt; 关闭页面记录视频播放的时间,初始化的时候从上一次的历史开始播放</span><br></pre></td></tr></table></figure>
-<h3 id="2-关于组件"><a class="markdownIt-Anchor" href="#2-关于组件"></a> 2. 关于组件</h3>
-<blockquote>
-<p>父 -&gt; 子 <mark>props、<a href="http://this.$parent.xxx">this.$parent.xxx</a>(子元素可以直接修改父元素数据)、依赖注入（在配置主题颜色 react中的context上下文 provider）</mark></p>
-<p>子 -&gt; 父 <mark>自定义事件emit、$refs</mark></p>
-<p>兄弟元素： <mark>eventbus （发布订阅模式）</mark></p>
-<p>集中状态管理 vuex pinia</p>
-</blockquote>
-<h5 id="21-组件传值通信的方式"><a class="markdownIt-Anchor" href="#21-组件传值通信的方式"></a> 2.1 组件传值（通信）的方式</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">父传后代 ( 后代拿到了父的数据 )</span><br><span class="line">1. 父组件引入子组件，绑定数据</span><br><span class="line">	 &lt;List :str1=&#x27;str1&#x27;&gt;&lt;/List&gt;</span><br><span class="line">	子组件通过props来接收</span><br><span class="line">	props:&#123;</span><br><span class="line">		str1:&#123;</span><br><span class="line">			type:String,</span><br><span class="line">			default:&#x27;&#x27;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	***这种方式父传子很方便，但是父传给孙子辈分的组件就很麻烦（父=》子=》孙）</span><br><span class="line">	这种方式：子不能直接修改父组件的数据</span><br><span class="line"></span><br><span class="line">2. 子组件直接使用父组件的数据</span><br><span class="line">	子组件通过：this.$parent.xxx使用父组件的数据</span><br><span class="line">	这种方式：子可以直接修改父组件的数据</span><br><span class="line">	</span><br><span class="line">3. 依赖注入</span><br><span class="line">	优势：父组件可以直接向某个后代组件传值(不让一级一级的传递)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">后代传父 （父拿到了后代的数据）</span><br><span class="line">1. 子组件传值给父组件</span><br><span class="line">	子组件定义自定义事件 this.$emit</span><br><span class="line">2. 父组件直接拿到子组件的数据</span><br><span class="line">	&lt;List ref=&#x27;child&#x27;&gt;&lt;/List&gt;</span><br><span class="line">	this.$refs.child</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">平辈之间的传值 ( 兄弟可以拿到数据 ) </span><br><span class="line"></span><br><span class="line">通过新建bus.js文件来做</span><br></pre></td></tr></table></figure>
-<h5 id="22-父组件如何直接修改子组件的值"><a class="markdownIt-Anchor" href="#22-父组件如何直接修改子组件的值"></a> 2.2 父组件如何直接修改子组件的值</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;List ref=&#x27;child&#x27;&gt;&lt;/List&gt;</span><br><span class="line">this.$refs.child.xxx = &#x27;yyyy&#x27;;</span><br></pre></td></tr></table></figure>
-<h5 id="23-子组件如何直接修改父组件的值"><a class="markdownIt-Anchor" href="#23-子组件如何直接修改父组件的值"></a> 2.3 子组件如何直接修改父组件的值</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">子组件中可以使用：this.$parent.xxx去修改</span><br></pre></td></tr></table></figure>
-<h5 id="24-如何找到父组件"><a class="markdownIt-Anchor" href="#24-如何找到父组件"></a> 2.4 如何找到父组件</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$parent</span><br></pre></td></tr></table></figure>
-<h5 id="25-如何找到根组件"><a class="markdownIt-Anchor" href="#25-如何找到根组件"></a> 2.5 如何找到根组件</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$root</span><br></pre></td></tr></table></figure>
-<h5 id="26-keep-alive"><a class="markdownIt-Anchor" href="#26-keep-alive"></a> 2.6 keep-alive</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">keep-alive是什么  ： 缓存当前组件</span><br></pre></td></tr></table></figure>
-<h5 id="27-slot插槽"><a class="markdownIt-Anchor" href="#27-slot插槽"></a> 2.7 slot/插槽</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">匿名插槽 ：插槽没有名字</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">具名插槽 ：插槽有名字</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用域插槽 ： 传值</span><br></pre></td></tr></table></figure>
-<h5 id="28-provideinject"><a class="markdownIt-Anchor" href="#28-provideinject"></a> 2.8 provide/inject</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">provide/inject ===&gt; 依赖注入</span><br></pre></td></tr></table></figure>
-<h5 id="29-如何封装组件"><a class="markdownIt-Anchor" href="#29-如何封装组件"></a> 2.9 如何封装组件</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">组件一定要难点，涉及的知识点：slot、组件通信...</span><br></pre></td></tr></table></figure>
-<h3 id="3-关于vuex"><a class="markdownIt-Anchor" href="#3-关于vuex"></a> 3. 关于Vuex</h3>
-<h5 id="31-vuex有哪些属性"><a class="markdownIt-Anchor" href="#31-vuex有哪些属性"></a> 3.1 Vuex有哪些属性</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">state ==&gt; 全局共享属性</span><br><span class="line">getters ==&gt; 针对于state数据进行二次计算</span><br><span class="line">mutatioins ==&gt; 存放同步方法的</span><br><span class="line">actions    ==&gt; 存放异步方法的，并且是来提交mutations</span><br><span class="line">modules    ==&gt; 把vuex再次进行模块之间的划分</span><br></pre></td></tr></table></figure>
-<h5 id="32-vuex使用state值"><a class="markdownIt-Anchor" href="#32-vuex使用state值"></a> 3.2 Vuex使用state值</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$store.state.xxx</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">辅助函数：mapState</span><br></pre></td></tr></table></figure>
-<p>以上俩种方式都可以拿到state的值，那么区别是什么？</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用this.$store.state.xxx是可以直接修改vuex的state数据的</span><br><span class="line"></span><br><span class="line">使用辅助函数的形式，是不可以修改的</span><br></pre></td></tr></table></figure>
-<h5 id="33-vuex的getters值修改"><a class="markdownIt-Anchor" href="#33-vuex的getters值修改"></a> 3.3 Vuex的getters值修改</h5>
-<p>面试官可能会这样问：组件使用了getters中的内容，组件使用采用v-model的形式会发生什么？</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">getters是不可以修改的</span><br></pre></td></tr></table></figure>
-<h5 id="34-vuex的mutations和actions区别"><a class="markdownIt-Anchor" href="#34-vuex的mutations和actions区别"></a> 3.4 Vuex的mutations和actions区别</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">相同点：mutations和actions都是来存放全局方法的，这个全局方法return的值拿不到</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">区别：</span><br><span class="line">	mutations ==》 同步</span><br><span class="line">	actions   ==》 返回的是一个Promise对象，他可以执行相关异步操作</span><br><span class="line">	</span><br><span class="line">mutations是来修改state的值的，actions的作用是来提交mutations</span><br></pre></td></tr></table></figure>
-<h5 id="35-vuex持久化存储-在页面使用了state值1然后把1修改成2然后刷新页面又回到了1为什么"><a class="markdownIt-Anchor" href="#35-vuex持久化存储-在页面使用了state值1然后把1修改成2然后刷新页面又回到了1为什么"></a> 3.5 Vuex持久化存储  ：在页面使用了state值：1，然后把1修改成2，然后刷新页面又回到了1为什么？</h5>
-<blockquote>
-<p><mark>我用的pinia</mark></p>
-<p><mark>state在LS，读取时getItem，修改时setItem</mark></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Vuex本身不是持久化存储的数据。Vuex是一个状态管理仓库（state：全局属性）==》就是存放全局属性的地方。</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">实现持久化存储：1. 自己写localStorage  2. 使用vuex-persistedstate插件</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">插件使用方式：https://www.xuexiluxian.cn/blog/detail/dae4073b07144d3c9abb3e2cc8495922</span><br></pre></td></tr></table></figure>
-<h3 id="4-关于路由"><a class="markdownIt-Anchor" href="#4-关于路由"></a> 4. 关于路由</h3>
-<h5 id="41-路由的模式和区别"><a class="markdownIt-Anchor" href="#41-路由的模式和区别"></a> 4.1 路由的模式和区别</h5>
-<blockquote>
-<p>history 使用HTML5 的history API, <mark><strong><code>pushState(state, title, url)</code></strong></mark> <strong><code>popstate</code></strong> replacestate</p>
-<p>hash检测浏览器url hash值 , <mark>浏览器并不会因为hash值的改变而作响应向服务器发送请求，而是有vuerouter控制客户端作相应的响应，利用onhashchange（window.location.hash）</mark>   同一页面内的不同位置标记</p>
-</blockquote>
-<blockquote>
-<p><font color=red>hash</font></p>
-<p><mark>服务器只需要返回入口页面（通常是 <code>index.html</code>）</mark>, 而后面一切都是由vuerouter在客户端渲染完成的</p>
-<p><font color=red>history</font></p>
-<p>需要在后端额外配置请求的uri地址</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">路由的模式：history、hash</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">区别：</span><br><span class="line">1. 关于找不到当前页面发送请求的问题</span><br><span class="line">	history会给后端发送一次请求而hash不会</span><br><span class="line">2. 关于项目打包前端自测问题</span><br><span class="line">	hash是可以看到内容的</span><br><span class="line">	history默认情况是看不到内容的</span><br><span class="line">3. 关于表象不同</span><br><span class="line">	hash:#</span><br><span class="line">	history:/</span><br></pre></td></tr></table></figure>
-<h5 id="42-子路由和动态路由"><a class="markdownIt-Anchor" href="#42-子路由和动态路由"></a> 4.2 子路由和动态路由</h5>
-<blockquote>
-<p>动态路由 /user/:id 占位</p>
-</blockquote>
-<h5 id="43-路由传值"><a class="markdownIt-Anchor" href="#43-路由传值"></a> 4.3 路由传值</h5>
-<blockquote>
-<p>query 和 params 两种</p>
-</blockquote>
-<h5 id="44-导航故障"><a class="markdownIt-Anchor" href="#44-导航故障"></a> 4.4 导航故障</h5>
-<blockquote>
-<p>可以catch捕获，isNavigationFailure 给出相关提示</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">官网说明：https://v3.router.vuejs.org/zh/guide/advanced/navigation-failures.html#%E6%A3%80%E6%B5%8B%E5%AF%BC%E8%88%AA%E6%95%85%E9%9A%9C</span><br></pre></td></tr></table></figure>
-<p>解决：</p>
-<blockquote>
-<p>$router.push跳转到一个相同的路由报错</p>
-<p>重写push方法</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import VueRouter from &#x27;vue-router&#x27;</span><br><span class="line">const routerPush = VueRouter.prototype.push</span><br><span class="line">VueRouter.prototype.push = function (location) &#123;</span><br><span class="line">  return routerPush.call(this, location).catch(error =&gt; error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="45-router和route区别"><a class="markdownIt-Anchor" href="#45-router和route区别"></a> 4.5 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi>r</mi><mtext>和</mtext></mrow><annotation encoding="application/x-tex">router和</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord cjk_fallback">和</span></span></span></span>route区别</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$router不仅包含当前路由还包含 ==整个路由的属性和方法==</span><br><span class="line"></span><br><span class="line">$route包含==当前==路由对象</span><br></pre></td></tr></table></figure>
-<h5 id="46-导航守卫"><a class="markdownIt-Anchor" href="#46-导航守卫"></a> 4.6 导航守卫</h5>
-<blockquote>
-<p>beforeResolve</p>
-<p>所有组件内守卫和异步路由组件被解析之后，而在导航被最终确认之前。</p>
-<p>提供了一个<mark>最后的机会</mark>来取消或修改即将发生的路由跳转。 （权限</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 全局守卫</span><br><span class="line"></span><br><span class="line">	beforeEach 路由进入之前</span><br><span class="line">	afterEach 路由进入之后</span><br><span class="line"></span><br><span class="line">2. 路由独享守卫</span><br><span class="line">	</span><br><span class="line">	beforeEnter 路由进入之前</span><br><span class="line"></span><br><span class="line">3. 组件内守卫</span><br><span class="line"></span><br><span class="line">	beforeRouteEnter 路由进入之前</span><br><span class="line">	beforeRouteUpdate 路由更新之前</span><br><span class="line">	beforeRouteLeave 路由离开之前</span><br></pre></td></tr></table></figure>
-<h3 id="5-关于api"><a class="markdownIt-Anchor" href="#5-关于api"></a> 5. 关于API</h3>
-<h5 id="51-set"><a class="markdownIt-Anchor" href="#51-set"></a> 5.1 $set</h5>
-<blockquote>
-<p>给响应式对象添加新属性</p>
-<p>响应式数组对象<strong>不能</strong>直接通过<strong>修改索引</strong>的方式修改数据 ， 利相关方法push pop shift unshift splice sort reverse，更改length</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">面试官：你有没有碰到过，数据更新视图没有更新的问题==》$set</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$set(target,key,修改后的值)</span><br></pre></td></tr></table></figure>
-<h5 id="52-nexttick"><a class="markdownIt-Anchor" href="#52-nexttick"></a> 5.2 $nextTick</h5>
-<blockquote>
-<p><mark>在写单元测试的时候使用过，因为要获取当前最新的DOM，返回promise</mark></p>
-<p>数据更新导致视图变化，（给这个DOM添加动画</p>
-<p>DOM是异步更新的，确保获取最新的DOM借助nexttick</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick返回的参数[函数]，是一个异步的。功能：==获取更新后的dom==</span><br><span class="line"></span><br><span class="line">源码|原理：</span><br><span class="line">$nextTick( callback )&#123;</span><br><span class="line">		return Promise.resolve().then(()=&gt;&#123;</span><br><span class="line">			callback();</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="53-refs"><a class="markdownIt-Anchor" href="#53-refs"></a> 5.3 $refs</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">来获取dom的</span><br></pre></td></tr></table></figure>
-<h5 id="54-el"><a class="markdownIt-Anchor" href="#54-el"></a> 5.4 $el</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$el 获取当前组件的根节点</span><br></pre></td></tr></table></figure>
-<h5 id="55-data"><a class="markdownIt-Anchor" href="#55-data"></a> 5.5 $data</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$data 获取当前组件data数据的</span><br></pre></td></tr></table></figure>
-<h5 id="56-children"><a class="markdownIt-Anchor" href="#56-children"></a> 5.6 $children</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$children 获取到当前组件的所有子组件的</span><br></pre></td></tr></table></figure>
-<h5 id="57-parent"><a class="markdownIt-Anchor" href="#57-parent"></a> 5.7 $parent</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">找到当前组件的父组件，如果找不到返回自身</span><br></pre></td></tr></table></figure>
-<h5 id="58-root"><a class="markdownIt-Anchor" href="#58-root"></a> 5.8 $root</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">找到根组件</span><br></pre></td></tr></table></figure>
-<h5 id="59-data定义数据"><a class="markdownIt-Anchor" href="#59-data定义数据"></a> 5.9 data定义数据</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">数据定义在data的return内和return外的区别：</span><br><span class="line"></span><br><span class="line">1. return外：单纯修改这个数据是不可以修改的，因为没有被get/set</span><br><span class="line">2. reutnr内：是可以修改的</span><br></pre></td></tr></table></figure>
-<h5 id="510-computed计算属性"><a class="markdownIt-Anchor" href="#510-computed计算属性"></a> 5.10 computed计算属性</h5>
-<blockquote>
-<p>getter setter写法</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">computed计算属性的结果值，可以修改吗？可以的，需要通过get/set写法</span><br><span class="line"></span><br><span class="line">当前组件v-model绑定的值是computed来的，那么可以修改吗？可以的，需要通过get/set写法</span><br></pre></td></tr></table></figure>
-<h5 id="511-watch"><a class="markdownIt-Anchor" href="#511-watch"></a> 5.11 watch</h5>
-<blockquote>
-<p><mark>可以在其中执行<strong>异步</strong>方法，但是要注意trycatch捕获处理异常</mark></p>
-<p><mark>在组件销毁时清理watch，返回一个销毁函数</mark></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">  obj:&#123;</span><br><span class="line">    handler(newVal,oldVal)&#123;</span><br><span class="line">      console.log( &#x27;obj&#x27;,newVal , oldVal )</span><br><span class="line">    &#125;,</span><br><span class="line">    immediate:true,</span><br><span class="line">    deep:true</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="512-methods和computed区别"><a class="markdownIt-Anchor" href="#512-methods和computed区别"></a> 5.12 methods和computed区别</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">computed是有缓存机制的，methods是没有缓存机制的（调用几次执行几次）</span><br></pre></td></tr></table></figure>
-<h3 id="6-关于指令"><a class="markdownIt-Anchor" href="#6-关于指令"></a> 6. 关于指令</h3>
-<h5 id="61-如何自定义指令"><a class="markdownIt-Anchor" href="#61-如何自定义指令"></a> 6.1 如何自定义指令</h5>
-<blockquote>
-<p><mark>组件权限管理</mark></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">全局：</span><br><span class="line">Vue.directive(&#x27;demo&#x27;, &#123;</span><br><span class="line">  inserted: function (a,b,c) &#123;</span><br><span class="line">    console.log( a,b,c );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">局部：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  directives: &#123;</span><br><span class="line">    demo: &#123;</span><br><span class="line">      bind: function (el) &#123;</span><br><span class="line">        console.log( 1 )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="62-vue单项绑定"><a class="markdownIt-Anchor" href="#62-vue单项绑定"></a> 6.2 vue单项绑定</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">双向绑定：v-model</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">单项绑定：v-bind</span><br></pre></td></tr></table></figure>
-<h5 id="63-v-if和v-for优先级"><a class="markdownIt-Anchor" href="#63-v-if和v-for优先级"></a> 6.3 v-if和v-for优先级</h5>
-<blockquote>
-<p><mark>同时作用在一个元素上，浪费性能，我们其实只想渲染出list其中符合条件的item，事实上我们却把每条item都遍历了一遍</mark></p>
-<p><mark>所以我们应该在vfor之前过滤filter</mark></p>
-</blockquote>
-<blockquote>
-<p>Vue2</p>
-<p>​	利用computed重新生成数组</p>
-<p>Vue3 虽说可以同时使用，但是，vif优先级高，可能不能及时获取到当前的item导致错误</p>
-<p>​	借助vfor template标签</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template v-for=&quot;(item, index) in list&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">         &lt;li v-if=&quot;item.show&quot;&gt;</span><br><span class="line">           &#123;&#123; item.name &#125;&#125;</span><br><span class="line">         &lt;/li&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vue2中：v-for &gt; v-if</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vue3中：v-if &gt; v-for</span><br></pre></td></tr></table></figure>
-<h3 id="7-关于原理"><a class="markdownIt-Anchor" href="#7-关于原理"></a> 7. 关于原理</h3>
-<h5 id="71-nexttick原理"><a class="markdownIt-Anchor" href="#71-nexttick原理"></a> 7.1 $nextTick原理</h5>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick功能：获取更新后的dom</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$nextTick( callback )&#123;</span><br><span class="line"></span><br><span class="line">		return Promise.resolve().then(()=&gt;&#123;</span><br><span class="line">			callback();</span><br><span class="line">		&#125;)</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="72-双向绑定原理"><a class="markdownIt-Anchor" href="#72-双向绑定原理"></a> 7.2 双向绑定原理</h5>
-<blockquote>
-<p>双向绑定就是 数据与视图</p>
-</blockquote>
-<p>UI 控件的变化能自动更新数据模型</p>
-<p>vmodel 语法糖，vbind绑定在监听@input or @change事件做出改变</p>
-<h3 id="响应式"><a class="markdownIt-Anchor" href="#响应式"></a> 响应式</h3>
-<p>数据劫持： 当对数据进行取值操作的时候，就会对这个数据进行依赖收集，当这个数据发生改变的时候，就会触发视图更新，刷新页面。</p>
-<p>在get中进行<code>depend</code>依赖收集，在set中进行<code>notify</code>通知依赖的watcher去重新渲染（视图更新）</p>
-<p><code>Object.defineProperty</code>这个api存在着一些问题，比如必须要<strong>深层次递归监听一个对象内所有的属性</strong>，性能并不太好，并且不能监听数组的<code>length</code>改变</p>
-<p>数据代理 （复制一份）</p>
-<p>​	Vue 在组件实例上通过 <code>this</code> 提供对组件数据的直接访问。这是通过将 <code>data</code> 对象中的属性代理到 Vue 实例上实现的。这样，你可以通过 <code>this.propertyName</code> 直接访问数据，而不是 <code>this.data.propertyName </code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Object</span>.<span class="title function_">keys</span>(vm.<span class="property">$data</span>).<span class="title function_">forEach</span>(<span class="function"><span class="params">key</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(vm, key, &#123;</span><br><span class="line">      <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> vm.<span class="property">$data</span>[key];</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="title function_">set</span>(<span class="params">newVal</span>) &#123;</span><br><span class="line">        vm.<span class="property">$data</span>[key] = newVal;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>TCP</title>
-    <url>/posts/TCP/</url>
-    <content><![CDATA[<p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
-<p><strong>全双工（Full Duplex）</strong></p>
-<ol>
-<li>双向传输:TCP连接的两端都可以同时发送和接收数据包。</li>
-<li>双向流量控制:发送方和接收方都可以通过滑动窗口机制控制数据流量,防止对方缓冲区溢出。</li>
-<li>双向确认:发送的数据包可以得到对方的确认应答ACK。接收方也可以通过ACK告知发送方自己已经正确接收了数据。</li>
-<li>双向重传:如果任意一方没有收到确认或数据包丢失,都可以触发重传机制,直到数据正确发送。</li>
-<li>全双工通信:TCP的全双工特性使得双方可以同时进行发言而不会相互干扰,就像电话通话一样。</li>
-</ol>
-<blockquote>
-<p><code>ACK</code> 和<code>FIN</code> 是 TCP 协议中两个重要的控制标志(control flag)</p>
-<p><code>ACK(Acknowledgement) </code>确认号，表示确认号,确认接收端已正确接收到前面的数据</p>
-<p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
-</blockquote>
-<h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
-<img src="https://i.imgur.com/bJWYomc.png" alt="三次挥手示意图" style="width:50%" />
-<h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
-<p>一包数据可能被拆为多包数据发送</p>
-<p><strong>丢包问题？乱序问题？</strong></p>
-<p>TCP为每个链接建立了一个<mark>发送缓冲区</mark></p>
-<img src="https://s2.loli.net/2023/09/11/ACj3KLUHcNiVIMs.png" style="width:50%;" alt="传输示意图" />
-<blockquote>
-<p>一问一答的方式发送接收（发送端一次也可以发送多包数据，接收端只用回复一次ACK）</p>
-</blockquote>
-<blockquote>
-<p>发送端可以切割发送，接收端利用序列号和长度重组出完整的数据</p>
-</blockquote>
-<blockquote>
-<p>丢失了某个数据包，接收端可以要求发送端重传。</p>
-<p>接收端向发送端发送ACK=xxx，发送端重传，接收端收到再<strong>补齐</strong>数据</p>
-</blockquote>
-<h2 id="四次挥手"><a class="markdownIt-Anchor" href="#四次挥手"></a> 四次挥手👋🏻</h2>
-<p>这里以客户端取消l为例</p>
-<img src="https://s2.loli.net/2023/09/11/nrxG86lYUf7CqMX.png" alt="四次挥手示意图" style="width:50%;" />
-<p>Client等待一段时间，目的为了确保ACK成功发送给Server，否则Server重新发送FIN给client，再重新执行</p>
-]]></content>
-      <tags>
-        <tag>Computer Network</tag>
+        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -2357,101 +2385,6 @@ setInterval最小执行时间是10ms</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>HTTP summary</title>
-    <url>/posts/http/</url>
-    <content><![CDATA[<h2 id="http"><a class="markdownIt-Anchor" href="#http"></a> <mark>HTTP</mark></h2>
-<p><strong>Hyper Text Transfer Protocol</strong></p>
-<img src="https://s2.loli.net/2023/09/08/7HasE3ePGXuqtYn.png" alt="image-20230908155626605" style="width:50%;" />
-<ul>
-<li><strong style="color:red;">Stateless</strong> : every Request is <strong>INDEPENDENT</strong>
-<ul>
-<li>regard each request as a single transaction</li>
-<li>use <code>cookie</code>  <code>session</code> <code>localStorage</code> … to enhance user experience( <u>memorize the state from the user</u> )</li>
-</ul>
-</li>
-</ul>
-<h2 id="https"><a class="markdownIt-Anchor" href="#https"></a> <mark>HTTPS</mark></h2>
-<p><strong>Hyper Text Transfer Protocol <u>Secure</u></strong></p>
-<ul>
-<li>Data sent is <strong>encrypt</strong>
-<ul>
-<li><strong>SSL</strong> – Secure Sockets Layer</li>
-<li><strong>TLS</strong> –  Transfer Layer Security</li>
-</ul>
-</li>
-<li>install certificate on web host to use HTTPs</li>
-</ul>
-<h2 id="message"><a class="markdownIt-Anchor" href="#message"></a> Message</h2>
-<img src="https://s2.loli.net/2023/09/08/u6OS2icBACHrtFf.png" alt="image-20230908164003822" style="width:50%;" />
-<h3 id="headers"><a class="markdownIt-Anchor" href="#headers"></a> Headers</h3>
-<ul>
-<li>General
-<ul>
-<li>Request URL、Request Method、Status Code、Remote Address、Referrer Policy</li>
-</ul>
-</li>
-<li>Request
-<ul>
-<li>Cookies、Accept-xxx、Content-Type、Content-Length、Auhurization、User-Agent、Referrer</li>
-</ul>
-</li>
-<li>Response
-<ul>
-<li>Server、Set-Cookie、Content-Type、Content-Length、Date</li>
-</ul>
-</li>
-</ul>
-<h2 id="status-code"><a class="markdownIt-Anchor" href="#status-code"></a> Status Code</h2>
-<table>
-<thead>
-<tr>
-<th>Status Code</th>
-<th>Means</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1xx</td>
-<td>request received / processing</td>
-</tr>
-<tr>
-<td>2xx</td>
-<td>Success received, understood, accepted</td>
-</tr>
-<tr>
-<td>3xx</td>
-<td>Further action must be taken / redirect</td>
-</tr>
-<tr>
-<td>4xx</td>
-<td>Client error</td>
-</tr>
-<tr>
-<td>5xx</td>
-<td>Server error</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>200 - OK</li>
-<li>201 - OK created</li>
-<li>301 - Move to new URL</li>
-<li>304 - Not Modified (Cached version)</li>
-<li>400 - Bad Request （❌ not sending correct data）</li>
-<li>401 - Unauthorized （missing token）</li>
-<li>404 - Not Found (resources do not exsist)</li>
-<li>500 - Internal Server Error</li>
-</ul>
-<h2 id="http2"><a class="markdownIt-Anchor" href="#http2"></a> HTTP2</h2>
-<p><code>multiplexing</code></p>
-<img src="https://s2.loli.net/2023/09/08/sf8H6glXiCnzEA2.png" alt="image-20230908164925817" style="width:50%;" />
-]]></content>
-      <tags>
-        <tag>Computer Network</tag>
-        <tag>http</tag>
-      </tags>
   </entry>
   <entry>
     <title>js红宝书</title>
@@ -2999,31 +2932,430 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>computed与watch</title>
-    <url>/posts/computed%E4%B8%8Ewatch/</url>
-    <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
-<p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
+    <title>HTTP summary</title>
+    <url>/posts/http/</url>
+    <content><![CDATA[<h2 id="http"><a class="markdownIt-Anchor" href="#http"></a> <mark>HTTP</mark></h2>
+<p><strong>Hyper Text Transfer Protocol</strong></p>
+<img src="https://s2.loli.net/2023/09/08/7HasE3ePGXuqtYn.png" alt="image-20230908155626605" style="width:50%;" />
 <ul>
-<li><font color=red>支持缓存</font>，只有依赖数据发生改变，才会重新进行计算</li>
-<li><mark>不支持异步</mark>，当computed内有异步操作时无效，无法监听数据的变化</li>
-<li>computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props中的数据通过计算得到的值</li>
-<li>如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed</li>
-<li>如果computed属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个<code>get</code>和一个<code>set</code>方法，当数据变化时，调用set方法。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;计算属性示例&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;原始数据: &#123;&#123; originalData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;计算属性: &#123;&#123; computedProperty &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;updateData&quot;&gt;更新数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      originalData: 5</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    computedProperty() &#123;</span><br><span class="line">      // 计算属性，依赖于原始数据</span><br><span class="line">      return this.originalData * 2;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateData() &#123;</span><br><span class="line">      // 更新原始数据，会触发计算属性重新计算</span><br><span class="line">      this.originalData += 1;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="侦听属性watch"><a class="markdownIt-Anchor" href="#侦听属性watch"></a> 侦听属性watch</h3>
-<p>​	<u>适用于观测某个值的变化去<strong>完成一段复杂的业务逻辑</strong>（例如执行异步或开销较大的操作）</u></p>
+<li><strong style="color:red;">Stateless</strong> : every Request is <strong>INDEPENDENT</strong>
 <ul>
-<li><font color=red>不支持缓存</font>，数据变，直接会触发相应的操作；</li>
-<li>watch<mark>支持异步</mark>；</li>
-<li>监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；</li>
-<li>当一个属性发生变化时，需要执行对应的操作；一对多；</li>
-<li>监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数：新值和旧值</li>
+<li>regard each request as a single transaction</li>
+<li>use <code>cookie</code>  <code>session</code> <code>localStorage</code> … to enhance user experience( <u>memorize the state from the user</u> )</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;监听的数据: &#123;&#123; watchedData &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;changeData&quot;&gt;改变数据&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      watchedData: &#x27;初始值&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeData() &#123;</span><br><span class="line">      this.watchedData = &#x27;新值&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    watchedData(newVal, oldVal) &#123;</span><br><span class="line">      // 在数据变化时触发的操作</span><br><span class="line">      console.log(&#x27;新值：&#x27;, newVal);</span><br><span class="line">      console.log(&#x27;旧值：&#x27;, oldVal);</span><br><span class="line">      // 这里可以执行您想要的其他操作</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="https"><a class="markdownIt-Anchor" href="#https"></a> <mark>HTTPS</mark></h2>
+<p><strong>Hyper Text Transfer Protocol <u>Secure</u></strong></p>
+<ul>
+<li>Data sent is <strong>encrypt</strong>
+<ul>
+<li><strong>SSL</strong> – Secure Sockets Layer</li>
+<li><strong>TLS</strong> –  Transfer Layer Security</li>
+</ul>
+</li>
+<li>install certificate on web host to use HTTPs</li>
+</ul>
+<h2 id="message"><a class="markdownIt-Anchor" href="#message"></a> Message</h2>
+<img src="https://s2.loli.net/2023/09/08/u6OS2icBACHrtFf.png" alt="image-20230908164003822" style="width:50%;" />
+<h3 id="headers"><a class="markdownIt-Anchor" href="#headers"></a> Headers</h3>
+<ul>
+<li>General
+<ul>
+<li>Request URL、Request Method、Status Code、Remote Address、Referrer Policy</li>
+</ul>
+</li>
+<li>Request
+<ul>
+<li>Cookies、Accept-xxx、Content-Type、Content-Length、Auhurization、User-Agent、Referrer</li>
+</ul>
+</li>
+<li>Response
+<ul>
+<li>Server、Set-Cookie、Content-Type、Content-Length、Date</li>
+</ul>
+</li>
+</ul>
+<h2 id="status-code"><a class="markdownIt-Anchor" href="#status-code"></a> Status Code</h2>
+<table>
+<thead>
+<tr>
+<th>Status Code</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1xx</td>
+<td>request received / processing</td>
+</tr>
+<tr>
+<td>2xx</td>
+<td>Success received, understood, accepted</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td>Further action must be taken / redirect</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td>Client error</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td>Server error</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>200 - OK</li>
+<li>201 - OK created</li>
+<li>301 - Move to new URL</li>
+<li>304 - Not Modified (Cached version)</li>
+<li>400 - Bad Request （❌ not sending correct data）</li>
+<li>401 - Unauthorized （missing token）</li>
+<li>404 - Not Found (resources do not exsist)</li>
+<li>500 - Internal Server Error</li>
+</ul>
+<h2 id="http2"><a class="markdownIt-Anchor" href="#http2"></a> HTTP2</h2>
+<p><code>multiplexing</code></p>
+<img src="https://s2.loli.net/2023/09/08/sf8H6glXiCnzEA2.png" alt="image-20230908164925817" style="width:50%;" />
 ]]></content>
       <tags>
-        <tag>vue</tag>
+        <tag>Computer Network</tag>
+        <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nodejs</title>
+    <url>/posts/nodejs/</url>
+    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
+<ol>
+<li><strong>运行时（Runtime)</strong><br />
+&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
+</ol>
+<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
+<ol start="2">
+<li>
+<p><strong>运行时库（Runtime Library）</strong><br />
+运行时库就是程序运行的时候所需要依赖的库。</p>
+</li>
+<li>
+<p><strong>运行时环境（Runtime environment）</strong><br />
+运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
+</li>
+</ol>
+<hr />
+<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
+<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
+<p>访问系统内核，访问本地文件，链接服务器…</p>
+<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
+<p><strong>跨平台</strong></p>
+<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
+<blockquote>
+<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
+</blockquote>
+<hr />
+<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
+<p>node <code>global</code></p>
+<p>浏览器 <code>window</code></p>
+<p><code>globalThis</code>根据环境自动判断</p>
+<p>ECMAScript中有的全局，如Math…</p>
+<ul>
+<li>
+<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
+</li>
+<li>
+<p><code>__filename</code> 当前文件路径（绝对路径）</p>
+</li>
+<li>
+<p><code>__extname</code> 文件后缀</p>
+</li>
+<li>
+<p><code>Buffer</code></p>
+</li>
+<li>
+<p><code>process</code>  处理进程</p>
+<ul>
+<li><code>process.argv</code> 获取参数数组</li>
+<li><code>process.cwd()</code> 目录</li>
+<li><code>process.exit()</code> 终止进程</li>
+<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
+<p>（相比，Apache，每一个请求创建一个线程）</p>
+<p>单线程，并发量为1</p>
+<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
+<blockquote>
+<p>主线程是单线程，io是libuv维护的线程池</p>
+</blockquote>
+<br/>
+<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
+<br/>
+<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
+<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
+<br/>  
+<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
+<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
+<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
+<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
+<hr />
+<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
+<ol>
+<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
+<li>I/O操作： 文件读写，数据库操作，网络请求</li>
+<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
+</ol>
+<br/>
+<blockquote>
+<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
+<p>微任务（promise）</p>
+<p>timer</p>
+<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
+<p>check</p>
+</blockquote>
+<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
+<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
+<br/>
+<blockquote>
+<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
+<p>nextTick先于下一个Tick执行</p>
+</blockquote>
+<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
+<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
+<p>为了健壮性：捕获并处理每一个错误</p>
+<ul>
+<li>
+<p>同步代码 try catch</p>
+</li>
+<li>
+<p>异步代码</p>
+<ul>
+<li>Promise (catch)</li>
+<li>async await trycatch</li>
+</ul>
+</li>
+</ul>
+<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
+<p>回调函数 --&gt; Promise —&gt; async await</p>
+<br/>
+<p>node官方的库</p>
+<p>遵循，错误优先风格</p>
+<br/>
+<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
+<br/>
+<blockquote>
+<p>平行</p>
+<p>顺序</p>
+</blockquote>
+<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
+<p>module并不是全局变量，每一个模块有他相应的模块</p>
+<br/>
+<p>核心模块（随着node）</p>
+<p>第三方模块</p>
+<p>自定义模块（引用路径）</p>
+<br/>
+<p>运行时加载 cmj，知道运行时候再报错</p>
+<p>编译时加载 esm</p>
+<p><code>import from</code> 写在模块顶层</p>
+<p><code>import()</code> （异步，返回promise）</p>
+<br/>
+<p><code>V8</code></p>
+<p>预编译阶段 （ESM</p>
+<p>-分配内存空间</p>
+<p>-确定作用域链…</p>
+<p>执行阶段 （CMJ</p>
+ <br/>
+<hr />
+<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
+<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
+<br/>
+<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<hr />
+<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
+<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
+<br/>
+<p>i/o操作</p>
+<p>端到端数据交换</p>
+<br/>
+<p>加载 缓冲区 处理</p>
+<p>流模式 加载一点处理一点</p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
+<hr />
+<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
+<ul>
+<li>
+<p>TDK</p>
+<ul>
+<li>title</li>
+<li>description (meta)</li>
+<li>Key(meta)</li>
+</ul>
+</li>
+<li>
+<p>语义化标签</p>
+</li>
+<li>
+<p><code>&lt;a/&gt;</code> href</p>
+</li>
+<li>
+<p><code>&lt;img/&gt;</code> href alt</p>
+</li>
+<li>
+<p>一个页面一个h1 和 main标签</p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>npm</title>
+    <url>/posts/npm/</url>
+    <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
+<p>安装、卸载、更新、发布</p>
+<p><strong>version</strong> <strong>版本号x,y,z</strong></p>
+<p>主 次 补丁</p>
+<dl>
+<dt>^ 锁定从左边数第一个非0的</dt>
+<dd>锁定主版本or次版本</dd>
+</dl>
+<p>latest 最新版本</p>
+<h1 id="依赖"><a class="markdownIt-Anchor" href="#依赖"></a> 依赖</h1>
+<p>dependecies</p>
+<p>devDependencies 开发依赖</p>
+<p>peerDependencies 对等依赖，（插件不能凭空运行，需要依赖某一模块）</p>
+<h1 id="一些常用命令"><a class="markdownIt-Anchor" href="#一些常用命令"></a> 一些常用命令</h1>
+<ul>
+<li><code>npm config list</code> 查看npm配置信息</li>
+</ul>
+<img src="https://s2.loli.net/2023/09/02/cZmUGLrlnh74v9Y.png" alt="image-20230902172055264" style="width:50%;" />
+<ul>
+<li><code>npm get registry</code>  查看镜像源</li>
+<li><code>npm set registry xxxx</code>设置镜像源</li>
+<li><code>npm ls (-g)</code> 当前（全局）安装的可执行文件</li>
+</ul>
+<h1 id="npm-install-原理"><a class="markdownIt-Anchor" href="#npm-install-原理"></a> npm install 原理</h1>
+<p>安装依赖存放于根目录<code>node_modules</code>文件夹</p>
+<p>排序: .bin @系列 abcd排序</p>
+<p>广度优先，扁平化（理想情况下）处理下载</p>
+<blockquote>
+<p>非理想： node_modules下a b 模块依赖不同版本的c模块，会给b模块下再建立一个node_modules文件夹</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/09/02/ybEQgwSzVoL2kA3.png" alt="img" /></p>
+<blockquote>
+<p>pakage-lock.json</p>
+<p>锁定版本号</p>
+<p>缓存： intergrity + verion + name 生成唯一的key，这个key在缓存文件中,</p>
+<p><code>npm config list</code> 查看中的cache</p>
+<p>index-v5 索引目录，记录content-v2的索引位置，对应的 intergrity + verion + name由算法生成的哈希值</p>
+<p>对应得上，就将这个加密的包解压到node_modules中</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>pakage-lock.json pakage.json</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不一致</td>
+<td>按照pakage中的版本下载，并更新lock中的版本号</td>
+</tr>
+<tr>
+<td>一直</td>
+<td>先找缓存，没有再下载资源</td>
+</tr>
+</tbody>
+</table>
+<h1 id="npm-run"><a class="markdownIt-Anchor" href="#npm-run"></a> npm run</h1>
+<p>可执行命令都存在node_modules下的<code>.bin</code>文件夹中</p>
+<ol>
+<li>
+<p>当前项目node_modules/.bin 中查找</p>
+</li>
+<li>
+<p>全局的node_modules查找</p>
+</li>
+<li>
+<p>环境变量中查找</p>
+</li>
+<li>
+<p>报错</p>
+</li>
+</ol>
+<p>也是有生命周期的</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;predev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 1.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 2.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postdev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 3.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>运行 <code>npm run dev</code>, 自动执行了 1.js 2.js 3.js</p>
+<blockquote>
+<p>比如一个打包命令，之前可以做一个清理的任务，最后做一个发布的工作，比如写一个CI脚本顺便把代码提交了</p>
+<p>Vue-cli也是用了生命周期pretest: ‘yarn clean’</p>
+</blockquote>
+<h1 id="npx"><a class="markdownIt-Anchor" href="#npx"></a> npx</h1>
+<p>npm高版本自带的命令行工具</p>
+<p><strong>运行node_modules/.bin 下的可执行文件</strong></p>
+<blockquote>
+<p>之前通过package.json 中的scripts 配合npm run实现，现在可通过npx运行不需要安装这个依赖包运行命令</p>
+</blockquote>
+<ul>
+<li>
+<p>避免全局安装</p>
+<ul>
+<li>当前项目node_modules/.bin —&gt; 全局modules/.bin —&gt; 官网下载，用完删除（需要联网），减少内存占用</li>
+</ul>
+</li>
+<li>
+<p>总是使用最新版本</p>
+</li>
+<li>
+<p>执行任意npm包</p>
+</li>
+</ul>
+<blockquote>
+<p>在一个项目中，<code>npm i vite</code></p>
+<p>没有全局安装，直接运行vite肯定是不行的，</p>
+<p>此时配合npx， <code>npx vite</code> 在项目中的node_modules/.bin中查找运行</p>
+</blockquote>
+<h2 id="与npm区别"><a class="markdownIt-Anchor" href="#与npm区别"></a> 与npm区别</h2>
+<p>npx侧重执行命令</p>
+<p>npm侧重安装或卸载某个模块，不具备执行某个模块的功能</p>
+<h1 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h1>
+<ul>
+<li><code>npm addUser</code>（创建npm账号）</li>
+<li><code>npm login</code> 登录( 使用<strong>官方的源</strong>，而不是第三方镜像源)</li>
+<li><code>npm publish</code>  发布（同版本号不能重新发布，包名唯一）</li>
+</ul>
+<h1 id="构建npm私服"><a class="markdownIt-Anchor" href="#构建npm私服"></a> 构建npm私服</h1>
+<ul>
+<li>部署到内网集群，离线使用</li>
+<li>安全性</li>
+<li>提高包下载速度</li>
+</ul>
+<p>利用<code>verdaccio</code>库</p>
+<img src="https://s2.loli.net/2023/09/02/PZQCziu4qrKAsRk.png" alt="image-20230902172055264" style="width:50%;" />
+<ul>
+<li><code>npm i verdaccio -g</code></li>
+<li><code>verdaccio --listen 5000</code> 开启服务</li>
+<li>发包流程与之前的差不多
+<ul>
+<li>
+<img src="https://s2.loli.net/2023/09/02/zYhy9muZv8cWD3H.png" alt="image-20230902172055264" style="width:50%;" /></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>nodejs</tag>
       </tags>
   </entry>
   <entry>
@@ -3396,198 +3728,6 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>nodejs</title>
-    <url>/posts/nodejs/</url>
-    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
-<ol>
-<li><strong>运行时（Runtime)</strong><br />
-&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
-</ol>
-<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
-<ol start="2">
-<li>
-<p><strong>运行时库（Runtime Library）</strong><br />
-运行时库就是程序运行的时候所需要依赖的库。</p>
-</li>
-<li>
-<p><strong>运行时环境（Runtime environment）</strong><br />
-运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
-</li>
-</ol>
-<hr />
-<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
-<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
-<p>访问系统内核，访问本地文件，链接服务器…</p>
-<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
-<p><strong>跨平台</strong></p>
-<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
-<blockquote>
-<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
-</blockquote>
-<hr />
-<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
-<p>node <code>global</code></p>
-<p>浏览器 <code>window</code></p>
-<p><code>globalThis</code>根据环境自动判断</p>
-<p>ECMAScript中有的全局，如Math…</p>
-<ul>
-<li>
-<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
-</li>
-<li>
-<p><code>__filename</code> 当前文件路径（绝对路径）</p>
-</li>
-<li>
-<p><code>__extname</code> 文件后缀</p>
-</li>
-<li>
-<p><code>Buffer</code></p>
-</li>
-<li>
-<p><code>process</code>  处理进程</p>
-<ul>
-<li><code>process.argv</code> 获取参数数组</li>
-<li><code>process.cwd()</code> 目录</li>
-<li><code>process.exit()</code> 终止进程</li>
-<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
-<p>（相比，Apache，每一个请求创建一个线程）</p>
-<p>单线程，并发量为1</p>
-<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
-<blockquote>
-<p>主线程是单线程，io是libuv维护的线程池</p>
-</blockquote>
-<br/>
-<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
-<br/>
-<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
-<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
-<br/>  
-<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
-<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
-<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
-<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
-<hr />
-<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
-<ol>
-<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
-<li>I/O操作： 文件读写，数据库操作，网络请求</li>
-<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
-</ol>
-<br/>
-<blockquote>
-<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
-<p>微任务（promise）</p>
-<p>timer</p>
-<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
-<p>check</p>
-</blockquote>
-<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
-<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
-<br/>
-<blockquote>
-<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
-<p>nextTick先于下一个Tick执行</p>
-</blockquote>
-<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
-<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
-<p>为了健壮性：捕获并处理每一个错误</p>
-<ul>
-<li>
-<p>同步代码 try catch</p>
-</li>
-<li>
-<p>异步代码</p>
-<ul>
-<li>Promise (catch)</li>
-<li>async await trycatch</li>
-</ul>
-</li>
-</ul>
-<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
-<p>回调函数 --&gt; Promise —&gt; async await</p>
-<br/>
-<p>node官方的库</p>
-<p>遵循，错误优先风格</p>
-<br/>
-<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
-<br/>
-<blockquote>
-<p>平行</p>
-<p>顺序</p>
-</blockquote>
-<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
-<p>module并不是全局变量，每一个模块有他相应的模块</p>
-<br/>
-<p>核心模块（随着node）</p>
-<p>第三方模块</p>
-<p>自定义模块（引用路径）</p>
-<br/>
-<p>运行时加载 cmj，知道运行时候再报错</p>
-<p>编译时加载 esm</p>
-<p><code>import from</code> 写在模块顶层</p>
-<p><code>import()</code> （异步，返回promise）</p>
-<br/>
-<p><code>V8</code></p>
-<p>预编译阶段 （ESM</p>
-<p>-分配内存空间</p>
-<p>-确定作用域链…</p>
-<p>执行阶段 （CMJ</p>
- <br/>
-<hr />
-<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
-<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
-<br/>
-<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<hr />
-<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
-<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
-<br/>
-<p>i/o操作</p>
-<p>端到端数据交换</p>
-<br/>
-<p>加载 缓冲区 处理</p>
-<p>流模式 加载一点处理一点</p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
-<hr />
-<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
-<ul>
-<li>
-<p>TDK</p>
-<ul>
-<li>title</li>
-<li>description (meta)</li>
-<li>Key(meta)</li>
-</ul>
-</li>
-<li>
-<p>语义化标签</p>
-</li>
-<li>
-<p><code>&lt;a/&gt;</code> href</p>
-</li>
-<li>
-<p><code>&lt;img/&gt;</code> href alt</p>
-</li>
-<li>
-<p>一个页面一个h1 和 main标签</p>
-</li>
-<li>
-<p>…</p>
-</li>
-</ul>
-<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Typora图床</title>
     <url>/posts/typora%E5%9B%BE%E5%BA%8A/</url>
     <content><![CDATA[<p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
@@ -3675,146 +3815,6 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>npm</title>
-    <url>/posts/npm/</url>
-    <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
-<p>安装、卸载、更新、发布</p>
-<p><strong>version</strong> <strong>版本号x,y,z</strong></p>
-<p>主 次 补丁</p>
-<dl>
-<dt>^ 锁定从左边数第一个非0的</dt>
-<dd>锁定主版本or次版本</dd>
-</dl>
-<p>latest 最新版本</p>
-<h1 id="依赖"><a class="markdownIt-Anchor" href="#依赖"></a> 依赖</h1>
-<p>dependecies</p>
-<p>devDependencies 开发依赖</p>
-<p>peerDependencies 对等依赖，（插件不能凭空运行，需要依赖某一模块）</p>
-<h1 id="一些常用命令"><a class="markdownIt-Anchor" href="#一些常用命令"></a> 一些常用命令</h1>
-<ul>
-<li><code>npm config list</code> 查看npm配置信息</li>
-</ul>
-<img src="https://s2.loli.net/2023/09/02/cZmUGLrlnh74v9Y.png" alt="image-20230902172055264" style="width:50%;" />
-<ul>
-<li><code>npm get registry</code>  查看镜像源</li>
-<li><code>npm set registry xxxx</code>设置镜像源</li>
-<li><code>npm ls (-g)</code> 当前（全局）安装的可执行文件</li>
-</ul>
-<h1 id="npm-install-原理"><a class="markdownIt-Anchor" href="#npm-install-原理"></a> npm install 原理</h1>
-<p>安装依赖存放于根目录<code>node_modules</code>文件夹</p>
-<p>排序: .bin @系列 abcd排序</p>
-<p>广度优先，扁平化（理想情况下）处理下载</p>
-<blockquote>
-<p>非理想： node_modules下a b 模块依赖不同版本的c模块，会给b模块下再建立一个node_modules文件夹</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2023/09/02/ybEQgwSzVoL2kA3.png" alt="img" /></p>
-<blockquote>
-<p>pakage-lock.json</p>
-<p>锁定版本号</p>
-<p>缓存： intergrity + verion + name 生成唯一的key，这个key在缓存文件中,</p>
-<p><code>npm config list</code> 查看中的cache</p>
-<p>index-v5 索引目录，记录content-v2的索引位置，对应的 intergrity + verion + name由算法生成的哈希值</p>
-<p>对应得上，就将这个加密的包解压到node_modules中</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>pakage-lock.json pakage.json</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>不一致</td>
-<td>按照pakage中的版本下载，并更新lock中的版本号</td>
-</tr>
-<tr>
-<td>一直</td>
-<td>先找缓存，没有再下载资源</td>
-</tr>
-</tbody>
-</table>
-<h1 id="npm-run"><a class="markdownIt-Anchor" href="#npm-run"></a> npm run</h1>
-<p>可执行命令都存在node_modules下的<code>.bin</code>文件夹中</p>
-<ol>
-<li>
-<p>当前项目node_modules/.bin 中查找</p>
-</li>
-<li>
-<p>全局的node_modules查找</p>
-</li>
-<li>
-<p>环境变量中查找</p>
-</li>
-<li>
-<p>报错</p>
-</li>
-</ol>
-<p>也是有生命周期的</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;predev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 1.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 2.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postdev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 3.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>运行 <code>npm run dev</code>, 自动执行了 1.js 2.js 3.js</p>
-<blockquote>
-<p>比如一个打包命令，之前可以做一个清理的任务，最后做一个发布的工作，比如写一个CI脚本顺便把代码提交了</p>
-<p>Vue-cli也是用了生命周期pretest: ‘yarn clean’</p>
-</blockquote>
-<h1 id="npx"><a class="markdownIt-Anchor" href="#npx"></a> npx</h1>
-<p>npm高版本自带的命令行工具</p>
-<p><strong>运行node_modules/.bin 下的可执行文件</strong></p>
-<blockquote>
-<p>之前通过package.json 中的scripts 配合npm run实现，现在可通过npx运行不需要安装这个依赖包运行命令</p>
-</blockquote>
-<ul>
-<li>
-<p>避免全局安装</p>
-<ul>
-<li>当前项目node_modules/.bin —&gt; 全局modules/.bin —&gt; 官网下载，用完删除（需要联网），减少内存占用</li>
-</ul>
-</li>
-<li>
-<p>总是使用最新版本</p>
-</li>
-<li>
-<p>执行任意npm包</p>
-</li>
-</ul>
-<blockquote>
-<p>在一个项目中，<code>npm i vite</code></p>
-<p>没有全局安装，直接运行vite肯定是不行的，</p>
-<p>此时配合npx， <code>npx vite</code> 在项目中的node_modules/.bin中查找运行</p>
-</blockquote>
-<h2 id="与npm区别"><a class="markdownIt-Anchor" href="#与npm区别"></a> 与npm区别</h2>
-<p>npx侧重执行命令</p>
-<p>npm侧重安装或卸载某个模块，不具备执行某个模块的功能</p>
-<h1 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h1>
-<ul>
-<li><code>npm addUser</code>（创建npm账号）</li>
-<li><code>npm login</code> 登录( 使用<strong>官方的源</strong>，而不是第三方镜像源)</li>
-<li><code>npm publish</code>  发布（同版本号不能重新发布，包名唯一）</li>
-</ul>
-<h1 id="构建npm私服"><a class="markdownIt-Anchor" href="#构建npm私服"></a> 构建npm私服</h1>
-<ul>
-<li>部署到内网集群，离线使用</li>
-<li>安全性</li>
-<li>提高包下载速度</li>
-</ul>
-<p>利用<code>verdaccio</code>库</p>
-<img src="https://s2.loli.net/2023/09/02/PZQCziu4qrKAsRk.png" alt="image-20230902172055264" style="width:50%;" />
-<ul>
-<li><code>npm i verdaccio -g</code></li>
-<li><code>verdaccio --listen 5000</code> 开启服务</li>
-<li>发包流程与之前的差不多
-<ul>
-<li>
-<img src="https://s2.loli.net/2023/09/02/zYhy9muZv8cWD3H.png" alt="image-20230902172055264" style="width:50%;" /></li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>nodejs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一键速通菲区Spotify</title>
     <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
     <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
@@ -3885,6 +3885,33 @@ setInterval最小执行时间是10ms</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
+    <title>滑动验证</title>
+    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
+    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
+<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
+<hr />
+<ul>
+<li>
+<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
+</li>
+</ul>
+<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
+<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
+<blockquote>
+<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
+<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
+]]></content>
+      <tags>
+        <tag>vue3</tag>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>简单实现Toast组件</title>
     <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<blockquote>
@@ -3907,6 +3934,25 @@ setInterval最小执行时间是10ms</p>
 <h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 👨‍💻使用</h2>
 <figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Toast</span>.<span class="title function_">success</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="title class_">Toast</span>.<span class="title function_">error</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2023/08/17/ewqEhulLyJmUCKH.gif" alt="toast.gif" /></p>
+]]></content>
+      <tags>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>表格导出为excel</title>
+    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
+    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
+<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
+<p><code>yarn add xlsx file-saver</code></p>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
+<blockquote>
+<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
+</blockquote>
 ]]></content>
       <tags>
         <tag>enhanced</tag>
@@ -3963,25 +4009,6 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>表格导出为excel</title>
-    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
-    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
-<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
-<p><code>yarn add xlsx file-saver</code></p>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
-<blockquote>
-<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
-</blockquote>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>乐山</title>
     <url>/posts/gallery-%E4%B9%90%E5%B1%B1/</url>
     <content><![CDATA[<p>寒假终于有机会出游（<strong>蹭的</strong>）（特别感谢我哥和我嫂子）🫰</p>
@@ -4033,33 +4060,6 @@ setInterval最小执行时间是10ms</p>
       <categories>
         <category>gallery</category>
       </categories>
-  </entry>
-  <entry>
-    <title>滑动验证</title>
-    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
-    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
-<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
-<hr />
-<ul>
-<li>
-<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
-</li>
-</ul>
-<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
-<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
-<blockquote>
-<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
-<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-        <tag>enhanced</tag>
-      </tags>
   </entry>
   <entry>
     <title>大理</title>
