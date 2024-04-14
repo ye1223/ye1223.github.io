@@ -169,10 +169,10 @@
                     
         </div>
         <span class="post-date">
-            Apr 12, 2024
+            Apr 14, 2024
         </span>
         <span class="post-word-count">
-            876 words / About 4 minutes
+            1343 words / About 6 minutes
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -189,850 +189,850 @@
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <p>一、CSS<br />
-1.说一下CSS的盒模型。<br />
-在HTML页面中的所有元素都可以看成是一个盒子<br />
-盒子的组成：内容content、内边距padding、边框border、外边距margin<br />
-盒模型的类型：<br />
-标准盒模型<br />
-margin + border + padding + content<br />
-IE盒模型<br />
-margin + content(border + padding)<br />
-控制盒模型的模式：box-sizing:content-box（默认值，标准盒模型）、border-box（IE盒模型）;<br />
-2.CSS选择器的优先级？<br />
-CSS的特性：继承性、层叠性、优先级<br />
-优先级：写CSS样式的时候，会给同一个元素添加多个样式，此时谁的权重高就显示谁的样式<br />
-标签、类/伪类/属性、全局选择器、行内样式、id、!important<br />
-!important &gt; 行内样式 &gt; id &gt; 类/伪类/属性 &gt; 标签 &gt; 全局选择器<br />
-3.隐藏元素的方法有哪些？<br />
-display:none;<br />
-元素在页面上消失，不占据空间<br />
-opacity:0;<br />
-设置了元素的透明度为0，元素不可见，占据空间位置<br />
-visibility:hidden;<br />
-让元素消失，占据空间位置，一种不可见的状态<br />
-position:absolute;<br />
-clip-path<br />
-4.px和rem的区别是什么？<br />
-px是像素，显示器上给我们呈现画面的像素，每个像素的大小是一样，绝对单位长度<br />
-rem，相对单位，相对于html根节点的font-size的值，直接给html节点的font-size:62.5%;<br />
-1rem = 10px; （16px*62.5%=10px）<br />
-5.重绘重排有什么区别？<br />
-重排（回流）：布局引擎会根据所有的样式计算出盒模型在页面上的位置和大小<br />
-重绘：计算好盒模型的位置、大小和其他一些属性之后，浏览器就会根据每个盒模型的特性进行绘制<br />
-浏览器的渲染机制<br />
-对DOM的大小、位置进行修改后，浏览器需要重新计算元素的这些几何属性，就叫重排<br />
-对DOM的样式进行修改，比如color和background-color，浏览器不需要重新计算几何属性的时候，直接绘制了该元素的新样式，那么这里就只触发了重绘<br />
-6.让一个元素水平垂直居中的方式有哪些？<br />
-1.定位+margin<br />
-2.定位+transform<br />
-3.flex布局<br />
-4.grid布局<br />
-5.table布局<br />
-7.CSS的哪些属性哪些可以继承？哪些不可以继承？<br />
-CSS的三大特性：继承、层叠、优先级<br />
-子元素可以继承父类元素的样式<br />
-1.字体的一些属性：font<br />
-2.文本的一些属性：line-height<br />
-3.元素的可见性：visibility:hidden<br />
-4.表格布局的属性：border-spacing<br />
-5.列表的属性：list-style<br />
-6.页面样式属性：page<br />
-7.声音的样式属性<br />
-8.有没有用过预处理器？<br />
-预处理语言增加了变量、函数、混入等强大的功能<br />
-SASS  LESS</p>
-<p>二、JavaSscipt<br />
-1.JS由哪三部分组成？<br />
-ECMAScript：JS的核心内容，描述了语言的基础语法，比如var,for，数据类型（数组、字符串），<br />
-文档对象模型（DOM）：DOM把整个HTML页面规划为元素构成的文档<br />
-浏览器对象模型（BOM）：对浏览器窗口进行访问和操作<br />
-2.JS有哪些内置对象？<br />
-String Boolean Number Array Object Function Math Date RegExp…<br />
-Math<br />
-abs() sqrt() max() min()<br />
-Data<br />
-new Data() getYear()<br />
-Array<br />
-String<br />
-concat() length  slice() split()<br />
-3.操作数组的方法有哪些？<br />
-push() pop() sort() splice() unshift() shift() reverse() concat() join() map() filter()<br />
-ervery() some() reduce() isArray() findIndex()<br />
-哪些方法会改变原数组？<br />
-push() pop() unshift() shift() sort() reverse() splice()<br />
-4.JS对数据类的检测方式有哪些？<br />
-typeof()<br />
-instanceof()<br />
-constructor<br />
-Object.prototype.toString.call()<br />
-5.说一下闭包，闭包有什么特点？<br />
-什么是闭包？函数嵌套函数，内部函数被外部函数返回并保存下来时，就会产生闭包<br />
-特点：可以重复利用变量，并且这个变量不会污染全局的一种机制；这个变量是一直保存再内存中，不会被垃圾回收机制回收<br />
-缺点：闭包较多的时候，会消耗内存，导致页面的性能下降，在IE浏览器中才会导致内存泄漏<br />
-使用场景：防抖，节流，函数嵌套函数避免全局污染的时候<br />
-6.前端的内存泄漏怎么理解？<br />
-JS里已经分配内存地址的对象，但是由于长时间没有释放或者没办法清除，造成长期占用内存的现象，会让内存资源大幅浪费，最终导致运行速度慢，甚至崩溃的情况。<br />
-垃圾回收机制<br />
-因素：一些为生命直接赋值的变量；一些未清空的定时器；过度的闭包；一些引用元素没有被清除。<br />
-7.事件委托是什么？<br />
-又叫事件代理，原理就是利用了事件冒泡的机制来实现，也就是说把子元素的事件绑定到了父元素的身上<br />
-如果子元素组织了事件冒泡，那么委托也就不成立<br />
-组织事件冒泡：event.stopPropagation()<br />
-addEventListener(‘click’,函数名，true/false) 默认是false（事件冒泡），true（事件捕获）<br />
-好处：提高性能，减少事件的绑定，也就减少了内存的占用。<br />
-8.基本数据类型和引用数据类型的区别？<br />
-基本数据类型：String Number Boolean undefined null<br />
-基本数据类型保存在栈内存当中，保存的就是一个具体的值<br />
-引用数据类型（复杂数据类型）：Object Function Array<br />
-保存在堆内存当中，声明一个引用类型的变量，它保存的是引用类型数据的地址<br />
-假如声明两个引用类型同时指向了一个地址的时候，修改其中一个那么另外一个也会改变<br />
-9.说一下原型链。<br />
-原型就是一个普通对象，它是为构造函数的实例共享属性和方法；所有实例中引用的原型都是同一个对象<br />
-使用prototype可以把方法挂在原型上，内存值保存一份<br />
-__proto__可以理解为指针，实例对象中的属性，指向了构造函数的原型（prototype）<br />
-10.new操作符具体做了什么？<br />
-1.先创建一个空对象<br />
-2.把空对象和构造函数通过原型链进行链接<br />
-3.把构造函数的this绑定到新的空对象身上<br />
-4.根据构建函数返回的类型判断，如果是值类型，则返回对象，如果是引用类型，就要返回这个引用类型<br />
-11.JS是如何实现继承的？<br />
-1.原型链继承<br />
-2.借用构造函数继承<br />
-3.组合式继承<br />
-4.ES6的class类继承<br />
-12.JS的设计原理是什么？<br />
-JS引擎 运行上下文 调用栈 事件循环 回调<br />
-13.JS中关于this指向的问题<br />
-1. 全局对象中的this指向<br />
-指向的是window<br />
-2. 全局作用域或者普通函数中的this<br />
-指向全局window<br />
-3. this永远指向最后调用它的那个对象<br />
-在不是箭头函数的情况下<br />
-4. new 关键词改变了this的指向<br />
-5. apply,call,bind<br />
-可以改变this指向，不是箭头函数<br />
-6. 箭头函数中的this<br />
+    <h2 id="一-css"><a class="markdownIt-Anchor" href="#一-css"></a> 一、CSS</h2>
+<h3 id="1说一下css的盒模型"><a class="markdownIt-Anchor" href="#1说一下css的盒模型"></a> 1.说一下CSS的盒模型。</h3>
+<p>​        在HTML页面中的所有元素都可以看成是一个盒子<br />
+​        盒子的组成：内容content、内边距padding、边框border、外边距margin<br />
+​        盒模型的类型：<br />
+​            标准盒模型<br />
+​                margin + border + padding + content<br />
+​            <mark>IE盒模型</mark><br />
+​                margin + <mark>content(border + padding)</mark><br />
+​        控制盒模型的模式：box-sizing:content-box（默认值，标准盒模型）、border-box（IE盒模型）;</p>
+<h3 id="2css选择器的优先级"><a class="markdownIt-Anchor" href="#2css选择器的优先级"></a> 2.CSS选择器的优先级？</h3>
+<p>​        CSS的特性：继承性、层叠性、优先级<br />
+​        优先级：写CSS样式的时候，会给同一个元素添加多个样式，此时谁的权重高就显示谁的样式<br />
+​        标签、类/伪类/属性、全局选择器、行内样式、id、!important<br />
+​       <mark>!important &gt; inline样式 &gt; id &gt; class/伪类/属性 &gt; 标签 &gt; 全局选择器</mark></p>
+<h3 id="3隐藏元素的方法有哪些"><a class="markdownIt-Anchor" href="#3隐藏元素的方法有哪些"></a> 3.隐藏元素的方法有哪些？</h3>
+<p>​        display:none;<br />
+​            元素在页面上消失，不占据空间</p>
+<p>​	html元素直接设置hidden</p>
+<p>​        opacity:0;<br />
+​            设置了元素的透明度为0，元素不可见，占据空间位置<br />
+​        visibility:hidden;<br />
+​            让元素消失，占据空间位置，一种不可见的状态<br />
+​        position:absolute; clip-path: polygon(0 0, 0 0, 0 0, 0 0)将元素的可见部分裁剪掉<br />
+​        position: absolute;    left: -9999px;</p>
+<h3 id="4px和rem的区别是什么"><a class="markdownIt-Anchor" href="#4px和rem的区别是什么"></a> 4.px和rem的区别是什么？</h3>
+<p>​        px是像素，显示器上给我们呈现画面的像素，每个像素的大小是一样，<font color=red>绝对单位长度</font><br />
+​        rem，相对单位，相对于html根节点的font-size的值，直接给html节点的font-size:62.5%;<br />
+​            1rem = 10px; （16px*62.5%=10px）</p>
+<h3 id="5重绘重排有什么区别"><a class="markdownIt-Anchor" href="#5重绘重排有什么区别"></a> 5.重绘重排有什么区别？</h3>
+<p>​        重排（回流Reflow）：布局引擎会根据所有的样式计算出盒模型在页面上的位置和大小<br />
+​        重绘 (Repaint)：计算好盒模型的位置、大小和其他一些属性之后，浏览器就会根据每个盒模型的特性进行绘制<br />
+​        浏览器的渲染机制<br />
+​        对DOM的<u>大小、位置</u>进行修改后，浏览器需要重新计算元素的这些几何属性，就叫重排 (<mark>对元素几何属性修改获取</mark>)<br />
+​        对DOM的样式进行修改，比如<u>color</u>和background-color，浏览器不需要重新计算几何属性的时候，直接绘制了该元素的新样式，那么这里就只触发了重绘</p>
+<h3 id="6让一个元素水平垂直居中的方式有哪些"><a class="markdownIt-Anchor" href="#6让一个元素水平垂直居中的方式有哪些"></a> 6.让一个元素水平垂直居中的方式有哪些？</h3>
+<p>​        1.定位+margin<br />
+​        2.定位+transform<br />
+​        3.flex布局<br />
+​        4.grid布局<br />
+​        5.table布局</p>
+<h3 id="7css的哪些属性哪些可以继承哪些不可以继承"><a class="markdownIt-Anchor" href="#7css的哪些属性哪些可以继承哪些不可以继承"></a> 7.CSS的哪些属性哪些可以继承？哪些不可以继承？</h3>
+<p>​        CSS的三大特性：继承、层叠、优先级<br />
+​        子元素可以继承父类元素的样式<br />
+​        1.字体的一些属性：font<br />
+​        2.文本的一些属性：line-height<br />
+​        3.元素的可见性：visibility:hidden<br />
+​        4.表格布局的属性：border-spacing<br />
+​        5.列表的属性：list-style<br />
+​        6.页面样式属性：page<br />
+​        7.声音的样式属性</p>
+<h3 id="8有没有用过预处理器"><a class="markdownIt-Anchor" href="#8有没有用过预处理器"></a> 8.有没有用过预处理器？</h3>
+<p>​        预处理语言增加了变量、函数、混入（重用@include）等强大的功能<br />
+​        SASS  LESS<br />
+​        <mark>nesting写法、@extend样式继承、</mark></p>
+<h2 id="二-javascript"><a class="markdownIt-Anchor" href="#二-javascript"></a> 二、JavaScript</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">基本数据类型：Null Undefined Boolean Number String Symbol Bigint（超过2^53 -1）</span><br><span class="line">引用数据类型（复杂数据类型）：Object Function Array</span><br></pre></td></tr></table></figure>
+<h3 id="1js由哪三部分组成"><a class="markdownIt-Anchor" href="#1js由哪三部分组成"></a> 1.JS由哪三部分组成？</h3>
+<p>​        ECMAScript：JS的核心内容，描述了语言的<strong>基础语法</strong>，比如var,for，数据类型（数组、字符串），<br />
+​        文档对象模型（DOM）：DOM把整个HTML<strong>页面</strong>规划为元素构成的<strong>文档</strong><br />
+​        浏览器对象模型（BOM）：对<strong>浏览器窗口</strong>进行访问和操作</p>
+<h3 id="2js有哪些内置对象"><a class="markdownIt-Anchor" href="#2js有哪些内置对象"></a> 2.JS有哪些内置对象？</h3>
+<p>​        String Boolean Number Array Object Function Math Date RegExp…<br />
+​        Math<br />
+​            abs() sqrt() max() min()<br />
+​        Data<br />
+​            new Data() getYear()<br />
+​        Array<br />
+​        String<br />
+​            concat() length  slice() split()</p>
+<h3 id="3操作数组的方法有哪些"><a class="markdownIt-Anchor" href="#3操作数组的方法有哪些"></a> 3.操作数组的方法有哪些？</h3>
+<p>​        push() pop() sort() splice() unshift() shift() reverse() concat() join() map() filter()<br />
+​        ervery() some() reduce() isArray() findIndex()<br />
+​        哪些方法会改变原数组？<br />
+​            push() pop() unshift() shift() sort() reverse() splice()</p>
+<h3 id="4js对数据类的检测方式有哪些"><a class="markdownIt-Anchor" href="#4js对数据类的检测方式有哪些"></a> 4.JS对数据类的检测方式有哪些？</h3>
+<p>​        typeof()<br />
+​        instanceof()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">myInstanceOf</span>(<span class="params">instance, constructor</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> objectProto = instance.<span class="property">__proto__</span></span><br><span class="line">  <span class="comment">// Object.getPrototypeOf</span></span><br><span class="line">  <span class="keyword">while</span>(objectProto !== <span class="literal">null</span> )&#123;</span><br><span class="line">    <span class="keyword">if</span>(objectProto.<span class="property">__proto__</span> == constructor.<span class="property"><span class="keyword">prototype</span></span>) <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    objectProto = objectProto.<span class="property">__proto__</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​        constructor</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">([]).<span class="property">constructor</span>.<span class="property">name</span>;    <span class="comment">// &quot;Array&quot;</span></span><br></pre></td></tr></table></figure>
+<p>​        Object.prototype.toString.call()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="title function_">isArray</span>([]);        <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Array</span>.<span class="title function_">isArray</span>(&#123;&#125;);        <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<h3 id="5说一下闭包闭包有什么特点"><a class="markdownIt-Anchor" href="#5说一下闭包闭包有什么特点"></a> 5.说一下闭包，闭包有什么特点？</h3>
+<p>​        什么是闭包？函数嵌套函数，内部函数被外部函数返回并保存下来时，就会产生闭包<br />
+​        特点：可以<mark>重复利用变量</mark>，并且这个变量不会污染全局的一种机制；这个变量是一直<strong>保存再内存</strong>中，不会被垃圾回收机制回收<br />
+​        缺点：闭包较多的时候，会消耗内存，导致页面的性能下降，在IE浏览器中才会导致内存泄漏<br />
+​        使用场景：<mark>防抖，节流，函数嵌套函数避免全局污染</mark>的时候</p>
+<h3 id="6前端的内存泄漏怎么理解"><a class="markdownIt-Anchor" href="#6前端的内存泄漏怎么理解"></a> 6.前端的内存泄漏怎么理解？</h3>
+<p>​        JS里已经分配内存地址的对象，但是由于长时间<mark>没有释放</mark>或者<strong>没办法清除</strong>，造成长期占用内存的现象，会让内存资源大幅浪费，最终导致<u>运行速度慢</u>，甚至崩溃的情况。</p>
+<p>​        <mark>回收机制</mark>（标记清除、引用计数）<br />
+​        因素：一些未声明直接赋值的变量；一些未清空的定时器；过度的闭包；一些引用元素没有被清除。</p>
+<h3 id="7事件委托是什么"><a class="markdownIt-Anchor" href="#7事件委托是什么"></a> 7.事件委托是什么？</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">事件捕获 和 冒泡 阶段</span><br></pre></td></tr></table></figure>
+<p>​        又叫事件代理，原理就是<strong>利用了事件冒泡的机制</strong>来实现，也就是说把<strong>子元素的事件绑定到了父元素的身上</strong><br />
+​        如果子元素组织了事件冒泡，那么委托也就不成立<br />
+​        组织事件冒泡：event.stopPropagation()<br />
+​        addEventListener(‘click’,函数名，true/false) 默认是false（事件冒泡），true（事件捕获）<br />
+​        好处：提高性能，<strong>减少事件的绑定</strong>，也就减少了内存的占用。</p>
+<h3 id="8基本数据类型和引用数据类型的区别"><a class="markdownIt-Anchor" href="#8基本数据类型和引用数据类型的区别"></a> 8.基本数据类型和引用数据类型的区别？</h3>
+<p>​        基本数据类型：String Number Boolean undefined null<br />
+​            基本数据类型保存在栈内存当中，保存的就是一个具体的值<br />
+​        引用数据类型（复杂数据类型）：Object Function Array<br />
+​            保存在堆内存当中，声明一个引用类型的变量，它保存的是引用类型数据的地址<br />
+​            假如声明两个引用类型同时指向了一个地址的时候，修改其中一个那么另外一个也会改变</p>
+<h3 id="9说一下原型链"><a class="markdownIt-Anchor" href="#9说一下原型链"></a> 9.说一下原型链。</h3>
+<p>​        原型就是一个普通对象，它是为构造函数的实例共享属性和方法；所有实例中引用的原型都是同一个对象<br />
+​        使用prototype可以把方法挂在原型上，内存值保存一份<br />
+​        __proto__可以理解为指针，实例对象中的属性，指向了构造函数的原型（prototype）</p>
+<h3 id="10new操作符具体做了什么"><a class="markdownIt-Anchor" href="#10new操作符具体做了什么"></a> 10.new操作符具体做了什么？</h3>
+<p>​        1.先创建一个<strong>空对象</strong><br />
+​        2.把空对象和构造函数通过<strong>原型</strong>链进行链接<br />
+​        3.把构造函数的<strong>this绑定</strong>到新的空对象身上<br />
+​        4.根据构建函数返回的类型判断，如果是值类型，则返回对象，如果是引用类型，就要返回这个引用类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myNew = <span class="keyword">function</span>(<span class="params">constructor,...args</span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line">  obj.<span class="property">__proto__</span> = constructor.<span class="property"><span class="keyword">prototype</span></span></span><br><span class="line">  <span class="keyword">const</span> res = constructor.<span class="title function_">apply</span>(obj,args)</span><br><span class="line"> <span class="keyword">return</span> res <span class="keyword">instanceof</span> <span class="title class_">Object</span> ? res : obj </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="11js是如何实现继承的"><a class="markdownIt-Anchor" href="#11js是如何实现继承的"></a> 11.JS是如何实现继承的？</h3>
+<p>​        1.原型链继承 //篡改父类原型链上的数据<br />
+​	2.借用构造函数继承 //不能调用父类原型链上的方法<br />
+​        3.组合式继承 // 父类被调用了两次，影响性能<br />
+​        4.寄生组合继承<br />
+​        5.ES6的class类继承</p>
+<h3 id="12js的设计原理是什么"><a class="markdownIt-Anchor" href="#12js的设计原理是什么"></a> 12.JS的设计原理是什么？</h3>
+<p>​        JS引擎 运行上下文 调用栈 事件循环 回调</p>
+<h3 id="13js中关于this指向的问题"><a class="markdownIt-Anchor" href="#13js中关于this指向的问题"></a> 13.JS中关于this指向的问题</h3>
+<ul>
+<li>
+<p>全局对象中的this指向<br />
+指向的是window</p>
+</li>
+<li>
+<p>全局作用域或者普通函数中的this<br />
+指向全局window</p>
+</li>
+<li>
+<p>this永远指向最后调用它的那个对象<br />
+在不是箭头函数的情况下</p>
+</li>
+<li>
+<p>new 关键词改变了this的指向</p>
+</li>
+<li>
+<p>apply,call,bind<br />
+可以改变this指向，不是箭头函数</p>
+</li>
+<li>
+<p>箭头函数中的this<br />
 它的指向在定义的时候就已经确定了<br />
-箭头函数它没有this,看外层是否有函数，有就是外层函数的this，没有就是window<br />
-7. 匿名函数中的this<br />
-永远指向了window,匿名函数的执行环境具有全局性，因此this指向window<br />
-14.script标签里的async和defer有什么区别？<br />
-当没有async和defer这两个属性的时候，<br />
-浏览器会立刻加载并执行指定的脚本<br />
-有async<br />
-加载和渲染后面元素的过程将和script的加载和执行并行进行（异步）<br />
-有defer<br />
-加载和渲染后面元素的过程将和script的加载并行进行（异步），但是它的执行事件要等<br />
-所有元素解析完成之后才会执行<br />
-15.setTimeout最小执行时间是多少？<br />
-HTML5规定的内容：<br />
+箭头函数它没有this,看外层是否有函数，有就是外层函数的this，没有就是window</p>
+</li>
+<li>
+<p>匿名函数中的this<br />
+永远指向了window,匿名函数的执行环境具有全局性，因此this指向window</p>
+</li>
+</ul>
+<h3 id="14-script标签里的async和defer有什么区别"><a class="markdownIt-Anchor" href="#14-script标签里的async和defer有什么区别"></a> 14. script标签里的async和defer有什么区别？</h3>
+<p>​</p>
+<pre><code>当没有async和defer这两个属性的时候，
+  浏览器会立刻加载并执行指定的脚本
+有async
+  加载和渲染后面元素的过程将和script的加载和执行并行进行（异步）
+有defer
+  加载和渲染后面元素的过程将和script的加载并行进行（异步），但是它的执行事件要**等所有元素解析完成**之后才会执行
+</code></pre>
+<h3 id="15settimeout最小执行时间是多少"><a class="markdownIt-Anchor" href="#15settimeout最小执行时间是多少"></a> 15.setTimeout最小执行时间是多少？</h3>
+<p>HTML5规定的内容：<br />
 setTimeout最小执行时间是4ms<br />
-setInterval最小执行时间是10ms<br />
-16.ES6和ES5有什么区别？<br />
-JS的组成：ECMAScript BOM  DOM<br />
-ES5:ECMAScript5,2009年ECMAScript的第五次修订，ECMAScript2009<br />
-ES6:ECMAScript6,2015年ECMAScript的第六次修订，ECMAScript2015，是JS的下一个版本标准<br />
-17.ES6的新特性有哪些？<br />
-1.新增块级作用域（let,const）<br />
-不存在变量提升<br />
-存在暂时性死区的问题<br />
-块级作用域的内容<br />
-不能在同一个作用域内重复声明<br />
-2.新增了定义类的语法糖（class）<br />
-3.新增了一种基本数据类型（symbol）<br />
-4.新增了解构赋值<br />
-从数组或者对象中取值，然后给变量赋值<br />
-5.新增了函数参数的默认值<br />
-6.给数组新增了API<br />
-7.对象和数组新增了扩展运算符<br />
-8.Promise<br />
-解决回调地狱的问题。<br />
-自身有all,reject,resolve,race方法<br />
-原型上有then,catch<br />
-把异步操作队列化<br />
-三种状态：pending初始状态,fulfilled操作成功,rejected操作失败<br />
-状态：pending -&gt; fulfilled;pending -&gt; rejected 一旦发生，状态就会凝固，不会再变<br />
-async  await<br />
-同步代码做异步的操作，两者必须搭配使用<br />
-async表明函数内有异步操作，调用函数会返回promise<br />
-await是组成async的表达式，结果是取决于它等待的内容，如果是promise那就是promise的结果，如果是普通函数就进行链式调用<br />
-await后的promise如果是reject状态，那么整个async函数都会中断，后面的代码不执行</p>
-<pre><code>    9.新增了模块化（import,export）
-    10.新增了set和map数据结构
-        set就是不重复
-        map的key的类型不受限制
-    11.新增了generator
-    12.新增了箭头函数
-        不能作为构造函数使用，不能用new
-        箭头函数就没有原型
-        箭头函数没有arguments
-        箭头函数不能用call,apply,bind去改变this的执行
-        this指向外层第一个函数的this
-18.call,aply,bind三者有什么区别？
-    都是改变this指向和函数的调用，call和apply的功能类似，只是传参的方法不同
-    call方法传的是一个参数列表
-    apply传递的是一个数组
-    bind传参后不会立刻执行，会返回一个改变了this指向的函数，这个函数还是可以传参的，bind()()
-    call方法的性能要比apply好一些，所以call用的更多一点
-19.用递归的时候有没有遇到什么问题？
-    如果一个函数内可以调用函数本身，那么这个就是递归函数
-    函数内部调用自己
-    特别注意：写递归必须要有退出条件return
-20.如何实现一个深拷贝？
-    深拷贝就是完全拷贝一份新的对象，会在堆内存中开辟新的空间，拷贝的对象被修改后，原对象不受影响
-    主要针对的是引用数据类型
-    1.扩展运算符
-    2.JSON.parse(JSON.stringify())
-    3.利用递归函数实现
-21.说一下事件循环。
-    JS是一个单线程的脚本语言
-    主线程 执行栈 任务队列  宏任务 微任务
-    主线程先执行同步任务，然后才去执行任务队列里的任务，如果在执行宏任务之前有微任务，那么要先执行微任务
-    全部执行完之后等待主线程的调用，调用完之后再去任务队列中查看是否有异步任务，这样一个循环往复的过程就是事件循环！
-22.ajax是什么？怎么实现的？
-    创建交互式网页应用的网页开发技术
-        在不重新加载整个网页的前提下，与服务器交换数据并更新部分内容
-    通过XmlHttpRequest对象向服务器发送异步请求，然后从服务器拿到数据，最后通过JS操作DOM更新页面
-    1.创建XmlHttpRequest对象 xmh
-    2.通过xmh对象里的open()方法和服务器建立连接
-    3.构建请求所需的数据，并通过xmh对象的send()发送给服务器
-    4.通过xmh对象的onreadystate chansge事件监听服务器和你的通信状态
-    5.接收并处理服务器响应的数据结果
-    6.把处理的数据更新到HTML页面上
-23.get和post有什么区别？
-    1.get一般是获取数据，post一般是提交数据
-    2.get参数会放在url上，所以安全性比较差，post是放在body中
-    3.get请求刷新服务器或退回是没有影响的，post请求退回时会重新提交数据
-    4.get请求时会被缓存,post请求不会被缓存
-    5.get请求会被保存在浏览器历史记录中,post不会
-    6.get请求只能进行url编码，post请求支持很多种
-24.promise的内部原理是什么？它的优缺点是什么？
-    Promise对象，封装了一个异步操作并且还可以获取成功或失败的结果
-    Promise主要就是解决回调地狱的问题，之前如果异步任务比较多，同时他们之间有相互依赖的关系，
-    就只能使用回调函数处理，这样就容易形成回调地狱，代码的可读性差，可维护性也很差
-    有三种状态：pending初始状态  fulfilled成功状态  rejected失败状态
-    状态改变只会有两种情况，
-        pending -&gt; fulfilled; pending -&gt; rejected 一旦发生，状态就会凝固，不会再变
-    首先就是我们无法取消promise，一旦创建它就会立即执行，不能中途取消
-    如果不设置回调，promise内部抛出的测u哦呜就无法反馈到外面
-    若当前处于pending状态时，无法得知目前在哪个阶段。
-    原理：
-        构造一个Promise实例，实例需要传递函数的参数，这个函数有两个形参，分别都是函数类型，一个是resolve一个是reject
-        promise上还有then方法，这个方法就是来指定状态改变时的确定操作，resolve是执行第一个函数，reject是执行第二个函数
-25.promise和async await的区别是什么？
-    1.都是处理异步请求的方式
-    2.promise是ES6，async await 是ES7的语法
-    3.async await是基于promise实现的，他和promise都是非阻塞性的
-    优缺点：
-    1.promise是返回对象我们要用then，catch方法去处理和捕获异常，并且书写方式是链式，容易造成代码重叠，不好维护，async await 是通过tra catch进行捕获异常
-    2.async await最大的优点就是能让代码看起来像同步一样，只要遇到await就会立刻返回结果，然后再执行后面的操作
-    promise.then()的方式返回，会出现请求还没返回，就执行了后面的操作
-26.浏览器的存储方式有哪些？
-    1.cookies
-        H5标准前的本地存储方式
-        兼容性好，请求头自带cookie
-        存储量小，资源浪费，使用麻烦（封装）
-    2.localstorage
-        H5加入的以键值对为标准的方式
-        操作方便，永久存储，兼容性较好
-        保存值的类型被限定，浏览器在隐私模式下不可读取，不能被爬虫
-    3.sessionstorage
-        当前页面关闭后就会立刻清理，会话级别的存储方式
-    4.indexedDB
-        H5标准的存储方式，，他是以键值对进行存储，可以快速读取，适合WEB场景
-27.token存在sessionstorage还是loaclstorage？
-    token：验证身份的令牌，一般就是用户通过账号密码登录后，服务端把这些凭证通过加密等一系列操作后得到的字符串
-    1.存loaclstorage里，后期每次请求接口都需要把它当作一个字段传给后台
-    2.存cookie中，会自动发送，缺点就是不能跨域
-    如果存在localstorage中，容易被XSS攻击，但是如果做好了对应的措施，那么是利大于弊
-    如果存在cookie中会有CSRF攻击
-28.token的登录流程。
-    1.客户端用账号密码请求登录
-    2.服务端收到请求后，需要去验证账号密码
-    3.验证成功之后，服务端会签发一个token，把这个token发送给客户端
-    4.客户端收到token后保存起来，可以放在cookie也可以是localstorage
-    5.客户端每次向服务端发送请求资源的时候，都需要携带这个token
-    6.服务端收到请求，接着去验证客户端里的token，验证成功才会返回客户端请求的数据
-29.页面渲染的过程是怎样的？
-    DNS解析
-    建立TCP连接
-    发送HTTP请求
-    服务器处理请求
-    渲染页面
-        浏览器会获取HTML和CSS的资源，然后把HTML解析成DOM树
-        再把CSS解析成CSSOM
-        把DOM和CSSOM合并为渲染树
-        布局
-        把渲染树的每个节点渲染到屏幕上（绘制）
-    断开TCP连接
-30.DOM树和渲染树有什么区别？
-    DOM树是和HTML标签一一对应的，包括head和隐藏元素
-    渲染树是不包含head和隐藏元素
-31.精灵图和base64的区别是什么？
-    精灵图：把多张小图整合到一张大图上，利用定位的一些属性把小图显示在页面上，当访问页面可以减少请求，提高加载速度
-    base64：传输8Bit字节代码的编码方式，把原本二进制形式转为64个字符的单位，最后组成字符串
-    base64是会和html css一起下载到浏览器中，减少请求，减少跨域问题，但是一些低版本不支持，若base64体积比原图片大，不利于css的加载。
-32.svg格式了解多少？
-    基于XML语法格式的图像格式，可缩放矢量图，其他图像是基于像素的，SVG是属于对图像形状的描述，本质是文本文件，体积小，并且不管放大多少倍都不会失真
-    1.SVG可直接插入页面中，成为DOM一部分，然后用JS或CSS进行操作
-        &lt;svg&gt;&lt;/svg&gt;
-    2.SVG可作为文件被引入
-        &lt;img src=&quot;pic.svg&quot; /&gt;
-    3.SVG可以转为base64引入页面
-33.了解过JWT吗？
-    JSON Web Token 通过JSON形式作为在web应用中的令牌，可以在各方之间安全的把信息作为JSON对象传输
-    信息传输、授权
-    JWT的认证流程
-    1.前端把账号密码发送给后端的接口
-    2.后端核对账号密码成功后，把用户id等其他信息作为JWT 负载，把它和头部分别进行base64编码拼接后签名，形成一个JWT（token）。
-    3.前端每日请求时都会把JWT放在HTTP请求头的Authorization字段内
-    4.后端检查是否存在，如果存在就验证JWT的有效性（签名是否正确，token是否过期）
-    5.验证通过后后端使用JWT中包含的用户信息进行其他的操作，并返回对应结果
-    简洁、包含性、因为Token是JSON加密的形式保存在客户端，所以JWT是跨语言的，原则上是任何web形式都支持。
-34.npm的底层环境是什么？
-    node package manager,node的包管理和分发工具，已经成为分发node模块的标准，是JS的运行环境
-    npm的组成：网站、注册表、命令行工具
-35.HTTP协议规定的协议头和请求头有什么？
-    1.请求头信息：
-        Accept:浏览器告诉服务器所支持的数据类型
-        Host:浏览器告诉服务器我想访问服务器的哪台主机
-        Referer:浏览器告诉服务器我是从哪里来的（防盗链）
-        User-Agent:浏览器类型、版本信息
-        Date:浏览器告诉服务器我是什么时候访问的
-        Connection:连接方式
-        Cookie
-        X-Request-With:请求方式
-    2.响应头信息：
-        Location:这个就是告诉浏览器你要去找谁
-        Server:告诉浏览器服务器的类型
-        Content-Type:告诉浏览器返回的数据类型
-        Refresh:控制了的定时刷新
-36.说一下浏览器的缓存策略。
-    强缓存（本地缓存）、协商缓存（弱缓存）
-    强缓：不发起请求，直接使用缓存里的内容，浏览器把JS，CSS，image等存到内存中，下次用户访问直接从内存中取，提高性能
-    协缓：需要像后台发请求，通过判断来决定是否使用协商缓存，如果请求内容没有变化，则返回304，浏览器就用缓存里的内容
-    强缓存的触发：
-        HTTP1.0:时间戳响应标头
-        HTTP1.1:Cache-Control响应标头
-    协商缓存触发：
-        HTTP1.0:请求头：if-modified-since 响应头：last-modified
-        HTTP1.1:请求头：if-none-match 响应头：Etag
-37.说一下什么是“同源策略”？
-    http:// www.  aaa.com:8080/index/vue.js
-    协议    子域名 主域名  端口号     资源
-    同源策略是浏览器的核心，如果没有这个策略就会遭受网络攻击
-    主要指的就是协议+域名+端口号三者一致，若其中一个不一样则不是同源，会产生跨域
-    三个允许跨域加载资源的标签：img  link  script
-    跨域是可以发送请求，后端也会正常返回结果，只不过这个结果被浏览器拦截了！
-    JSONP
-    CORS
-    websocket
-    反向代理
-38.防抖和节流是什么？
-    都是应对页面中频繁触发事件的优化方案
-    防抖:避免事件重复触发
-    使用场景:1.频繁和服务端交互 2.输入框的自动保存事件
-    节流:把频繁触发的事件减少,每隔一段时间执行
-    使用场景:scroll事件
-39.解释一下什么是json？
-    JSON是一种纯字符串形式的数据，它本身不提供任何方法，适合在网络中进行传输
-    JSON数据存储在.json文件中，也可以把JSON数据以字符串的形式保存在数据库、Cookise中
-    JS提供了JSON.parse() JSON.stringify()
-    什么时候使用json：定义接口；序列化；生成token；配置文件package.json
-40.当数据没有请求过来的时候，该怎么做？
-    可以在渲染数据的地方给一些默认的值
-    if判断语句
-41.有没有做过无感登录？
-    1.在相应其中拦截，判断token返回过期后，调用刷新token的接口
-    2.后端返回过期时间，前端判断token的过期时间，去调用刷新token的接口
-    3.写定时器，定时刷新token接口
-    流程：
-        1.登录成功后保存token 和 refresh_token
-        2.在响应拦截器中对401状态码引入刷新token的api方法调用
-        3.替换保存本地新的token
-        4.把错误对象里的token替换
-        5.再次发送未完成的请求
-        6.如果refresh_token过期了，判断是否过期，过期了就清楚所有token重新登录
-42.大文件上传是怎么做的？
-    分片上传：
-        1.把需要上传的文件按照一定的规则，分割成相同大小的数据块
-        2.初始化一个分片上传任务，返回本次分片上传的唯一标识
-        3.按照一定的规则把各个数据块上传
-        4.发送完成后，服务端会判断数据上传的完整性，如果完整，那么就会把数据库合并成原始文件
-    断点续传：
-        服务端返回，从哪里开始  浏览器自己处理
+setInterval最小执行时间是10ms</p>
+<h3 id="16es6和es5有什么区别"><a class="markdownIt-Anchor" href="#16es6和es5有什么区别"></a> 16.ES6和ES5有什么区别？</h3>
+<p>​	JS的组成：ECMAScript BOM  DOM<br />
+​	ES5:ECMAScript5,2009年ECMAScript的第五次修订，ECMAScript2009<br />
+​	ES6:ECMAScript6,2015年ECMAScript的第六次修订，ECMAScript2015，是JS的下一个版本标准</p>
+<h3 id="17es6的新特性有哪些"><a class="markdownIt-Anchor" href="#17es6的新特性有哪些"></a> 17.ES6的新特性有哪些？</h3>
+<p>​	1.新增<strong>块级作用域</strong>（let,const）<br />
+​      	不存在变量提升<br />
+​     	 存在暂时性死区的问题<br />
+​      	块级作用域的内容<br />
+​      	不能在同一个作用域内重复声明<br />
+​	2.新增了定义类的语法糖（<strong>class</strong>）<br />
+​	3.新增了一种基本数据类型（<strong>symbol</strong>）<br />
+​	4.新增了<strong>解构赋值</strong><br />
+​      	从数组或者对象中取值，然后给变量赋值<br />
+​	5.新增了函数参数的默认值<br />
+​	6.给数组新增了API<br />
+​	7.对象和数组新增了<strong>扩展运算符</strong><br />
+​	8.<strong>Promise</strong><br />
+​     	 解决回调地狱的问题。<br />
+​     	 自身有all,reject,resolve,race方法<br />
+​      	原型上有then,catch<br />
+​      	把异步操作队列化<br />
+​      	三种状态：pending初始状态,fulfilled操作成功,rejected操作失败<br />
+​      	状态：pending -&gt; fulfilled;pending -&gt; rejected 一旦发生，状态就会凝固，不会再变<br />
+​      	<strong>async  await</strong>（<strong>ES7</strong>）<br />
+​          	同步代码做异步的操作，两者必须搭配使用<br />
+​          	async表明函数内有异步操作，调用函数会返回promise<br />
+​          	await是组成async的表达式，结果是取决于它等待的内容，如果是promise那就是promise的结果，如果是普通函数就进行链式调用<br />
+​          	await后的promise如果是reject状态，那么整个async函数都会<strong>中断</strong>，后面的代码不执行</p>
+<p>​	9.新增了<strong>模块化</strong>（import,export）<br />
+​	10.新增了set和map数据结构<br />
+​    	set就是不重复<br />
+​    	map的key的类型不受限制<br />
+​	11.新增了<strong>generator</strong><br />
+​	12.新增了<strong>箭头函数</strong><br />
+​    	不能作为构造函数使用，不能用new<br />
+箭头函数就没有原型<br />
+箭头函数没有arguments<br />
+​    	箭头函数不能用call,apply,bind去改变this的执行<br />
+​    	this指向外层第一个函数的this</p>
+<h3 id="18callaplybind三者有什么区别"><a class="markdownIt-Anchor" href="#18callaplybind三者有什么区别"></a> 18.call,aply,bind三者有什么区别？</h3>
+<p>​        都是改变this指向和函数的调用，call和apply的功能类似，只是传参的方法不同<br />
+​        call方法传的是一个参数列表<br />
+​        apply传递的是一个数组<br />
+​        bind传参后不会立刻执行，会返回一个改变了this指向的函数，这个函数还是可以传参的，bind()()<br />
+​        call方法的性能要比apply好一些，所以call用的更多一点</p>
+<h3 id="19用递归的时候有没有遇到什么问题"><a class="markdownIt-Anchor" href="#19用递归的时候有没有遇到什么问题"></a> 19.用递归的时候有没有遇到什么问题？</h3>
+<p>​        如果一个函数内可以调用函数本身，那么这个就是递归函数<br />
+​        函数内部调用自己<br />
+​        特别注意：写递归必须要有<strong>退出条件return</strong></p>
+<h3 id="20如何实现一个深拷贝"><a class="markdownIt-Anchor" href="#20如何实现一个深拷贝"></a> 20.如何实现一个深拷贝？</h3>
+<p>​        深拷贝就是完全拷贝一份新的对象，会在堆内存中开辟新的空间，拷贝的对象被修改后，原对象不受影响<br />
+​        主要针对的是引用数据类型<br />
+​        1.扩展运算符<br />
+​        2.JSON.parse(JSON.stringify())<br />
+​        3.利用递归函数实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">         <span class="keyword">if</span>(<span class="keyword">typeof</span> obj !== <span class="string">&#x27;object&#x27;</span> || obj ==<span class="literal">null</span>) <span class="keyword">return</span> obj</span><br><span class="line">         <span class="keyword">let</span> res = obj <span class="keyword">instanceof</span> <span class="title class_">Array</span> ? [] : &#123;&#125;</span><br><span class="line">        <span class="comment">//  for in会遍历到obj原型链上的属性，增加判断，健壮性</span></span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">            <span class="keyword">if</span>(obj.<span class="title function_">hasOwnProperty</span>(key))&#123;</span><br><span class="line">                <span class="comment">// 嵌套的一层不会被克隆，所以再加一次深度克隆</span></span><br><span class="line">                res[key] = <span class="title function_">deepClone</span>(obj[key])</span><br><span class="line">            &#125;  </span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> res</span><br><span class="line">    &#125; </span><br></pre></td></tr></table></figure>
+<h3 id="21说一下事件循环"><a class="markdownIt-Anchor" href="#21说一下事件循环"></a> 21.说一下事件循环。</h3>
+<p>​        JS是一个单线程的脚本语言<br />
+​        主线程 执行栈 任务队列  宏任务 微任务<br />
+​        主线程先执行同步任务，然后才去执行任务队列里的任务，如果在执行宏任务之前有微任务，那么要先执行微任务<br />
+​        全部执行完之后等待主线程的调用，调用完之后再去任务队列中查看是否有异步任务，这样一个循环往复的过程就是事件循环！</p>
+<h3 id="22ajax是什么怎么实现的"><a class="markdownIt-Anchor" href="#22ajax是什么怎么实现的"></a> 22.ajax是什么？怎么实现的？</h3>
+<p>​        创建交互式网页应用的网页开发技术<br />
+​            在不重新加载整个网页的前提下，与服务器交换数据并更新部分内容<br />
+​        通过XmlHttpRequest对象向服务器发送异步请求，然后从服务器拿到数据，最后通过JS操作DOM更新页面<br />
+​        1.创建XmlHttpRequest对象 xmh<br />
+​        2.通过xmh对象里的open()方法和服务器建立连接<br />
+​        3.构建请求所需的数据，并通过xmh对象的send()发送给服务器<br />
+​        4.通过xmh对象的onreadystatechange事件监听服务器和你的通信状态<br />
+​        5.接收并处理服务器响应的数据结果<br />
+​        6.把处理的数据更新到HTML页面上</p>
+<h3 id="23get和post有什么区别"><a class="markdownIt-Anchor" href="#23get和post有什么区别"></a> 23.get和post有什么区别？</h3>
+<p>​        1.get一般是获取数据，post一般是提交数据<br />
+​        2.get参数会放在url上，所以安全性比较差，post是放在body中<br />
+​        3.get请求刷新服务器或退回是没有影响的，post请求退回时会重新提交数据<br />
+​        4.get请求时会<strong>被缓存</strong>,post请求不会被缓存<br />
+​        5.get请求会被保存在<strong>浏览器历史记录</strong>中,post不会<br />
+​        6.get请求只能进行<strong>url编码</strong>，post请求支持很多种</p>
+<h3 id="24promise的内部原理是什么它的优缺点是什么"><a class="markdownIt-Anchor" href="#24promise的内部原理是什么它的优缺点是什么"></a> 24.promise的内部原理是什么？它的优缺点是什么？</h3>
+<p>​        Promise对象，封装了一个异步操作并且还可以获取成功或失败的结果<br />
+​        Promise主要就是解决回调地狱的问题，之前如果异步任务比较多，同时他们之间有相互依赖的关系，<br />
+​        就只能使用回调函数处理，这样就容易形成回调地狱，代码的可读性差，可维护性也很差<br />
+​        有三种状态：pending初始状态  fulfilled成功状态  rejected失败状态<br />
+​        状态改变只会有两种情况，<br />
+​            pending -&gt; fulfilled; pending -&gt; rejected 一旦发生，状态就会凝固，不会再变<br />
+​        首先就是我们无法取消promise，一旦创建它就会立即执行，不能中途取消<br />
+​        如果不设置回调，promise内部抛出的测u哦呜就无法反馈到外面<br />
+​        若当前处于pending状态时，无法得知目前在哪个阶段。<br />
+​        原理：<br />
+​            构造一个Promise实例，实例需要传递函数的参数，这个函数有两个形参，分别都是函数类型，一个是resolve一个是reject<br />
+​            promise上还有then方法，这个方法就是来指定状态改变时的确定操作，resolve是执行第一个函数，reject是执行第二个函数</p>
+<h3 id="25promise和async-await的区别是什么"><a class="markdownIt-Anchor" href="#25promise和async-await的区别是什么"></a> 25.promise和async await的区别是什么？</h3>
+<p>​        1.都是处理异步请求的方式<br />
+​        2.promise是ES6，async await 是ES7的语法<br />
+​        3.async await是基于promise实现的，他和promise都是非阻塞性的<br />
+​        优缺点：<br />
+​        1.promise是返回对象我们要用then，catch方法去处理和捕获异常，并且书写方式是链式，容易造成代码重叠，不好维护，async await 是通过tra catch进行捕获异常<br />
+​        2.async await最大的优点就是能<strong>让代码看起来像同步一样</strong>，只要遇到await就会立刻返回结果，然后再执行后面的操作<br />
+​        promise.then()的方式返回，会出现请求还没返回，就执行了后面的操作</p>
+<h3 id="26浏览器的存储方式有哪些"><a class="markdownIt-Anchor" href="#26浏览器的存储方式有哪些"></a> 26.浏览器的存储方式有哪些？</h3>
+<p>​        1.cookies<br />
+​            H5标准前的本地存储方式<br />
+​            兼容性好，请求头自带cookie<br />
+​            存储量小，资源浪费，使用麻烦（封装）<br />
+​        2.localstorage 10MB<br />
+​            H5加入的以键值对为标准的方式<br />
+​            操作方便，永久存储，兼容性较好<br />
+​            保存值的类型被限定，浏览器在隐私模式下不可读取，不能被爬虫<br />
+​        3.sessionstorage<br />
+​            当前页面关闭后就会立刻清理，会话级别的存储方式<br />
+​        4.indexedDB 指定配额<br />
+​            H5标准的存储方式，，他是以键值对进行存储，可以快速读取，适合WEB场景</p>
+<h3 id="27token存在sessionstorage还是loaclstorage"><a class="markdownIt-Anchor" href="#27token存在sessionstorage还是loaclstorage"></a> 27.token存在sessionstorage还是loaclstorage？</h3>
+<p>​        token：验证身份的令牌，一般就是用户通过账号密码登录后，服务端把这些凭证通过加密等一系列操作后得到的字符串<br />
+​        1.存loaclstorage里，后期每次请求接口都需要把它当作一个字段传给后台<br />
+​        2.存cookie中，会自动发送，缺点就是<strong>不能跨域</strong><br />
+​        如果存在localstorage中，容易被XSS（跨站脚本）攻击，但是如果做好了对应的措施，那么是利大于弊<br />
+​        如果存在cookie中会有CSRF（跨站请求伪造，利用浏览器会自动携带cookie）攻击</p>
+<h3 id="28token的登录流程"><a class="markdownIt-Anchor" href="#28token的登录流程"></a> 28.token的登录流程。</h3>
+<p>​        1.客户端用账号密码请求登录<br />
+​        2.服务端收到请求后，需要去<strong>验证</strong>账号密码<br />
+​        3.验证成功之后，服务端会签发一个token，把这个token发送给客户端<br />
+​        4.客户端收到token后保存起来，可以放在cookie也可以是localstorage<br />
+​        5.客户端每次向服务端发送请求资源的时候，都需要携带这个token<br />
+​        6.服务端收到请求，接着去验证客户端里的token，验证成功才会返回客户端请求的数据</p>
+<h3 id="29页面渲染的过程是怎样的"><a class="markdownIt-Anchor" href="#29页面渲染的过程是怎样的"></a> 29.页面渲染的过程是怎样的？</h3>
+<p>​        DNS解析<br />
+​        建立TCP连接<br />
+​        发送HTTP请求<br />
+​        服务器处理请求<br />
+​        渲染页面<br />
+​            浏览器会获取HTML和CSS的资源，然后把HTML解析成DOM树<br />
+​            再把CSS解析成CSSOM<br />
+​            把DOM和CSSOM合并为渲染树<br />
+​            布局<br />
+​            把渲染树的每个节点渲染到屏幕上（绘制）<br />
+​        断开TCP连接</p>
+<h3 id="30dom树和渲染树有什么区别"><a class="markdownIt-Anchor" href="#30dom树和渲染树有什么区别"></a> 30.DOM树和渲染树有什么区别？</h3>
+<p>​        DOM树是和HTML标签一一对应的，包括head和隐藏元素<br />
+​        渲染树是不包含head和隐藏元素</p>
+<h3 id="31精灵图和base64的区别是什么"><a class="markdownIt-Anchor" href="#31精灵图和base64的区别是什么"></a> 31.精灵图和base64的区别是什么？</h3>
+<p>​        精灵图：把多张小图整合到一张大图上，利用定位的一些属性把小图显示在页面上，当访问页面可以减少请求，提高加载速度<br />
+​        base64：传输8Bit字节代码的编码方式，把原本二进制形式转为64个字符的单位，最后组成字符串<br />
+​        base64是会和html css一起下载到浏览器中，减少请求，减少跨域问题，但是一些低版本不支持，若base64体积比原图片大，不利于css的加载。</p>
+<h3 id="32svg格式了解多少"><a class="markdownIt-Anchor" href="#32svg格式了解多少"></a> 32.svg格式了解多少？</h3>
+<p>​        基于<strong>XML语法格式的图像格式</strong>，可缩放矢量图，其他图像是基于像素的，SVG是属于对图像形状的描述，本质是文本文件，体积小，并且不管放大多少倍都不会失真<br />
+​        1.SVG可直接插入页面中，成为DOM一部分，然后用JS或CSS进行操作</p>
+<p>​		<code>&lt;svg&gt;&lt;/svg&gt;</code></p>
+<p>​        2.SVG可作为文件被引入<br />
+​            <code>&lt;img src=&quot;pic.svg&quot; /&gt;</code>	<br />
+​        3.SVG可以转为base64引入页面</p>
+<h3 id="33了解过jwt吗"><a class="markdownIt-Anchor" href="#33了解过jwt吗"></a> 33.了解过JWT吗？</h3>
+<p>​        JSON Web Token 通过JSON形式作为在web应用中的令牌，可以在各方之间安全的把信息作为JSON对象传输<br />
+​        信息传输、授权<br />
+​        JWT的认证流程<br />
+​        	1.前端把账号密码发送给后端的接口<br />
+​       	 2.后端核对账号密码成功后，把用户id等其他信息作为<strong>JWT 负载</strong>，把它和头部分别进行<strong>base64编码拼接后签名</strong>，形成一个JWT（token）。<br />
+​        	3.前端每日请求时都会把JWT放在HTTP请求头的<strong>Authorization</strong>字段内<br />
+​        	4.后端检查是否存在，如果存在就<strong>验证JWT</strong>的有效性（签名是否正确，token是否过期）<br />
+​        	5.验证通过后后端使用JWT中包含的用户信息进行其他的操作，并返回对应结果<br />
+​        简洁、包含性、因为Token是JSON加密的形式保存在客户端，所以JWT是跨语言的，原则上是任何web形式都支持。</p>
+<h3 id="34npm的底层环境是什么"><a class="markdownIt-Anchor" href="#34npm的底层环境是什么"></a> 34.npm的底层环境是什么？</h3>
+<p>​        node package manager,node的包管理和分发工具，已经成为分发node模块的标准，是JS的运行环境<br />
+​        npm的组成：网站、注册表、命令行工具</p>
+<h3 id="35http协议规定的协议头和请求头有什么"><a class="markdownIt-Anchor" href="#35http协议规定的协议头和请求头有什么"></a> 35.HTTP协议规定的协议头和请求头有什么？</h3>
+<p>​        1.请求头信息：<br />
+​            Accept:浏览器告诉服务器所支持的数据类型<br />
+​            Host:浏览器告诉服务器我想访问服务器的哪台主机<br />
+​            Referer:浏览器告诉服务器我是从哪里来的（防盗链）<br />
+​            User-Agent:浏览器类型、版本信息<br />
+​            Date:浏览器告诉服务器我是什么时候访问的<br />
+​            Connection:连接方式<br />
+​            Cookie<br />
+​            X-Request-With:请求方式<br />
+​        2.响应头信息：<br />
+​            Location:这个就是告诉浏览器你要去找谁<br />
+​            Server:告诉浏览器服务器的类型<br />
+​            Content-Type:告诉浏览器返回的数据类型<br />
+​            Refresh:控制了的定时刷新</p>
+<h3 id="36说一下浏览器的缓存策略"><a class="markdownIt-Anchor" href="#36说一下浏览器的缓存策略"></a> 36.说一下浏览器的缓存策略。</h3>
+<p>​        强缓存（本地缓存）、协商缓存（弱缓存）<br />
+​        强缓：不发起请求，直接使用缓存里的内容，浏览器把JS，CSS，image等存到内存中，下次用户访问直接从内存中取，提高性能<br />
+​        协缓：需要像后台发请求，通过判断来决定是否使用协商缓存，如果请求内容没有变化，则返回<strong>304</strong>，浏览器就用缓存里的内容<br />
+​        强缓存的触发：<br />
+​            HTTP1.0:时间戳响应标头<br />
+​            HTTP1.1:Cache-Control响应标头<br />
+​        协商缓存触发：<br />
+​            HTTP1.0:请求头：if-modified-since 响应头：last-modified<br />
+​            HTTP1.1:请求头：if-none-match 响应头：Etag</p>
+<h3 id="37说一下什么是同源策略"><a class="markdownIt-Anchor" href="#37说一下什么是同源策略"></a> 37.说一下什么是“同源策略”？</h3>
+<p>​        http:// www.  <a target="_blank" rel="noopener" href="http://aaa.com:8080/index/vue.js">aaa.com:8080/index/vue.js</a><br />
+​        协议    子域名 主域名  端口号     资源<br />
+​        同源策略是浏览器的核心，如果没有这个策略就会遭受网络攻击<br />
+​        主要指的就是<mark>协议+域名+端口号</mark>三者一致，若其中一个不一样则不是同源，会产生跨域<br />
+​        三个允许跨域加载资源的标签：<mark>img  link  script</mark><br />
+​        跨域是可以发送请求，后端也会正常返回结果，只不过这个<strong>结果被浏览器拦截</strong>了！<br />
+​        	JSONP <code>利用script标签跨域，动态创建script标签, script.src='xxxx?callback=handleResponse'</code><br />
+​        	CORS<br />
+​        	websocket<br />
+​        	反向代理</p>
+<h3 id="38防抖和节流是什么"><a class="markdownIt-Anchor" href="#38防抖和节流是什么"></a> 38.防抖和节流是什么？</h3>
+<p>​        都是应对页面中频繁触发事件的优化方案<br />
+​        防抖:避免事件重复触发<br />
+​        	使用场景:1.频繁和服务端交互 2.输入框的自动保存事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">debounce</span>(<span class="params">fn</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(timer) <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">           	timer =  <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>,<span class="variable language_">arguments</span>)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">            &#125;,<span class="number">500</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>​        节流:把频繁触发的事件减少,每隔一段时间执行<br />
+​        	使用场景:scroll事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">function</span> <span class="title function_">throttle</span>(<span class="params">fn</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(timer) <span class="keyword">return</span></span><br><span class="line">            timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>,<span class="variable language_">arguments</span>)</span><br><span class="line">                timer = <span class="literal">null</span></span><br><span class="line">            &#125;, <span class="number">500</span>)    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/scrip</span><br></pre></td></tr></table></figure>
+<h3 id="39解释一下什么是json"><a class="markdownIt-Anchor" href="#39解释一下什么是json"></a> 39.解释一下什么是json？</h3>
+<p>​        JSON是一种<strong>纯字符串形式的数据</strong>，它本身不提供任何方法，适合在网络中进行传输<br />
+​        JSON数据存储在.json文件中，也可以把JSON数据以字符串的形式保存在数据库、Cookise中<br />
+​        JS提供了JSON.parse() JSON.stringify()<br />
+​        什么时候使用json：定义接口；序列化；生成token；配置文件package.json</p>
+<h3 id="40当数据没有请求过来的时候该怎么做"><a class="markdownIt-Anchor" href="#40当数据没有请求过来的时候该怎么做"></a> 40.当数据没有请求过来的时候，该怎么做？</h3>
+<p>​        可以在渲染数据的地方给一些默认的值<br />
+​        if判断语句</p>
+<h3 id="41有没有做过无感登录"><a class="markdownIt-Anchor" href="#41有没有做过无感登录"></a> 41.有没有做过无感登录？</h3>
+<p>​        1.在相应其中拦截，判断token返回过期后，调用刷新token的接口<br />
+​        2.后端返回过期时间，前端判断token的过期时间，去调用刷新token的接口<br />
+​        3.写定时器，<strong>定时刷新</strong>token接口<br />
+​        流程：<br />
+​            1.登录成功后保存token 和 refresh_token<br />
+​            2.在响应拦截器中对401状态码（<code>access token</code> 过期）引入刷新token的api方法调用<br />
+​            3.替换保存本地新的token<br />
+​            4.把错误对象里的token替换<br />
+​            5.再次发送未完成的请求<br />
+​            6.如果refresh_token过期了，判断是否过期，过期了就清楚所有token重新登录</p>
+<h3 id="42大文件上传是怎么做的"><a class="markdownIt-Anchor" href="#42大文件上传是怎么做的"></a> 42.大文件上传是怎么做的？</h3>
+<p>​        分片上传：<br />
+​            1.把需要上传的文件按照一定的规则，分割成相同大小的数据块<br />
+​            2.初始化一个分片上传任务，返回本次分片上传的唯一标识<br />
+​            3.按照一定的规则把各个数据块上传<br />
+​            4.发送完成后，服务端会判断数据上传的完整性，如果完整，那么就会把数据库合并成原始文件<br />
+​        断点续传：<br />
+​            服务端返回，从哪里开始  浏览器自己处理</p>
+<h2 id="三-html5css3"><a class="markdownIt-Anchor" href="#三-html5css3"></a> 三、HTML5CSS3</h2>
+<h3 id="1语义化的理解"><a class="markdownIt-Anchor" href="#1语义化的理解"></a> 1.语义化的理解。</h3>
+<p>​        在写HTML页面结构时所用的标签有意义<br />
+​        头部用head  主体用main  底部用foot…<br />
+​        怎么判断页面是否语义化了？<br />
+​            把CSS去掉，如果能够清晰的看出来页面结构，显示内容较为正常<br />
+​        为什么要选择语义化？<br />
+​            1.让HTML结构更加清晰明了<br />
+​            2.方便团队协作，利于开发<br />
+​            3.有利于爬虫和SEO<br />
+​            4.能够让浏览器更好的去解析代码<br />
+​            5.给用户带来良好的体验</p>
+<h3 id="2h5c3有哪些新特性"><a class="markdownIt-Anchor" href="#2h5c3有哪些新特性"></a> 2.H5C3有哪些新特性？</h3>
+<p>​        H5的新特性：<br />
+​            1.语义化的标签<br />
+​            2.新增音频视频<br />
+​            3.画布canvas<br />
+​            4.数据存储localstorage sessionstorage<br />
+​            5.增加了表单控件 email url search…<br />
+​            6.拖拽释放API<br />
+​        CSS3的新特性：<br />
+​            1.新增选择器：属性选择器、伪类选择器、伪元素选择器<br />
+​            2.增加了媒体查询<br />
+​            3.文字阴影<br />
+​            4.边框<br />
+​            5.盒子模型box-sizing<br />
+​            6.渐变<br />
+​            7.过度<br />
+​            8.自定义动画<br />
+​            9.背景的属性<br />
+​            10.2D和3D</p>
+<h3 id="3rem是如何做适配的"><a class="markdownIt-Anchor" href="#3rem是如何做适配的"></a> 3.rem是如何做适配的？</h3>
+<p>​        rem是相对长度，相对于根元素（html）的font-size属性来计算大小，通常来做移动端的适配<br />
+​        rem是根据根元素font-size计算值的倍数<br />
+​        比如html上的font-size:16px，给div设置宽为1.5rem,1.2rem = 16px*1.2 = 19.2px.</p>
+<h3 id="4解决了哪些移动端的兼容问题"><a class="markdownIt-Anchor" href="#4解决了哪些移动端的兼容问题"></a> 4.解决了哪些移动端的兼容问题？</h3>
+<p>​        1.当设置样式overflow:scroll/auto时，IOS上的滑动会卡顿<br />
+​            -webkit-overflow-scrolling:touch;<br />
+​        2.在安卓环境下placeholder文字设置行高时会偏上<br />
+​            input有placeholder属性的时候不要设置行高<br />
+​        3.移动端字体小于12px时异常显示<br />
+​            应该先把在整体放大一倍，然后再用transform进行缩小<br />
+​        4.ios下input按钮设置了disabled属性为true显示异常<br />
+​            input[typy=button]{<br />
+​                opcity:1<br />
+​            }<br />
+​        5.安卓手机下取消语音输入按钮<br />
+​            input::-webkit-input-speech-button{<br />
+​                display:none<br />
+​            }<br />
+​        6.IOS下取消input输入框在输入引文首字母默认大写<br />
+​            <input autocapitalize='off' autocorrect='off'/><br />
+​        7.禁用IOS和安卓用户选中文字<br />
+​            添加全局CSS样式：-webkit-user-select:none<br />
+​        8.禁止IOS弹出各种窗口<br />
+​            -webkit-touch-callout:none<br />
+​        9.禁止IOS识别长串数字为电话<br />
+​            添加meta属性 <meta conten='telephone=no' name='format-detection'></p>
+<h2 id="四-vue"><a class="markdownIt-Anchor" href="#四-vue"></a> 四、Vue</h2>
+<h3 id="1v-if和v-show的区别"><a class="markdownIt-Anchor" href="#1v-if和v-show的区别"></a> 1.v-if和v-show的区别？</h3>
+<p>​        都可以控制元素的显示和隐藏<br />
+​        1.v-show时控制元素的display值来让元素显示和隐藏；v-if显示隐藏时把DOM元素整个添加和删除<br />
+​        2.v-if有一个<strong>局部编译/卸载</strong>的过程，切换这个过程中会适当的销毁和重建内部的事件监听和子组件；v-show只是简单的css切换<br />
+​        3.v-if才是真正的条件渲染；v-show从false变成true的时候不会触发组件的声明周期，v-if会触发声明周期<br />
+​        4.v-if的切换效率比较低  v-show的效率比较高</p>
+<h3 id="2如何理解mvvm的"><a class="markdownIt-Anchor" href="#2如何理解mvvm的"></a> 2.如何理解MVVM的？</h3>
+<p>是Model-View-ViewModel的缩写。前端开发的架构模式<br />
+​        M：模型，对应的就是data的数据<br />
+​        V：视图，用户界面，DOM<br />
+​        VM：视图模型：Vue的实例对象，连接View和Model的桥梁<br />
+​        核心是提供对View和ViewModel的双向数据绑定，当数据改变的时候，ViewModel能监听到数据的变化，自动更新视图，当用户操作视图的时候，ViewModel也可以监听到视图的变化，然后通知数据进行改动，这就实现了双向数据绑定<br />
+​        ViewModel通过双向绑定把View和Model连接起来，他们之间的同步是自动的，不需要认为干涉，所以我们只需要关注业务逻辑即可，不需要操作DOM，同时也不需要关注数据的状态问题，因为她是由MVVM统一管理</p>
+<h3 id="3v-for中的key值的作用是什么"><a class="markdownIt-Anchor" href="#3v-for中的key值的作用是什么"></a> 3.v-for中的key值的作用是什么？</h3>
+<p>​        key属性是DOM元素的唯一标识<br />
+​        作用：<br />
+​            1.提高虚拟DOM的更新<br />
+​            2.若不设置key，可能会触发一些bug<br />
+​            3.为了触发过度效果</p>
+<h3 id="4说一下你对vue生命周期的理解"><a class="markdownIt-Anchor" href="#4说一下你对vue生命周期的理解"></a> 4.说一下你对vue生命周期的理解。</h3>
+<p>​        组件从创建到销毁的过程就是它的生命周期<br />
+​        创建<br />
+​            beforeCreat<br />
+​                在这个阶段属性和方法都不能使用<br />
+​            created<br />
+​                这里时实例创建完成之后，在这里完成了数据监测，可以使用数据，修改数据，不会触发updated，也不会更新视图<br />
+​        挂载<br />
+​            beforeMount<br />
+​                完成了模板的编译，虚拟DOM也完成创建，即将渲染，修改数据，不会触发updated<br />
+​            Mounted<br />
+​                把编译好的模板挂载到页面，这里可以发送异步请求也可以访问DOM节点<br />
+​        更新<br />
+​            beforeUpdate<br />
+​                组件数据更新之前使用，数据是新的，页面上的数据时旧的，组件即将更新，准备渲染，可以改数据<br />
+​            updated<br />
+​                render重新做了渲染，这时数据和页面都是新的，避免在此更新数据<br />
+​        销毁<br />
+​            beforeDestroy<br />
+​                实例销毁前，在这里实例还可以用，可以清楚定时器等等<br />
+​            destroyed<br />
+​                组件已经被销毁了，全部都销毁<br />
+​        使用了keep-alive时多出两个周期：<br />
+​            activited<br />
+​                组件激活时<br />
+​            deactivited<br />
+​                组件被销毁时</p>
+<h3 id="5在created和mounted去请求数据有什么区别"><a class="markdownIt-Anchor" href="#5在created和mounted去请求数据有什么区别"></a> 5.在created和mounted去请求数据，有什么区别？</h3>
+<p>​        created：在渲染前调用，通常先初始化属性，然后做渲染<br />
+​        mounted：在模板渲染完成后，一般都是初始化页面后，在对元素节点进行操作<br />
+​                在这里请求数据可能会出现闪屏的问题，created里不会<br />
+​        一般用created比较多<br />
+​        请求的数据对DOM有影响，那么使用created<br />
+​        如果请求的数据对DOM无关，可以放在mounted</p>
+<h3 id="6vue中的修饰符有哪些"><a class="markdownIt-Anchor" href="#6vue中的修饰符有哪些"></a> 6.vue中的修饰符有哪些？</h3>
+<p>​        1.事件修饰符<br />
+​            .stop       组织冒泡<br />
+​            .prevent    组织默认行为<br />
+​            .capture    内部元素触发的事件先在次处理<br />
+​            .self       只有在event.target是当前元素时触发<br />
+​            .once       事件只会触发一次<br />
+​            .passive    立即触发默认行为<br />
+​            .native     把当前元素作为原生标签看待<br />
+​        2.按键修饰符<br />
+​            .keyup      键盘抬起<br />
+​            .keydown    键盘按下<br />
+​        3.系统修饰符<br />
+​            .ctrl<br />
+​            .alt<br />
+​            .meta<br />
+​        4.鼠标修饰符<br />
+​            .left       鼠标左键<br />
+​            .right      鼠标右键<br />
+​            .middle     鼠标中键<br />
+​        5.表单修饰符<br />
+​            .lazy       等输入完之后再显示<br />
+​            .trim       删除内容前后的空格<br />
+​            .number     输入是数字或转为数字</p>
+<h3 id="7elementui是怎么做表单验证的"><a class="markdownIt-Anchor" href="#7elementui是怎么做表单验证的"></a> 7.elementui是怎么做表单验证的？</h3>
+<p>​        1.在表单中加rules属性，然后再data里写校验规则<br />
+​        2.内部添加规则<br />
+​        3.自定义函数校验</p>
+<h3 id="8vue如何进行组件通信"><a class="markdownIt-Anchor" href="#8vue如何进行组件通信"></a> 8.vue如何进行组件通信？</h3>
+<p>​        1.父传子<br />
+​            props<br />
+​                父组件使用自定义属性，然后子组件使用props<br />
+​            <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>e</mi><mi>f</mi><mtext>​引用信息会注册在父组件的</mtext></mrow><annotation encoding="application/x-tex">ref
+​                引用信息会注册在父组件的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord">​</span><span class="mord cjk_fallback">引</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">息</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">注</span><span class="mord cjk_fallback">册</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">父</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">的</span></span></span></span>refs对象上<br />
+​        2.子传父<br />
+​            <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>m</mi><mi>i</mi><mi>t</mi><mtext>​子组件绑定自定义事件，触发执行后，传给父组件，父组件需要用事件监听来接收参数​</mtext><mn>3.</mn><mtext>兄弟传​</mtext><mi>n</mi><mi>e</mi><mi>w</mi><mtext>一个新的</mtext><mi>v</mi><mi>u</mi><mi>e</mi><mtext>实例，用</mtext><mi>o</mi><mi>n</mi><mtext>和</mtext><mi>e</mi><mi>m</mi><mi>i</mi><mi>t</mi><mtext>来对数据进行传输​</mtext><mn>4.</mn><mi>v</mi><mi>u</mi><mi>e</mi><mi>x</mi><mtext>传值​</mtext><mn>9.</mn><mi>k</mi><mi>e</mi><mi>e</mi><mi>p</mi><mo>−</mo><mi>a</mi><mi>l</mi><mi>i</mi><mi>v</mi><mi>e</mi><mtext>是什么？怎么使用？​</mtext><mi>V</mi><mi>u</mi><mi>e</mi><mtext>的一个内置组件，包裹组件的时候，会缓存不活跃的组件实例，并不是销毁他们​作用：把组件切换的状态保存在内存里，防止重复渲染</mtext><mi>D</mi><mi>O</mi><mi>M</mi><mtext>节点，减少加载时间和性能消耗，提高用户体验​</mtext><mn>10.</mn><mi>a</mi><mi>x</mi><mi>i</mi><mi>o</mi><mi>s</mi><mtext>是怎么做封装的？​下载创建实例接着封装请求响应拦截器抛出最后封装接口​</mtext><mn>11.</mn><mi>v</mi><mi>u</mi><mi>e</mi><mtext>路由时怎么传参的？​</mtext><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>m</mi><mi>s</mi><mtext>传参​</mtext><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">emit
+​                子组件绑定自定义事件，触发执行后，传给父组件，父组件需要用事件监听来接收参数
+​        3.兄弟传
+​            new一个新的vue实例，用on和emit来对数据进行传输
+​        4.vuex传值
+​    9.keep-alive是什么？怎么使用？
+​        Vue的一个内置组件，包裹组件的时候，会缓存不活跃的组件实例，并不是销毁他们
+​        作用：把组件切换的状态保存在内存里，防止重复渲染DOM节点，减少加载时间和性能消耗，提高用户体验
+​    10.axios是怎么做封装的？
+​        下载 创建实例 接着封装请求响应拦截器  抛出 最后封装接口
+​    11.vue路由时怎么传参的？
+​        params传参
+​            this.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord">​</span><span class="mord cjk_fallback">子</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">绑</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">自</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">义</span><span class="mord cjk_fallback">事</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">触</span><span class="mord cjk_fallback">发</span><span class="mord cjk_fallback">执</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">后</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">给</span><span class="mord cjk_fallback">父</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">父</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">需</span><span class="mord cjk_fallback">要</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">事</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">监</span><span class="mord cjk_fallback">听</span><span class="mord cjk_fallback">来</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">收</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">数</span><span class="mord">​</span><span class="mord">3</span><span class="mord">.</span><span class="mord cjk_fallback">兄</span><span class="mord cjk_fallback">弟</span><span class="mord cjk_fallback">传</span><span class="mord">​</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">新</span><span class="mord cjk_fallback">的</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord cjk_fallback">实</span><span class="mord cjk_fallback">例</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">用</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">和</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">来</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">据</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">输</span><span class="mord">​</span><span class="mord">4</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">值</span><span class="mord">​</span><span class="mord">9</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal">e</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">什</span><span class="mord cjk_fallback">么</span><span class="mord cjk_fallback">？</span><span class="mord cjk_fallback">怎</span><span class="mord cjk_fallback">么</span><span class="mord cjk_fallback">使</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">？</span><span class="mord">​</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">置</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">包</span><span class="mord cjk_fallback">裹</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">候</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">缓</span><span class="mord cjk_fallback">存</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">活</span><span class="mord cjk_fallback">跃</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">实</span><span class="mord cjk_fallback">例</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">并</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">销</span><span class="mord cjk_fallback">毁</span><span class="mord cjk_fallback">他</span><span class="mord cjk_fallback">们</span><span class="mord">​</span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">：</span><span class="mord cjk_fallback">把</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">切</span><span class="mord cjk_fallback">换</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">状</span><span class="mord cjk_fallback">态</span><span class="mord cjk_fallback">保</span><span class="mord cjk_fallback">存</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">存</span><span class="mord cjk_fallback">里</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">防</span><span class="mord cjk_fallback">止</span><span class="mord cjk_fallback">重</span><span class="mord cjk_fallback">复</span><span class="mord cjk_fallback">渲</span><span class="mord cjk_fallback">染</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord cjk_fallback">节</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">减</span><span class="mord cjk_fallback">少</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">能</span><span class="mord cjk_fallback">消</span><span class="mord cjk_fallback">耗</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">高</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">户</span><span class="mord cjk_fallback">体</span><span class="mord cjk_fallback">验</span><span class="mord">​</span><span class="mord">1</span><span class="mord">0</span><span class="mord">.</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">怎</span><span class="mord cjk_fallback">么</span><span class="mord cjk_fallback">做</span><span class="mord cjk_fallback">封</span><span class="mord cjk_fallback">装</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">？</span><span class="mord">​</span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">创</span><span class="mord cjk_fallback">建</span><span class="mord cjk_fallback">实</span><span class="mord cjk_fallback">例</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">着</span><span class="mord cjk_fallback">封</span><span class="mord cjk_fallback">装</span><span class="mord cjk_fallback">请</span><span class="mord cjk_fallback">求</span><span class="mord cjk_fallback">响</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">拦</span><span class="mord cjk_fallback">截</span><span class="mord cjk_fallback">器</span><span class="mord cjk_fallback">抛</span><span class="mord cjk_fallback">出</span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">后</span><span class="mord cjk_fallback">封</span><span class="mord cjk_fallback">装</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">口</span><span class="mord">​</span><span class="mord">1</span><span class="mord">1</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord cjk_fallback">路</span><span class="mord cjk_fallback">由</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">怎</span><span class="mord cjk_fallback">么</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">？</span><span class="mord">​</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">参</span><span class="mord">​</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord">.</span></span></span></span>router.push({name:‘index’,params:{id:item.id}})<br />
+​            this.<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi mathvariant="normal">.</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>m</mi><mi>s</mi><mi mathvariant="normal">.</mi><mi>i</mi><mi>d</mi><mtext>​路由属性传参​</mtext><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">route.params.id
+​        路由属性传参
+​            this.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord">.</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span><span class="mord">.</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord">​</span><span class="mord cjk_fallback">路</span><span class="mord cjk_fallback">由</span><span class="mord cjk_fallback">属</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">参</span><span class="mord">​</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord">.</span></span></span></span>router.push({name:'/index/<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 11: {item.id}&#039;}̲)
+​            …'>{item.id}&#039;})
+​            路由配置 { path:&#039;/index:id&#039; }
+​        query传参（可以解决页面刷新参数丢失的问题）
+​            this.</span>router.push({<br />
+​                name:‘index’,<br />
+​                query:{id:item.id}<br />
+​            })</p>
+<h3 id="12vue路由的hash模式和history模式有什么区别"><a class="markdownIt-Anchor" href="#12vue路由的hash模式和history模式有什么区别"></a> 12.vue路由的hash模式和history模式有什么区别？</h3>
+<p>​        1.hash的路由地址上有#号，history模式没有<br />
+​        2.在做回车刷新的时候，hash模式会加载对应页面，history会报错404<br />
+​        3.hash模式支持低版本浏览器，history不支持，因为是H5新增的API<br />
+​        4.hash不会重新加载页面，单页面应用必备<br />
+​        5.history有历史记录，H5新增了pushState和replaceState()去修改历史记录，并不会立刻发送请求<br />
+​        6.history需要后台配置</p>
+<h3 id="13路由拦截是怎么实现的"><a class="markdownIt-Anchor" href="#13路由拦截是怎么实现的"></a> 13.路由拦截是怎么实现的？</h3>
+<p>​        路由拦截 axios拦截<br />
+​        需要在路由配置中添加一个字段，它是用于判断路由是否需要拦截</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">           	<span class="attr">name</span>:<span class="string">&#x27;index&#x27;</span>,</span><br><span class="line">​           <span class="attr">path</span>:<span class="string">&#x27;/index&#x27;</span>,</span><br><span class="line">​           <span class="attr">component</span>:<span class="title class_">Index</span>,</span><br><span class="line">​           <span class="attr">meta</span>:&#123;</span><br><span class="line">​                <span class="attr">requirtAuth</span>:<span class="literal">true</span></span><br><span class="line">​            &#125;</span><br><span class="line">​        &#125;</span><br><span class="line">​        router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to,<span class="keyword">from</span>,next</span>) =&gt;</span> &#123;</span><br><span class="line">​            <span class="keyword">if</span>(to.<span class="property">meta</span>.<span class="property">requirtAuth</span>)&#123;</span><br><span class="line">​                <span class="keyword">if</span>( store.<span class="property">satte</span>.<span class="property">token</span> )&#123;</span><br><span class="line">​                    <span class="title function_">next</span>()</span><br><span class="line">​                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">​                </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="14说一下vue的动态路由"><a class="markdownIt-Anchor" href="#14说一下vue的动态路由"></a> 14.说一下vue的动态路由。</h3>
+<p>​        要在路由配置里设置meat属性，扩展权限相关的字段，在路由导航守卫里通过判断这个权限标识，实现路由的动态增加和跳转<br />
+​        根据用户登录的账号，返回用户角色<br />
+​        前端再根据角色，跟路由表的meta.role进行匹配<br />
+​        把匹配搭配的路由形成可访问的路由</p>
+<h3 id="15如何解决刷新后二次加载路由"><a class="markdownIt-Anchor" href="#15如何解决刷新后二次加载路由"></a> 15.如何解决刷新后二次加载路由？</h3>
+<p>​        1.window.location.reload()<br />
+​        2.matcher<br />
+​            const router = createRouter()<br />
+​            export function resetRouter(){<br />
+​                const newRouter = creatRouter()<br />
+​                router.matcher = newRouter.matcher<br />
+​            }</p>
+<h3 id="16vuex刷新数据会丢失吗怎么解决"><a class="markdownIt-Anchor" href="#16vuex刷新数据会丢失吗怎么解决"></a> 16.vuex刷新数据会丢失吗？怎么解决？</h3>
+<p>​        vuex肯定会重新获取数据，页面也会丢失数据<br />
+​        1.把数据直接保存在浏览器缓存里（cookie  localstorage  sessionstorage）<br />
+​        2.页面刷新的时候，再次请求数据，达到可以动态更新的方法<br />
+​            监听浏览器的刷新书简，在刷新前把数据保存到sessionstorage里，刷新后请求数据，请求到了用vuex，如果没有那就用sessionstorage里的数据</p>
+<h3 id="17computed和watch的区别"><a class="markdownIt-Anchor" href="#17computed和watch的区别"></a> 17.computed和watch的区别？</h3>
+<p>​        1.computed是计算属性，watch是监听，监听的是data中数据的变化<br />
+​        2.computed是支持缓存，依赖的属性值发生变化，计算属性才会重新计算，否则用缓存；watch不支持缓存<br />
+​        3.computed不支持异步，watch是可以异步操作<br />
+​        4.computed是第一次加载就监听，watch是不监听<br />
+​        5.computed函数中必须有return  watch不用</p>
+<h3 id="18vuex在什么场景会去使用属性有哪些"><a class="markdownIt-Anchor" href="#18vuex在什么场景会去使用属性有哪些"></a> 18.vuex在什么场景会去使用？属性有哪些？</h3>
+<p>​        state       存储变量<br />
+​        getters     state的计算属性<br />
+​        mutations   提交更新数据的方法<br />
+​        actions     和mutations差不多，他是提交mutations来修改数据，可以包括异步操作<br />
+​        modules     模块化vuex<br />
+​        使用场景：<br />
+​            用户的个人信息、购物车模块、订单模块</p>
+<h3 id="19vue的双向数据绑定原理是什么"><a class="markdownIt-Anchor" href="#19vue的双向数据绑定原理是什么"></a> 19.vue的双向数据绑定原理是什么？</h3>
+<p>​        通过数据劫持和发布订阅者模式来实现，同时利用Object.defineProperty()劫持各个属性的setter和getter，<br />
+​        在数据发生改变的时候发布消息给订阅者，触发对应的监听回调渲染视图，也就是说数据和视图时同步的，数据发生改变，视图跟着发生改变，视图改变，数据也会发生改变。<br />
+​        第一步：需要observer的数据对象进行递归遍历，包括子属性对象的属性，都加上setter和getter<br />
+​        第二步：compile模板解析指令，把模板中的变量替换成数据，然后初始化渲染视图，同时把每个指令对应的节点绑定上更新函数，添加订阅者，如果数据变化，收到通知，更新视图<br />
+​        第三步：Watcher订阅者是Observer和Compile之间的通信桥梁，作用：<br />
+​                1.在自身实例化的时候忘订阅器内添加自己<br />
+​                2.自身要有一个update()方法<br />
+​                3.等待属性变动时，调用自身的update方法，触发compile这种的回调<br />
+​        第四步：MVVM作为数据绑定的入口，整合了observer、compile和watcher三者，通过observer来监听自己的数据变化，通过compile解析模板指令，最后利用watcher把observer和compile联系起来，最终达到数据更新视图更新，视图更新数据更新的效果</p>
+<h3 id="20了解diff算法和虚拟dom吗"><a class="markdownIt-Anchor" href="#20了解diff算法和虚拟dom吗"></a> 20.了解diff算法和虚拟DOM吗？</h3>
+<p>​        虚拟DOM，描述元素和元素之间的关系，创建一个JS对象<br />
+​        如果组件内有响应的数据，数据发生改变的时候，render函数会生成一个新的虚拟DOM，这个新的虚拟DOM会和旧的虚拟DOM进行比对，找到需要修改的虚拟DOM内容，然后去对应的真实DOM中修改<br />
+​        diff算法就是虚拟DOM的比对时用的，返回一个patch对象，这个对象的作用就是存储两个节点不同的地方，最后用patch里记录的信息进行更新真实DOM<br />
+​        步骤：<br />
+​            1.JS对象表示真实的DOM结构，要生成一个虚拟DOM，再用虚拟DOM构建一个真实DOM树，渲染到页面<br />
+​            2.状态改变生成新的虚拟DOM，跟就得虚拟DOM进行比对，这个比对的过程就是DIFF算法，利用patch记录差异<br />
+​            3.把记录的差异用在第一个虚拟DOM生成的真实DOM上，视图就更新了。</p>
+<h3 id="21vue和jquery的区别是什么"><a class="markdownIt-Anchor" href="#21vue和jquery的区别是什么"></a> 21.vue和jquery的区别是什么？</h3>
+<p>​        1.原理不同<br />
+​            vue就是数据绑定；jq是先获取dom再处理<br />
+​        2.着重点不同<br />
+​            vue是数据驱动，jq是着重于页面<br />
+​        3.操作不同<br />
+​        4.未来发展不同</p>
+<h3 id="22vuex的响应式处理"><a class="markdownIt-Anchor" href="#22vuex的响应式处理"></a> 22.vuex的响应式处理。</h3>
+<p>​        vuex是vue的状态管理工具<br />
+​        vue中可以直接触发methods中的方法，vuex是不可以的。未来处理异步，当触发事件的时候，会通过dispatch来访问actions中的方法，actions中的commit会触发mutations中的方法从而修改state里的值，通过getter把数据更新到视图<br />
+​        Vue.use(vuex)，调用install方法，通过applyMixin(vue)在任意组件内执行this.$store就可以访问到store对象。<br />
+​        vuex的state是响应式的，借助的就是vue的data，把state存到vue实例组件的data中</p>
+<h3 id="23vue中遍历全局的方法有哪些"><a class="markdownIt-Anchor" href="#23vue中遍历全局的方法有哪些"></a> 23.vue中遍历全局的方法有哪些？</h3>
+<p>​        1.普通遍历，对象.forEach()<br />
+​            arr.forEach(function(item,index,arr){<br />
+​                console.log(item,index)<br />
+​            })<br />
+​        2.对元素统一操作  对象.map()<br />
+​            var newarr = arr.map(function(item){<br />
+​                return item+1<br />
+​            })<br />
+​        3.查找符合条件的元素 对象.filter()<br />
+​            arr.filter(function(item){<br />
+​                if(item &gt; 2){<br />
+​                    return false<br />
+​                }else{<br />
+​                    return true<br />
+​                }<br />
+​            })<br />
+​        4.查询符合条件的元素，返回索引 对象.findindex()<br />
+​            arr.finindex(function(item){<br />
+​                if(item&gt;1){<br />
+​                    return true<br />
+​                }else{<br />
+​                    return false<br />
+​                }<br />
+​            })<br />
+​        对象.evening()  遇到不符合的对象会停止<br />
+​        对象.some()  找到符合条件的元素就停止</p>
+<h3 id="24如何搭建脚手架"><a class="markdownIt-Anchor" href="#24如何搭建脚手架"></a> 24.如何搭建脚手架？</h3>
+<p>​        下载：node  cnpm  webpack vue-cli<br />
+​        创建项目：<br />
+​            1.找到对应的文件，然后利用node指令创建（cmd）<br />
+​            2.vue init webpack xxxx<br />
+​            3.回车项目描述<br />
+​            4.作者回车<br />
+​            5.选择vue build<br />
+​            6.回车<br />
+​            7.输入n<br />
+​            8.不按照yarn<br />
+​            9.输入npm run dev</p>
+<h3 id="25如何封装一个组件"><a class="markdownIt-Anchor" href="#25如何封装一个组件"></a> 25.如何封装一个组件？</h3>
+<p>​        1.使用Vue.extend()创建一个组件<br />
+​        2.使用Vue.components()方法注册组件<br />
+​        3.如果子组件需要数据，可以在props中接收定义<br />
+​        4.子组件修改好数据，要把数据传递给父组件，可以用emit()方法<br />
+​        原则：<br />
+​            把功能拆开<br />
+​            尽量让组件原子化，一个组件做一件事情<br />
+​            容器组件管数据，展示组件管视图</p>
+<h3 id="26封装一个可复用的组件需要满足什么条件"><a class="markdownIt-Anchor" href="#26封装一个可复用的组件需要满足什么条件"></a> 26.封装一个可复用的组件，需要满足什么条件？</h3>
+<p>​        1.低耦合，组件之间的依赖越小越好<br />
+​        2.最好从父级传入信息，不要在公共组件中请求数据<br />
+​        3.传入的数据要进行校验<br />
+​        4.处理事件的方法写在父组件中</p>
+<h3 id="27vue的过滤器怎么使用"><a class="markdownIt-Anchor" href="#27vue的过滤器怎么使用"></a> 27.vue的过滤器怎么使用？</h3>
+<p>​        vue的特性，用来对文本进行格式化处理<br />
+​        使用它的两个地方，一个是插值表达式，一个是v-bind<br />
+​        分类：<br />
+​            1.全局过滤器<br />
+​                Vue.filter(‘add’,function(v){<br />
+​                    return v &lt; 10 ? ‘0’ + v : v<br />
+​                })</p>
+<pre><code>            &lt;div&gt;&#123;&#123;33 | add&#125;&#125;&lt;/div&gt;
 </code></pre>
-<p>三、HTML5CSS3<br />
-1.语义化的理解。<br />
-在写HTML页面结构时所用的标签有意义<br />
-头部用head  主体用main  底部用foot…<br />
-怎么判断页面是否语义化了？<br />
-把CSS去掉，如果能够清晰的看出来页面结构，显示内容较为正常<br />
-为什么要选择语义化？<br />
-1.让HTML结构更加清晰明了<br />
-2.方便团队协作，利于开发<br />
-3.有利于爬虫和SEO<br />
-4.能够让浏览器更好的去解析代码<br />
-5.给用户带来良好的体验<br />
-2.H5C3有哪些新特性？<br />
-H5的新特性：<br />
-1.语义化的标签<br />
-2.新增音频视频<br />
-3.画布canvas<br />
-4.数据存储localstorage sessionstorage<br />
-5.增加了表单控件 email url search…<br />
-6.拖拽释放API<br />
-CSS3的新特性：<br />
-1.新增选择器：属性选择器、伪类选择器、伪元素选择器<br />
-2.增加了媒体查询<br />
-3.文字阴影<br />
-4.边框<br />
-5.盒子模型box-sizing<br />
-6.渐变<br />
-7.过度<br />
-8.自定义动画<br />
-9.背景的属性<br />
-10.2D和3D<br />
-3.rem是如何做适配的？<br />
-rem是相对长度，相对于根元素（html）的font-size属性来计算大小，通常来做移动端的适配<br />
-rem是根据根元素font-size计算值的倍数<br />
-比如html上的font-size:16px，给div设置宽为1.5rem,1.2rem = 16px*1.2 = 19.2px.<br />
-4.解决了哪些移动端的兼容问题？<br />
-1.当设置样式overflow:scroll/auto时，IOS上的华东会卡顿<br />
--webkit-overflow-scrolling:touch;<br />
-2.在安卓环境下placeholder文字设置行高时会偏上<br />
-input有placeholder属性的时候不要设置行高<br />
-3.移动端字体小于12px时异常显示<br />
-应该先把在整体放大一倍，然后再用transform进行缩小<br />
-4.ios下input按钮设置了disabled属性为true显示异常<br />
-input[typy=button]{<br />
-opcity:1<br />
-}<br />
-5.安卓手机下取消语音输入按钮<br />
-input::-webkit-input-speech-button{<br />
-display:none<br />
-}<br />
-6.IOS下取消input输入框在输入引文首字母默认大写<br />
-<input autocapitalize='off' autocorrect='off'/><br />
-7.禁用IOS和安卓用户选中文字<br />
-添加全局CSS样式：-webkit-user-select:none<br />
-8.禁止IOS弹出各种窗口<br />
--webkit-touch-callout:none<br />
-9.禁止IOS识别长串数字为电话<br />
-添加meta属性 <meta conten='telephone=no' name='format-detection'></p>
-<p>四、Vue<br />
-1.v-if和v-show的区别？<br />
-都可以控制元素的显示和隐藏<br />
-1.v-show时控制元素的display值来让元素显示和隐藏；v-if显示隐藏时把DOM元素整个添加和删除<br />
-2.v-if有一个局部编译/卸载的过程，切换这个过程中会适当的销毁和重建内部的事件监听和子组件；v-show只是简单的css切换<br />
-3.v-if才是真正的条件渲染；v-show从false变成true的时候不会触发组件的声明周期，v-if会触发声明周期<br />
-4.v-if的切换效率比较低  v-show的效率比较高<br />
-2.如何理解MVVM的？<br />
-是Model-View-ViewModel的缩写。前端开发的架构模式<br />
-M：模型，对应的就是data的数据<br />
-V：视图，用户界面，DOM<br />
-VM：视图模型：Vue的实例对象，连接View和Model的桥梁<br />
-核心是提供对View和ViewModel的双向数据绑定，当数据改变的时候，ViewModel能监听到数据的变化，自动更新视图，当用户操作视图的时候，ViewModel也可以监听到视图的变化，然后通知数据进行改动，这就实现了双向数据绑定<br />
-ViewModel通过双向绑定把View和Model连接起来，他们之间的同步是自动的，不需要认为干涉，所以我们只需要关注业务逻辑即可，不需要操作DOM，同时也不需要关注数据的状态问题，因为她是由MVVM统一管理<br />
-3.v-for中的key值的作用是什么？<br />
-key属性是DOM元素的唯一标识<br />
-作用：<br />
-1.提高虚拟DOM的更新<br />
-2.若不设置key，可能会触发一些bug<br />
-3.为了触发过度效果<br />
-4.说一下你对vue生命周期的理解。<br />
-组件从创建到销毁的过程就是它的生命周期<br />
-创建<br />
-beforeCreat<br />
-在这个阶段属性和方法都不能使用<br />
-created<br />
-这里时实例创建完成之后，在这里完成了数据监测，可以使用数据，修改数据，不会触发updated，也不会更新视图<br />
-挂载<br />
-beforeMount<br />
-完成了模板的编译，虚拟DOM也完成创建，即将渲染，修改数据，不会触发updated<br />
-Mounted<br />
-把编译好的模板挂载到页面，这里可以发送异步请求也可以访问DOM节点<br />
-更新<br />
-beforeUpdate<br />
-组件数据更新之前使用，数据是新的，页面上的数据时旧的，组件即将更新，准备渲染，可以改数据<br />
-updated<br />
-render重新做了渲染，这时数据和页面都是新的，避免在此更新数据<br />
-销毁<br />
-beforeDestroy<br />
-实例销毁前，在这里实例还可以用，可以清楚定时器等等<br />
-destroyed<br />
-组件已经被销毁了，全部都销毁<br />
-使用了keep-alive时多出两个周期：<br />
-activited<br />
-组件激活时<br />
-deactivited<br />
-组件被销毁时<br />
-5.在created和mounted去请求数据，有什么区别？<br />
-created：在渲染前调用，通常先初始化属性，然后做渲染<br />
-mounted：在模板渲染完成后，一般都是初始化页面后，在对元素节点进行操作<br />
-在这里请求数据可能会出现闪屏的问题，created里不会<br />
-一般用created比较多<br />
-请求的数据对DOM有影响，那么使用created<br />
-如果请求的数据对DOM无关，可以放在mounted<br />
-6.vue中的修饰符有哪些？<br />
-1.事件修饰符<br />
-.stop       组织冒泡<br />
-.prevent    组织默认行为<br />
-.capture    内部元素触发的事件先在次处理<br />
-.self       只有在event.target是当前元素时触发<br />
-.once       事件只会触发一次<br />
-.passive    立即触发默认行为<br />
-.native     把当前元素作为原生标签看待<br />
-2.按键修饰符<br />
-.keyup      键盘抬起<br />
-.keydown    键盘按下<br />
-3.系统修饰符<br />
-.ctrl<br />
-.alt<br />
-.meta<br />
-4.鼠标修饰符<br />
-.left       鼠标左键<br />
-.right      鼠标右键<br />
-.middle     鼠标中键<br />
-5.表单修饰符<br />
-.lazy       等输入完之后再显示<br />
-.trim       删除内容前后的空格<br />
-.number     输入是数字或转为数字<br />
-7.elementui是怎么做表单验证的？<br />
-1.在表单中加rules属性，然后再data里写校验规则<br />
-2.内部添加规则<br />
-3.自定义函数校验<br />
-8.vue如何进行组件通信？<br />
-1.父传子<br />
-props<br />
-父组件使用自定义属性，然后子组件使用props<br />
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>e</mi><mi>f</mi><mtext>引用信息会注册在父组件的</mtext></mrow><annotation encoding="application/x-tex">ref
-                引用信息会注册在父组件的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord cjk_fallback">引</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">息</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">注</span><span class="mord cjk_fallback">册</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">父</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">的</span></span></span></span>refs对象上<br />
-2.子传父<br />
-<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>m</mi><mi>i</mi><mi>t</mi><mtext>子组件绑定自定义事件，触发执行后，传给父组件，父组件需要用事件监听来接收参数</mtext><mn>3.</mn><mtext>兄弟传</mtext><mi>n</mi><mi>e</mi><mi>w</mi><mtext>一个新的</mtext><mi>v</mi><mi>u</mi><mi>e</mi><mtext>实例，用</mtext><mi>o</mi><mi>n</mi><mtext>和</mtext><mi>e</mi><mi>m</mi><mi>i</mi><mi>t</mi><mtext>来对数据进行传输</mtext><mn>4.</mn><mi>v</mi><mi>u</mi><mi>e</mi><mi>x</mi><mtext>传值</mtext><mn>9.</mn><mi>k</mi><mi>e</mi><mi>e</mi><mi>p</mi><mo>−</mo><mi>a</mi><mi>l</mi><mi>i</mi><mi>v</mi><mi>e</mi><mtext>是什么？怎么使用？</mtext><mi>V</mi><mi>u</mi><mi>e</mi><mtext>的一个内置组件，包裹组件的时候，会缓存不活跃的组件实例，并不是销毁他们作用：把组件切换的状态保存在内存里，防止重复渲染</mtext><mi>D</mi><mi>O</mi><mi>M</mi><mtext>节点，减少加载时间和性能消耗，提高用户体验</mtext><mn>10.</mn><mi>a</mi><mi>x</mi><mi>i</mi><mi>o</mi><mi>s</mi><mtext>是怎么做封装的？下载创建实例接着封装请求响应拦截器抛出最后封装接口</mtext><mn>11.</mn><mi>v</mi><mi>u</mi><mi>e</mi><mtext>路由时怎么传参的？</mtext><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>m</mi><mi>s</mi><mtext>传参</mtext><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">emit
-                子组件绑定自定义事件，触发执行后，传给父组件，父组件需要用事件监听来接收参数
-        3.兄弟传
-            new一个新的vue实例，用on和emit来对数据进行传输
-        4.vuex传值
-    9.keep-alive是什么？怎么使用？
-        Vue的一个内置组件，包裹组件的时候，会缓存不活跃的组件实例，并不是销毁他们
-        作用：把组件切换的状态保存在内存里，防止重复渲染DOM节点，减少加载时间和性能消耗，提高用户体验
-    10.axios是怎么做封装的？
-        下载 创建实例 接着封装请求响应拦截器  抛出 最后封装接口
-    11.vue路由时怎么传参的？
-        params传参
-            this.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">子</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">绑</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">自</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">义</span><span class="mord cjk_fallback">事</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">触</span><span class="mord cjk_fallback">发</span><span class="mord cjk_fallback">执</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">后</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">给</span><span class="mord cjk_fallback">父</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">父</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">需</span><span class="mord cjk_fallback">要</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">事</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">监</span><span class="mord cjk_fallback">听</span><span class="mord cjk_fallback">来</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">收</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">数</span><span class="mord">3</span><span class="mord">.</span><span class="mord cjk_fallback">兄</span><span class="mord cjk_fallback">弟</span><span class="mord cjk_fallback">传</span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">新</span><span class="mord cjk_fallback">的</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord cjk_fallback">实</span><span class="mord cjk_fallback">例</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">用</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">和</span><span class="mord mathnormal">e</span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">来</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">据</span><span class="mord cjk_fallback">进</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">输</span><span class="mord">4</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord mathnormal">x</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">值</span><span class="mord">9</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">e</span><span class="mord mathnormal">e</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">什</span><span class="mord cjk_fallback">么</span><span class="mord cjk_fallback">？</span><span class="mord cjk_fallback">怎</span><span class="mord cjk_fallback">么</span><span class="mord cjk_fallback">使</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">？</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">置</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">包</span><span class="mord cjk_fallback">裹</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">候</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">缓</span><span class="mord cjk_fallback">存</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">活</span><span class="mord cjk_fallback">跃</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">实</span><span class="mord cjk_fallback">例</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">并</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">销</span><span class="mord cjk_fallback">毁</span><span class="mord cjk_fallback">他</span><span class="mord cjk_fallback">们</span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">：</span><span class="mord cjk_fallback">把</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">切</span><span class="mord cjk_fallback">换</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">状</span><span class="mord cjk_fallback">态</span><span class="mord cjk_fallback">保</span><span class="mord cjk_fallback">存</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">存</span><span class="mord cjk_fallback">里</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">防</span><span class="mord cjk_fallback">止</span><span class="mord cjk_fallback">重</span><span class="mord cjk_fallback">复</span><span class="mord cjk_fallback">渲</span><span class="mord cjk_fallback">染</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord cjk_fallback">节</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">减</span><span class="mord cjk_fallback">少</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">能</span><span class="mord cjk_fallback">消</span><span class="mord cjk_fallback">耗</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">提</span><span class="mord cjk_fallback">高</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">户</span><span class="mord cjk_fallback">体</span><span class="mord cjk_fallback">验</span><span class="mord">1</span><span class="mord">0</span><span class="mord">.</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">怎</span><span class="mord cjk_fallback">么</span><span class="mord cjk_fallback">做</span><span class="mord cjk_fallback">封</span><span class="mord cjk_fallback">装</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">？</span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">载</span><span class="mord cjk_fallback">创</span><span class="mord cjk_fallback">建</span><span class="mord cjk_fallback">实</span><span class="mord cjk_fallback">例</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">着</span><span class="mord cjk_fallback">封</span><span class="mord cjk_fallback">装</span><span class="mord cjk_fallback">请</span><span class="mord cjk_fallback">求</span><span class="mord cjk_fallback">响</span><span class="mord cjk_fallback">应</span><span class="mord cjk_fallback">拦</span><span class="mord cjk_fallback">截</span><span class="mord cjk_fallback">器</span><span class="mord cjk_fallback">抛</span><span class="mord cjk_fallback">出</span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">后</span><span class="mord cjk_fallback">封</span><span class="mord cjk_fallback">装</span><span class="mord cjk_fallback">接</span><span class="mord cjk_fallback">口</span><span class="mord">1</span><span class="mord">1</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord cjk_fallback">路</span><span class="mord cjk_fallback">由</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">怎</span><span class="mord cjk_fallback">么</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">？</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">参</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord">.</span></span></span></span>router.push({name:‘index’,params:{id:item.id}})<br />
-this.<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi mathvariant="normal">.</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>m</mi><mi>s</mi><mi mathvariant="normal">.</mi><mi>i</mi><mi>d</mi><mtext>路由属性传参</mtext><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">route.params.id
-        路由属性传参
-            this.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord">.</span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord mathnormal">s</span><span class="mord">.</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord cjk_fallback">路</span><span class="mord cjk_fallback">由</span><span class="mord cjk_fallback">属</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">参</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord">.</span></span></span></span>router.push({name:‘/index/<span class='katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;}&#039; at position 11: {item.id}&#039;}̲)
-            路…'>{item.id}&#039;})
-            路由配置 { path:&#039;/index:id&#039; }
-        query传参（可以解决页面刷新参数丢失的问题）
-            this.</span>router.push({<br />
-name:‘index’,<br />
-query:{id:item.id}<br />
-})<br />
-12.vue路由的hash模式和history模式有什么区别？<br />
-1.hash的路由地址上有#号，history模式没有<br />
-2.在做回车刷新的时候，hash模式会加载对应页面，history会报错404<br />
-3.hash模式支持低版本浏览器，history不支持，因为是H5新增的API<br />
-4.hash不会重新加载页面，单页面应用必备<br />
-5.history有历史记录，H5新增了pushState和replaceState()去修改历史记录，并不会立刻发送请求<br />
-6.history需要后台配置<br />
-13.路由拦截是怎么实现的？<br />
-路由拦截 axios拦截<br />
-需要在路由配置中添加一个字段，它是用于判断路由是否需要拦截<br />
-{<br />
-name:‘index’,<br />
-path:’/index’,<br />
-component:Index,<br />
-meta:{<br />
-requirtAuth:true<br />
-}<br />
-}<br />
-router.beforeEach((to,from,next) =&gt; {<br />
-if(to.meta.requirtAuth){<br />
-if( store.satte.token ){<br />
-next()<br />
-}else{</p>
-<pre><code>            &#125;
-        &#125;
-    &#125;)
-14.说一下vue的动态路由。
-    要在路由配置里设置meat属性，扩展权限相关的字段，在路由导航守卫里通过判断这个权限标识，实现路由的动态增加和跳转
-    根据用户登录的账号，返回用户角色
-    前端再根据角色，跟路由表的meta.role进行匹配
-    把匹配搭配的路由形成可访问的路由
-15.如何解决刷新后二次加载路由？
-    1.window.location.reload()
-    2.matcher
-        const router = createRouter()
-        export function resetRouter()&#123;
-            const newRouter = creatRouter()
-            router.matcher = newRouter.matcher
-        &#125;
-16.vuex刷新数据会丢失吗？怎么解决？
-    vuex肯定会重新获取数据，页面也会丢失数据
-    1.把数据直接保存在浏览器缓存里（cookie  localstorage  sessionstorage）
-    2.页面刷新的时候，再次请求数据，达到可以动态更新的方法
-        监听浏览器的刷新书简，在刷新前把数据保存到sessionstorage里，刷新后请求数据，请求到了用vuex，如果没有那就用sessionstorage里的数据
-17.computed和watch的区别？
-    1.computed是计算属性，watch是监听，监听的是data中数据的变化
-    2.computed是支持缓存，依赖的属性值发生变化，计算属性才会重新计算，否则用缓存；watch不支持缓存
-    3.computed不支持异步，watch是可以异步操作
-    4.computed是第一次加载就监听，watch是不监听
-    5.computed函数中必须有return  watch不用
-18.vuex在什么场景会去使用？属性有哪些？
-    state       存储变量
-    getters     state的计算属性
-    mutations   提交更新数据的方法
-    actions     和mutations差不多，他是提交mutations来修改数据，可以包括异步操作
-    modules     模块化vuex
-    使用场景：
-        用户的个人信息、购物车模块、订单模块
-19.vue的双向数据绑定原理是什么？
-    通过数据劫持和发布订阅者模式来实现，同时利用Object.defineProperty()劫持各个属性的setter和getter，
-    在数据发生改变的时候发布消息给订阅者，触发对应的监听回调渲染视图，也就是说数据和视图时同步的，数据发生改变，视图跟着发生改变，视图改变，数据也会发生改变。
-    第一步：需要observer的数据对象进行递归遍历，包括子属性对象的属性，都加上setter和getter
-    第二步：compile模板解析指令，把模板中的变量替换成数据，然后初始化渲染视图，同时把每个指令对应的节点绑定上更新函数，添加订阅者，如果数据变化，收到通知，更新视图
-    第三步：Watcher订阅者是Observer和Compile之间的通信桥梁，作用：
-            1.在自身实例化的时候忘订阅器内添加自己
-            2.自身要有一个update()方法
-            3.等待属性变动时，调用自身的update方法，触发compile这种的回调
-    第四步：MVVM作为数据绑定的入口，整合了observer、compile和watcher三者，通过observer来监听自己的数据变化，通过compile解析模板指令，最后利用watcher把observer和compile联系起来，最终达到数据更新视图更新，视图更新数据更新的效果
-20.了解diff算法和虚拟DOM吗？
-    虚拟DOM，描述元素和元素之间的关系，创建一个JS对象
-    如果组件内有响应的数据，数据发生改变的时候，render函数会生成一个新的虚拟DOM，这个新的虚拟DOM会和旧的虚拟DOM进行比对，找到需要修改的虚拟DOM内容，然后去对应的真实DOM中修改
-    diff算法就是虚拟DOM的比对时用的，返回一个patch对象，这个对象的作用就是存储两个节点不同的地方，最后用patch里记录的信息进行更新真实DOM
-    步骤：
-        1.JS对象表示真实的DOM结构，要生成一个虚拟DOM，再用虚拟DOM构建一个真实DOM树，渲染到页面
-        2.状态改变生成新的虚拟DOM，跟就得虚拟DOM进行比对，这个比对的过程就是DIFF算法，利用patch记录差异
-        3.把记录的差异用在第一个虚拟DOM生成的真实DOM上，视图就更新了。
-21.vue和jquery的区别是什么？
-    1.原理不同
-        vue就是数据绑定；jq是先获取dom再处理
-    2.着重点不同
-        vue是数据驱动，jq是着重于页面
-    3.操作不同
-    4.未来发展不同
-22.vuex的响应式处理。
-    vuex是vue的状态管理工具
-    vue中可以直接触发methods中的方法，vuex是不可以的。未来处理异步，当触发事件的时候，会通过dispatch来访问actions中的方法，actions中的commit会触发mutations中的方法从而修改state里的值，通过getter把数据更新到视图
-    Vue.use(vuex)，调用install方法，通过applyMixin(vue)在任意组件内执行this.$store就可以访问到store对象。
-    vuex的state是响应式的，借助的就是vue的data，把state存到vue实例组件的data中
-23.vue中遍历全局的方法有哪些？
-    1.普通遍历，对象.forEach()
-        arr.forEach(function(item,index,arr)&#123;
-            console.log(item,index)
-        &#125;)
-    2.对元素统一操作  对象.map()
-        var newarr = arr.map(function(item)&#123;
-            return item+1
-        &#125;)
-    3.查找符合条件的元素 对象.filter()
-        arr.filter(function(item)&#123;
-            if(item &gt; 2)&#123;
-                return false
-            &#125;else&#123;
-                return true
-            &#125;
-        &#125;)
-    4.查询符合条件的元素，返回索引 对象.findindex()
-        arr.finindex(function(item)&#123;
-            if(item&gt;1)&#123;
-                return true
-            &#125;else&#123;
-                return false
-            &#125;
-        &#125;)
-    对象.evening()  遇到不符合的对象会停止
-    对象.some()  找到符合条件的元素就停止
-24.如何搭建脚手架？
-    下载：node  cnpm  webpack vue-cli
-    创建项目：
-        1.找到对应的文件，然后利用node指令创建（cmd）
-        2.vue init webpack xxxx
-        3.回车项目描述
-        4.作者回车
-        5.选择vue build
-        6.回车
-        7.输入n
-        8.不按照yarn
-        9.输入npm run dev
-25.如何封装一个组件？
-    1.使用Vue.extend()创建一个组件
-    2.使用Vue.components()方法注册组件
-    3.如果子组件需要数据，可以在props中接收定义
-    4.子组件修改好数据，要把数据传递给父组件，可以用emit()方法
-    原则：
-        把功能拆开
-        尽量让组件原子化，一个组件做一件事情
-        容器组件管数据，展示组件管视图
-26.封装一个可复用的组件，需要满足什么条件？
-    1.低耦合，组件之间的依赖越小越好
-    2.最好从父级传入信息，不要在公共组件中请求数据
-    3.传入的数据要进行校验
-    4.处理事件的方法写在父组件中
-27.vue的过滤器怎么使用？
-    vue的特性，用来对文本进行格式化处理
-    使用它的两个地方，一个是插值表达式，一个是v-bind
-    分类：
-        1.全局过滤器
-            Vue.filter('add',function(v)&#123;
-                return v &lt; 10 ? '0' + v : v
-            &#125;)
-            &lt;div&gt;&#123;&#123;33 | add&#125;&#125;&lt;/div&gt;
-        2.本地过滤器
-            和methods同级
-            filter:&#123;
-                add:function(v)&#123;
-                    return v &lt; 10 ? '0' + v : v
-                &#125;
-            &#125;
-28.vue中如何做强制刷新？
-    1.localtion.reload()
-    2.this.$router.go(0)
-    3.provide和inject
-29.vue3和vue2有哪些区别？
-    1.双向数据绑定的原理不同
-    2.是否支持碎片
-    3.API不同
-    4.定义数据变量方法不同
-    5.生命周期的不同
-    6.传值不同
-    7.指令和插槽不同
-    8.main.js不同
-30.vue的性能优化怎么做？
-    1.编码优化
-        不要把所有数据都放在data中
-        v-for时给每个元素绑定事件用事件代理
-        keep-alive缓存组件
-        尽可能拆分组件，提高复用性、维护性
-        key值要保证唯一
-        合理使用路由懒加载，异步组件
-        数据持久化存储的使用尽量用防抖、节流优化
-    2.加载优化
-        按需加载
-        内容懒加载
-        图片懒加载
-    3.用户体验
-        骨架屏
-    4.SEO优化
-        预渲染
-        服务端渲染ssr
-    5.打包优化
-        CDN形式加载第三方模块
-        多线程打包
-        抽离公共文件
-    6.缓存和压缩
-        客户端缓存、服务端缓存
-        服务端Gzip压缩
-31.首屏优化该如何去做？
-    1.使用路由懒加载
-    2.非首屏组件使用异步组件
-    3.首屏不中要的组件延迟加载
-    4.静态资源放在CDN上
-    5.减少首屏上JS、CSS等资源文件的大小
-    6.使用服务端渲染
-    7.简历减少DOM的数量和层级
-    8.使用精灵图请求
-    9.做一些loading
-    10.开启Gzip压缩
-    11.图片懒加载
-32.vue3的性能为什么比vue2好？
-    1.diff算法的优化
-    2.静态提升
-    3.事件侦听缓存
-33.vue3为什么使用proxy？
-    1.proxy可以代理整个对象，defineproperty只代理对象上的某个属性
-    2.proxy对代理对象的监听更加丰富
-    3.proxy代理对象会生成新的对象，不会修改被代理对象本身
-    4.proxy补兼容ie浏览器
-34.说一下你对组件的理解。
-    可以重复使用的vue实例，独一无二的组件名称
-    可以抽离单独的公共模块
-    提高代码的复用率
-35.你是如何规划项目文件的？
-    public
-        图标、index.html、img
-    src
-        api
-        assets
-        components
-            按分类再次划分子目录
-        plugins
-        router
-        static
-        styles
-        utils
-        views
-    App.vue
-    main.js
-    package.json
-    vue.config.js
-36.是否使用过nuxt.js？
-    是基于vue的应用框架，关注的是渲染，可以开发服务端渲染应用的配置
-    SSR：服务端渲染
-        好处：
-            SSR生成的是有内容的HTML页面，有利于搜索引擎的搜索
-            优化了首屏加载时间
-    SEO：优化搜索引擎
-    SPA的应用不利于搜索引擎SEO的操作
-37.SEO如何优化？
-    1.SSR
-    2.预渲染 prerender-spa-plugin
-</code></pre>
-<p>五、Echarts<br />
-1.echarts有用过吗？常用的组件有哪些？<br />
-title标题组件 show  text  link<br />
-toolbox工具栏 导出图片 数据视图 切换 缩放 show orient feature<br />
-tooltip tigger 触发类型<br />
-markPoint标注点<br />
-markLine图标的标线</p>
-<p>六、Uni-APP<br />
-1.uni-app有没有做过分包？<br />
-优化小程序的下载和启动速度<br />
-小程序启动默认下载主包并启动页面，当用户进入分包时，才会下载对应的分包，下载完进行展示</p>
-<p>七、Weabpack<br />
-1.webpack打包和不打包的区别？<br />
-1.运行效率<br />
-2.对基础的支持不够<br />
-2.webpack是怎么打包的，babel是做什么的？<br />
-webpack会把js css image看作一个模块，用import/require引入<br />
-找到入口文件，通过入口文件找到关联的依赖文件，把他们打包到一起<br />
-把bundle文件，拆分成多个小的文件，异步按需加载所需要的文件<br />
-如果一个被多个文件引用，打包时只会生成一个文件<br />
-如果引用的文件没有调用，不会打包，如果引入的变量和方法没有调用也不会打包<br />
-对于多个入口文件，加入引入了相同的代码，可以用插件把他抽离到公共文件中</p>
-<p>八、Git<br />
-1.git如何合并、拉取代码？<br />
-拉取代码 git pull ‘仓库地址’<br />
-查看状态 git sattus<br />
-提交到本地缓存区  git add .<br />
-提交本地仓库 git commit -m ‘修改描述’<br />
-提交到远程仓库 git push ‘仓库地址’ master<br />
-创建分支 git branch -b xxx<br />
-合并分支 git merge ‘合并分支的名字’<br />
-2.git如何解决冲突问题？<br />
-1.两个分支中修改了同一个文件<br />
-2.两个分支中修改了同一个文件的名字<br />
-1.解决：当前分支上，直接修改代码  add  commit<br />
-2.解决：在本地当前分支上，修改冲突代码 add commit push</p>
-<p>九、HR<br />
-1.你的离职原因是什么？<br />
-疫情 社保 薪资问题 个人发展 技术提升 家庭因素<br />
-2.工作到现在，项目中遇到最难的问题是什么？怎么解决的？<br />
-1.不要回答，没有问题<br />
-2.不要说一些常见的简单的问题，比如：数据请求不过来、渲染页面时出现了问题、跳转路由不会…<br />
-首先应该时自行去查找资料寻求解决办法，然后再去请教同时或者组长<br />
-3.你的优势在哪里？<br />
-1.尽量不要暴露自己的缺点<br />
-2.不要过度美化自己<br />
-4.如何协同工作？<br />
-1.开发前会开个会议，最后形成一个开发文档<br />
-2.利用工具保证项目的正常进度，规范化</p>
+<p>​            2.本地过滤器<br />
+​                和methods同级<br />
+​                filter:{<br />
+​                    add:function(v){<br />
+​                        return v &lt; 10 ? ‘0’ + v : v<br />
+​                    }<br />
+​                }</p>
+<h3 id="28vue中如何做强制刷新"><a class="markdownIt-Anchor" href="#28vue中如何做强制刷新"></a> 28.vue中如何做强制刷新？</h3>
+<p>​        1.localtion.reload()<br />
+​        2.this.$router.go(0)<br />
+​        3.provide和inject</p>
+<h3 id="29vue3和vue2有哪些区别"><a class="markdownIt-Anchor" href="#29vue3和vue2有哪些区别"></a> 29.vue3和vue2有哪些区别？</h3>
+<p>​        1.双向数据绑定的原理不同<br />
+​        2.是否支持碎片<br />
+​        3.API不同<br />
+​        4.定义数据变量方法不同<br />
+​        5.生命周期的不同<br />
+​        6.传值不同<br />
+​        7.指令和插槽不同<br />
+​        8.main.js不同</p>
+<h3 id="30vue的性能优化怎么做"><a class="markdownIt-Anchor" href="#30vue的性能优化怎么做"></a> 30.vue的性能优化怎么做？</h3>
+<p>​        1.编码优化<br />
+​            不要把所有数据都放在data中<br />
+​            v-for时给每个元素绑定事件用事件代理<br />
+​            keep-alive缓存组件<br />
+​            尽可能拆分组件，提高复用性、维护性<br />
+​            key值要保证唯一<br />
+​            合理使用路由懒加载，异步组件<br />
+​            数据持久化存储的使用尽量用防抖、节流优化<br />
+​        2.加载优化<br />
+​            按需加载<br />
+​            内容懒加载<br />
+​            图片懒加载<br />
+​        3.用户体验<br />
+​            骨架屏<br />
+​        4.SEO优化<br />
+​            预渲染<br />
+​            服务端渲染ssr<br />
+​        5.打包优化<br />
+​            CDN形式加载第三方模块<br />
+​            多线程打包<br />
+​            抽离公共文件<br />
+​        6.缓存和压缩<br />
+​            客户端缓存、服务端缓存<br />
+​            服务端Gzip压缩</p>
+<h3 id="31首屏优化该如何去做"><a class="markdownIt-Anchor" href="#31首屏优化该如何去做"></a> 31.首屏优化该如何去做？</h3>
+<p>​        1.使用路由懒加载<br />
+​        2.非首屏组件使用异步组件<br />
+​        3.首屏不中要的组件延迟加载<br />
+​        4.静态资源放在CDN上<br />
+​        5.减少首屏上JS、CSS等资源文件的大小<br />
+​        6.使用服务端渲染<br />
+​        7.简历减少DOM的数量和层级<br />
+​        8.使用精灵图请求<br />
+​        9.做一些loading<br />
+​        10.开启Gzip压缩<br />
+​        11.图片懒加载</p>
+<h3 id="32vue3的性能为什么比vue2好"><a class="markdownIt-Anchor" href="#32vue3的性能为什么比vue2好"></a> 32.vue3的性能为什么比vue2好？</h3>
+<p>​        1.diff算法的优化<br />
+​        2.静态提升<br />
+​        3.事件侦听缓存</p>
+<h3 id="33vue3为什么使用proxy"><a class="markdownIt-Anchor" href="#33vue3为什么使用proxy"></a> 33.vue3为什么使用proxy？</h3>
+<p>​        1.proxy可以代理整个对象，defineproperty只代理对象上的某个属性<br />
+​        2.proxy对代理对象的监听更加丰富<br />
+​        3.proxy代理对象会生成新的对象，不会修改被代理对象本身<br />
+​        4.proxy补兼容ie浏览器</p>
+<h3 id="34说一下你对组件的理解"><a class="markdownIt-Anchor" href="#34说一下你对组件的理解"></a> 34.说一下你对组件的理解。</h3>
+<p>​        可以重复使用的vue实例，独一无二的组件名称<br />
+​        可以抽离单独的公共模块<br />
+​        提高代码的复用率</p>
+<h3 id="35你是如何规划项目文件的"><a class="markdownIt-Anchor" href="#35你是如何规划项目文件的"></a> 35.你是如何规划项目文件的？</h3>
+<p>​        public<br />
+​            图标、index.html、img<br />
+​        src<br />
+​            api<br />
+​            assets<br />
+​            components<br />
+​                按分类再次划分子目录<br />
+​            plugins<br />
+​            router<br />
+​            static<br />
+​            styles<br />
+​            utils<br />
+​            views<br />
+​        App.vue<br />
+​        main.js<br />
+​        package.json<br />
+​        vue.config.js</p>
+<h3 id="36是否使用过nuxtjs"><a class="markdownIt-Anchor" href="#36是否使用过nuxtjs"></a> 36.是否使用过nuxt.js？</h3>
+<p>​        是基于vue的应用框架，关注的是渲染，可以开发服务端渲染应用的配置<br />
+​        SSR：服务端渲染<br />
+​            好处：<br />
+​                SSR生成的是有内容的HTML页面，有利于搜索引擎的搜索<br />
+​                优化了首屏加载时间<br />
+​        SEO：优化搜索引擎<br />
+​        SPA的应用不利于搜索引擎SEO的操作</p>
+<h3 id="37seo如何优化"><a class="markdownIt-Anchor" href="#37seo如何优化"></a> 37.SEO如何优化？</h3>
+<p>​        1.SSR<br />
+​        2.预渲染 prerender-spa-plugin</p>
+<h2 id="五-echarts"><a class="markdownIt-Anchor" href="#五-echarts"></a> 五、Echarts</h2>
+<p>​    1.echarts有用过吗？常用的组件有哪些？<br />
+​        title标题组件 show  text  link<br />
+​        toolbox工具栏 导出图片 数据视图 切换 缩放 show orient feature<br />
+​        tooltip tigger 触发类型<br />
+​        markPoint标注点<br />
+​        markLine图标的标线</p>
+<h2 id="六-uni-app"><a class="markdownIt-Anchor" href="#六-uni-app"></a> 六、Uni-APP</h2>
+<p>​    1.uni-app有没有做过分包？<br />
+​        优化小程序的下载和启动速度<br />
+​        小程序启动默认下载主包并启动页面，当用户进入分包时，才会下载对应的分包，下载完进行展示</p>
+<h2 id="七-weabpack"><a class="markdownIt-Anchor" href="#七-weabpack"></a> 七、Weabpack</h2>
+<p>​    1.webpack打包和不打包的区别？<br />
+​        1.运行效率<br />
+​        2.对基础的支持不够<br />
+​    2.webpack是怎么打包的，babel是做什么的？<br />
+​        webpack会把js css image看作一个模块，用import/require引入<br />
+​        找到入口文件，通过入口文件找到关联的依赖文件，把他们打包到一起<br />
+​        把bundle文件，拆分成多个小的文件，异步按需加载所需要的文件<br />
+​        如果一个被多个文件引用，打包时只会生成一个文件<br />
+​        如果引用的文件没有调用，不会打包，如果引入的变量和方法没有调用也不会打包<br />
+​        对于多个入口文件，加入引入了相同的代码，可以用插件把他抽离到公共文件中</p>
+<h2 id="八-git"><a class="markdownIt-Anchor" href="#八-git"></a> 八、Git</h2>
+<p>​    1.git如何合并、拉取代码？<br />
+​        拉取代码 git pull ‘仓库地址’<br />
+​        查看状态 git status<br />
+​        提交到本地缓存区  git add .<br />
+​        提交本地仓库 git commit -m ‘修改描述’<br />
+​        提交到远程仓库 git push ‘仓库地址’ master<br />
+​        创建分支 git branch -b xxx<br />
+​        合并分支 git merge ‘合并分支的名字’<br />
+​    2.git如何解决冲突问题？<br />
+​        1.两个分支中修改了同一个文件<br />
+​        2.两个分支中修改了同一个文件的名字<br />
+​        1.解决：当前分支上，直接修改代码  add  commit<br />
+​        2.解决：在本地当前分支上，修改冲突代码 add commit push</p>
 
 </div>
 <div class="toc-menu-container">
