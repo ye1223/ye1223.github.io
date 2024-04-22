@@ -189,6 +189,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Create-React-App项目Template</title>
+    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
+    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
+<br /></p>
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
+<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
+<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
+<p>​	<code>yarn add -D prettier</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
+<p>​	<code>yarn add -D husky</code></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
+<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
+<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<br />
+<strong> 静候补充... </strong>]]></content>
+  </entry>
+  <entry>
     <title>Cookie &amp; Session</title>
     <url>/posts/CookieSession/</url>
     <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
@@ -282,29 +305,6 @@ F --> L[结束]</pre>
         <tag>Computer Network</tag>
         <tag>http</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Create-React-App项目Template</title>
-    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
-    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
-<br /></p>
-<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
-<br/>
-<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
-<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
-<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
-<p>​	<code>yarn add -D prettier</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
-<p>​	<code>yarn add -D husky</code></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
-<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
-<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<br />
-<strong> 静候补充... </strong>]]></content>
   </entry>
   <entry>
     <title>Event Loop</title>
@@ -3027,6 +3027,198 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
+    <title>nodejs</title>
+    <url>/posts/nodejs/</url>
+    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
+<ol>
+<li><strong>运行时（Runtime)</strong><br />
+&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
+</ol>
+<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
+<ol start="2">
+<li>
+<p><strong>运行时库（Runtime Library）</strong><br />
+运行时库就是程序运行的时候所需要依赖的库。</p>
+</li>
+<li>
+<p><strong>运行时环境（Runtime environment）</strong><br />
+运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
+</li>
+</ol>
+<hr />
+<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
+<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
+<p>访问系统内核，访问本地文件，链接服务器…</p>
+<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
+<p><strong>跨平台</strong></p>
+<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
+<blockquote>
+<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
+</blockquote>
+<hr />
+<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
+<p>node <code>global</code></p>
+<p>浏览器 <code>window</code></p>
+<p><code>globalThis</code>根据环境自动判断</p>
+<p>ECMAScript中有的全局，如Math…</p>
+<ul>
+<li>
+<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
+</li>
+<li>
+<p><code>__filename</code> 当前文件路径（绝对路径）</p>
+</li>
+<li>
+<p><code>__extname</code> 文件后缀</p>
+</li>
+<li>
+<p><code>Buffer</code></p>
+</li>
+<li>
+<p><code>process</code>  处理进程</p>
+<ul>
+<li><code>process.argv</code> 获取参数数组</li>
+<li><code>process.cwd()</code> 目录</li>
+<li><code>process.exit()</code> 终止进程</li>
+<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
+<p>（相比，Apache，每一个请求创建一个线程）</p>
+<p>单线程，并发量为1</p>
+<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
+<blockquote>
+<p>主线程是单线程，io是libuv维护的线程池</p>
+</blockquote>
+<br/>
+<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
+<br/>
+<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
+<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
+<br/>  
+<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
+<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
+<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
+<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
+<hr />
+<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
+<ol>
+<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
+<li>I/O操作： 文件读写，数据库操作，网络请求</li>
+<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
+</ol>
+<br/>
+<blockquote>
+<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
+<p>微任务（promise）</p>
+<p>timer</p>
+<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
+<p>check</p>
+</blockquote>
+<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
+<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
+<br/>
+<blockquote>
+<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
+<p>nextTick先于下一个Tick执行</p>
+</blockquote>
+<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
+<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
+<p>为了健壮性：捕获并处理每一个错误</p>
+<ul>
+<li>
+<p>同步代码 try catch</p>
+</li>
+<li>
+<p>异步代码</p>
+<ul>
+<li>Promise (catch)</li>
+<li>async await trycatch</li>
+</ul>
+</li>
+</ul>
+<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
+<p>回调函数 --&gt; Promise —&gt; async await</p>
+<br/>
+<p>node官方的库</p>
+<p>遵循，错误优先风格</p>
+<br/>
+<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
+<br/>
+<blockquote>
+<p>平行</p>
+<p>顺序</p>
+</blockquote>
+<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
+<p>module并不是全局变量，每一个模块有他相应的模块</p>
+<br/>
+<p>核心模块（随着node）</p>
+<p>第三方模块</p>
+<p>自定义模块（引用路径）</p>
+<br/>
+<p>运行时加载 cmj，知道运行时候再报错</p>
+<p>编译时加载 esm</p>
+<p><code>import from</code> 写在模块顶层</p>
+<p><code>import()</code> （异步，返回promise）</p>
+<br/>
+<p><code>V8</code></p>
+<p>预编译阶段 （ESM</p>
+<p>-分配内存空间</p>
+<p>-确定作用域链…</p>
+<p>执行阶段 （CMJ</p>
+ <br/>
+<hr />
+<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
+<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
+<br/>
+<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<hr />
+<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
+<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
+<br/>
+<p>i/o操作</p>
+<p>端到端数据交换</p>
+<br/>
+<p>加载 缓冲区 处理</p>
+<p>流模式 加载一点处理一点</p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
+<hr />
+<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
+<ul>
+<li>
+<p>TDK</p>
+<ul>
+<li>title</li>
+<li>description (meta)</li>
+<li>Key(meta)</li>
+</ul>
+</li>
+<li>
+<p>语义化标签</p>
+</li>
+<li>
+<p><code>&lt;a/&gt;</code> href</p>
+</li>
+<li>
+<p><code>&lt;img/&gt;</code> href alt</p>
+</li>
+<li>
+<p>一个页面一个h1 和 main标签</p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
+]]></content>
+  </entry>
+  <entry>
     <title>npm</title>
     <url>/posts/npm/</url>
     <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
@@ -3465,198 +3657,6 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>nodejs</title>
-    <url>/posts/nodejs/</url>
-    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
-<ol>
-<li><strong>运行时（Runtime)</strong><br />
-&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
-</ol>
-<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
-<ol start="2">
-<li>
-<p><strong>运行时库（Runtime Library）</strong><br />
-运行时库就是程序运行的时候所需要依赖的库。</p>
-</li>
-<li>
-<p><strong>运行时环境（Runtime environment）</strong><br />
-运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
-</li>
-</ol>
-<hr />
-<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
-<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
-<p>访问系统内核，访问本地文件，链接服务器…</p>
-<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
-<p><strong>跨平台</strong></p>
-<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
-<blockquote>
-<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
-</blockquote>
-<hr />
-<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
-<p>node <code>global</code></p>
-<p>浏览器 <code>window</code></p>
-<p><code>globalThis</code>根据环境自动判断</p>
-<p>ECMAScript中有的全局，如Math…</p>
-<ul>
-<li>
-<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
-</li>
-<li>
-<p><code>__filename</code> 当前文件路径（绝对路径）</p>
-</li>
-<li>
-<p><code>__extname</code> 文件后缀</p>
-</li>
-<li>
-<p><code>Buffer</code></p>
-</li>
-<li>
-<p><code>process</code>  处理进程</p>
-<ul>
-<li><code>process.argv</code> 获取参数数组</li>
-<li><code>process.cwd()</code> 目录</li>
-<li><code>process.exit()</code> 终止进程</li>
-<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
-<p>（相比，Apache，每一个请求创建一个线程）</p>
-<p>单线程，并发量为1</p>
-<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
-<blockquote>
-<p>主线程是单线程，io是libuv维护的线程池</p>
-</blockquote>
-<br/>
-<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
-<br/>
-<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
-<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
-<br/>  
-<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
-<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
-<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
-<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
-<hr />
-<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
-<ol>
-<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
-<li>I/O操作： 文件读写，数据库操作，网络请求</li>
-<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
-</ol>
-<br/>
-<blockquote>
-<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
-<p>微任务（promise）</p>
-<p>timer</p>
-<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
-<p>check</p>
-</blockquote>
-<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
-<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
-<br/>
-<blockquote>
-<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
-<p>nextTick先于下一个Tick执行</p>
-</blockquote>
-<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
-<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
-<p>为了健壮性：捕获并处理每一个错误</p>
-<ul>
-<li>
-<p>同步代码 try catch</p>
-</li>
-<li>
-<p>异步代码</p>
-<ul>
-<li>Promise (catch)</li>
-<li>async await trycatch</li>
-</ul>
-</li>
-</ul>
-<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
-<p>回调函数 --&gt; Promise —&gt; async await</p>
-<br/>
-<p>node官方的库</p>
-<p>遵循，错误优先风格</p>
-<br/>
-<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
-<br/>
-<blockquote>
-<p>平行</p>
-<p>顺序</p>
-</blockquote>
-<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
-<p>module并不是全局变量，每一个模块有他相应的模块</p>
-<br/>
-<p>核心模块（随着node）</p>
-<p>第三方模块</p>
-<p>自定义模块（引用路径）</p>
-<br/>
-<p>运行时加载 cmj，知道运行时候再报错</p>
-<p>编译时加载 esm</p>
-<p><code>import from</code> 写在模块顶层</p>
-<p><code>import()</code> （异步，返回promise）</p>
-<br/>
-<p><code>V8</code></p>
-<p>预编译阶段 （ESM</p>
-<p>-分配内存空间</p>
-<p>-确定作用域链…</p>
-<p>执行阶段 （CMJ</p>
- <br/>
-<hr />
-<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
-<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
-<br/>
-<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<hr />
-<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
-<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
-<br/>
-<p>i/o操作</p>
-<p>端到端数据交换</p>
-<br/>
-<p>加载 缓冲区 处理</p>
-<p>流模式 加载一点处理一点</p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
-<hr />
-<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
-<ul>
-<li>
-<p>TDK</p>
-<ul>
-<li>title</li>
-<li>description (meta)</li>
-<li>Key(meta)</li>
-</ul>
-</li>
-<li>
-<p>语义化标签</p>
-</li>
-<li>
-<p><code>&lt;a/&gt;</code> href</p>
-</li>
-<li>
-<p><code>&lt;img/&gt;</code> href alt</p>
-</li>
-<li>
-<p>一个页面一个h1 和 main标签</p>
-</li>
-<li>
-<p>…</p>
-</li>
-</ul>
-<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
-]]></content>
-  </entry>
-  <entry>
     <title>redux-toolkit学习</title>
     <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
@@ -3788,6 +3788,716 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
+    <title>模块化 + webpack打包</title>
+    <url>/posts/webpack/</url>
+    <content><![CDATA[<p>「模块化」是思想</p>
+<p><img src="https://s2.loli.net/2023/05/08/cqUElmXNyaRPnsG.png" alt="内容概要" /></p>
+<h2 id="模块化的演变过程"><a class="markdownIt-Anchor" href="#模块化的演变过程"></a> <mark>模块化的演变过程</mark></h2>
+<blockquote>
+<p>都是依靠script标签加载模块，不能代码控制加载</p>
+</blockquote>
+<ol>
+<li>
+<h4 id="文件划分方式全靠约定"><a class="markdownIt-Anchor" href="#文件划分方式全靠约定"></a> 文件划分方式（全靠约定）</h4>
+<p>每一个文件是一个独立模块，存入的状态数据和功能函数</p>
+<p>script src引用</p>
+<p>使用函数和全局变量</p>
+</li>
+</ol>
+<p>缺点： 污染全局变量、命名冲突、管理模块之前依赖关系</p>
+<ol start="2">
+<li>
+<h4 id="命名空间方式"><a class="markdownIt-Anchor" href="#命名空间方式"></a> 命名空间方式</h4>
+<p>将每个模块封装到一个<u>对象</u>中，依靠name属性命名模块</p>
+</li>
+</ol>
+<p>缺点：没有私有空间，可以在外被修改、依赖关系</p>
+<ol start="3">
+<li>
+<h4 id="iife"><a class="markdownIt-Anchor" href="#iife"></a> IIFE</h4>
+<p>将模块用<u>IIFE封装</u>，将所需要暴露的数据挂载在<u>全局对象window…</u>上</p>
+</li>
+</ol>
+<p>​	  通过闭包的方式，私有变量、参数传递，依赖关系（Jquery $）</p>
+<h2 id="模块化规范"><a class="markdownIt-Anchor" href="#模块化规范"></a> <mark>模块化规范</mark></h2>
+<h3 id="模块化规范的出现"><a class="markdownIt-Anchor" href="#模块化规范的出现"></a> 模块化规范的出现</h3>
+<h4 id="commonjs"><a class="markdownIt-Anchor" href="#commonjs"></a> CommonJS</h4>
+<blockquote>
+<p>node提出</p>
+<p>同步加载</p>
+</blockquote>
+<ul>
+<li>一个文件就是一个模块</li>
+<li>每个模块都是有一个单独的作用域</li>
+<li>通过module.exports导出模块、require函数载入模块</li>
+</ul>
+<h4 id="amdasynchronous-module-definition-异步模块定义规范"><a class="markdownIt-Anchor" href="#amdasynchronous-module-definition-异步模块定义规范"></a> AMD(Asynchronous Module Definition) 异步模块定义规范</h4>
+<blockquote>
+<p>社区提出</p>
+<p>Require.js实现了AMD规范</p>
+<p>模块加载器</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 定义一个模块 */</span></span><br><span class="line"><span class="comment">// 参数 定义模块名、引用依赖文件、函数（依赖文件导出的成员）</span></span><br><span class="line"><span class="title function_">define</span>(<span class="string">&#x27;muduleName&#x27;</span>,[<span class="string">&#x27;jquery&#x27;</span>, <span class="string">&#x27;./moduleA&#x27;</span>],<span class="keyword">function</span>(<span class="params">$, moduleA</span>)&#123;</span><br><span class="line">  <span class="comment">// 导出成员</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    $(<span class="string">&#x27;body&#x27;</span>).<span class="title function_">animate</span>(&#123;<span class="attr">margin</span>:<span class="string">&#x27;20px&#x27;</span>&#125;)</span><br><span class="line">    <span class="title function_">moduleA</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 载入一个模块 */</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">&#x27;moduleName&#x27;</span>],<span class="keyword">function</span>(<span class="params"><span class="variable language_">module</span></span>)&#123;</span><br><span class="line">  <span class="variable language_">module</span>.<span class="title function_">start</span>()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//自动创建script标签</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>淘宝推出Sea.js 实现的CMD模块，旨在用CommonJS的方式写AMD，后续被require.js兼容</p>
+</blockquote>
+<h3 id="模块化标准规范"><a class="markdownIt-Anchor" href="#模块化标准规范"></a> 模块化标准规范</h3>
+<p>浏览器：ES Module、node：CommonJS</p>
+<h4 id="es-module-特性2014年"><a class="markdownIt-Anchor" href="#es-module-特性2014年"></a> ES Module 特性（2014年）</h4>
+<p>通过给script标签添加<code>type=&quot;module&quot;</code>，以ESM标准执行JS代码</p>
+<ul>
+<li>自动开启<strong>严格模式</strong></li>
+<li>每个module单独私有作用域</li>
+<li>通过CORS方式请求外部的JS模块（外部必须支持CORS，要加入CORS响应头）</li>
+<li>延迟执行脚本 <code>defer</code></li>
+</ul>
+<h4 id="es-module-导入和导出"><a class="markdownIt-Anchor" href="#es-module-导入和导出"></a> ES Module 导入和导出</h4>
+<p>导出导入都可 as 重命名，</p>
+<p><strong><code>export</code></strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; a, b &#125; <span class="comment">//这个&#123;&#125; 不是对象，而是固定写法</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> xxx <span class="comment">//xxx可以是一个变量或者值，</span></span><br></pre></td></tr></table></figure>
+<p><strong><code>import</code></strong></p>
+<ul>
+<li>
+<p>引用文件路径</p>
+<ul>
+<li>不能省略<code>.js</code>文件后缀、也不能直接省略访问<code>index.js</code>，后续通过<strong>打包工具</strong>可以这样做</li>
+<li>不能直接载入文件名（<code>from 'moduleA.js'</code>），因为这样会被识别成第三方库</li>
+<li>可以载入相对路径(不能省略<code>./</code>)、绝对路径、完整的url路径（引用cdn模块）</li>
+</ul>
+</li>
+<li>
+<p>只导入不取值</p>
+<ul>
+<li>
+<pre class="highlight"><code class="js"><span class="keyword">import</span> &#123;&#125; form <span class="string">&#x27;./moduleA.js&#x27;</span>
+<span class="keyword">import</span> <span class="string">&#x27;./moduleA.js&#x27;</span> <span class="comment">//简写方式</span>
+&lt;!--code￼<span class="number">2</span>--&gt;
+
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>动态加载模块（import函数）</p>
+<ul>
+<li>
+<p>普通<code>import from</code> 只能作用于最顶层作用域</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span>(<span class="string">&#x27;./moduleA.js&#x27;</span>) </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>同时默认和分别导出时</p>
+<ul>
+<li>
+<pre class="highlight"><code class="js"><span class="comment">//导出</span>
+<span class="keyword">export</span> &#123;a, b&#125;
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="string">&#x27;1234&#x27;</span>
+
+<span class="comment">//导入</span>
+<span class="keyword">import</span> &#123;a, b, <span class="keyword">default</span> <span class="keyword">as</span> str&#125; <span class="keyword">from</span> <span class="string">&#x27;./moduleA.js&#x27;</span>
+<span class="keyword">import</span> str, &#123;a, b&#125; <span class="keyword">from</span> <span class="string">&#x27;./moduleA.js&#x27;</span>  <span class="comment">//简写 </span>
+&lt;!--code￼<span class="number">4</span>--&gt;
+
+
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="es-module-浏览器环境兼容"><a class="markdownIt-Anchor" href="#es-module-浏览器环境兼容"></a> ES Module 浏览器环境兼容</h4>
+<blockquote>
+<p>这种方式只适合<font color=red>开发阶段</font>，生产阶段不用。动态解析脚本，性能差</p>
+<p>最好的方式还是在执行前，就将代码编译好</p>
+</blockquote>
+<p>有些浏览器不支持直接解析es6</p>
+<p><a href="https://github.com/ModuleLoader/browser-es-module-loader">es-module-loader</a>代码读出来，交给babel转换</p>
+<p>不支持promise，用<code>promise-ployfill</code></p>
+<p>借助<code>script</code>标签的<font color=red><code>nomodule</code></font>属性，只在不支持的浏览器运行转换脚本</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">nomodule</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/browser-es-module-loader@0.4.1/dist/babel-browser-build.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">nomodule</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/browser-es-module-loader@0.4.1/dist/browser-es-module-loader.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;我是一个模块&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="es-module-在node中使用"><a class="markdownIt-Anchor" href="#es-module-在node中使用"></a> ES Module 在Node中使用</h4>
+<p>在node环境下，esm文件后缀为<code>.mjs</code> ,不太推荐使用</p>
+<p><u>官方内置模块</u>做了兼容，可以默认全部导入，也可以分别导入</p>
+<p>第三方库一般都是默认导出，所以不能import {xx} from ‘.module.js’</p>
+<h4 id="es-module-在node中与-commonjs模块交互"><a class="markdownIt-Anchor" href="#es-module-在node中与-commonjs模块交互"></a> ES Module 在Node中与 CommonJS模块交互</h4>
+<p><font color=red> esm可以载入cjs模块</font></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// esm.ejs</span></span><br><span class="line"><span class="comment">// 只能默认导入</span></span><br><span class="line"><span class="keyword">import</span> mod <span class="keyword">from</span> <span class="string">&#x27;./cjs.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mod)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ********************* //</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//cjs.js</span></span><br><span class="line"><span class="comment">/* module.exports = &#123;</span></span><br><span class="line"><span class="comment">    foo: &#x27;cjs中的foo&#x27;</span></span><br><span class="line"><span class="comment">&#125; */</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">foo</span> = <span class="string">&#x27;cjs中的foo&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>cjs不能载入esm模块（在原生node环境中）</p>
+<p>nvm use 版本号</p>
+<h4 id="es-module在node新版本中的支持"><a class="markdownIt-Anchor" href="#es-module在node新版本中的支持"></a> ES Module在Node新版本中的支持</h4>
+<p><code>package.json</code> 新增<code>&quot;type&quot;:&quot;module&quot;</code> 字段，node中<code>.js</code>文件模块就设定为ESM</p>
+<p>此时还需用CommonJS模块，后缀名为<code>.cjs</code></p>
+<h4 id="es-module-在node中-babel兼容方案"><a class="markdownIt-Anchor" href="#es-module-在node中-babel兼容方案"></a> ES Module 在Node中 Babel兼容方案</h4>
+<p>Babel js编译器，使用新特性代码 =(编译成)=》当前环境支持的代码</p>
+<h5 id="用preset插件集合"><a class="markdownIt-Anchor" href="#用preset插件集合"></a> 用preset插件集合</h5>
+<p>下载所需模块yarn add <code>@babel/node</code> <code>@babel/core</code> <code>@babel/preset-env </code> --dev(作为开发依赖)</p>
+<p>运行 <code>yarn babel-node xxx.js --presets=preset-env</code>  (还有其他preset)</p>
+<ul>
+<li>
+<p>如果不想每次运行都添加–presets=xxx。那么在文件下新建<code>.babelrc</code>文件，中添加</p>
+<ul>
+<li>
+<pre class="highlight"><code class="json"><span class="punctuation">&#123;</span>
+  <span class="attr">&quot;presets&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="string">&quot;@babel/preset-env&quot;</span><span class="punctuation">]</span>
+<span class="punctuation">&#125;</span>
+&lt;!--code￼<span class="number">7</span>--&gt;
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>运行 <code>yarn babel-node xx.js</code></p>
+<h2 id="模块化打包工具"><a class="markdownIt-Anchor" href="#模块化打包工具"></a> <mark>模块化打包工具</mark></h2>
+<blockquote>
+<p>ESM 存在环境兼容问题</p>
+<p>模块文件过多，网络请求频繁，影响工作效率</p>
+<p>所有前端资源(html, css…)都需要模块化</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">新特性代码编译</th>
+<th style="text-align:center">模块化JS打包</th>
+<th style="text-align:center">支持不同类型的资源模块</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/05/08/xNJsOmDZSQ24Cka.png" alt="image-20230504103526814" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/05/08/Yoq8ByXEDLQFJw1.png" alt="image-20230504103539317" /></td>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/05/08/o5xhIYfqEnHteFs.png" alt="image-20230504103918557" /></td>
+</tr>
+</tbody>
+</table>
+<p>模块打包工具（Module Bundler）</p>
+<p><code>webpack</code> <code>parcel</code> <code>rollup</code></p>
+<p>打包工具的模块化是指对<font color=red>前端整体的模块化</font>，并不单指JS的模块化</p>
+<h3 id="webpack"><a class="markdownIt-Anchor" href="#webpack"></a> <code>webpack</code></h3>
+<p>模块加载器loader （代码转换）</p>
+<p>代码拆分 code splitting</p>
+<p>资源模块 assets module，以模块化的方式引入任何资源文件</p>
+<p><code>yarn init --yes</code></p>
+<p><code>yarn add webpack webpack-cli --dev</code></p>
+<p><code>yarn webpack</code> (默认 打包src下的index.js文件)</p>
+<h4 id="配置文件"><a class="markdownIt-Anchor" href="#配置文件"></a> 配置文件</h4>
+<p>默认打包 <code>src/index.js</code></p>
+<p><code>webpack.config.js</code> 运行在node环境中的CommonJS模块</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./src/main.js&#x27;</span>, <span class="comment">//指定入口文件</span></span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>, <span class="comment">//指定打包后的文件名</span></span><br><span class="line">        <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;output&#x27;</span>) <span class="comment">//必须为绝对路径</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="工作模式"><a class="markdownIt-Anchor" href="#工作模式"></a> 工作模式</h4>
+<p>正常运行webpack出现警告⚠️</p>
+<blockquote>
+<p>WARNING in configuration<br />
+The ‘mode’ option has not been set, webpack will fallback to ‘production’ for this value.<br />
+<strong>Set ‘mode’ option to ‘development’ or ‘production’ to enable defaults for each environment.</strong><br />
+You can also set it to ‘none’ to disable any default behavior. Learn more: <a href="https://webpack.js.org/configuration/mode/">https://webpack.js.org/configuration/mode/</a></p>
+</blockquote>
+<h5 id="prodcuction-生产默认模式"><a class="markdownIt-Anchor" href="#prodcuction-生产默认模式"></a> prodcuction 生产默认模式</h5>
+<p>yarn webpack</p>
+<p>​	自动优化打包结果</p>
+<h5 id="开发模式"><a class="markdownIt-Anchor" href="#开发模式"></a> 开发模式</h5>
+<p>yarn webpack --mode development 优化打包速度，添加调试过程中辅助</p>
+<h5 id="none-模式"><a class="markdownIt-Anchor" href="#none-模式"></a> none 模式</h5>
+<p>yarn webpack --mode none 最原始</p>
+<p>或者在<code>webpack.config.js</code>文件添加<code>mode: 'development'</code>属性，就不需要在<code>yarn webpack --mode 参数</code></p>
+<h4 id="资源模块加载"><a class="markdownIt-Anchor" href="#资源模块加载"></a> 资源模块加载</h4>
+<p>webpack默认只处理js文件</p>
+<p>不同类型的资源文件，需要不同类型的加载器loader</p>
+<h5 id="加载css资源"><a class="markdownIt-Anchor" href="#加载css资源"></a> 加载css资源</h5>
+<p><code>yarn add css-loader </code> <em><strong>将css文件转为js文件模块</strong></em></p>
+<p><code>yarn add style-loader</code> 将css-loader转换的css文件以style标签追加到页面上</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./src/main.css&#x27;</span>,<span class="comment">//打包css文件</span></span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">        <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;output&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>: <span class="regexp">/.css$/</span>, <span class="comment">//打包文件后缀</span></span><br><span class="line">                <span class="attr">use</span>: [</span><br><span class="line">                    <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">                    <span class="string">&#x27;css-loader&#x27;</span></span><br><span class="line">                ]<span class="comment">//use模块是从后往前直行，左移css-loader要卸载后面</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em><strong>loader是webpack的核心特性，通过不同的loader加载不同类型资源</strong></em></p>
+<h6 id="导入import资源模块"><a class="markdownIt-Anchor" href="#导入import资源模块"></a> <mark>导入import资源模块</mark></h6>
+<p>打包入口—&gt; 运行入口</p>
+<p>js驱动驱动整个前端业务</p>
+<table>
+<thead>
+<tr>
+<th>js文件作为打包的入口 ，然后在js模块中通过import引入css文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="//main.js">//main.js</a> <br /><code>import './xxx.css'</code> <code>import './yyy.css'</code></td>
+</tr>
+<tr>
+<td><img src="https://s2.loli.net/2023/05/08/8BQZXKWvAbUh6Df.png" alt="image-20230504140630685" style="zoom:100%;" /></td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>根据代码的需要动态导入资源</strong></em></p>
+<p><font color=red>逻辑合理，js需要资源文件</font></p>
+<p><font color=red>确保上线资源文件不缺失</font></p>
+<blockquote>
+<p>代码更易维护，减少网络请求</p>
+<p>loader 编译转换压缩</p>
+<p>Webpack静态资源优化，分析依赖关系是否必须，tree-shaking，优化代码</p>
+</blockquote>
+<h5 id="文件资源加载器-file-loader"><a class="markdownIt-Anchor" href="#文件资源加载器-file-loader"></a> 文件资源加载器 file-loader</h5>
+<p><code>yarn add file-loader</code> 拷贝物理文件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">        <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;output&#x27;</span>), <span class="comment">//默认是dist</span></span><br><span class="line">        <span class="comment">// publicPath: &#x27;output/&#x27;  //默认</span></span><br><span class="line">    &#125;,</span><br><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>: <span class="regexp">/.jpeg$/</span>,</span><br><span class="line">                <span class="attr">use</span>: <span class="string">&#x27;file-loader&#x27;</span> <span class="comment">//配置file-loader</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>根据配置文件的匹配到对应的文件加载器</p>
+<p>文件加载器将导入的文件<strong>拷贝到输出的目录</strong>，</p>
+<p>将这个拷贝的<strong>文件路径</strong>作为这个<strong>模块的返回值</strong>返回，文件就被发布出来，</p>
+<p>可以通过模块的导出成员拿到这个资源的访问路径</p>
+<p><img src="https://s2.loli.net/2023/05/08/7BHleROkNcDWFvd.png" alt="image-20230504143659882" /></p>
+<h5 id="url-loader"><a class="markdownIt-Anchor" href="#url-loader"></a> url-loader</h5>
+<p>DataUrls 这个就已经代表了文件</p>
+<p>将小型文件（如图片、音频等）直接嵌入到 HTML、CSS 或 JavaScript 文件中，而不必再通过网络请求获取这些文件</p>
+<table>
+<thead>
+<tr>
+<th><img src="https://s2.loli.net/2023/05/08/FOMloWnvTq9Hc4Z.png" alt="image-20230504144417780" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://s2.loli.net/2023/05/08/KoEDmiLzx87gRp4.png" alt="image-20230504144448616" /></td>
+</tr>
+<tr>
+<td><img src="https://s2.loli.net/2023/05/08/A2gP89vCDUpJBRM.png" alt="image-20230504144533002" /></td>
+</tr>
+<tr>
+<td><img src="https://s2.loli.net/2023/05/08/cUkDwi7jH8e9XSC.png" alt="image-20230505105909806" /></td>
+</tr>
+</tbody>
+</table>
+<p>通过url-loader实现DataUrls</p>
+<p><code>yarn add url-loader</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>: <span class="regexp">/.jpeg$/</span>,</span><br><span class="line">                <span class="comment">//use: &#x27;url-loader&#x27;,</span></span><br><span class="line">              	<span class="attr">use</span>: &#123;</span><br><span class="line">                    <span class="attr">loader</span>: <span class="string">&#x27;url-loader&#x27;</span>,</span><br><span class="line">                    <span class="attr">options</span>:&#123;</span><br><span class="line">                        <span class="attr">limit</span>: <span class="number">10</span> * <span class="number">1024</span> <span class="comment">//10KB,只处理&lt;=10KB，的文件,超过就单独提取存放</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>url-loader不会像file-loader在输出文件夹，而是生成导出文件（在打包文件中）</p>
+<p style="color:red;">小文件使用DataUrls的方式，减少请求次数
+  <br>大文件单独提取存放，提高加载速度</p>需要同时安装file-loader和url-loader模块
+<h4 id="常用加载器分类"><a class="markdownIt-Anchor" href="#常用加载器分类"></a> 常用加载器分类</h4>
+<table>
+<thead>
+<tr>
+<th>编译转换类</th>
+<th>文件操作类</th>
+<th>代码检查类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td>统一代码风格，提高代码质量</td>
+</tr>
+<tr>
+<td><img src="https://s2.loli.net/2023/05/08/J49vgDNeiHhGoy7.png" alt="image-20230504150809959" /></td>
+<td><img src="https://s2.loli.net/2023/05/08/NXHYKzByxDGSv2A.png" alt="image-20230504150857447" /></td>
+<td><img src="https://s2.loli.net/2023/05/08/8puCoUVwRJmiWgh.png" alt="image-20230504150924725" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="webpack与es2015-babel-loader"><a class="markdownIt-Anchor" href="#webpack与es2015-babel-loader"></a> webpack与ES2015 babel-loader</h4>
+<p>因为打包需要，处理export和import</p>
+<p>利用babel中的预设插件编译转换代码</p>
+<p><code>yarn add babel-loader @babel/core @babel/preset-env </code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>:<span class="regexp">/.js$/</span>,</span><br><span class="line">                <span class="attr">use</span>: &#123;</span><br><span class="line">                    <span class="attr">loader</span>: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">                    <span class="attr">options</span>: &#123;</span><br><span class="line">                        <span class="attr">presets</span>: [<span class="string">&#x27;@babel/preset-env&#x27;</span>]</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">          ]</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="模块加载方式"><a class="markdownIt-Anchor" href="#模块加载方式"></a> 模块加载方式</h4>
+<blockquote>
+<p>非必要，不要混用标准</p>
+</blockquote>
+<p>遵循ESM的import声明</p>
+<p>遵循CJS的require函数，（CJS require ESM的默认导出模块，需要<code>require().default</code>）</p>
+<p>遵循AMD的define和require函数</p>
+<p>Loader加载的非JS也会触发资源加载（处理的结果打包到输出目录）</p>
+<p>​	样式代码的@import指令 url函数</p>
+<p>​		<code>@import url(reset.css);</code></p>
+<p>​		<code>background-image: url(background.jpeg);</code></p>
+<p>​	html中的src属性</p>
+<blockquote>
+<p>Footer.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;img src=&quot;footer.jpeg&quot;&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;footer.jpeg&quot;</span>&gt;</span>download<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>html文件默认导出是字符串，需要接收</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> footerHtml <span class="keyword">from</span> <span class="string">&#x27;./footer.html&#x27;</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(footer.<span class="property">html</span>)</span><br></pre></td></tr></table></figure>
+<p>再配合html-loader（<mark>默认只能加载img src</mark>）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">test</span>: <span class="regexp">/.html$/</span>,</span><br><span class="line">            <span class="attr">use</span>: <span class="string">&#x27;html-loader&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">options</span>: &#123;</span><br><span class="line">            <span class="comment">// attrs: [&#x27;img:src&#x27;, &#x27;a:href&#x27;] //已经被废弃</span></span><br><span class="line">            <span class="attr">sources</span>: &#123;</span><br><span class="line">                <span class="attr">list</span>: [</span><br><span class="line">                    <span class="string">&quot;...&quot;</span>,<span class="comment">// 所有默认支持的标签和属性，这个一定要加上，不然就只会检测a标签了</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">tag</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">                        <span class="attr">attribute</span>: <span class="string">&#x27;href&#x27;</span>,</span><br><span class="line">                        <span class="attr">type</span>: <span class="string">&#x27;src&#x27;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<hr />
+<h4 id="loader核心工作原理"><a class="markdownIt-Anchor" href="#loader核心工作原理"></a> Loader核心工作原理</h4>
+<p>入口文件（js文件 ）</p>
+<p>通过require import 推断解析文件所依赖的模块，分别解析每个模块</p>
+<p>生成依赖树，递归依赖树，找到结点的依赖文件，根据配置文件rules属性，找到对应loader，最后打包在bundle.js文件</p>
+<p><em><strong>Loader机制是webpack核心</strong></em></p>
+<hr />
+<blockquote>
+<p>Loader本质上是一个导出函数的Javascript模块，Webpack调用这个函数，将文件内容传递给它，返回转换后的结果。这个函数需要返回一个Javascript模块，Webpack会将它打包到最终的输出中。</p>
+</blockquote>
+<p><em><strong>管道（Pipeline）机制</strong></em></p>
+<h4 id="开发一个loader"><a class="markdownIt-Anchor" href="#开发一个loader"></a> 开发一个Loader</h4>
+<p>loader负责资源文件从输入到输出的转换</p>
+<p>webpack中对于同一个资源可一次使用多个loader，但是最后loader处理的result必须是一段js代码</p>
+<img src="https://s2.loli.net/2023/05/08/lvFeHpb1SPcY3rG.png" alt="image-20230504174619249" style="zoom: 25%;" />
+<p>打包过后，webpack直接将loader return的js代码拼接在打包后的js文件中</p>
+<h5 id="简单实现一个-显示markdown-loader"><a class="markdownIt-Anchor" href="#简单实现一个-显示markdown-loader"></a> 简单实现一个 显示markdown loader</h5>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">//aboutme.md</span><br><span class="line"><span class="section"># 一个markdown文件</span></span><br><span class="line"> xxxxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//main.js 打包入口文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导入md文件</span></span><br><span class="line"><span class="keyword">import</span> aboutMd <span class="keyword">from</span> <span class="string">&#x27;./aboutme.md&#x27;</span>  <span class="comment">//一般md文件导入会是一段html字符串</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aboutMd)</span><br></pre></td></tr></table></figure>
+<p>loader return输出必须是一段js代码，其实就是将return的结果直接拼接在打包完成的js文件中</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//markdown-loader.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">source</span> =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> marked = <span class="built_in">require</span>(<span class="string">&#x27;marked&#x27;</span>) <span class="comment">//借助marked</span></span><br><span class="line">	<span class="keyword">const</span> html = marked.<span class="title function_">parse</span>(source)</span><br><span class="line">  </span><br><span class="line"> 	<span class="comment">//return `module.exports = $&#123;JSON.stringify(html)&#125;` //return输出必须是一段js代码</span></span><br><span class="line">  <span class="comment">// return `export default $&#123;JSON.stringify(html)&#125;` //esm导出</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">//!!!!借助html-loader 解析html</span></span><br><span class="line">  <span class="keyword">return</span> html</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">test</span>: <span class="regexp">/.md$/</span>,</span><br><span class="line">            <span class="attr">use</span>: [<span class="comment">//use数组，从后往前执行</span></span><br><span class="line">                <span class="string">&#x27;html-loader&#x27;</span>,<span class="comment">//!!!!借助html-loader 解析html</span></span><br><span class="line">                <span class="string">&#x27;./markdown-loader&#x27;</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="插件plugin机制"><a class="markdownIt-Anchor" href="#插件plugin机制"></a> 插件Plugin机制</h4>
+<p>增强webpack自动化能力</p>
+<p>处理<u>除了loader处理的资源加载</u>以外自动化工作</p>
+<p>e.g. 清除上次打包的dist文件夹</p>
+<p>​		将拷贝的静态文件输出至目录</p>
+<p>​		压缩输出代码</p>
+<p>​		…</p>
+<p>实现大多数前端工程化</p>
+<h5 id="clean-webpack-plugin"><a class="markdownIt-Anchor" href="#clean-webpack-plugin"></a> <code>clean-webpack-plugin</code></h5>
+<p>清除输出目录</p>
+<p>新打包只会覆盖重名文件，而其他文件则会一直积累在输出目录</p>
+<p><code>yarn add clean-webpack-plugin --dev</code> 第三方库</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">CleanWebpackPlugin</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;clean-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>:[</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="html-webpack-plugin"><a class="markdownIt-Anchor" href="#html-webpack-plugin"></a> <code>html-webpack-plugin</code></h5>
+<p><strong>webpack输出HTML文件</strong></p>
+<blockquote>
+<p><code>html-webpack-plugin</code>是一个webpack插件，用于生成HTML文件。它可以根据你的配置自动生成一个HTML文件，并将打包生成的js、css等文件<strong>自动引入</strong>到HTML文件中。</p>
+</blockquote>
+<p>自动使用bundle.js的html</p>
+<p>最后只用发布dist目录，不需要另外再同时发布一个html文件</p>
+<p><code>yarn add html-webpack-plugin --dev</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>:[</span><br><span class="line">    <span class="comment">//new HtmlWebpackPlugin() //在输出目录生成index.html</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;webpack plugin sample&#x27;</span>,</span><br><span class="line">      <span class="attr">meta</span>: &#123;</span><br><span class="line">        <span class="attr">viewport</span>: <span class="string">&#x27;width=device-width&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">template</span>:<span class="string">&#x27;./src/index.html&#x27;</span> <span class="comment">//模板文件</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 模板文件 ejs模板 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>&lt;%= htmlWebpackPlugin.options.title %&gt;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&lt;%= htmlWebpackPlugin.options.title %&gt;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>输出多个html页面，直接多<code>new HtmlWebpackPlugin(&#123;filename:'hello'&#125;)</code></strong></p>
+<h5 id="copy-webpack-plugin-静态资源"><a class="markdownIt-Anchor" href="#copy-webpack-plugin-静态资源"></a> <code>copy-webpack-plugin</code> 静态资源</h5>
+<p>将静态文件打包copy到输出目录 ,<a href="#jump">一般不在开发环境中使用</a></p>
+<p><code>yarn add copy-webpack-plugin --dev</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">CopyWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;copy-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>:[</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">patterns</span>: [</span><br><span class="line">        &#123;<span class="attr">from</span>: <span class="string">&#x27;public&#x27;</span>, <span class="attr">to</span>: <span class="string">&#x27;&#x27;</span>&#125; <span class="comment">//从那个文件到输出文件夹</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="自定义插件"><a class="markdownIt-Anchor" href="#自定义插件"></a> 自定义插件</h5>
+<p>Plugin通过钩子机制实现</p>
+<p>一个具有 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"><code>apply</code></a> 方法的 JavaScript 对象</p>
+<p>通过在生命周期的钩子挂载函数实现扩展</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 用于处理删除打包bundle.js 的前面的注释</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyPlugin</span>()&#123;</span><br><span class="line">  <span class="title function_">apply</span>(<span class="params">compliler</span>)&#123;</span><br><span class="line">    compiler.<span class="property">hooks</span>.<span class="property">emit</span>.<span class="title function_">tap</span>(<span class="string">&#x27;MyPlugin&#x27;</span>, <span class="function"><span class="params">conpilation</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// compilation 此次打包的上下文</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">const</span> file <span class="keyword">in</span> compilation.<span class="property">assets</span>)&#123;</span><br><span class="line">        <span class="comment">//console.log(filename) //打包目录的某个文件</span></span><br><span class="line">        <span class="keyword">if</span>(file.<span class="title function_">endsWith</span>(<span class="string">&#x27;.js&#x27;</span>))&#123;</span><br><span class="line">          <span class="keyword">const</span> content = compilation.<span class="property">assets</span>[file].<span class="title function_">source</span>() <span class="comment">//某个文件内容</span></span><br><span class="line">          <span class="keyword">const</span> withoutComments = contents.<span class="title function_">replace</span>(<span class="regexp">/\/\*\*+\*\//g</span>, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">          compliation.<span class="property">assets</span>[file] = &#123; <span class="comment">//覆盖一下里面的方法</span></span><br><span class="line">            <span class="attr">source</span>: <span class="function">()=&gt;</span> withoutComments,</span><br><span class="line">         		<span class="attr">size</span>: <span class="function">()=&gt;</span> withoutComments.<span class="property">length</span></span><br><span class="line">         &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="增强开发体验"><a class="markdownIt-Anchor" href="#增强开发体验"></a> 增强开发体验</h4>
+<p>手动启动服务，过于原始</p>
+<img src="https://s2.loli.net/2023/05/08/NvyFanxBXjJAkKE.png" alt="image-20230504205435077" style="zoom:35%;" />
+<blockquote>
+<p><strong>需求</strong></p>
+<p>http server启动（接近）</p>
+<p>自动编译+自动刷新</p>
+<p>source map支持</p>
+</blockquote>
+<h5 id="自动编译刷新"><a class="markdownIt-Anchor" href="#自动编译刷新"></a> 自动编译+刷新</h5>
+<ul>
+<li><u><code>watch</code>工作模式</u> 监听文件变化，自动重新打包</li>
+</ul>
+<p>​	专注编码</p>
+<p>​	<code>yarn webpack --watch</code></p>
+<ul>
+<li>编译后自动刷新浏览器</li>
+</ul>
+<p>​	<a href="https://browsersync.bootcss.com/#install"><code>BrowserSync</code></a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install -g browser-sync</span><br><span class="line">browser-sync start --server --files &quot;css/*.css&quot; //一个基本用途是，监听某个 css 文件</span><br><span class="line">//&quot;**/*&quot; //监听所有文件的变化</span><br></pre></td></tr></table></figure>
+<p><strong><code>browser-sync 文件夹名 --files &quot;**/*&quot; </code></strong></p>
+<blockquote>
+<p><em><strong>watch 与 browser-sync结合麻烦，效率低</strong></em></p>
+</blockquote>
+<h5 id="webpack-dev-server"><a class="markdownIt-Anchor" href="#webpack-dev-server"></a> <mark><code>webpack-dev-server</code></mark></h5>
+<p><mark>对开发者提供一个良好的服务器</mark></p>
+<p>自动编译+刷新</p>
+<p><code>yarn add webpack-dev-server --dev</code></p>
+<p><code>yarn webpack-dev-server</code> 启动</p>
+<p>添加 <code>--open</code> 自动打开浏览器窗口</p>
+<p><em>将打包结果写入内存，并没有生成dist目录，不需要<strong>读写磁盘</strong>，提高效率</em></p>
+<h5 id="webpack-dev-server静态资源访问"><a class="markdownIt-Anchor" href="#webpack-dev-server静态资源访问"></a> <code>webpack-dev-server</code>静态资源访问</h5>
+<p>Dev-server默认只会serve打包输出文件</p>
+<p>只要是通过webpack打包输出的文件都能被访问到</p>
+<p><span id='jump' style="visibility:none;"></span></p>
+<blockquote>
+<p>之前通过clean-webpack-plugin插件实现将静态资源打包到输出文件夹，</p>
+<p>但是在开发环境一般不要使用插件，</p>
+<p>因为我们频繁修改代码，拷贝静态文件，将影响开发</p>
+<p>所以一般是在上线的阶段前，使用一次这个插件</p>
+</blockquote>
+<p><a href="https://www.webpackjs.com/configuration/dev-server/#devserverstatic">webpack.devServer.static</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="comment">//contentBase: &#x27;./public&#x27;, //wepack5已经移除</span></span><br><span class="line">    <span class="attr">static</span>: &#123;</span><br><span class="line">            <span class="attr">directory</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;public&#x27;</span>) <span class="comment">//指定当前项目静态资源文件夹</span></span><br><span class="line">        &#125;<span class="comment">//可以托管多个静态文件夹</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="webpack-dev-server-代理api服务"><a class="markdownIt-Anchor" href="#webpack-dev-server-代理api服务"></a> <code>webpack-dev-server </code>代理API服务</h5>
+<blockquote>
+<p>CORS 跨域资源共享，服务端开启</p>
+<p>并不是任何情况服务端都必须支持CORS，</p>
+<p>前后端同源部署，没必要开启CORS</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">代理API服务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/05/08/yVghdvRLlaZ39ES.png" alt="image-20230505135331738 " style="zoom:33%;" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>代理 <a href="https://api.github.com">https://api.github.com</a></strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">static</span>: &#123;</span><br><span class="line">            <span class="attr">directory</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;public&#x27;</span>) <span class="comment">//指定当前项目静态资源文件夹</span></span><br><span class="line">        &#125;</span><br><span class="line">  	&#125;,</span><br><span class="line">  	<span class="comment">// !!!代理</span></span><br><span class="line">  	<span class="attr">proxy</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;/api&#x27;</span>: &#123;</span><br><span class="line">                <span class="comment">// 对当前`/api/users`的请求 --会代理到--&gt; `https://api.github.com/api/users`</span></span><br><span class="line">                <span class="attr">target</span>: <span class="string">&#x27;https://api.github.com&#x27;</span>,</span><br><span class="line">                <span class="comment">// 如果不希望传递/api，则需要重写路径 </span></span><br><span class="line">                <span class="attr">pathRewrite</span>: &#123; <span class="string">&#x27;^/api&#x27;</span>: <span class="string">&#x27;&#x27;</span> &#125;, <span class="comment">//`/api/users`的请求 --会代理到--&gt; `https://api.github.com/users`</span></span><br><span class="line">                <span class="comment">// 不能使用localhost:8080 作为请求GitHub的主机名</span></span><br><span class="line">                <span class="comment">/* </span></span><br><span class="line"><span class="comment">                    服务器有多个网站，服务器通过主机名判断该请求那个网站 </span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">                <span class="attr">changeOrigin</span>: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// src/main.js</span></span><br><span class="line"><span class="comment">// 代理请求`https://api.github.com/users`</span></span><br><span class="line"><span class="comment">//http://localhost:8080/api/users 同源请求，不用担心跨域问题</span></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&#x27;/api/users&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>()).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="sourcemap"><a class="markdownIt-Anchor" href="#sourcemap"></a> sourceMap</h5>
+<p>运行代码与源代码不同</p>
+<p>需要调试应用，定位错误</p>
+<p><strong>调试和报错都是基于转换后的代码运行的</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sourceMap映射源代码与转换后代码的关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/05/08/MOTNu8KoedPZj7v.png" alt="image-20230505151251462" style="zoom:25%;" /></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://s2.loli.net/2023/05/08/nb23756hNwTodgZ.png" alt="image-20230505151353861" style="zoom:24%;" /></td>
+</tr>
+</tbody>
+</table>
+<p><em>sourceMap解决了源代码和运行代码不一致所产生的问题</em></p>
+<blockquote>
+<p>拿jquery距举例</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 引入的是压缩后的jq包 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#x27;jquery.min.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"> <span class="comment">// 使用</span></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">var</span> $body = $(<span class="variable language_">document</span>.<span class="property">body</span>)</span></span><br><span class="line"><span class="language-javascript">	<span class="variable language_">console</span>.<span class="title function_">log</span>($body)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//jquery.min.js</span></span><br><span class="line">xxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"></span><br><span class="line"><span class="comment">//# sourceMappingURL=jquery.min.map </span></span><br><span class="line"><span class="comment">//浏览器会自动识别，用于在浏览器开发工具中调试和定位代码时提供源文件的映射关系</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//jquery.js //js没被压缩的源文件</span></span><br><span class="line">xxxxxxxxxxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//jquery.min.map //sourceMap文件</span></span><br><span class="line">xxxxxxxx</span><br></pre></td></tr></table></figure>
+<p>之后在浏览器调试，虽然文件引入使用的是压缩后的体积，但是因为有sourcemap文件就能直接定位到源文件</p>
+</blockquote>
+<h5 id="webpack配置sourcemap"><a class="markdownIt-Anchor" href="#webpack配置sourcemap"></a> webpack配置sourceMap</h5>
+<h6 id="source-map模式"><a class="markdownIt-Anchor" href="#source-map模式"></a> <code>source-map</code>模式</h6>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">devtool</span>: <span class="string">&#x27;source-map&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>yarn webpack</code> 在dist目录生成sourcemap文件</p>
+<p>webpack支持多种soucemap方式，每种方式的效率和效果都不相同</p>
+<h6 id="eval模式"><a class="markdownIt-Anchor" href="#eval模式"></a> <code>eval</code>模式</h6>
+<ul>
+<li>映射到转换后的代码</li>
+<li>速度fastest</li>
+</ul>
+<p>将模块打包后的代码放入eval函数执行，配合 <code>#sourceURL=路径</code>方式说明对应文件路径，浏览器执行就到源代码是哪个文件，从而定位文件</p>
+<p>并没有生成sourceMap文件</p>
+<blockquote>
+<p><font color=red>打包过后的模块代码</font></p>
+<p>定位文件信息，而不知道行列（）</p>
+</blockquote>
+<h6 id="模式对比"><a class="markdownIt-Anchor" href="#模式对比"></a> 模式对比</h6>
+<p><code>eval</code> 使用eval函数+sourceURL执行模块，只有行信息</p>
+<p><code>cheap</code> 只有行信息，没有具体列信息</p>
+<p>带有<code>module</code>，没有经过loader es转换（例如babel-loader）的信息</p>
+<p><img src="https://s2.loli.net/2023/05/08/DC6gvoAi9TqN2mn.png" alt="image-20230505165912024" /></p>
+<p><code>Inline</code> sourceMap以dataURl模式嵌入到转换后的模块中</p>
+<p><code>hidden</code> 生成了sourcemap文件，但是并没有注释引入到文件中，（第三方包，）</p>
+<p><code>nosources</code> 调试工具看不到源代码，但是提供了行列信息。生产环境保护源代码，不会被暴露</p>
+<h5 id="选择sourcemap"><a class="markdownIt-Anchor" href="#选择sourcemap"></a> 选择sourcemap</h5>
+<p>开发环境 <code>cheap-module-eval-source-map</code></p>
+<img src="https://s2.loli.net/2023/05/08/jLxybh6wuodRqc8.png" alt="image-20230505170647622" style="zoom:25%;" />
+<p>生产环境 <code>none</code></p>
+<img src="https://s2.loli.net/2023/05/08/YoQROVGhfbacKMp.png" alt="image-20230505170741601" style="zoom: 25%;" />
+<p><em><strong>调试是开发阶段的问题</strong></em>，没有信息选择nosources-source-map</p>
+<h4 id="hmr-hot-module-replacement模块热更新"><a class="markdownIt-Anchor" href="#hmr-hot-module-replacement模块热更新"></a> HMR (hot module replacement)模块热更新</h4>
+<blockquote>
+<p>自动刷新页面任何操作状态都会丢失</p>
+<ol>
+<li>提前写死编辑器内容</li>
+<li>额外代码实现刷新前保存，刷新后读取</li>
+</ol>
+<p><strong>最好：页面不刷新，模块可以更新代码模块</strong></p>
+</blockquote>
+<p>应用执行过程中，实时替换某个模块，应用运行状态不改变</p>
+<p>最强大的功能之一，极大提高了工作效率</p>
+<p>集成在webpack-dev-server</p>
+<h5 id="开启hmr-hot"><a class="markdownIt-Anchor" href="#开启hmr-hot"></a> 开启hmr <code>hot</code></h5>
+<p><code>yarn webpack-dev-server --hot</code></p>
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">hot</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> webpack.<span class="title class_">HotModuleReplacementPlugin</span>()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><font color=red>webpack的HMR并不能开箱即用</font></p>
+<p>样式文件可以的原因是，经过loader处理，style-loader处理了样式文件热更新</p>
+<p>使用框架开发vue react，每种文件有规律，有通用的替换办法，脚手架创建的项目都继承了HMR方案</p>
+<p><font color=red>但是webpack的HMR需要手动处理模块热替换逻辑 </font></p>
+</blockquote>
+<p><em>更新被我们<strong>手动处理</strong>了，就<strong>不会触发自动刷新</strong>，反之就会刷新页面</em></p>
+<h5 id="js模块hmr"><a class="markdownIt-Anchor" href="#js模块hmr"></a> js模块hmr</h5>
+<p>不同的js模块有不同的逻辑，所以需要自定义</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//main.js 打包入口js文件</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">CreateEditor</span> <span class="keyword">from</span> <span class="string">&#x27;./editor.js&#x27;</span> <span class="comment">//为一个创建编辑器的模块</span></span><br><span class="line"><span class="keyword">const</span> editor = <span class="title function_">createEditor</span>()</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(editor)</span><br><span class="line"></span><br><span class="line"><span class="comment">//##########处理hmr，与上面业务代码无关，并且下面代码并不会被打包############</span></span><br><span class="line"><span class="keyword">if</span>(<span class="variable language_">module</span>.<span class="property">hot</span>)&#123; <span class="comment">//module.hot 由插件webpack.HotModuleReplacementPlugin()带来，原生module并不存在</span></span><br><span class="line"> 		 <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * //注册某个模块更新过后的处理函数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; &#x27;./editor.js&#x27; - 监视模块依赖路径</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> &#123;<span class="type">callback</span>&#125;  - 处理更新的逻辑回调函数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">  <span class="keyword">let</span> lastEditor = editor</span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&#x27;./editor.js&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> value = lastEditor.<span class="property">innerHTML</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> newEditor = <span class="title function_">createEditor</span>()</span><br><span class="line">    newEditor.<span class="property">innerHTML</span> = value</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(newEditor)</span><br><span class="line">    </span><br><span class="line">    lastEditor = newEditor</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="图片hmr"><a class="markdownIt-Anchor" href="#图片hmr"></a> 图片hmr</h5>
+<p>直接在<code>module.hot.accept</code>更新图片路径就行</p>
+<h5 id="hotonly"><a class="markdownIt-Anchor" href="#hotonly"></a> <code>hotonly</code></h5>
+<p>假如说hmr处理逻辑有误，就会导致页面自动刷新，看不到报错信息</p>
+<p>那就最好使用<code>hotonly</code>，维持原状，不会自动刷新页面</p>
+<p><code>yarn webpack-dev-server --hot only</code></p>
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="comment">//hotOnly: true, webpack5废弃</span></span><br><span class="line">    <span class="attr">hot</span>: <span class="string">&#x27;only&#x27;</span></span><br><span class="line">  &#125;，</span><br><span class="line">  <span class="attr">plugins</span>:[</span><br><span class="line">  	<span class="keyword">new</span> webpack.<span class="title function_">hmrp</span>()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>module.hot</code> 是<code>webpack.HotModuleReplacementPlugin()</code> 插件带来的，</p>
+<p><font color=red>处理热更新的逻辑也不会被打包</font></p>
+<h4 id="生产环境优化"><a class="markdownIt-Anchor" href="#生产环境优化"></a> 生产环境优化</h4>
+<p>生产环境跟开发环境差异大，<u>生产环境注重运行效率，</u>开发环境注重开发效率</p>
+<p>不同的<code>mode</code> 配置：none, production, development</p>
+<p>为不同的环境创建不同的配置</p>
+<h4 id="不同的环境的配置"><a class="markdownIt-Anchor" href="#不同的环境的配置"></a> 不同的环境的配置</h4>
+<ol>
+<li>配置文件根据环境不同导出不同配置</li>
+<li>一个环境对应一个配置文件</li>
+</ol>
+<h5 id="环境变量参数配置"><a class="markdownIt-Anchor" href="#环境变量参数配置"></a> 环境变量参数配置</h5>
+<p><code>webpack-config.js</code> 导出模块<code>module.exports</code>可以导出一个函数</p>
+<blockquote>
+<p>参数 env 代表cli传递的环境变量</p>
+<p>参数 argv 代表cli传递的所有参数</p>
+<p>​	比如：<code>yarn webpack-dev-server --env production</code> 此时env.prodution === true</p>
+<p>返回 一个配置</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">env, argv</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> config = &#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;none&#x27;</span>,</span><br><span class="line">    <span class="attr">devtool</span>: <span class="string">&#x27;cheap-module-eval-source-map&#x27;</span></span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">      <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...等其他开发阶段的配置</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 此时环境为生产环境</span></span><br><span class="line">  <span class="keyword">if</span>(env.<span class="property">production</span>) &#123;</span><br><span class="line">    config.<span class="property">mode</span> = <span class="string">&#x27;production&#x27;</span>,</span><br><span class="line">    config.<span class="property">devtool</span> = <span class="string">&#x27;nosources-source-map&#x27;</span>,</span><br><span class="line">    config.<span class="property">plugins</span> = [</span><br><span class="line">      ...config.<span class="property">plugins</span>,</span><br><span class="line">    	<span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>(),</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">patterns</span>: [</span><br><span class="line">									&#123; <span class="attr">from</span>: <span class="string">&quot;public&quot;</span>, <span class="attr">to</span>: <span class="string">&quot;&quot;</span> &#125;</span><br><span class="line">              ],</span><br><span class="line">    &#125;)</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">return</span> config</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="不同环境对应不同配置"><a class="markdownIt-Anchor" href="#不同环境对应不同配置"></a> 不同环境对应不同配置</h5>
+<p>三个配置（开发、生产、公共）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.common.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;<span class="comment">//xxx</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>yarn add webpack-merge --dev</code>  专门用于合并导出配置项的函数</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.prod.js 生产环境的webapck配置</span></span><br><span class="line"><span class="keyword">const</span> common = <span class="built_in">require</span>(<span class="string">&#x27;./webpack.common.js&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> &#123; merge &#125; = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>) <span class="comment">// 合并配置项函数</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title function_">merge</span>(common, &#123;</span><br><span class="line">  <span class="attr">mode</span>:<span class="string">&#x27;production&#x27;</span>,</span><br><span class="line">  <span class="comment">// xxxx</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.dev.js 开发环境的webpack配置 （与prod差不多）</span></span><br></pre></td></tr></table></figure>
+<p>执行不同开发环境的webpack配置，加上<code>--config</code>参数</p>
+<p><code>yarn webpack --config webpack.prod.js</code> 执行<strong>开发环境</strong>的webpack配置</p>
+<p>或</p>
+<p>在<code>package.json</code>，写入npm 脚本</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;script&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;webpack --config webpack.dev.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span> <span class="punctuation">:</span> <span class="string">&quot;webpack --config webpack.prod.js&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="webpack自带的优化"><a class="markdownIt-Anchor" href="#webpack自带的优化"></a> webpack自带的优化</h4>
+<h5 id="defineplugin"><a class="markdownIt-Anchor" href="#defineplugin"></a> DefinePlugin</h5>
+<p>为代码注入全局成员</p>
+<p>默认启用，<font color=gray>代码注入一个<code>process.env.NODE_ENV</code>常量，判断当前运行环境</font></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>:[</span><br><span class="line">    <span class="keyword">new</span> webpack.<span class="title class_">DefinePlugin</span>(&#123;</span><br><span class="line">      <span class="comment">/*注入一个API_BASE_URL常量*/</span></span><br><span class="line">      <span class="comment">// API_BASE_URL: &#x27;&quot;http://example.com&quot;&#x27; //js代码片段</span></span><br><span class="line">      <span class="attr">API_BASE_URL</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(<span class="string">&#x27;http://example.com&#x27;</span>) <span class="comment">//或者用这个方式</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">API_BASE_URL</span>) <span class="comment">//直接调用</span></span><br></pre></td></tr></table></figure>
+<h5 id="tree-shaking"><a class="markdownIt-Anchor" href="#tree-shaking"></a> Tree Shaking</h5>
+<p>shake掉代码中未引用的部分，『 未引用代码dead-code 』</p>
+<p><strong>生产模式</strong>自动开启 <code>yarn webpack--mode production</code></p>
+<blockquote>
+<p>treeshaking 并不是webpack某一个配置选项</p>
+<p>是一组功能搭配使用的效果</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack-cofig.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">usedExports</span>: <span class="literal">true</span>, <span class="comment">//只导出使用了的模块</span></span><br><span class="line">    <span class="attr">minimize</span>: <span class="literal">true</span> <span class="comment">//压缩代码</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="合并模块函数"><a class="markdownIt-Anchor" href="#合并模块函数"></a> 合并模块函数</h5>
+<p>也是<code>optimization</code>的一个属性</p>
+<p><strong><code>concatenateModules</code></strong>，将所有的模块合并输出到一个<font color=red>函数</font>中（<u><em>scope hoisting 作用域提升</em></u>）</p>
+<blockquote>
+<p>默认在生产环境启用，其他环境禁用</p>
+</blockquote>
+<p>treeshaking 前提是使用ESM组织代码，由webpack打包的代码使用ESM</p>
+<p>为了转换代码新特性，使用babel-loader，<u><strong>有可能</strong>会将ESM-&gt;CJS（取决于是否使用了esm转换插件）</u></p>
+<p>@babel/preset-env 插件集合带有了esm转换插件</p>
+<p><strong>但是</strong>在最新的babel-loader中，使用preset-env插件会自动<code>auto</code>识别当前环境的模块化方式，不会强制转换esm</p>
+<p>想要强制转换为commojs</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>: <span class="regexp">/.js$/</span>,</span><br><span class="line">                <span class="attr">use</span>: &#123;</span><br><span class="line">                    <span class="attr">loader</span>: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">                    <span class="attr">options</span>: &#123;</span><br><span class="line">                        <span class="attr">presets</span>: [</span><br><span class="line">                            [<span class="string">&#x27;@babel/preset-env&#x27;</span>, &#123; <span class="attr">modules</span>: <span class="string">&#x27;commonjs&#x27;</span> &#125;]</span><br><span class="line">                     				<span class="comment">//[&#x27;@babel/preset-env&#x27;, &#123; modules: false&#125;] //不会转换模块</span></span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="sideeffects-副作用"><a class="markdownIt-Anchor" href="#sideeffects-副作用"></a> sideEffects 副作用</h5>
+<p>通过配置表示代码是否有副作用，更好的帮助treeshaking</p>
+<p>模块执行的时候，除了导出成员，做出其他的事情</p>
+<blockquote>
+<p>一般用于NPM模块包标记是否有副作用</p>
+<p>这个包是否会对包以外的对象产生影响，比如是否修改了 window 上的属性，是否复写了原生对象 Array, Object 方法。</p>
+</blockquote>
+<p><strong>使用前提：确保代码没有副作用</strong></p>
+<p>开启sideEffects</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;sideEffects&quot;</span> : <span class="literal">false</span> <span class="comment">//标记表示这个包没有副作用</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;sideEffects&quot;</span> : [</span><br><span class="line">    <span class="string">&quot;./src/components/extends.js&quot;</span>, <span class="comment">//标记哪个文件有副作用</span></span><br><span class="line">    <span class="string">&quot;*.css&quot;</span>  <span class="comment">//css模块也有副作用</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">sideEffects</span>: <span class="literal">true</span>  <span class="comment">//开启sideEffects优化功能</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="分包代码分割coding-splitting"><a class="markdownIt-Anchor" href="#分包代码分割coding-splitting"></a> 分包/代码分割Coding Splitting</h5>
+<p>打包到同一个bundle文件太大了，并不是每个模块都是在启动时必要的</p>
+<p>分包，按需加载</p>
+<blockquote>
+<p>HTTP1.1 并不能对同一个域名下发起很多并行请求</p>
+<p>每次请求有延迟</p>
+<p>请求Header浪费带宽流量</p>
+</blockquote>
+<ul>
+<li>
+<p><mark>多打包入口 multi entry</mark></p>
+<ul>
+<li>多页应用程序
+<ul>
+<li>一个页面对应一个打包入口，公共部分单独提取</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: &#123; <span class="comment">//两个打包入口，对象形式</span></span><br><span class="line">    <span class="attr">home</span>: <span class="string">&#x27;./src/homepage/home.js&#x27;</span>,</span><br><span class="line">    <span class="attr">info</span>: <span class="string">&#x27;./src/info/info.js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">output</span>:&#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;[name].bundle.js&#x27;</span>  <span class="comment">//[name]占位符，匹配entry的键，进而有几个entry就有几个output</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">splitChunks</span>: &#123;</span><br><span class="line">      <span class="attr">chunks</span>: <span class="string">&#x27;all&#x27;</span> <span class="comment">//将所有模块的公共部分再提取出来</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;homepage&#x27;</span>,</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&#x27;home.html&#x27;</span>,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&#x27;./src/homepage/home.html&#x27;</span>,</span><br><span class="line">      <span class="attr">chunks</span>: [<span class="string">&#x27;home&#x27;</span>] <span class="comment">//指定哪个打包的模块才能插入到这个html页面中</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&#x27;info&#x27;</span>,</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&#x27;info.html&#x27;</span>,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&#x27;./src/info/info.html&#x27;</span>,</span><br><span class="line">      <span class="attr">chunks</span>: [<span class="string">&#x27;info&#x27;</span>] <span class="comment">//指定哪个打包的模块才能插入到这个html页面中</span></span><br><span class="line">    &#125;),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><font color=gray>HtmlWebpackPlugin默认将所有的打包文件都插入到html使用，要使用chunks配置项制定单独的js打包模块</font></p>
+</li>
+<li>
+<h6 id="动态导入-dynamic-import"><a class="markdownIt-Anchor" href="#动态导入-dynamic-import"></a> <mark>动态导入 Dynamic Import</mark></h6>
+<ul>
+<li>
+<p>所有动态导入的模块会<strong style="color:red;">自动分包</strong></p>
+<ul>
+<li>
+<pre class="highlight"><code class="js"><span class="keyword">import</span>(<span class="string">&#x27;./xx.js&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">module</span>=&gt;</span>&#123;
+  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">module</span>)
+&#125;)
+<span class="keyword">import</span>(<span class="string">&#x27;./yy.js&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">module</span>=&gt;</span>&#123;
+  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">module</span>)
+&#125;)
+
+<span class="comment">//自动分成两个包</span>
+&lt;!--code￼<span class="number">48</span>--&gt;
+
+&lt;!--code￼<span class="number">49</span>--&gt;
+
+
+
+
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="提取css文件"><a class="markdownIt-Anchor" href="#提取css文件"></a> 提取css文件</h5>
+<p>之前都是直接将css文件打包在同一个bundle中，</p>
+<p>通过插件<code>MiniCssExtractPlugin</code> ,提取css文件，实现按需加载</p>
+<blockquote>
+<p>之前是通过<code>css-loader</code>解析模块化css文件，再使用<code>style-loader</code>通过style标签注入到页面中</p>
+<p>现在通过<code>MiniCssExtactPlugin.loader</code>配合<code>css-loader</code>将css文件**<font color=red><code>link</code></font>**引入</p>
+</blockquote>
+<p><code>yarn add mini-css-webpack-plugin --dev</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">MiniCssExtractPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;mini-css-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="title class_">MiniCssExtractPlugin</span>.<span class="property">loader</span>,</span><br><span class="line">          <span class="string">&#x27;css-loader&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">MiniCssExtractPlugin</span>()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>超过150KB的css文件就最好不要提取出来，</p>
+<p>避免过多的请求</p>
+</blockquote>
+<h5 id="压缩css文件"><a class="markdownIt-Anchor" href="#压缩css文件"></a> 压缩css文件</h5>
+<blockquote>
+<p>在开启生产环境模式时，webpack会自动开启代码压缩，</p>
+<p>而webpack本身只能压缩js文件</p>
+</blockquote>
+<p>使用**<code>OptimizeCssAssetsWebpackPlugin</code>**压缩css文件</p>
+<p><code>yarn add optimize-css-assets-webpack-plugin --dev</code></p>
+<blockquote>
+<p>如果将这个插件配置在plugins属性中，那么在任何情况都会工作</p>
+<p>配置在<code>minimizer</code>配置，那么只在压缩的过程中才启用这个插件，</p>
+<p>在生产环境，这时候需要配置额外的<code>terser-webpack-plugin</code> 压缩打包js代码</p>
+</blockquote>
+<p><em>webpack希望我们将压缩相关插件写在optimization.minimizer属性中</em></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MiniCssExtractPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;mini-css-extract-plugin&#x27;</span>) <span class="comment">//提取css代码</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">OptimizeCssAssetsWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;optimize-css-assets-plugin&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">TerserWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;terser-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">optimiztion</span>: &#123;</span><br><span class="line">    <span class="attr">minimizer</span>: [</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">OptimizeCssWebpackPlugin</span>(),<span class="comment">//压缩css代码</span></span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">TerserWebpackPlugin</span>() <span class="comment">//压缩js代码</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">MiniCssExtractPlugin</span>()<span class="comment">//提取css文件</span></span><br><span class="line">  ]</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="输出文件名hash"><a class="markdownIt-Anchor" href="#输出文件名hash"></a> 输出文件名Hash</h4>
+<p>Substitutions</p>
+<blockquote>
+<p>在部署前端资源文件是，启用服务器的静态资源缓存</p>
+<p>对于用户的浏览器而言，可以缓存住应用当中的静态文件</p>
+<p>后续就不足要请求服务器获取资源</p>
+</blockquote>
+<blockquote>
+<p>假如说将文件过期时间设置较长，在过程中应用发生了更新，重新部署后，没有及时更新客户端</p>
+</blockquote>
+<p>生产环境下，文件名用添加Hash值</p>
+<p>资源文件发生改变，文件名也跟着改变，</p>
+<p>对于客户端，全新的文件名就是全新的请求，没有缓存的问题</p>
+<p><code>filename: '[name].[hash].bundle.css'</code></p>
+<p>三种模式：</p>
+<p>hash 项目级别，所有的打包文件共用一个hash。一个文件修改，所有文件的hash都变</p>
+<p>trunkhash 一个entry对应一个hash</p>
+<p>contenthash 单文件级别的hash</p>
+<blockquote>
+<p>所依赖的文件改变，文件也会改变相对应hash改变。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
     <title>vue3数据绑定之-sync</title>
     <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
     <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
@@ -3812,38 +4522,6 @@ setInterval最小执行时间是10ms</p>
       <tags>
         <tag>vue</tag>
         <tag>vue3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一键速通菲区Spotify</title>
-    <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
-    <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
-<p>菲区电话卡、菲区梯子🪜</p>
-<h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
-<ol start="0">
-<li>
-<p>Spotify换区（挂上🇵🇭🪜）</p>
-</li>
-<li>
-<p>某宝下单菲律宾电话卡（推荐Globe卡￥20+）</p>
-</li>
-<li>
-<p>话费充值（推荐易付宝， Google Play下载）</p>
-</li>
-<li>
-<p>登录进入<strong>手机端Spotify</strong>，选择套餐通过<strong>话费充值</strong></p>
-</li>
-</ol>
-<h3 id="切记"><a class="markdownIt-Anchor" href="#切记"></a> 切记💡</h3>
-<ul>
-<li><strong>第三步</strong>，必须在手机端中操作，账号登录成功后不要挂任何🪜，网络直连就行</li>
-</ul>
-<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
-<p>也可以试试<code>GCash</code>支付，需要实名。</p>
-<p>应填写真实的信息（护照等），不然一个月之内检测被封。（谷歌搜有相应的教程）</p>
-]]></content>
-      <tags>
-        <tag>utils</tag>
       </tags>
   </entry>
   <entry>
@@ -3912,6 +4590,57 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
+    <title>一键速通菲区Spotify</title>
+    <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
+    <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
+<p>菲区电话卡、菲区梯子🪜</p>
+<h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
+<ol start="0">
+<li>
+<p>Spotify换区（挂上🇵🇭🪜）</p>
+</li>
+<li>
+<p>某宝下单菲律宾电话卡（推荐Globe卡￥20+）</p>
+</li>
+<li>
+<p>话费充值（推荐易付宝， Google Play下载）</p>
+</li>
+<li>
+<p>登录进入<strong>手机端Spotify</strong>，选择套餐通过<strong>话费充值</strong></p>
+</li>
+</ol>
+<h3 id="切记"><a class="markdownIt-Anchor" href="#切记"></a> 切记💡</h3>
+<ul>
+<li><strong>第三步</strong>，必须在手机端中操作，账号登录成功后不要挂任何🪜，网络直连就行</li>
+</ul>
+<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
+<p>也可以试试<code>GCash</code>支付，需要实名。</p>
+<p>应填写真实的信息（护照等），不然一个月之内检测被封。（谷歌搜有相应的教程）</p>
+]]></content>
+      <tags>
+        <tag>utils</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>表格导出为excel</title>
+    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
+    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
+<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
+<p><code>yarn add xlsx file-saver</code></p>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
+<blockquote>
+<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>简单实现Toast组件</title>
     <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<blockquote>
@@ -3934,25 +4663,6 @@ setInterval最小执行时间是10ms</p>
 <h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 👨‍💻使用</h2>
 <figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Toast</span>.<span class="title function_">success</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="title class_">Toast</span>.<span class="title function_">error</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2023/08/17/ewqEhulLyJmUCKH.gif" alt="toast.gif" /></p>
-]]></content>
-      <tags>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>表格导出为excel</title>
-    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
-    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
-<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
-<p><code>yarn add xlsx file-saver</code></p>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
-<blockquote>
-<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
-</blockquote>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
-</blockquote>
 ]]></content>
       <tags>
         <tag>enhanced</tag>
