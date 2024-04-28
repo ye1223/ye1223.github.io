@@ -189,29 +189,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Create-React-App项目Template</title>
-    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
-    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
-<br /></p>
-<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
-<br/>
-<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
-<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
-<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
-<p>​	<code>yarn add -D prettier</code></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
-<p>​	<code>yarn add -D husky</code></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
-<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
-<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<br />
-<strong> 静候补充... </strong>]]></content>
-  </entry>
-  <entry>
     <title>Cookie &amp; Session</title>
     <url>/posts/CookieSession/</url>
     <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
@@ -305,6 +282,29 @@ F --> L[结束]</pre>
         <tag>Computer Network</tag>
         <tag>http</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Create-React-App项目Template</title>
+    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
+    <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
+<br /></p>
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">├── .husky</span><br><span class="line">├── .vscode</span><br><span class="line">├── public</span><br><span class="line">├── src</span><br><span class="line">│   ├── App.tsx</span><br><span class="line">│   ├── index.tsx</span><br><span class="line">│   └── react-app-env.d.ts</span><br><span class="line">├── prettier.config.js</span><br><span class="line">├── tsconfig.json</span><br><span class="line">├── package.json</span><br><span class="line">└── yarn.lock</span><br><span class="line">├── README.md</span><br></pre></td></tr></table></figure>
+<br/>
+<h3 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h3>
+<p>​	<code>yarn add create-react-app [app-name] --template typescript</code></p>
+<h3 id="prettier"><a class="markdownIt-Anchor" href="#prettier"></a> prettier</h3>
+<p>​	<code>yarn add -D prettier</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//prettier.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">   <span class="attr">semi</span>: <span class="literal">false</span>, <span class="comment">// 在每条语句的末尾不使用分号</span></span><br><span class="line">   <span class="attr">trailingComma</span>: <span class="string">&#x27;es5&#x27;</span>, <span class="comment">// 允许在ES5中有效的尾随逗号</span></span><br><span class="line">   <span class="attr">singleQuote</span>: <span class="literal">true</span>, <span class="comment">// 使用单引号而不是双引号</span></span><br><span class="line">   <span class="attr">printWidth</span>: <span class="number">80</span>, <span class="comment">// 指定打印行的最大长度</span></span><br><span class="line">   <span class="attr">tabWidth</span>: <span class="number">3</span>, <span class="comment">// 设置每个缩进级别的空格数</span></span><br><span class="line">   <span class="attr">useTabs</span>: <span class="literal">false</span>, <span class="comment">// 使用空格而不是制表符进行缩进</span></span><br><span class="line">   <span class="attr">bracketSpacing</span>: <span class="literal">true</span>, <span class="comment">// 在对象字面量中添加空格</span></span><br><span class="line">   <span class="attr">jsxBracketSameLine</span>: <span class="literal">false</span>, <span class="comment">// 在JSX中把&#x27;&gt;&#x27;放在最后一行的末尾</span></span><br><span class="line">   <span class="attr">arrowParens</span>: <span class="string">&#x27;avoid&#x27;</span>, <span class="comment">// 当箭头函数只有一个参数时不使用圆括号</span></span><br><span class="line">   <span class="attr">endOfLine</span>: <span class="string">&#x27;lf&#x27;</span>, <span class="comment">// 行尾序列使用LF（\n）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="husky"><a class="markdownIt-Anchor" href="#husky"></a> <strong>husky</strong></h3>
+<p>​	<code>yarn add -D husky</code></p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;prettier --write \&quot;src/**/*.&#123;js,jsx,ts,tsx,json,css,scss,md&#125;\&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>​	<strong>启用 Git 钩子</strong>： <code>npx husky install</code></p>
+<p>​	<strong>添加 pre-commit 钩子</strong>：<code>npx husky add .husky/pre-commit &quot;yarn prettier&quot;</code></p>
+<h3 id="路径别名"><a class="markdownIt-Anchor" href="#路径别名"></a> 路径别名</h3>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...其他配置...</span></span><br><span class="line">  <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;src&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;*&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<br />
+<strong> 静候补充... </strong>]]></content>
   </entry>
   <entry>
     <title>Event Loop</title>
@@ -3657,6 +3657,66 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
+    <title>Typora图床</title>
+    <url>/posts/typora%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
+<p><strong>图床平台</strong>：<a href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
+<p><strong>上传服务器</strong>：<a href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
+<p>手把手步骤：</p>
+<ul>
+<li>
+<p><strong><a href="http://sm.ms">sm.ms</a></strong></p>
+<ul>
+<li>注册</li>
+<li>获取<code>Token</code>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>PicGo</strong></p>
+<ul>
+<li>全局下载 CLI：<code>yarn add global picgo</code></li>
+<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
+<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
+<ul>
+<li><code>vim ~/.picgo/config.json</code></li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Typora</strong></p>
+<ul>
+<li>设置 &gt; 图像 &gt; 上传服务设置</li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
+</li>
+</ul>
+</li>
+<li>
+<p><strong>使用</strong></p>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
+</li>
+</ul>
+</li>
+</ul>
+<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
+]]></content>
+      <tags>
+        <tag>utils</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>redux-toolkit学习</title>
     <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
@@ -3728,63 +3788,30 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>Typora图床</title>
-    <url>/posts/typora%E5%9B%BE%E5%BA%8A/</url>
-    <content><![CDATA[<p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
-<p><strong>图床平台</strong>：<a href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
-<p><strong>上传服务器</strong>：<a href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
-<p>手把手步骤：</p>
-<ul>
-<li>
-<p><strong><a href="http://sm.ms">sm.ms</a></strong></p>
-<ul>
-<li>注册</li>
-<li>获取<code>Token</code>
-<ul>
-<li>
-<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>PicGo</strong></p>
-<ul>
-<li>全局下载 CLI：<code>yarn add global picgo</code></li>
-<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
-<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
-<ul>
-<li><code>vim ~/.picgo/config.json</code></li>
-<li>
-<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Typora</strong></p>
-<ul>
-<li>设置 &gt; 图像 &gt; 上传服务设置</li>
-<li>
-<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
-</li>
-</ul>
-</li>
-<li>
-<p><strong>使用</strong></p>
-<ul>
-<li>
-<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
-</li>
-</ul>
-</li>
-</ul>
-<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
+    <title>vue3数据绑定之-sync</title>
+    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
+    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
+<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
+<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
+<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
+<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
+<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
+<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
+<hr />
+<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
+<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
+<p>而在vue3中这个sync被v-model替代了</p>
+<blockquote>
+<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
+<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
 ]]></content>
       <tags>
-        <tag>utils</tag>
+        <tag>vue</tag>
+        <tag>vue3</tag>
       </tags>
   </entry>
   <entry>
@@ -4498,30 +4525,35 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
 ]]></content>
   </entry>
   <entry>
-    <title>vue3数据绑定之-sync</title>
-    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
-    <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
-<p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
-<p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/Quritsa3AmvLZH1.png" alt="" /></p>
-<p>子组件想直接通过props修该父组件传来的值，是不被允许的，这违背了<strong>单项数据流</strong>的原则</p>
-<p><img src="https://s2.loli.net/2023/08/04/bFmpQ6fGHYwAIrn.png" alt="" /></p>
-<p>那要子组件想要修改父组件的值，需要通过<strong>自定义事件</strong></p>
-<p>由父组件定义回调，子组件<code>emit</code>触发回调函数通知父组件修改改，（这里就不展开述说了）</p>
-<hr />
-<p>在vue2中提供了一个<code>v-bind</code>修饰符<code>.sync</code>，旨在传递一个值给子组件，而子组件可以更改这个值</p>
-<p><img src="https://s2.loli.net/2023/08/04/SQyuDWsB5ZbaLP6.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/P4WCG5B71k9q6cR.gif" alt="" /></p>
-<p>而在vue3中这个sync被v-model替代了</p>
-<blockquote>
-<p>传递给子组件的，vmodel绑定的这个值一定得是响应式的</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2023/08/04/tegdIJlGUPpxYmV.png" alt="" /></p>
-<p><img src="https://s2.loli.net/2023/08/04/yoMnjfHrslQcXFv.gif" alt="" /></p>
+    <title>一键速通菲区Spotify</title>
+    <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
+    <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
+<p>菲区电话卡、菲区梯子🪜</p>
+<h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
+<ol start="0">
+<li>
+<p>Spotify换区（挂上🇵🇭🪜）</p>
+</li>
+<li>
+<p>某宝下单菲律宾电话卡（推荐Globe卡￥20+）</p>
+</li>
+<li>
+<p>话费充值（推荐易付宝， Google Play下载）</p>
+</li>
+<li>
+<p>登录进入<strong>手机端Spotify</strong>，选择套餐通过<strong>话费充值</strong></p>
+</li>
+</ol>
+<h3 id="切记"><a class="markdownIt-Anchor" href="#切记"></a> 切记💡</h3>
+<ul>
+<li><strong>第三步</strong>，必须在手机端中操作，账号登录成功后不要挂任何🪜，网络直连就行</li>
+</ul>
+<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
+<p>也可以试试<code>GCash</code>支付，需要实名。</p>
+<p>应填写真实的信息（护照等），不然一个月之内检测被封。（谷歌搜有相应的教程）</p>
 ]]></content>
       <tags>
-        <tag>vue</tag>
-        <tag>vue3</tag>
+        <tag>utils</tag>
       </tags>
   </entry>
   <entry>
@@ -4587,38 +4619,6 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
       <tags>
         <tag>vue3</tag>
         <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一键速通菲区Spotify</title>
-    <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
-    <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
-<p>菲区电话卡、菲区梯子🪜</p>
-<h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
-<ol start="0">
-<li>
-<p>Spotify换区（挂上🇵🇭🪜）</p>
-</li>
-<li>
-<p>某宝下单菲律宾电话卡（推荐Globe卡￥20+）</p>
-</li>
-<li>
-<p>话费充值（推荐易付宝， Google Play下载）</p>
-</li>
-<li>
-<p>登录进入<strong>手机端Spotify</strong>，选择套餐通过<strong>话费充值</strong></p>
-</li>
-</ol>
-<h3 id="切记"><a class="markdownIt-Anchor" href="#切记"></a> 切记💡</h3>
-<ul>
-<li><strong>第三步</strong>，必须在手机端中操作，账号登录成功后不要挂任何🪜，网络直连就行</li>
-</ul>
-<h3 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h3>
-<p>也可以试试<code>GCash</code>支付，需要实名。</p>
-<p>应填写真实的信息（护照等），不然一个月之内检测被封。（谷歌搜有相应的教程）</p>
-]]></content>
-      <tags>
-        <tag>utils</tag>
       </tags>
   </entry>
   <entry>
@@ -4772,42 +4772,24 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
       </categories>
   </entry>
   <entry>
-    <title>大理</title>
-    <url>/posts/gallery-%E5%A4%A7%E7%90%86/</url>
-    <content><![CDATA[<hr />
-<p style="font-style: italic; font-size: 20px; font-weight:bold;">
-永远怀念那一个自由的夏天
-</p>
-<hr />
-<br />
-<h2 id="洱海傍晚"><a class="markdownIt-Anchor" href="#洱海傍晚"></a> 洱海傍晚</h2>
-<div style='text-align='center''>
-<img src='https://images.weserv.nl/?url=https://i.imgur.com/YVNCcZb.jpg' alt='洱海傍晚' style="display: block;" />
-<p style='font-size: 0.8em;'>我最好的一张摄影作品🫣（just shot on the mobile device）</p>
-</div>
-<h2 id="喜洲稻田"><a class="markdownIt-Anchor" href="#喜洲稻田"></a> 喜洲稻田</h2>
-<img src='https://images.weserv.nl/?url=https://i.imgur.com/QGuARFO.jpg' alt='喜洲稻田'/>
-<h2 id="洱海午后"><a class="markdownIt-Anchor" href="#洱海午后"></a> 洱海午后</h2>
-<img src='https://images.weserv.nl/?url=https://i.imgur.com/HBOvej0.jpg' alt='洱海午后'/>
-<h2 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> 其他</h2>
-<table>
-<thead>
-<tr>
-<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/nC3dGRX.jpg" alt="栓q" style="zoom:50%;" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/KfS295U.jpg" alt="cat-🍮" style="zoom:50%;" /></td>
-</tr>
-<tr>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/6FZtChd.jpg" alt="sip" style="zoom: 50%;" /></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>I think this is the life, but <strong>august</strong> always slipped away into moment in time 🎯</p>
-</blockquote>
+    <title>新加坡</title>
+    <url>/posts/gallery-%E6%96%B0%E5%8A%A0%E5%9D%A1/</url>
+    <content><![CDATA[<p>去新加坡看了泰勒斯威夫特时代巡回演唱会哦！！</p>
+<p><img src="https://s2.loli.net/2024/04/28/p1PBMcQqO9JUFzl.jpg" alt="20240307_125216" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/G6Xfk3haBNny8As.jpg" alt="20240307_132647" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/G6Xfk3haBNny8As.jpg" alt="20240307_132847" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/5XHpciW1g2uBbRZ.jpg" alt="20240307_154607" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/TrtfdPS2ujeLHWw.jpg" alt="20240307_183520" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/lszSimFCpHT85aJ.jpg" alt="20240307_184135" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/Oj9fTA4q36CRsHn.jpg" alt="20240307_193513" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/utQDbC5hWknLZvN.jpg" alt="20240308_125909" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/yPhlzF2nRCEsJMK.jpg" alt="20240308_130431" /></p>
+<p><img src="./%E6%96%B0%E5%8A%A0%E5%9D%A1.assets/20240308_171138.jpg" alt="20240308_171138" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/HzFJ7sOcb2189yi.jpg" alt="20240308_185549" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/TeVwEFWglMIjumn.jpg" alt="20240309_102654" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/ZFLuMhgjoty1PTK.jpg" alt="20240309_181543" /></p>
+<p><img src="../../Downloads/QuickShare_2404281527/20240310_111740.jpg" alt="20240310_111740" /></p>
+<p><img src="https://s2.loli.net/2024/04/28/Zg23qK1f9SUoBWn.jpg" alt="VideoCapture_20240309-162949" /></p>
 ]]></content>
       <categories>
         <category>gallery</category>
