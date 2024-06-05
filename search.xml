@@ -307,6 +307,18 @@ F --> L[结束]</pre>
 <strong> 静候补充... </strong>]]></content>
   </entry>
   <entry>
+    <title>FUNNY_ERROR</title>
+    <url>/posts/FUNNY-ERROR/</url>
+    <content><![CDATA[<h2 id="1-immediate-写错位置-哭晕"><a class="markdownIt-Anchor" href="#1-immediate-写错位置-哭晕"></a> 1、immediate 写错位置 哭晕</h2>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> reCompolist = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="title function_">watch</span>(</span><br><span class="line">  <span class="function">() =&gt;</span> props.<span class="property">list</span>,</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ;(reCompolist.<span class="property">value</span> <span class="keyword">as</span> <span class="built_in">any</span>) = props.<span class="property">list</span>.<span class="title function_">map</span>(</span><br><span class="line">      <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="attr">newRow</span>: <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">any</span>&gt; = &#123;&#125;</span><br><span class="line">        props.<span class="property">labels</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">[key, _]</span>) =&gt;</span> &#123;</span><br><span class="line">          newRow[key] = row[key]</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> newRow</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>GPTPlus速通</title>
+    <url>/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Event Loop</title>
     <url>/posts/EventLoop/</url>
     <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
@@ -359,18 +371,6 @@ F --> L[结束]</pre>
         <tag>JavaScript</tag>
         <tag>nodejs</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>FUNNY_ERROR</title>
-    <url>/posts/FUNNY-ERROR/</url>
-    <content><![CDATA[<h2 id="1-immediate-写错位置-哭晕"><a class="markdownIt-Anchor" href="#1-immediate-写错位置-哭晕"></a> 1、immediate 写错位置 哭晕</h2>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> reCompolist = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="title function_">watch</span>(</span><br><span class="line">  <span class="function">() =&gt;</span> props.<span class="property">list</span>,</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ;(reCompolist.<span class="property">value</span> <span class="keyword">as</span> <span class="built_in">any</span>) = props.<span class="property">list</span>.<span class="title function_">map</span>(</span><br><span class="line">      <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="attr">newRow</span>: <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">any</span>&gt; = &#123;&#125;</span><br><span class="line">        props.<span class="property">labels</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">[key, _]</span>) =&gt;</span> &#123;</span><br><span class="line">          newRow[key] = row[key]</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> newRow</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>GPTPlus速通</title>
-    <url>/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>JS类型转换</title>
@@ -1512,6 +1512,49 @@ setInterval最小执行时间是10ms</p>
 ]]></content>
   </entry>
   <entry>
+    <title>TCP</title>
+    <url>/posts/TCP/</url>
+    <content><![CDATA[<p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
+<p><strong>全双工（Full Duplex）</strong></p>
+<ol>
+<li>双向传输:TCP连接的两端都可以同时发送和接收数据包。</li>
+<li>双向流量控制:发送方和接收方都可以通过滑动窗口机制控制数据流量,防止对方缓冲区溢出。</li>
+<li>双向确认:发送的数据包可以得到对方的确认应答ACK。接收方也可以通过ACK告知发送方自己已经正确接收了数据。</li>
+<li>双向重传:如果任意一方没有收到确认或数据包丢失,都可以触发重传机制,直到数据正确发送。</li>
+<li>全双工通信:TCP的全双工特性使得双方可以同时进行发言而不会相互干扰,就像电话通话一样。</li>
+</ol>
+<blockquote>
+<p><code>ACK</code> 和<code>FIN</code> 是 TCP 协议中两个重要的控制标志(control flag)</p>
+<p><code>ACK(Acknowledgement) </code>确认号，表示确认号,确认接收端已正确接收到前面的数据</p>
+<p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
+</blockquote>
+<h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
+<img src="https://i.imgur.com/bJWYomc.png" alt="三次挥手示意图" style="width:50%" />
+<h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
+<p>一包数据可能被拆为多包数据发送</p>
+<p><strong>丢包问题？乱序问题？</strong></p>
+<p>TCP为每个链接建立了一个<mark>发送缓冲区</mark></p>
+<img src="https://s2.loli.net/2023/09/11/ACj3KLUHcNiVIMs.png" style="width:50%;" alt="传输示意图" />
+<blockquote>
+<p>一问一答的方式发送接收（发送端一次也可以发送多包数据，接收端只用回复一次ACK）</p>
+</blockquote>
+<blockquote>
+<p>发送端可以切割发送，接收端利用序列号和长度重组出完整的数据</p>
+</blockquote>
+<blockquote>
+<p>丢失了某个数据包，接收端可以要求发送端重传。</p>
+<p>接收端向发送端发送ACK=xxx，发送端重传，接收端收到再<strong>补齐</strong>数据</p>
+</blockquote>
+<h2 id="四次挥手"><a class="markdownIt-Anchor" href="#四次挥手"></a> 四次挥手👋🏻</h2>
+<p>这里以客户端取消l为例</p>
+<img src="https://s2.loli.net/2023/09/11/nrxG86lYUf7CqMX.png" alt="四次挥手示意图" style="width:50%;" />
+<p>Client等待一段时间，目的为了确保ACK成功发送给Server，否则Server重新发送FIN给client，再重新执行</p>
+]]></content>
+      <tags>
+        <tag>Computer Network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SUMMARY</title>
     <url>/posts/SUMMARY/</url>
     <content><![CDATA[<h2 id="01-数据类型"><a class="markdownIt-Anchor" href="#01-数据类型"></a> 01 数据类型</h2>
@@ -2282,47 +2325,102 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>TCP</title>
-    <url>/posts/TCP/</url>
-    <content><![CDATA[<p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
-<p><strong>全双工（Full Duplex）</strong></p>
+    <title>angular-ng</title>
+    <url>/posts/angular-ng/</url>
+    <content><![CDATA[<h3 id="angualr"><a class="markdownIt-Anchor" href="#angualr"></a> Angualr</h3>
+<p>组件模式 AMD</p>
+<p>scope</p>
+<h3 id="00"><a class="markdownIt-Anchor" href="#00"></a> 00</h3>
+<blockquote>
+<p>ng-app 指令表明这个 html 文件为 angular 模板文件解析</p>
+</blockquote>
+<p>使用 <code>ngApp</code> 指令自动引导 AngularJS 应用程序非常简单，并且适合大多数情况。在高级情况下，例如使用脚本加载器时，您可以使用命令/手动方式来引导应用程序。</p>
 <ol>
-<li>双向传输:TCP连接的两端都可以同时发送和接收数据包。</li>
-<li>双向流量控制:发送方和接收方都可以通过滑动窗口机制控制数据流量,防止对方缓冲区溢出。</li>
-<li>双向确认:发送的数据包可以得到对方的确认应答ACK。接收方也可以通过ACK告知发送方自己已经正确接收了数据。</li>
-<li>双向重传:如果任意一方没有收到确认或数据包丢失,都可以触发重传机制,直到数据正确发送。</li>
-<li>全双工通信:TCP的全双工特性使得双方可以同时进行发言而不会相互干扰,就像电话通话一样。</li>
+<li>The <a href="https://docs.angularjs.org/api/auto/service/$injector">injector</a> that will be used for dependency injection is created.<br />
+创建将用于依赖注入的注入器。</li>
+<li>The injector will then create the <a href="https://docs.angularjs.org/api/ng/service/$rootScope">root scope</a> that will become the context for the model of our application.<br />
+然后，注入器将创建根范围，该范围将成为我们应用程序模型的上下文。</li>
+<li>AngularJS will then “compile” the DOM starting at the <code>ngApp</code> root element, processing any directives and bindings found along the way.<br />
+然后，AngularJS 将从 <code>ngApp</code> 根元素开始“编译”DOM，处理沿途发现的任何指令和绑定。</li>
 </ol>
+<ul>
+<li>Added phone images to <code>app/img/phones/</code>.<br />
+将手机图像添加到 <code>app/img/phones/</code> 。</li>
+<li>Added phone data files (JSON) to <code>app/phones/</code>.<br />
+将电话数据文件 (JSON) 添加到 <code>app/phones/</code> 。</li>
+</ul>
+<h3 id="01-控制器"><a class="markdownIt-Anchor" href="#01-控制器"></a> 01 控制器</h3>
+<p>简单理解就是在控制器中写页面处理逻辑</p>
+<h3 id="02-组件"><a class="markdownIt-Anchor" href="#02-组件"></a> 02 组件</h3>
+<p>​ 由于这种组合（模板 + 控制器）是一种常见且重复出现的模式，因此 AngularJS 提供了一种简单而简洁的方法将它们组合成可重用且独立的实体（称为组件）。此外，AngularJS 将为我们组件的每个实例创建一个所谓的隔离范围，这意味着没有原型继承，并且我们的组件没有影响应用程序其他部分的风险，反之亦然。</p>
+<p>​ 事实上，人们可以将组件视为其更复杂、更冗长（但功能更强大）的同级指令（指令）的固执己见和精简版本，指令是 AngularJS 教授 HTML 新技巧的方式。您可以在开发人员指南的指令部分阅读有关它们的所有内容。</p>
 <blockquote>
-<p><code>ACK</code> 和<code>FIN</code> 是 TCP 协议中两个重要的控制标志(control flag)</p>
-<p><code>ACK(Acknowledgement) </code>确认号，表示确认号,确认接收端已正确接收到前面的数据</p>
-<p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
+<p>海云项目还没用到 component，</p>
 </blockquote>
-<h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
-<img src="https://i.imgur.com/bJWYomc.png" alt="三次挥手示意图" style="width:50%" />
-<h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
-<p>一包数据可能被拆为多包数据发送</p>
-<p><strong>丢包问题？乱序问题？</strong></p>
-<p>TCP为每个链接建立了一个<mark>发送缓冲区</mark></p>
-<img src="https://s2.loli.net/2023/09/11/ACj3KLUHcNiVIMs.png" style="width:50%;" alt="传输示意图" />
+<h3 id="04-分文件编写"><a class="markdownIt-Anchor" href="#04-分文件编写"></a> 04 分文件编写</h3>
+<p>加载顺序</p>
+<p><img src="https://s2.loli.net/2024/05/17/OlKUGzXMjqu8Wb6.png" alt="image-20240514172110622" /></p>
 <blockquote>
-<p>一问一答的方式发送接收（发送端一次也可以发送多包数据，接收端只用回复一次ACK）</p>
+<p>在分文件编写的时候发现模块加载顺序很重要</p>
 </blockquote>
-<blockquote>
-<p>发送端可以切割发送，接收端利用序列号和长度重组出完整的数据</p>
-</blockquote>
-<blockquote>
-<p>丢失了某个数据包，接收端可以要求发送端重传。</p>
-<p>接收端向发送端发送ACK=xxx，发送端重传，接收端收到再<strong>补齐</strong>数据</p>
-</blockquote>
-<h2 id="四次挥手"><a class="markdownIt-Anchor" href="#四次挥手"></a> 四次挥手👋🏻</h2>
-<p>这里以客户端取消l为例</p>
-<img src="https://s2.loli.net/2023/09/11/nrxG86lYUf7CqMX.png" alt="四次挥手示意图" style="width:50%;" />
-<p>Client等待一段时间，目的为了确保ACK成功发送给Server，否则Server重新发送FIN给client，再重新执行</p>
+<h3 id="05-filter"><a class="markdownIt-Anchor" href="#05-filter"></a> 05 filter</h3>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-2&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--Sidebar content--&gt;</span></span><br><span class="line"></span><br><span class="line">      Search: <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">&quot;$ctrl.query&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-md-10&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--Body content--&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;phones&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-repeat</span>=<span class="string">&quot;phone in $ctrl.phones | filter:$ctrl.query&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;phone.name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;phone.snippet&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="06-双向数据绑定"><a class="markdownIt-Anchor" href="#06-双向数据绑定"></a> 06 双向数据绑定</h3>
+<p>vue 的 v-model</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">ng-model</span>=<span class="string">&quot;$ctrl.test&quot;</span> /&gt;</span> <span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123;$ctrl.test&#125;&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="07-依赖注入"><a class="markdownIt-Anchor" href="#07-依赖注入"></a> 07 依赖注入</h3>
+<p>DI subsystem</p>
+<p>在控制器中使用“服务”</p>
+<p>服务以<code>$</code> 开头，<code>$$</code>被认为是私有的</p>
+<p>给某个 controller 注入内置<code>$http</code>服务</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">PhoneListController</span>(<span class="params">$http</span>) &#123;...&#125;</span><br><span class="line"><span class="title class_">PhoneListController</span>.<span class="property">$inject</span> = [<span class="string">&#x27;$http&#x27;</span>];</span><br><span class="line">...</span><br><span class="line">.<span class="title function_">component</span>(<span class="string">&#x27;phoneList&#x27;</span>, &#123;..., <span class="attr">controller</span>: <span class="title class_">PhoneListController</span>&#125;);</span><br></pre></td></tr></table></figure>
+<p>内联写法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">PhoneListController</span>(<span class="params">$http</span>) &#123;...&#125;</span><br><span class="line">...</span><br><span class="line">.<span class="title function_">component</span>(<span class="string">&#x27;phoneList&#x27;</span>, &#123;..., <span class="attr">controller</span>: [<span class="string">&#x27;$http&#x27;</span>, <span class="title class_">PhoneListController</span>]&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="08-templating-and-links"><a class="markdownIt-Anchor" href="#08-templating-and-links"></a> 08 templating and links</h3>
+<p><code>ngSrc</code> 指令可防止浏览器向无效位置发出 HTTP 请求</p>
+<h3 id="09-routing-and-mutiple-views"><a class="markdownIt-Anchor" href="#09-routing-and-mutiple-views"></a> 09 Routing and Mutiple Views</h3>
+<p>Angular-route : <code>npm i angular-route</code></p>
+<p>注入$routeProvider 提供路由服务</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">angular.<span class="title function_">module</span>(<span class="string">&quot;phonecatApp&quot;</span>).<span class="title function_">config</span>([</span><br><span class="line">  <span class="string">&quot;$routeProvider&quot;</span>,</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">config</span>(<span class="params">$routeProvider</span>) &#123;</span><br><span class="line">    $routeProvider</span><br><span class="line">      .<span class="title function_">when</span>(<span class="string">&quot;/phones&quot;</span>, &#123;</span><br><span class="line">        <span class="attr">template</span>: <span class="string">&quot;&lt;phone-list&gt;&lt;/phone-list&gt;&quot;</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">when</span>(<span class="string">&quot;/phones/:phoneId&quot;</span>, &#123;</span><br><span class="line">        <span class="attr">template</span>: <span class="string">&quot;&lt;phone-detail&gt;&lt;/phone-detail&gt;&quot;</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">otherwise</span>(<span class="string">&quot;/phones&quot;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>配合 ng-view 指令 （类似 vuerouter 的<code>&lt;router-view/&gt;</code>）</p>
+<p>AngularJS（默认情况下）使用 URL 的哈希部分（即哈希 ( <code>#</code> ) 符号后面的内容）来确定当前路由。除此之外，你还可以指定一个散列前缀（默认为 <code>!</code> ），它需要出现在散列符号之后，以便 AngularJS 将该值视为“AngularJS 路径”并处理它（例如例如，尝试将其与路线匹配）[Using <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>c</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo stretchy="false">]</mo><mo stretchy="false">(</mo><mi>h</mi><mi>t</mi><mi>t</mi><mi>p</mi><mi>s</mi><mo>:</mo><mi mathvariant="normal">/</mi><mi mathvariant="normal">/</mi><mi>d</mi><mi>o</mi><mi>c</mi><mi>s</mi><mi mathvariant="normal">.</mi><mi>a</mi><mi>n</mi><mi>g</mi><mi>u</mi><mi>l</mi><mi>a</mi><mi>r</mi><mi>j</mi><mi>s</mi><mi mathvariant="normal">.</mi><mi>o</mi><mi>r</mi><mi>g</mi><mi mathvariant="normal">/</mi><mi>g</mi><mi>u</mi><mi>i</mi><mi>d</mi><mi>e</mi><mi mathvariant="normal">/</mi></mrow><annotation encoding="application/x-tex">location](https://docs.angularjs.org/guide/</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mclose">]</span><span class="mopen">(</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span><span class="mord mathnormal">t</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord">/</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mord mathnormal">c</span><span class="mord mathnormal">s</span><span class="mord">.</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">s</span><span class="mord">.</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">u</span><span class="mord mathnormal">i</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord">/</span></span></span></span>location)</p>
+<p><code>phoneDetail</code> 模块依赖于 <code>ngRoute</code> 模块来提供 <code>$routeParams</code> 对象，该对象在 <code>phoneDetail</code> 组件的控制器中使用。由于 <code>ngRoute</code> 也是主 <code>phonecatApp</code> 模块的依赖项，因此其服务和指令已在应用程序中的任何位置可用（包括 <code>phoneDetail</code> 组件）。</p>
+<p><mark>始终明确子模块的依赖关系。不要依赖从父模块继承的依赖项（因为有一天该父模块可能不存在）。</mark></p>
+<h3 id="11-自定义过滤器"><a class="markdownIt-Anchor" href="#11-自定义过滤器"></a> 11 自定义过滤器</h3>
+<p>由于此过滤器是通用的（即它不特定于任何视图或组件），因此我们将其注册到 <code>core</code> 模块中，该模块包含“应用程序范围”功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line"></span><br><span class="line">// Define the `core` module</span><br><span class="line">angular.module(&#x27;core&#x27;, []);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">angular. module(&#x27;core&#x27;). filter(&#x27;checkmark&#x27;, function() &#123; return function(input)</span><br><span class="line">&#123; return input ? &#x27;\u2713&#x27; : &#x27;\u2718&#x27;; &#125;; &#125;);</span><br></pre></td></tr></table></figure>
+<p>模版中直接使用 <code>&#123;&#123;  true | checkmark &#125;&#125;</code></p>
+<h3 id="13-rest-和-定制服务"><a class="markdownIt-Anchor" href="#13-rest-和-定制服务"></a> 13 rest 和 定制服务</h3>
+<p>使用 $resource 工厂来定义一个资源服务，这个服务可以用来与后端进行 RESTful 交互</p>
+<h3 id="angulardirective-指令"><a class="markdownIt-Anchor" href="#angulardirective-指令"></a> angular.directive 指令</h3>
+<p>在 AngularJS 中，restrict 属性用于指定指令可以在模板中以哪种方式使用。restrict 属性可以接受以下参数：</p>
+<ol>
+<li><strong>‘E’ (Element)</strong>：</li>
+</ol>
+<p>指令作为<strong>元素</strong>使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;my-directive&gt;&lt;/my-directive&gt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>‘A’ (Attribute)</strong>：</li>
+</ol>
+<p>指令作为属性使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div my-directive&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>‘C’ (Class)</strong>：</li>
+</ol>
+<p>指令作为类使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;my-directive&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li><strong>‘M’ (Comment)</strong>：</li>
+</ol>
+<p>指令作为注释使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- directive: my-directive --&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="组合使用"><a class="markdownIt-Anchor" href="#组合使用"></a> 组合使用</h3>
+<p>可以组合使用多个参数，例如 ‘EA’ 表示指令可以作为元素和属性使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.directive(&#x27;myDirective&#x27;, function() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">​    restrict: &#x27;EA&#x27;,</span><br><span class="line">​   // 其他配置</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="angularfactory"><a class="markdownIt-Anchor" href="#angularfactory"></a> angular.factory</h3>
+<p><code>.factory</code> 是一个常用的方式来创建并返回一个服务的单例。<code>.factory</code> 方法用于封装业务逻辑或 API 服务，并在整个应用中共享。</p>
 ]]></content>
-      <tags>
-        <tag>Computer Network</tag>
-      </tags>
   </entry>
   <entry>
     <title>btoa-atob</title>
@@ -3657,66 +3755,6 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>Typora图床</title>
-    <url>/posts/typora%E5%9B%BE%E5%BA%8A/</url>
-    <content><![CDATA[<p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
-<p><strong>图床平台</strong>：<a href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
-<p><strong>上传服务器</strong>：<a href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
-<p>手把手步骤：</p>
-<ul>
-<li>
-<p><strong><a href="http://sm.ms">sm.ms</a></strong></p>
-<ul>
-<li>注册</li>
-<li>获取<code>Token</code>
-<ul>
-<li>
-<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>PicGo</strong></p>
-<ul>
-<li>全局下载 CLI：<code>yarn add global picgo</code></li>
-<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
-<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
-<ul>
-<li><code>vim ~/.picgo/config.json</code></li>
-<li>
-<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Typora</strong></p>
-<ul>
-<li>设置 &gt; 图像 &gt; 上传服务设置</li>
-<li>
-<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
-</li>
-</ul>
-</li>
-<li>
-<p><strong>使用</strong></p>
-<ul>
-<li>
-<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
-</li>
-</ul>
-</li>
-</ul>
-<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
-]]></content>
-      <tags>
-        <tag>utils</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>redux-toolkit学习</title>
     <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
@@ -3812,6 +3850,66 @@ setInterval最小执行时间是10ms</p>
       <tags>
         <tag>vue</tag>
         <tag>vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Typora图床</title>
+    <url>/posts/typora%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
+<p><strong>图床平台</strong>：<a href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
+<p><strong>上传服务器</strong>：<a href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
+<p>手把手步骤：</p>
+<ul>
+<li>
+<p><strong><a href="http://sm.ms">sm.ms</a></strong></p>
+<ul>
+<li>注册</li>
+<li>获取<code>Token</code>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>PicGo</strong></p>
+<ul>
+<li>全局下载 CLI：<code>yarn add global picgo</code></li>
+<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
+<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
+<ul>
+<li><code>vim ~/.picgo/config.json</code></li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Typora</strong></p>
+<ul>
+<li>设置 &gt; 图像 &gt; 上传服务设置</li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
+</li>
+</ul>
+</li>
+<li>
+<p><strong>使用</strong></p>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
+</li>
+</ul>
+</li>
+</ul>
+<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
+]]></content>
+      <tags>
+        <tag>utils</tag>
       </tags>
   </entry>
   <entry>
@@ -4622,25 +4720,6 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
       </tags>
   </entry>
   <entry>
-    <title>表格导出为excel</title>
-    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
-    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
-<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
-<p><code>yarn add xlsx file-saver</code></p>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
-<blockquote>
-<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
-</blockquote>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>简单实现Toast组件</title>
     <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<blockquote>
@@ -4663,6 +4742,25 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
 <h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 👨‍💻使用</h2>
 <figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Toast</span>.<span class="title function_">success</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="title class_">Toast</span>.<span class="title function_">error</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2023/08/17/ewqEhulLyJmUCKH.gif" alt="toast.gif" /></p>
+]]></content>
+      <tags>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>表格导出为excel</title>
+    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
+    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
+<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
+<p><code>yarn add xlsx file-saver</code></p>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
+<blockquote>
+<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
+</blockquote>
 ]]></content>
       <tags>
         <tag>enhanced</tag>
@@ -4766,6 +4864,48 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
 </tr>
 </tbody>
 </table>
+]]></content>
+      <categories>
+        <category>gallery</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>大理</title>
+    <url>/posts/gallery-%E5%A4%A7%E7%90%86/</url>
+    <content><![CDATA[<hr />
+<p style="font-style: italic; font-size: 20px; font-weight:bold;">
+永远怀念那一个自由的夏天
+</p>
+<hr />
+<br />
+<h2 id="洱海傍晚"><a class="markdownIt-Anchor" href="#洱海傍晚"></a> 洱海傍晚</h2>
+<div style='text-align='center''>
+<img src='https://images.weserv.nl/?url=https://i.imgur.com/YVNCcZb.jpg' alt='洱海傍晚' style="display: block;" />
+<p style='font-size: 0.8em;'>我最好的一张摄影作品🫣（just shot on the mobile device）</p>
+</div>
+<h2 id="喜洲稻田"><a class="markdownIt-Anchor" href="#喜洲稻田"></a> 喜洲稻田</h2>
+<img src='https://images.weserv.nl/?url=https://i.imgur.com/QGuARFO.jpg' alt='喜洲稻田'/>
+<h2 id="洱海午后"><a class="markdownIt-Anchor" href="#洱海午后"></a> 洱海午后</h2>
+<img src='https://images.weserv.nl/?url=https://i.imgur.com/HBOvej0.jpg' alt='洱海午后'/>
+<h2 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> 其他</h2>
+<table>
+<thead>
+<tr>
+<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/nC3dGRX.jpg" alt="栓q" style="zoom:50%;" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/KfS295U.jpg" alt="cat-🍮" style="zoom:50%;" /></td>
+</tr>
+<tr>
+<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/6FZtChd.jpg" alt="sip" style="zoom: 50%;" /></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>I think this is the life, but <strong>august</strong> always slipped away into moment in time 🎯</p>
+</blockquote>
 ]]></content>
       <categories>
         <category>gallery</category>
