@@ -18,7 +18,7 @@
 
 
 
-<title>乐山 | Levy&#39;s Blog</title>
+<title>Volta node版本管理 | Levy&#39;s Blog</title>
 
 
 
@@ -185,14 +185,14 @@
         <div class="post-title">
 
             
-                乐山
+                Volta node版本管理
                     
         </div>
         <span class="post-date">
-            Mar 10, 2023
+            Nov 13, 2024
         </span>
         <span class="post-word-count">
-            15 words / About 1 minute
+            30 words / About 46 seconds
 
             <span class="post-word-count-tooltip">Only English content is counted</sapn>
         </span>
@@ -201,59 +201,60 @@
     </div>
     <div class="post-img">
         
-            <img src="https://images.weserv.nl/?url=https://i.imgur.com/3mn1ffF.jpg" alt="featured_image">
-            
+                <div class="h-line-primary"></div>
+                
     </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <p>寒假终于有机会出游（<strong>蹭的</strong>）（特别感谢我哥和我嫂子）🫰</p>
-<p>三天两晚，乐山城区、苏稽古镇、金口河</p>
-<p>（不得不说来乐山旅游的人真的太多多多了，城区每家店子人都爆满</p>
-<br />
-<p>吃的<code>板眼儿</code>多得<code>遭不住</code>  🆘​</p>
-<table>
-<thead>
-<tr>
-<th>炸串（排队排队）</th>
-<th>咔饼</th>
-<th>豆腐脑（不能接受勾了芡的食品）</th>
-<th>甜皮鸭</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/yRpOtF2.jpg" alt="油炸" /></td>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/sSO8Tub.jpg" alt="20230202_144544" /></td>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/xSqXXIP.jpg" alt="20230202_143741" /></td>
-<td>404忘记拍照了…</td>
-</tr>
-</tbody>
-</table>
-<p><code>苏稽翘脚牛肉</code>单拎出来，太好吃了 favorito~</p>
-<p><img src="https://images.weserv.nl/?url=https://i.imgur.com/YsVMSwR.jpg" alt="20230203_122113" /></p>
-<p>坐船看了乐山大佛，逛了苏稽古镇，当然最<strong>impressive</strong>的还是金口河大峡谷。。。</p>
+    <h2 id="volta"><a class="markdownIt-Anchor" href="#volta"></a> volta</h2>
 <blockquote>
-<p>人类真的特别特别渺小</p>
+<p>试了多种node版本工具<code>nvm</code> <code>fnm</code>，都没有成功下在离线状态下托管本地node包</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/i0uR66t.jpg" alt="20230203_160746" /></th>
-<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/C3Wh8C3.jpg" alt="20230203_150035" /></th>
-<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/3ROlK0A.jpg" alt="20230203_155615" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/Hp34XzF.jpg" alt="20230203_150324" /></td>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/r4QpbWh.jpg" alt="20230203_144629" /></td>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/63nBWhM.jpg" alt="20230203_150313" /></td>
-</tr>
-</tbody>
-</table>
+<p>快速安装管理和切换不同版本的node、npm、yarn等的工具</p>
+<h3 id="离线管理不同版本的nodewindows"><a class="markdownIt-Anchor" href="#离线管理不同版本的nodewindows"></a> 离线管理不同版本的node（Windows）</h3>
+<h4 id="1-下载安装volta"><a class="markdownIt-Anchor" href="#1-下载安装volta"></a> 1. 下载安装volta</h4>
+<ul>
+<li><code> https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-windows-x86_64.msi</code></li>
+</ul>
+<h4 id="2-导入本地node预构二进制文件压缩包"><a class="markdownIt-Anchor" href="#2-导入本地node预构二进制文件压缩包"></a> 2. 导入本地node预构二进制文件压缩包</h4>
+<ul>
+<li>
+<p>将Windows的 node zip包放在<code>C:\Users\&#123;用户&#125;\AppData\Local\Volta\tools\inventory\node</code>文件夹中</p>
+</li>
+<li>
+<p><img src="https://s2.loli.net/2024/11/13/UHpEI4ekiMvmdLR.png" alt="windows-volta-node.png" /></p>
+</li>
+</ul>
+<blockquote>
+<p><mark>到这一步volta还没有托管手动导入的node包，需要手动挂载到全局或者项目中，才能正常使用</mark></p>
+</blockquote>
+<h4 id="3-托管本地node包切换node版本也是这流程"><a class="markdownIt-Anchor" href="#3-托管本地node包切换node版本也是这流程"></a> 3. 托管本地node包（切换node版本也是这流程）</h4>
+<ul>
+<li>
+<p>全局级别</p>
+<ul>
+<li><code>volta install node@&lt;version&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>项目级别</p>
+<ul>
+<li>进入<strong>项目根目录</strong>终端，<code>volta pin node@&lt;version&gt;</code></li>
+<li><img src="https://s2.loli.net/2024/11/13/l2Rfm5NTXLGsnA1.png" alt="volta-.png" /></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>volta将托管导出进来的node包，并在文件夹下生成一个<code>node-v版本号-npm</code>文件</p>
+</blockquote>
+<h4 id="查看当前托管的node版本"><a class="markdownIt-Anchor" href="#查看当前托管的node版本"></a> 查看当前托管的node版本</h4>
+<ul>
+<li><code>volta list node</code></li>
+<li><img src="https://s2.loli.net/2024/11/13/kB2q8bl9DU4AxuF.png" alt="volta-node.png" /></li>
+</ul>
 
 </div>
 <div class="toc-menu-container">
@@ -397,17 +398,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/posts/nodejs/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/posts/gallery-%E5%A4%A7%E7%90%86/">Next</a>  
+                  <a href="/posts/angular-ng/">Next</a>  
                 </div>  
             
         </div>
@@ -448,8 +444,8 @@
                             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
                             /* var disqus_config = function () {
-                                this.page.url = 'http://example.com/posts/gallery-%E4%B9%90%E5%B1%B1/';  // Replace PAGE_URL with your page's canonical URL variable
-                                this.page.identifier = 'posts/gallery-乐山/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.page.url = 'http://example.com/posts/Volta-node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'posts/Volta-node版本管理/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                                 this.language = 'en'
                             }; */
 
@@ -476,8 +472,8 @@
                                 s.setAttribute('data-timestamp', +new Date());
                                 (d.head || d.body).appendChild(s);
                                 window.disqus_config = function () {
-                                    this.page.url = 'http://example.com/posts/gallery-%E4%B9%90%E5%B1%B1/';
-                                    this.page.identifier = 'posts/gallery-乐山/';
+                                    this.page.url = 'http://example.com/posts/Volta-node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/';
+                                    this.page.identifier = 'posts/Volta-node版本管理/';
                                     this.language = 'en'
                                 };
                                 // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})

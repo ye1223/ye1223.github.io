@@ -4940,4 +4940,55 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
         <tag>Interview</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Volta node版本管理</title>
+    <url>/posts/Volta-node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="volta"><a class="markdownIt-Anchor" href="#volta"></a> volta</h2>
+<blockquote>
+<p>试了多种node版本工具<code>nvm</code> <code>fnm</code>，都没有成功下在离线状态下托管本地node包</p>
+</blockquote>
+<p>快速安装管理和切换不同版本的node、npm、yarn等的工具</p>
+<h3 id="离线管理不同版本的nodewindows"><a class="markdownIt-Anchor" href="#离线管理不同版本的nodewindows"></a> 离线管理不同版本的node（Windows）</h3>
+<h4 id="1-下载安装volta"><a class="markdownIt-Anchor" href="#1-下载安装volta"></a> 1. 下载安装volta</h4>
+<ul>
+<li><code> https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-windows-x86_64.msi</code></li>
+</ul>
+<h4 id="2-导入本地node预构二进制文件压缩包"><a class="markdownIt-Anchor" href="#2-导入本地node预构二进制文件压缩包"></a> 2. 导入本地node预构二进制文件压缩包</h4>
+<ul>
+<li>
+<p>将Windows的 node zip包放在<code>C:\Users\&#123;用户&#125;\AppData\Local\Volta\tools\inventory\node</code>文件夹中</p>
+</li>
+<li>
+<p><img src="https://s2.loli.net/2024/11/13/UHpEI4ekiMvmdLR.png" alt="windows-volta-node.png" /></p>
+</li>
+</ul>
+<blockquote>
+<p><mark>到这一步volta还没有托管手动导入的node包，需要手动挂载到全局或者项目中，才能正常使用</mark></p>
+</blockquote>
+<h4 id="3-托管本地node包切换node版本也是这流程"><a class="markdownIt-Anchor" href="#3-托管本地node包切换node版本也是这流程"></a> 3. 托管本地node包（切换node版本也是这流程）</h4>
+<ul>
+<li>
+<p>全局级别</p>
+<ul>
+<li><code>volta install node@&lt;version&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>项目级别</p>
+<ul>
+<li>进入<strong>项目根目录</strong>终端，<code>volta pin node@&lt;version&gt;</code></li>
+<li><img src="https://s2.loli.net/2024/11/13/l2Rfm5NTXLGsnA1.png" alt="volta-.png" /></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>volta将托管导出进来的node包，并在文件夹下生成一个<code>node-v版本号-npm</code>文件</p>
+</blockquote>
+<h4 id="查看当前托管的node版本"><a class="markdownIt-Anchor" href="#查看当前托管的node版本"></a> 查看当前托管的node版本</h4>
+<ul>
+<li><code>volta list node</code></li>
+<li><img src="https://s2.loli.net/2024/11/13/kB2q8bl9DU4AxuF.png" alt="volta-node.png" /></li>
+</ul>
+]]></content>
+  </entry>
 </search>
