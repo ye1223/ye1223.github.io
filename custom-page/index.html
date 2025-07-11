@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- <html lang="en,zh-CN,default"> -->
-<html lang="zh-CN" class="default-theme">
+<html lang="en" class="default-theme">
 
 
 <head>
@@ -18,7 +18,7 @@
 
 
 
-<title>Archive: 2024/1 | Levy&#39;s Blog</title>
+<title>Levy&#39;s Blog</title>
 
 
 
@@ -103,8 +103,8 @@
               <!-- 高亮显示 -->
               
                   <li class="menu-item">
-                    <a href="/zh-CN/index.html">
-                      主页
+                    <a href="/">
+                      Home
                     </a>
                   </li>
                   
@@ -117,7 +117,7 @@
               
                   <li class="menu-item">
                     <a href="/archives/">
-                      存档
+                      Archive
                     </a>
                   </li>
                   
@@ -130,7 +130,20 @@
               
                   <li class="menu-item">
                     <a href="/categories/gallery/">
-                      画廊
+                      Gallery
+                    </a>
+                  </li>
+                  
+                    
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/brat/">
+                      BRAT
                     </a>
                   </li>
                   
@@ -139,7 +152,7 @@
                       
                         <li class="menu-item search-btn">
                           <a href="#">
-                            搜索
+                            Search
                           </a>
                         </li>
                         
@@ -149,9 +162,9 @@
                           
                             <li class="menu-item">
                               <!-- get_config('alternative_lang')) 要替换成的语言 -->
-                              <!-- <a style="cursor:not-allowed;" onclick="return false" href="/archives/2024/01/index.html"> -->
-                              <a href="/archives/2024/01/index.html">
-                                En
+                              <!-- <a style="cursor:not-allowed;" onclick="return false" href="/zh-CN/custom-page/index.html"> -->
+                              <a href="/zh-CN/custom-page/index.html">
+                                中文
                               </a>
                             </li>
                             
@@ -182,34 +195,200 @@
 
       <div class="main">
         <div class="flex-container">
-          <div class="post-list">
-    
-    
-
-        
-
-        
-            <div class="year-title">2024</div>
-        
-
-        <div class="post-list-item">
-            <div class="post-title">
-            <a href="/posts/zh-CN-tag-index/">
-                
-                    &#39;tag&#39;
-                
-                </a> 
-            </div>
+          <article id="post">
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="post-title">
             
-            <span class="post-date">1月 24, 2024</span>
+            
+                *Untitled
+            
+            
         </div>
-
-    
-    <div id="paginator">
-        
     </div>
+    <div class="h-line-primary"></div>
+</div>
+    <div class="post-content">
+    <!-- <-page.content -->
+    <div class="toc"></div>
+<div class="post-body">
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义页面</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到自定义页面</h1>
+        <p>这是一个示例页面，您可以根据需要修改内容。</p>
+    </div>
+</body>
+</html> 
+</div>
+<div class="toc-menu-container">
+    <img class="icon toc-menu" alt="">
 </div>
 
+<script>
+    // const toc = document.querySelector('.toc')
+    // const tocmenu = document.querySelector('.toc-menu-container')
+    // tocmenu.addEventListener('click', ()=>{
+    //     toc.style.display === 'block' ? toc.style.display = 'none' : toc.style.display = 'block'
+    // })
+    const tocRight = getComputedStyle(document.documentElement).getPropertyValue('--toc-right');
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const toc = document.querySelector('.toc')
+
+    
+        const tocmenu = document.querySelector('.toc-menu-container')
+
+        // 如果没有相关h标签，隐藏目录
+        if (!document.querySelector('h1, h2, h3, h4, h5, h6')) {
+            toc.style.display = 'none'
+            tocmenu.style.display = 'none'
+        }
+
+        // 解决直接写入css文件的媒体查询，而是用js控制集中内容导致样式失效的方法
+        const mediaQuery = window.matchMedia('(max-width: 1200px)')
+
+        function handleTableOfContentsDisplay(e) {
+            if (e.matches) { // If media query matches
+                // toc.style.display = 'none'
+                toc.style.right = '-100%'
+                toc.style.transition = 'right .5s ease-in-out'
+            } else {
+                // toc.style.right = '20px'
+                toc.style.right = tocRight
+            }
+        }
+        //运行时调用
+        handleTableOfContentsDisplay(mediaQuery)
+        // 绑定媒体查询事件监听
+        mediaQuery.addListener(handleTableOfContentsDisplay)
+
+
+        const img = document.querySelector('.toc-menu')
+        let timer
+        tocmenu.addEventListener('click', () => {
+            tocmenu.classList.add('scale-up-center')
+            toc.style.right.includes('%') ? toc.style.right = tocRight : toc.style.right = '-100%'
+            // 异步移除
+            // if(timer) clearTimeout(timer)
+            timer = setTimeout(() => {
+                tocmenu.classList.remove('scale-up-center')
+            }, 500)
+            // img.classList.toggle('active')
+            // if(img.classList.contains('active')){
+            //     img.style.maskImage = "url('../../../source/css/icon/arrow-right.svg')"
+            // }
+        })
+    })
+</script>
+
+
+<!-- 引入tocbot -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        tocbot.init({
+            tocSelector: '.toc',
+            contentSelector: '.post-body',
+            listClass: 'toc-list', //toc ol列表class名
+            linkClass: 'toc-link', //li 中a标签的class名
+            headingSelector: 'h1 ,h2, h3, h4, h5',
+            collapseDepth: '6',
+            // isCollapsedClass: 'is-collapsed',
+        });
+    });
+</script>
+</div>
+
+<script>
+    // View a list of images.
+    // Note: All images within the container will be found by calling `element.querySelectorAll('img')`.
+    const gallery = new Viewer(document.querySelector('.post-body'), {
+        slideOnTouch: true,
+        toolbar: {
+            zoomIn: 1,
+            zoomOut: 1,
+            oneToOne: 0,
+            reset: 1,
+            prev: {
+                show: 1,
+                size: 'large'
+            },
+            play: {
+                show: 0,
+                // size: 'large',
+            },
+            next: {
+                show: 1,
+                size: 'large'
+            },
+            rotateLeft: 0,
+            rotateRight: 0,
+            flipHorizontal: 0,
+            flipVertical: 0,
+        },
+    })
+    // Then, show one image by click it, or call `gallery.show()`.
+</script>
+
+<!-- <script>
+    const mdImg = document.querySelectorAll('.post-content p img')
+    const imgPreviewMask = document.querySelector('.image-preview-mask')
+    const imgPreview = document.querySelector('#img-preview')
+    window.addEventListener('DOMContentLoaded', ()=>{
+        console.log(mdImg, imgPreview)
+    })
+    mdImg.forEach(item => {
+        item.addEventListener('click', () => {
+            imgPreviewMask.style.display = 'block'
+            imgPreview.classList.add('image-preview');
+            imgPreview.style.backgroundImage = `url(${item.src})`;
+
+        })
+    })
+
+    imgPreviewMask.addEventListener('click', ()=>{
+        imgPreview.classList.remove('image-preview')
+        imgPreviewMask.style.display = 'none'
+    })
+
+</script> -->
+
+<script>
+    window.onload = detectors();
+</script>
+
+    <img src="/icon/" alt="">
+  
+</article>
         </div>
       </div>
       <div class="footer">
