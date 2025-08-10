@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<!-- <html lang="en,zh-CN,default"> -->
+<html lang="en" class="default-theme">
+
+
+<head>
+  <meta name="google-site-verification" content="zgIFkCAsVo7by5gMyjwRsoyBvSYWy-mV8JxZZVPHVdY" />
+  <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Levy Liu">
+
+
+
+
+
+
+
+<title>timer | Levy&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/color_mode/classic.css">
+    
+    <link rel="stylesheet" href="/css/color_mode/dark.css">
+    
+    <link rel="stylesheet" href="/lib/viewer/viewer.min.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+    <script src="/js/format.js"></script>
+    
+    <script src="/js/search.js"></script>
+    
+    <script src="/lib/viewer/viewer.min.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <!-- <div class="image-preview-mask">
+    <div class="image-preview-container">
+      <div id="img-preview"></div>
+    </div>
+  </div> -->
+  <div class="mask-border">
+  </div>
+
+  <div class="wrapper">
+
+    <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+              Levy&#39;s Blog.🦊
+                
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        
+          <ul class="menu-list">
+            
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/">
+                      Home
+                    </a>
+                  </li>
+                  
+                    
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/archives/">
+                      Archive
+                    </a>
+                  </li>
+                  
+                    
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/categories/gallery/">
+                      Gallery
+                    </a>
+                  </li>
+                  
+                    
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/brat/">
+                      BRAT
+                    </a>
+                  </li>
+                  
+                    
+                      <!-- 搜索功能 -->
+                      
+                        <li class="menu-item search-btn">
+                          <a href="#">
+                            Search
+                          </a>
+                        </li>
+                        
+
+
+                          <!-- Some tags or posts doesn't have alternative language version, so we don't render language switcher for them -->
+                          
+                            <li class="menu-item">
+                              <!-- get_config('alternative_lang')) 要替换成的语言 -->
+                              <!-- <a style="cursor:not-allowed;" onclick="return false" href="/zh-CN/timer/index.html"> -->
+                              <a href="/zh-CN/timer/index.html">
+                                中文
+                              </a>
+                            </li>
+                            
+          </ul>
+          <!-- <button id="theme-toggle">切换主题</button> -->
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  /* const button = document.querySelector('button')
+  button.addEventListener('clcik', ()=>{
+    document.body.classList.add('')
+  }) */
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var body = document.documentElement;
+    if (body.classList.contains('dark-theme')) {
+      body.className = 'classic-theme';
+    } else if (body.classList.contains('classic-theme')) {
+      body.className = 'default-theme';
+    } else {
+      body.className = 'dark-theme';
+    }
+  });
+</script>
+
+      <div class="main">
+        <div class="flex-container">
+          <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Time Together</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+
+        body {
+            /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; */
+            
+            /* background: #ffffff; */
+            /* color: #373633; */
+            /* line-height: 1.6; */
+            /* font-size: 16px; */
+            /* padding: 40px 20px; */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .content {
+            min-height: 400px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #373633;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #AFAEA9;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .start-date {
+            background: #F4F4F4;
+            padding: 18px 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #7D7C78;
+            font-size: 0.9rem;
+            border-left: 3px solid #BABABA;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-date:hover {
+            background: rgba(244, 244, 244, 0.8);
+            transform: translateY(-1px);
+        }
+
+        .heart-burst {
+            position: absolute;
+            pointer-events: none;
+            font-size: 1rem;
+            color: #ff6b9d;
+            animation: heartBurst 1s ease-out forwards;
+        }
+
+        @keyframes heartBurst {
+            0% {
+                opacity: 1;
+                transform: scale(0.5) translate(0, 0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.5) translate(var(--dx), var(--dy));
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px 15px;
+            background: rgba(244, 244, 244, 0.3);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .stat-item:hover {
+            background: rgba(244, 244, 244, 0.5);
+            border-color: rgba(175, 174, 169, 0.2);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0177AA;
+            margin-bottom: 5px;
+            font-family: 'Courier New', monospace;
+            transition: transform 0.1s ease;
+        }
+
+        .stat-label {
+            color: #7D7C78;
+            font-size: 0.85rem;
+            text-transform: lowercase;
+            font-weight: 400;
+        }
+
+        .time-flow {
+            margin: 25px 0;
+            color: #AFAEA9;
+            font-size: 0.9rem;
+        }
+
+        .milliseconds-section {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 5px;
+            background: rgba(255, 245, 155, 0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 245, 155, 0.4);
+            font-family: 'Courier New', monospace;
+        }
+
+        .milliseconds-number {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #B8860B;
+            min-width: 30px;
+            text-align: right;
+        }
+
+        .milliseconds-label {
+            font-size: 0.8rem;
+            color: #8B7355;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-image {
+            width: 100%;
+            height: 280px;
+            background: #F4F4F4;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #AFAEA9;
+            font-size: 3.5rem;
+            border: 1px solid #E8E8E8;
+        }
+
+        .sidebar-caption {
+            color: #7D7C78;
+            /* font-style: italic; */
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .quote {
+            background: rgba(232, 232, 232, 0.3);
+            padding: 20px;
+            border-left: 3px solid #0177AA;
+            border-radius: 0 4px 4px 0;
+            margin: 30px 0;
+            font-style: italic;
+            color: #7D7C78;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 20px 10px;
+            }
+        }
+
+        /* Animation for number updates */
+        .stat-number.updated,
+        .milliseconds-number.updated {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-content">
+            <main class="content">
+                <h1 class="title">Bridge & Levy</h1>
+                <!-- <p class="subtitle">Cherishing every precious moment</p> -->
+
+                <div class="start-date" onclick="createHeartBurst(event)" style="display: none;">
+                    Since June 08, 2025 at 8:00 PM
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item year">
+                        <div class="stat-number" id="years">0</div>
+                        <div class="stat-label">years</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="months">0</div>
+                        <div class="stat-label">months</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="days">0</div>
+                        <div class="stat-label">days</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="hours">0</div>
+                        <div class="stat-label">hours</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="minutes">0</div>
+                        <div class="stat-label">minutes</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="seconds">0</div>
+                        <div class="stat-label">seconds</div>
+                    </div>
+                </div>
+
+                <div class="time-flow">
+                    <span class="milliseconds-section">
+                        <span class="milliseconds-number" id="milliseconds">000</span>
+                        <span class="milliseconds-label">ms</span>
+                    </span>
+                </div>
+
+                <!-- <blockquote class="quote">
+                    Time will tell us that simple love lasts the longest. Every millisecond that passes witnesses our
+                    deep affection for each other.
+                </blockquote> -->
+            </main>
+
+            <aside class="sidebar">
+                <div class="sidebar-image">👨🏼‍❤️‍👨🏻</div>
+                <p class="sidebar-caption">
+                    🌈🌈
+                </p>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        // Fixed start time: February 14, 2023 at 8:00 PM (Valentine's Day evening)
+        const startDate = new Date('2025-06-08T22:00:00');
+        let lastValues = {};
+
+        // Create heart burst effect
+        function createHeartBurst(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            // Create multiple hearts
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-burst';
+                heart.textContent = '💖';
+
+                // Random direction
+                const angle = (i / 8) * Math.PI * 2;
+                const distance = 50 + Math.random() * 30;
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
+
+                heart.style.left = (e.clientX - centerX + rect.left) + 'px';
+                heart.style.top = (e.clientY - centerY + rect.top) + 'px';
+                heart.style.setProperty('--dx', dx + 'px');
+                heart.style.setProperty('--dy', dy + 'px');
+
+                document.body.appendChild(heart);
+
+                // Remove after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }
+        }
+
+        // Add number update animation
+        function animateNumberChange(elementId, newValue) {
+            const element = document.getElementById(elementId);
+            const oldValue = lastValues[elementId];
+
+            if (oldValue !== newValue) {
+                element.classList.add('updated');
+                setTimeout(() => {
+                    element.classList.remove('updated');
+                }, 100);
+                lastValues[elementId] = newValue;
+            }
+
+            element.textContent = newValue;
+        }
+
+        // Update counter
+        function updateCounter() {
+            const now = new Date();
+            const diff = now.getTime() - startDate.getTime();
+
+            if (diff < 0) return;
+
+            // Calculate time units
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.44));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const milliseconds = diff % 1000;
+
+            // Show/hide years
+            const yearElement = document.querySelector('.stat-item.year');
+            if (years > 0) {
+                yearElement.style.display = 'block';
+                animateNumberChange('years', years.toLocaleString());
+            } else {
+                yearElement.style.display = 'none';
+            }
+
+            // Update other displays
+            animateNumberChange('months', months.toLocaleString());
+            animateNumberChange('days', days.toLocaleString());
+            animateNumberChange('hours', hours.toLocaleString());
+            animateNumberChange('minutes', minutes.toLocaleString());
+            animateNumberChange('seconds', seconds.toLocaleString());
+            animateNumberChange('milliseconds', milliseconds.toString().padStart(3, '0'));
+        }
+
+        // Start counter
+        setInterval(updateCounter, 1);
+        updateCounter(); // Update immediately
+    </script>
+</body>
+
+</html>
+        </div>
+      </div>
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+               ©️<a target="_blank" rel="noopener" href="https://github.com/ye1223 ">Levy Liu</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame.</a>
+                
+        </div>
+    </div>
+</div>
+
+
+        <!-- 提示词 -->
+
+        <div class="tip-toast">
+          <!-- <img class="close" src=`${location.origin}icon/close-btn.svg` alt=""> -->
+          <img class="close" src="https://ye1223.github.io/icon/close-btn.svg" alt="">
+          <p>You'd better use a PROXY to enhance your browsing experience</p>
+        </div>
+
+        <!-- 创建toast提示框 -->
+        <script>
+          window.addEventListener('DOMContentLoaded', () => {
+            // const tipToast = document.createElement('div')
+            // tipToast.innerHTML = `<p>You'd better use a PROXY to enhance your browser experience</p>`
+            // tipToast.classList.add('tip-toast')
+            // document.body.appendChild(tipToast)
+
+            const tipToast = document.querySelector('.tip-toast')
+            const closeIcon = document.querySelector('.tip-toast .close')
+            let timer = null
+
+            // sessionStorage是否有tipToast（用于跨页面判断）
+            // if(sessionStorage.getItem('tipToast')){
+            //   // 有的话--设为false
+            //   sessionStorage.setItem('tipToast', false)
+            // } else {
+            //   sessionStorage.setItem('tipToast', true)
+            // }
+            sessionStorage.getItem('tipToast') ? sessionStorage.setItem('tipToast', false) : sessionStorage.setItem('tipToast', true)
+
+            if (sessionStorage.getItem('tipToast') === 'false') {
+              tipToast.style.display = 'none'
+              return
+
+            } else {
+              // 开始呼出tip
+              tipToast.style.right = '10px'
+              tipToast.style.transition = 'right .5s ease-in-out'
+
+              // 时间到了隐藏tip
+              timer = setTimeout(() => {
+                tipToast.style.right = '-100%'
+                tipToast.style.transition = 'right .5s ease-in-out'
+                sessionStorage.setItem('tipToast', false)
+              }, 30000)
+            }
+
+            closeIcon.addEventListener('click', () => {
+              tipToast.style.right = '-100%'
+              tipToast.style.transition = 'right .5s ease-in-out'
+              timer = null
+              sessionStorage.setItem('tipToast', false)
+            })
+
+
+          })
+        </script>
+
+        <!-- mermaid语法支持 -->
+        
+          <!-- <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script> -->
+          <!-- <script src='https://cdn.jsdelivr.net/npm/mermaid@7.1.2/dist/mermaid.min.js'></script> -->
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.2/mermaid.min.js'></script>
+          <script>
+            if (window.mermaid) {
+              mermaid.initialize({ theme: 'forest' });
+            }
+          </script>
+          
+            <!-- highlight.js csr渲染 -->
+            <!-- <script src="https://cdn.jsdelivr.net/npm/highlightjs"></script>
+            <script src="https://cdn.jsdelivr.net/npm/highlightjs-vue"></script>
+            <script>
+              hljs.registerLanguage("vue", window.hljsDefineVue);
+              hljs.initHighlightingOnLoad();
+            </script> -->
+
+  </div>
+
+  
+    <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.min.js"></script>
+<script src="/js/search.js"></script>
+      
+
+</body>
+
+</html>

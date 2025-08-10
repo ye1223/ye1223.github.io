@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<!-- <html lang="en,zh-CN,default"> -->
+<html lang="en" class="default-theme">
+
+
+<head>
+  <meta name="google-site-verification" content="zgIFkCAsVo7by5gMyjwRsoyBvSYWy-mV8JxZZVPHVdY" />
+  <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Levy Liu">
+
+
+
+
+
+
+
+<title>Levy&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <link rel="stylesheet" href="/css/color_mode/classic.css">
+    
+    <link rel="stylesheet" href="/css/color_mode/dark.css">
+    
+    <link rel="stylesheet" href="/lib/viewer/viewer.min.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+    <script src="/js/format.js"></script>
+    
+    <script src="/js/search.js"></script>
+    
+    <script src="/lib/viewer/viewer.min.js"></script>
+    
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <!-- <div class="image-preview-mask">
+    <div class="image-preview-container">
+      <div id="img-preview"></div>
+    </div>
+  </div> -->
+  <div class="mask-border">
+  </div>
+
+  <div class="wrapper">
+
+    <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+              Levy&#39;s Blog.🦊
+                
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        
+          <ul class="menu-list">
+            
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/">
+                      Home
+                    </a>
+                  </li>
+                  
+                    
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/archives/">
+                      Archive
+                    </a>
+                  </li>
+                  
+                    
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/categories/gallery/">
+                      Gallery
+                    </a>
+                  </li>
+                  
+                    
+              <!-- 
+              url_for是一个函数，它可以把一个路径转换为完整的URL
+              url_for(page.path) 当前页面的URL
+            -->
+              <!-- 高亮显示 -->
+              
+                  <li class="menu-item">
+                    <a href="/brat/">
+                      BRAT
+                    </a>
+                  </li>
+                  
+                    
+                      <!-- 搜索功能 -->
+                      
+                        <li class="menu-item search-btn">
+                          <a href="#">
+                            Search
+                          </a>
+                        </li>
+                        
+
+
+                          <!-- Some tags or posts doesn't have alternative language version, so we don't render language switcher for them -->
+                          
+                            <li class="menu-item">
+                              <!-- get_config('alternative_lang')) 要替换成的语言 -->
+                              <!-- <a style="cursor:not-allowed;" onclick="return false" href="/zh-CN/love-counter/index.html"> -->
+                              <a href="/zh-CN/love-counter/index.html">
+                                中文
+                              </a>
+                            </li>
+                            
+          </ul>
+          <!-- <button id="theme-toggle">切换主题</button> -->
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  /* const button = document.querySelector('button')
+  button.addEventListener('clcik', ()=>{
+    document.body.classList.add('')
+  }) */
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var body = document.documentElement;
+    if (body.classList.contains('dark-theme')) {
+      body.className = 'classic-theme';
+    } else if (body.classList.contains('classic-theme')) {
+      body.className = 'default-theme';
+    } else {
+      body.className = 'dark-theme';
+    }
+  });
+</script>
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="post-title">
+            
+            
+                *Untitled
+            
+            
+        </div>
+    </div>
+    <div class="h-line-primary"></div>
+</div>
+    <div class="post-content">
+    <!-- <-page.content -->
+    <div class="toc"></div>
+<div class="post-body">
+    <!DOCTYPE html>
+<html lang="zh-CN" class="default-theme">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Love Counter | Levy's Blog.🦊</title>
+  
+  <!-- 引入主题样式 -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/color_mode/classic.css">
+  <link rel="stylesheet" href="/css/color_mode/dark.css">
+  
+  <!-- 引入字体 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+  </style>
+  
+  <!-- 自定义样式 -->
+  <style>
+    .love-counter-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      text-align: center;
+      font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    }
+    
+    .love-header {
+      margin-bottom: 3rem;
+    }
+    
+    .love-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #e91e63;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(233, 30, 99, 0.3);
+    }
+    
+    .love-subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .counter-item {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 15px;
+      padding: 1.5rem;
+      color: white;
+      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .counter-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+    }
+    
+    .counter-number {
+      font-size: 2rem;
+      font-weight: 700;
+      font-family: 'Roboto Mono', monospace;
+      margin-bottom: 0.5rem;
+    }
+    
+    .counter-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .milliseconds {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+    }
+    
+    .total-time {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+      font-size: 1.1rem;
+      padding: 2rem;
+    }
+    
+    .total-time .counter-number {
+      font-size: 1.5rem;
+    }
+    
+    .love-message {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      border-radius: 15px;
+      padding: 2rem;
+      color: white;
+      margin-top: 2rem;
+      box-shadow: 0 8px 32px rgba(240, 147, 251, 0.3);
+    }
+    
+    .love-message h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .love-message p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+    
+    .heart-animation {
+      display: inline-block;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      14% { transform: scale(1.3); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.3); }
+      70% { transform: scale(1); }
+    }
+    
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .floating-heart {
+      position: absolute;
+      color: rgba(233, 30, 99, 0.1);
+      font-size: 1.5rem;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+    }
+    
+    @media (max-width: 768px) {
+      .love-counter-container {
+        padding: 1rem;
+      }
+      
+      .love-title {
+        font-size: 2rem;
+      }
+      
+      .counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .counter-item {
+        padding: 1rem;
+      }
+      
+      .counter-number {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 浮动爱心背景 -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+  
+  <div class="love-counter-container">
+    <div class="love-header">
+      <h1 class="love-title">
+        <span class="heart-animation">💕</span> 
+        我们的爱情计时器 
+        <span class="heart-animation">💕</span>
+      </h1>
+      <p class="love-subtitle">从我们相遇的那一刻开始，每一分每一秒都是珍贵的回忆</p>
+    </div>
+    
+    <div class="counter-grid">
+      <div class="counter-item">
+        <div class="counter-number" id="years">0</div>
+        <div class="counter-label">年</div>
+      </div>
+      
+      <div class="counter-item">
+        <div class="counter-number" id="months">0</div>
+        <div class="counter-label">月</div>
+      </div>
+      
+      <div class="counter-item">
+        <div class="counter-number" id="days">0</div>
+        <div class="counter-label">天</div>
+      </div>
+      
+      <div class="counter-item">
+        <div class="counter-number" id="hours">0</div>
+        <div class="counter-label">时</div>
+      </div>
+      
+      <div class="counter-item">
+        <div class="counter-number" id="minutes">0</div>
+        <div class="counter-label">分</div>
+      </div>
+      
+      <div class="counter-item">
+        <div class="counter-number" id="seconds">0</div>
+        <div class="counter-label">秒</div>
+      </div>
+      
+      <div class="counter-item milliseconds">
+        <div class="counter-number" id="milliseconds">0</div>
+        <div class="counter-label">毫秒</div>
+      </div>
+      
+      <div class="counter-item total-time">
+        <div class="counter-number" id="totalTime">0 天 0 小时 0 分钟 0 秒</div>
+        <div class="counter-label">总时间</div>
+      </div>
+    </div>
+    
+    <div class="love-message">
+      <h3>💖 我们的故事 💖</h3>
+      <p>从 <span id="startDate">2024年1月1日</span> 开始，我们已经携手走过了这么长的时间。</p>
+      <p>每一天都因为有你而变得更加美好，每一秒都值得珍惜。</p>
+      <p>愿我们的爱情像时间一样永恒，像星辰一样闪耀！</p>
+    </div>
+  </div>
+
+  <script>
+    // 设置开始时间（请修改为你想要的时间）
+    const startDate = new Date('2024-01-01T00:00:00.000');
+    
+    // 更新开始日期显示
+    document.getElementById('startDate').textContent = startDate.toLocaleDateString('zh-CN', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+      
+      if (diff < 0) {
+        // 如果开始时间在未来，显示倒计时
+        const futureDiff = Math.abs(diff);
+        updateDisplay(futureDiff, true);
+      } else {
+        // 正常计时
+        updateDisplay(diff, false);
+      }
+    }
+    
+    function updateDisplay(diff, isCountdown) {
+      const milliseconds = diff % 1000;
+      const seconds = Math.floor(diff / 1000) % 60;
+      const minutes = Math.floor(diff / (1000 * 60)) % 60;
+      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const months = Math.floor(days / 30.44);
+      const years = Math.floor(days / 365.25);
+      
+      // 更新显示
+      document.getElementById('milliseconds').textContent = milliseconds.toString().padStart(3, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('days').textContent = days.toString();
+      document.getElementById('months').textContent = months.toString();
+      document.getElementById('years').textContent = years.toString();
+      
+      // 更新总时间显示
+      const totalText = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+      document.getElementById('totalTime').textContent = totalText;
+    }
+    
+    // 创建浮动爱心
+    function createFloatingHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'floating-heart';
+      heart.innerHTML = '💕';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.animationDelay = Math.random() * 6 + 's';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      
+      document.getElementById('floatingHearts').appendChild(heart);
+      
+      // 动画结束后移除元素
+      setTimeout(() => {
+        if (heart.parentNode) {
+          heart.parentNode.removeChild(heart);
+        }
+      }, 9000);
+    }
+    
+    // 初始化
+    updateCounter();
+    
+    // 每毫秒更新一次（为了精确显示毫秒）
+    setInterval(updateCounter, 1);
+    
+    // 每2秒创建一个浮动爱心
+    setInterval(createFloatingHeart, 2000);
+    
+    // 页面加载时创建一些初始爱心
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => createFloatingHeart(), i * 500);
+    }
+  </script>
+</body>
+</html> 
+</div>
+<div class="toc-menu-container">
+    <img class="icon toc-menu" alt="">
+</div>
+
+<script>
+    // const toc = document.querySelector('.toc')
+    // const tocmenu = document.querySelector('.toc-menu-container')
+    // tocmenu.addEventListener('click', ()=>{
+    //     toc.style.display === 'block' ? toc.style.display = 'none' : toc.style.display = 'block'
+    // })
+    const tocRight = getComputedStyle(document.documentElement).getPropertyValue('--toc-right');
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const toc = document.querySelector('.toc')
+
+    
+        const tocmenu = document.querySelector('.toc-menu-container')
+
+        // 如果没有相关h标签，隐藏目录
+        if (!document.querySelector('h1, h2, h3, h4, h5, h6')) {
+            toc.style.display = 'none'
+            tocmenu.style.display = 'none'
+        }
+
+        // 解决直接写入css文件的媒体查询，而是用js控制集中内容导致样式失效的方法
+        const mediaQuery = window.matchMedia('(max-width: 1200px)')
+
+        function handleTableOfContentsDisplay(e) {
+            if (e.matches) { // If media query matches
+                // toc.style.display = 'none'
+                toc.style.right = '-100%'
+                toc.style.transition = 'right .5s ease-in-out'
+            } else {
+                // toc.style.right = '20px'
+                toc.style.right = tocRight
+            }
+        }
+        //运行时调用
+        handleTableOfContentsDisplay(mediaQuery)
+        // 绑定媒体查询事件监听
+        mediaQuery.addListener(handleTableOfContentsDisplay)
+
+
+        const img = document.querySelector('.toc-menu')
+        let timer
+        tocmenu.addEventListener('click', () => {
+            tocmenu.classList.add('scale-up-center')
+            toc.style.right.includes('%') ? toc.style.right = tocRight : toc.style.right = '-100%'
+            // 异步移除
+            // if(timer) clearTimeout(timer)
+            timer = setTimeout(() => {
+                tocmenu.classList.remove('scale-up-center')
+            }, 500)
+            // img.classList.toggle('active')
+            // if(img.classList.contains('active')){
+            //     img.style.maskImage = "url('../../../source/css/icon/arrow-right.svg')"
+            // }
+        })
+    })
+</script>
+
+
+<!-- 引入tocbot -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        tocbot.init({
+            tocSelector: '.toc',
+            contentSelector: '.post-body',
+            listClass: 'toc-list', //toc ol列表class名
+            linkClass: 'toc-link', //li 中a标签的class名
+            headingSelector: 'h1 ,h2, h3, h4, h5',
+            collapseDepth: '6',
+            // isCollapsedClass: 'is-collapsed',
+        });
+    });
+</script>
+</div>
+
+<script>
+    // View a list of images.
+    // Note: All images within the container will be found by calling `element.querySelectorAll('img')`.
+    const gallery = new Viewer(document.querySelector('.post-body'), {
+        slideOnTouch: true,
+        toolbar: {
+            zoomIn: 1,
+            zoomOut: 1,
+            oneToOne: 0,
+            reset: 1,
+            prev: {
+                show: 1,
+                size: 'large'
+            },
+            play: {
+                show: 0,
+                // size: 'large',
+            },
+            next: {
+                show: 1,
+                size: 'large'
+            },
+            rotateLeft: 0,
+            rotateRight: 0,
+            flipHorizontal: 0,
+            flipVertical: 0,
+        },
+    })
+    // Then, show one image by click it, or call `gallery.show()`.
+</script>
+
+<!-- <script>
+    const mdImg = document.querySelectorAll('.post-content p img')
+    const imgPreviewMask = document.querySelector('.image-preview-mask')
+    const imgPreview = document.querySelector('#img-preview')
+    window.addEventListener('DOMContentLoaded', ()=>{
+        console.log(mdImg, imgPreview)
+    })
+    mdImg.forEach(item => {
+        item.addEventListener('click', () => {
+            imgPreviewMask.style.display = 'block'
+            imgPreview.classList.add('image-preview');
+            imgPreview.style.backgroundImage = `url(${item.src})`;
+
+        })
+    })
+
+    imgPreviewMask.addEventListener('click', ()=>{
+        imgPreview.classList.remove('image-preview')
+        imgPreviewMask.style.display = 'none'
+    })
+
+</script> -->
+
+<script>
+    window.onload = detectors();
+</script>
+
+    <img src="/icon/" alt="">
+  
+</article>
+        </div>
+      </div>
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+               ©️<a target="_blank" rel="noopener" href="https://github.com/ye1223 ">Levy Liu</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame.</a>
+                
+        </div>
+    </div>
+</div>
+
+
+        <!-- 提示词 -->
+
+        <div class="tip-toast">
+          <!-- <img class="close" src=`${location.origin}icon/close-btn.svg` alt=""> -->
+          <img class="close" src="https://ye1223.github.io/icon/close-btn.svg" alt="">
+          <p>You'd better use a PROXY to enhance your browsing experience</p>
+        </div>
+
+        <!-- 创建toast提示框 -->
+        <script>
+          window.addEventListener('DOMContentLoaded', () => {
+            // const tipToast = document.createElement('div')
+            // tipToast.innerHTML = `<p>You'd better use a PROXY to enhance your browser experience</p>`
+            // tipToast.classList.add('tip-toast')
+            // document.body.appendChild(tipToast)
+
+            const tipToast = document.querySelector('.tip-toast')
+            const closeIcon = document.querySelector('.tip-toast .close')
+            let timer = null
+
+            // sessionStorage是否有tipToast（用于跨页面判断）
+            // if(sessionStorage.getItem('tipToast')){
+            //   // 有的话--设为false
+            //   sessionStorage.setItem('tipToast', false)
+            // } else {
+            //   sessionStorage.setItem('tipToast', true)
+            // }
+            sessionStorage.getItem('tipToast') ? sessionStorage.setItem('tipToast', false) : sessionStorage.setItem('tipToast', true)
+
+            if (sessionStorage.getItem('tipToast') === 'false') {
+              tipToast.style.display = 'none'
+              return
+
+            } else {
+              // 开始呼出tip
+              tipToast.style.right = '10px'
+              tipToast.style.transition = 'right .5s ease-in-out'
+
+              // 时间到了隐藏tip
+              timer = setTimeout(() => {
+                tipToast.style.right = '-100%'
+                tipToast.style.transition = 'right .5s ease-in-out'
+                sessionStorage.setItem('tipToast', false)
+              }, 30000)
+            }
+
+            closeIcon.addEventListener('click', () => {
+              tipToast.style.right = '-100%'
+              tipToast.style.transition = 'right .5s ease-in-out'
+              timer = null
+              sessionStorage.setItem('tipToast', false)
+            })
+
+
+          })
+        </script>
+
+        <!-- mermaid语法支持 -->
+        
+          <!-- <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script> -->
+          <!-- <script src='https://cdn.jsdelivr.net/npm/mermaid@7.1.2/dist/mermaid.min.js'></script> -->
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.2/mermaid.min.js'></script>
+          <script>
+            if (window.mermaid) {
+              mermaid.initialize({ theme: 'forest' });
+            }
+          </script>
+          
+            <!-- highlight.js csr渲染 -->
+            <!-- <script src="https://cdn.jsdelivr.net/npm/highlightjs"></script>
+            <script src="https://cdn.jsdelivr.net/npm/highlightjs-vue"></script>
+            <script>
+              hljs.registerLanguage("vue", window.hljsDefineVue);
+              hljs.initHighlightingOnLoad();
+            </script> -->
+
+  </div>
+
+  
+    <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.min.js"></script>
+<script src="/js/search.js"></script>
+      
+
+</body>
+
+</html>
