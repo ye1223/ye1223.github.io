@@ -238,45 +238,63 @@ template {
 .highlight .code .strong {
   font-weight: bold;
 }
+@font-face {
+  font-family: 'gazzetta-bold';
+  src: url("../fonts/gazzetta/gazzetta-bold.woff2") format('woff2'), url("../fonts/gazzetta/gazzetta-bold.otf") format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'gazzetta';
+  src: url("../fonts/gazzetta/gazzetta-bold.otf") format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 .adobe-font {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 400;
 }
 .adobe-font-light {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 300;
 }
 .adobe-font-regular {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 400;
 }
 .adobe-font-medium {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 500;
 }
 .adobe-font-semibold {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 600;
 }
 .adobe-font-bold {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 700;
 }
 .adobe-font-black {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 900;
 }
 .adobe-heading {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 700;
   font-size: 28px;
   line-height: 1.4;
 }
 .adobe-body {
-  font-family: 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
+}
+.gazzetta-bold {
+  font-family: 'gazzetta-bold', 'gazzetta', 'Inter', 'Noto Sans SC', helvetica, arial;
+  font-weight: bold;
 }
 body {
   margin: 0;
