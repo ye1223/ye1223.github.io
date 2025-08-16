@@ -1,0 +1,13 @@
+<script>
+    const deepClone = (object) => {
+        if(typeof object !== 'object' || object === null) return object
+        let obj = object instanceof Array ? [] : {} 
+        for(let key in object) {
+            if(object.hasOwnProperty(key)) {
+                obj[key] = deepClone(object[key])
+            }
+        }
+        return obj
+    }
+</script>
+
