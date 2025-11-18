@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- <html lang="en,zh-CN,default"> -->
+<!-- <html lang="en,zh,default"> -->
 <html lang="en" class="default-theme">
 
 
@@ -18,7 +18,7 @@
 
 
 
-<title>Levy&#39;s Blog</title>
+<title>表格导出为excel | Levy&#39;s Blog</title>
 
 
 
@@ -73,15 +73,10 @@
 
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NWC5DVZN8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-5NWC5DVZN8');
-</script>
+<!-- Google Analytics removed due to connection issues in mainland China -->
+<!-- 
+如果需要网站统计，建议使用国内服务如百度统计或友盟统计
+-->
 
 <body>
   <!-- <div class="image-preview-mask">
@@ -175,14 +170,6 @@
 
                           <!-- Some tags or posts doesn't have alternative language version, so we don't render language switcher for them -->
                           
-                            <li class="menu-item">
-                              <!-- get_config('alternative_lang')) 要替换成的语言 -->
-                              <!-- <a style="cursor:not-allowed;" onclick="return false" href="/zh-CN/custom-page/love-counter.html"> -->
-                              <a href="/zh-CN/custom-page/love-counter.html">
-                                中文
-                              </a>
-                            </li>
-                            
           </ul>
           <!-- <button id="theme-toggle">切换主题</button> -->
       </nav>
@@ -214,371 +201,59 @@
           <article id="post">
   
     <div class="post-head">
+    
     <div class="post-info">
-        <div class="post-title">
+        <div class="tag-list">
             
-            
-                *Untitled
-            
-            
+
+                
+                    <span class="post-tag">
+                        <a href="/tags/enhanced/">
+                            enhanced
+                        </a>
+                    </span>
+                    
+                        
         </div>
+        <div class="post-title">
+
+            
+                表格导出为excel
+                    
+        </div>
+        <span class="post-date">
+            Aug 10, 2023
+        </span>
+        <span class="post-word-count">
+            157 words / 约1分钟
+
+            <span class="post-word-count-tooltip">支持中英文内容统计</span>
+        </span>
+
+        
     </div>
-    <div class="h-line-primary"></div>
+    <div class="post-img">
+        
+                <div class="h-line-primary"></div>
+                
+    </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <!DOCTYPE html>
-<html lang="zh-CN" class="default-theme">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>恋爱计时器 - Levy's Blog</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/color_mode/classic.css">
-  <link rel="stylesheet" href="/css/color_mode/dark.css">
-  <style>
-    .love-counter-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      text-align: center;
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+    <p><strong>配合xlsx模块 + fileSaver模块</strong></p>
+<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
+<p><code>yarn add xlsx file-saver</code></p>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
+<blockquote>
+<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
+</blockquote>
 
-    .love-title {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffb3b3);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: titleGlow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes titleGlow {
-      from { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)); }
-      to { filter: drop-shadow(0 0 20px rgba(255, 142, 142, 0.8)); }
-    }
-
-    .love-subtitle {
-      font-size: 1.2rem;
-      color: var(--color-text-secondary);
-      margin-bottom: 40px;
-    }
-
-    .counter-display {
-      background: var(--color-background-secondary);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 30px 0;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      border: 2px solid var(--color-border);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .counter-display::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      animation: shimmer 3s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 100%; }
-    }
-
-    .time-unit {
-      display: inline-block;
-      margin: 0 15px;
-      text-align: center;
-    }
-
-    .time-number {
-      font-size: 3rem;
-      font-weight: bold;
-      color: var(--color-text-primary);
-      display: block;
-      font-family: 'Roboto Mono', monospace;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .time-label {
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-      margin-top: 5px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .milliseconds {
-      font-size: 1.5rem;
-      color: #ff6b6b;
-      font-weight: bold;
-      margin-top: 10px;
-      font-family: 'Roboto Mono', monospace;
-    }
-
-    .start-date {
-      font-size: 1rem;
-      color: var(--color-text-secondary);
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: var(--color-background);
-      border-radius: 10px;
-      border: 1px solid var(--color-border);
-    }
-
-    .heart-decoration {
-      position: absolute;
-      font-size: 1.5rem;
-      color: #ff6b6b;
-      animation: float 3s ease-in-out infinite;
-      opacity: 0.7;
-    }
-
-    .heart-decoration:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-    .heart-decoration:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
-    .heart-decoration:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 1s; }
-    .heart-decoration:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 1.5s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(5deg); }
-    }
-
-    .love-message {
-      margin-top: 30px;
-      font-size: 1.1rem;
-      color: var(--color-text-primary);
-      font-style: italic;
-      line-height: 1.6;
-    }
-
-    .reset-button {
-      margin-top: 30px;
-      padding: 12px 24px;
-      background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-      color: white;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-    }
-
-    .reset-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
-    }
-
-    .setup-section {
-      margin-top: 40px;
-      padding: 30px;
-      background: var(--color-background-secondary);
-      border-radius: 15px;
-      border: 1px solid var(--color-border);
-    }
-
-    .setup-title {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: var(--color-text-primary);
-    }
-
-    .date-input {
-      padding: 12px 16px;
-      border: 2px solid var(--color-border);
-      border-radius: 8px;
-      font-size: 1rem;
-      background: var(--color-background);
-      color: var(--color-text-primary);
-      margin-right: 10px;
-    }
-
-    .save-button {
-      padding: 12px 20px;
-      background: var(--color-primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .save-button:hover {
-      background: var(--color-primary-hover);
-    }
-
-    @media (max-width: 768px) {
-      .love-title { font-size: 2rem; }
-      .time-number { font-size: 2rem; }
-      .time-unit { margin: 0 8px; }
-      .counter-display { padding: 20px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="love-counter-container">
-    <div class="heart-decoration">💕</div>
-    <div class="heart-decoration">💖</div>
-    <div class="heart-decoration">💝</div>
-    <div class="heart-decoration">💗</div>
-    
-    <h1 class="love-title">💕 恋爱计时器 💕</h1>
-    <p class="love-subtitle">记录我们在一起的每一分每一秒</p>
-    
-    <div class="counter-display">
-      <div class="time-unit">
-        <span class="time-number" id="days">0</span>
-        <span class="time-label">天</span>
-      </div>
-      <div class="time-unit">
-        <span class="time-number" id="hours">0</span>
-        <span class="time-label">时</span>
-      </div>
-      <div class="time-unit">
-        <span class="time-number" id="minutes">0</span>
-        <span class="time-label">分</span>
-      </div>
-      <div class="time-unit">
-        <span class="time-number" id="seconds">0</span>
-        <span class="time-label">秒</span>
-      </div>
-      <div class="milliseconds" id="milliseconds">000</div>
-      
-      <div class="start-date" id="startDate">开始日期: 未设置</div>
-    </div>
-    
-    <p class="love-message" id="loveMessage">
-      每一秒都是珍贵的回忆，每一毫秒都值得珍惜 💕
-    </p>
-    
-    <button class="reset-button" onclick="resetCounter()">重新设置日期</button>
-    
-    <div class="setup-section" id="setupSection" style="display: none;">
-      <h3 class="setup-title">设置开始日期</h3>
-      <input type="datetime-local" class="date-input" id="startDateInput">
-      <button class="save-button" onclick="saveStartDate()">保存</button>
-    </div>
-  </div>
-
-  <script>
-    let startDate = null;
-    let timer = null;
-    
-    function loadStartDate() {
-      const saved = localStorage.getItem('loveCounterStartDate');
-      if (saved) {
-        startDate = new Date(saved);
-        updateDisplay();
-        startTimer();
-      } else {
-        showSetupSection();
-      }
-    }
-    
-    function showSetupSection() {
-      document.getElementById('setupSection').style.display = 'block';
-      document.getElementById('loveMessage').textContent = '请设置你们的开始日期 💕';
-    }
-    
-    function saveStartDate() {
-      const input = document.getElementById('startDateInput');
-      if (input.value) {
-        startDate = new Date(input.value);
-        localStorage.setItem('loveCounterStartDate', startDate.toISOString());
-        document.getElementById('setupSection').style.display = 'none';
-        updateDisplay();
-        startTimer();
-        document.getElementById('loveMessage').textContent = '计时开始！每一秒都是珍贵的回忆 💕';
-      }
-    }
-    
-    function resetCounter() {
-      if (confirm('确定要重新设置开始日期吗？')) {
-        localStorage.removeItem('loveCounterStartDate');
-        startDate = null;
-        if (timer) {
-          clearInterval(timer);
-          timer = null;
-        }
-        showSetupSection();
-        resetDisplay();
-      }
-    }
-    
-    function resetDisplay() {
-      document.getElementById('days').textContent = '0';
-      document.getElementById('hours').textContent = '0';
-      document.getElementById('minutes').textContent = '0';
-      document.getElementById('seconds').textContent = '0';
-      document.getElementById('milliseconds').textContent = '000';
-      document.getElementById('startDate').textContent = '开始日期: 未设置';
-    }
-    
-    function updateDisplay() {
-      if (!startDate) return;
-      
-      const now = new Date();
-      const diff = now - startDate;
-      
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      const milliseconds = Math.floor((diff % 1000) / 10);
-      
-      document.getElementById('days').textContent = days;
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-      document.getElementById('milliseconds').textContent = milliseconds.toString().padStart(2, '0');
-      
-      document.getElementById('startDate').textContent = 
-        `开始日期: ${startDate.toLocaleDateString('zh-CN')} ${startDate.toLocaleTimeString('zh-CN')}`;
-    }
-    
-    function startTimer() {
-      if (timer) clearInterval(timer);
-      updateDisplay();
-      timer = setInterval(updateDisplay, 10);
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      loadStartDate();
-      
-      const now = new Date();
-      const localDateTime = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
-        .toISOString()
-        .slice(0, 16);
-      document.getElementById('startDateInput').value = localDateTime;
-    });
-    
-    document.addEventListener('visibilitychange', function() {
-      if (document.hidden) {
-        if (timer) clearInterval(timer);
-      } else {
-        if (startDate) startTimer();
-      }
-    });
-  </script>
-</body>
-</html> 
 </div>
 <div class="toc-menu-container">
     <img class="icon toc-menu" alt="">
@@ -716,8 +391,125 @@
 <script>
     window.onload = detectors();
 </script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/zh/posts/%E9%9D%A2%E8%AF%951/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/zh/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
 
-    <img src="/icon/" alt="">
+    
+      <div class="post-comment">
+    
+        
+
+                
+                    
+                        <div id="disqus_thread"></div>
+                        <div id='tip' style="display: none; color: gray; font-style: italic; font-size: 0.9em;">" Please use a proxy to
+                            use the comment function in 🇨🇳"</div>
+                        <script>
+                            /**
+                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+
+                            /* var disqus_config = function () {
+                                this.page.url = 'http://example.com/zh/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'zh/posts/表格导出为excel/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.language = 'en'
+                            }; */
+
+                            /* (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-ye1223-github-io.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })(); */
+
+
+
+
+                            function loadDisqus() {
+                                // 检测是否存在评论
+                                if (!document.querySelector('#disqus_thread iframe')) {
+                                    document.getElementById('tip').style.display = 'block'
+                                } else {
+                                    document.getElementById('tip').style.display = 'none'
+                                }
+                                // Disqus 安装代码
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-ye1223-github-io.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                                window.disqus_config = function () {
+                                    this.page.url = 'http://example.com/zh/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/';
+                                    this.page.identifier = 'zh/posts/表格导出为excel/';
+                                    this.language = 'en'
+                                };
+                                // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
+                            }
+
+                            // 通过检查 window 对象确认是否在浏览器中运行
+                            var runningOnBrowser = typeof window !== "undefined";
+                            // 通过检查 scroll 事件 API 和 User-Agent 来匹配爬虫
+                            var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+                            // 检查当前浏览器是否支持 IntersectionObserver API
+                            var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+
+                            // 检测
+                            /* const iframeObserver = new IntersectionObserver((entries)=>{
+                                if(entries[0].isIntersecting){
+                                    iframeObserver.disconnect()
+                                }
+                            })
+                            iframeObserver.observe(document.querySelector('#disqus_thread iframe')) */
+
+                            // 一个小 hack，将耗时任务包裹在 setTimeout(() => { }, 1) 中，可以推迟到 Event Loop 的任务队列中、等待主调用栈清空后才执行，在绝大部分浏览器中都有效
+                            // 其实这个 hack 本来是用于优化骨架屏显示的。一些浏览器总是等 JavaScript 执行完了才开始页面渲染，导致骨架屏起不到降低 FCP 的优化效果，所以通过 hack 将耗时函数放到骨架屏渲染完成后再进行。
+                            setTimeout(function () {
+                                if (!isBot && supportsIntersectionObserver) {
+                                    // 当前环境不是爬虫、并且浏览器兼容 IntersectionObserver API
+                                    var disqus_observer = new IntersectionObserver(function (entries) {
+                                        // 当前视窗中已出现 Disqus 评论框所在位置
+                                        if (entries[0].isIntersecting) {
+                                            // 加载 Disqus
+                                            loadDisqus();
+                                            // 停止当前的 Observer
+                                            disqus_observer.disconnect();
+                                        }
+                                    }, { threshold: [0] });
+                                    // 设置让 Observer 观察 #disqus_thread 元素
+                                    disqus_observer.observe(document.getElementById('disqus_thread'));
+                                } else {
+                                    // 当前环境是爬虫、或当前浏览器其不兼容 IntersectionObserver API
+                                    // 直接加载 Disqus
+                                    loadDisqus();
+                                }
+                            }, 1)
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a
+                                target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        
+
+
+
+</div>
+     
   
 </article>
         </div>

@@ -73,15 +73,10 @@
 
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NWC5DVZN8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-5NWC5DVZN8');
-</script>
+<!-- Google Analytics removed due to connection issues in mainland China -->
+<!-- 
+如果需要网站统计，建议使用国内服务如百度统计或友盟统计
+-->
 
 <body>
   <!-- <div class="image-preview-mask">
@@ -227,12 +222,13 @@
 
         body {
             /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; */
-            
+
             /* background: #ffffff; */
             /* color: #373633; */
             /* line-height: 1.6; */
             /* font-size: 16px; */
             /* padding: 40px 20px; */
+            filter: grayscale(100%);
         }
 
         .container {
@@ -460,8 +456,8 @@
                 <h1 class="title">Bridge & Levy</h1>
                 <!-- <p class="subtitle">Cherishing every precious moment</p> -->
 
-                <div class="start-date" onclick="createHeartBurst(event)" style="display: none;">
-                    Since June 08, 2025 at 8:00 PM
+                <div class="start-date" onclick="createHeartBurst(event)" id="time-range">
+                    <span id="start-time"></span> <br /><span id="end-time"></span>
                 </div>
 
                 <div class="stats-grid">
@@ -514,9 +510,24 @@
     </div>
 
     <script>
-        // Fixed start time: February 14, 2023 at 8:00 PM (Valentine's Day evening)
+        // Fixed start time
         const startDate = new Date('2025-06-08T22:00:00');
-        let lastValues = {};
+        // Fixed end time: November 17, 2025 at 1:34 AM
+        const endDate = new Date('2025-11-17T01:34:00');
+
+        // Format date for display
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            return `${year}年${month}月${day}日 ${hours}:${minutes}`;
+        }
+
+        // Display time range
+        document.getElementById('start-time').textContent = formatDate(startDate);
+        document.getElementById('end-time').textContent = formatDate(endDate);
 
         // Create heart burst effect
         function createHeartBurst(e) {
@@ -550,59 +561,34 @@
             }
         }
 
-        // Add number update animation
-        function animateNumberChange(elementId, newValue) {
-            const element = document.getElementById(elementId);
-            const oldValue = lastValues[elementId];
+        // Calculate fixed time difference
+        const diff = endDate.getTime() - startDate.getTime();
 
-            if (oldValue !== newValue) {
-                element.classList.add('updated');
-                setTimeout(() => {
-                    element.classList.remove('updated');
-                }, 100);
-                lastValues[elementId] = newValue;
-            }
+        // Calculate time units
+        const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+        const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.44));
+        const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        const milliseconds = diff % 1000;
 
-            element.textContent = newValue;
+        // Show/hide years and display fixed values
+        const yearElement = document.querySelector('.stat-item.year');
+        if (years > 0) {
+            yearElement.style.display = 'block';
+            document.getElementById('years').textContent = years.toLocaleString();
+        } else {
+            yearElement.style.display = 'none';
         }
 
-        // Update counter
-        function updateCounter() {
-            const now = new Date();
-            const diff = now.getTime() - startDate.getTime();
-
-            if (diff < 0) return;
-
-            // Calculate time units
-            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-            const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.44));
-            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            const milliseconds = diff % 1000;
-
-            // Show/hide years
-            const yearElement = document.querySelector('.stat-item.year');
-            if (years > 0) {
-                yearElement.style.display = 'block';
-                animateNumberChange('years', years.toLocaleString());
-            } else {
-                yearElement.style.display = 'none';
-            }
-
-            // Update other displays
-            animateNumberChange('months', months.toLocaleString());
-            animateNumberChange('days', days.toLocaleString());
-            animateNumberChange('hours', hours.toLocaleString());
-            animateNumberChange('minutes', minutes.toLocaleString());
-            animateNumberChange('seconds', seconds.toLocaleString());
-            animateNumberChange('milliseconds', milliseconds.toString().padStart(3, '0'));
-        }
-
-        // Start counter
-        setInterval(updateCounter, 1);
-        updateCounter(); // Update immediately
+        // Display fixed time values
+        document.getElementById('months').textContent = months.toLocaleString();
+        document.getElementById('days').textContent = days.toLocaleString();
+        document.getElementById('hours').textContent = hours.toLocaleString();
+        document.getElementById('minutes').textContent = minutes.toLocaleString();
+        document.getElementById('seconds').textContent = seconds.toLocaleString();
+        document.getElementById('milliseconds').textContent = milliseconds.toString().padStart(3, '0');
     </script>
 </body>
 

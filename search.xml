@@ -2,13 +2,123 @@
 <search>
   <entry>
     <title>AEM</title>
-    <url>/posts/AEM/</url>
+    <url>/zh/posts/AEM/</url>
     <content><![CDATA[<p>AEM - Adobe Experience Manager</p>
 ]]></content>
   </entry>
   <entry>
+    <title>CSS只显示两行</title>
+    <url>/zh/posts/CSS%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%A4%E8%A1%8C/</url>
+    <content><![CDATA[<p><strong><code>-webkit-line-clamp</code></strong> CSS 属性可以把<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Block">块容器</a>中的内容限制为指定的行数。</p>
+<p>它只有在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 属性设置成 <code>-webkit-box</code> 或者 <code>-webkit-inline-box</code> 并且 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-orient"><code>box-orient</code></a> 属性设置成 <code>vertical</code>时才有效果。</p>
+<p>在大部分情况下，也需要设置 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow"><code>overflow</code></a> 属性为 <code>hidden</code>，否则，里面的内容不会被裁减，并且在内容显示为指定行数后还会显示省略号。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  display: -webkit-box;</span><br><span class="line">  text-overflow: ellipsis;</span><br><span class="line">  -webkit-line-clamp: 2;  /* 两行 */</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">   word-break: break-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果<br />
+<img src="https://s2.loli.net/2024/02/01/ljaoHIB9rkU4uXn.png" alt="css只展示两行png.png" /></p>
+<p>💡 其中， <code>word-break</code> 指定了怎样在单词内断行， 这里 <code>break-all</code> 将单词截断换行，由于这里只能显示 2 行，所以出现图中效果</p>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cookie &amp; Session</title>
+    <url>/zh/posts/CookieSession/</url>
+    <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
+<br />
+<blockquote>
+<p><code>Session</code></p>
+<p>​	用户与服务器建立连接的同时，服务器会自动为其分配一个SessionId</p>
+<p>​	cookie每次请求都把SessionId自动带到服务器</p>
+<p>​		当一个用户提交了表单时，浏览器会将用户的SessionId自动附加在HTTP头信息中，（这是浏览器的自动功能，用户不会察觉到），当服务器处理完这个表单后，将结果返回给SessionId所对应的用户。</p>
+</blockquote>
+<br />
+<ul>
+<li>
+<h3 id="存储位置不同"><a class="markdownIt-Anchor" href="#存储位置不同"></a> 存储位置不同:</h3>
+<ul>
+<li>
+<p>Cookie数据存放在客户的<strong>浏览器</strong>上</p>
+</li>
+<li>
+<p>Session数据放在<strong>服务器</strong>上</p>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="安全性不同"><a class="markdownIt-Anchor" href="#安全性不同"></a> 安全性不同:</h3>
+<ul>
+<li>
+<p>Cookie不是很安全,别人可以分析存放在本地的COOKIE并进行COOKIE欺骗</p>
+</li>
+<li>
+<p>Session存放在服务器上,比较安全</p>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="大小限制不同"><a class="markdownIt-Anchor" href="#大小限制不同"></a> 大小限制不同:</h3>
+<ul>
+<li>Cookie大小有<strong>限制</strong>,最大<u>4K</u>左右</li>
+</ul>
+<ul>
+<li>Session大小一般可设置<u>1M到几十M</u>,根据服务器的内存大小而定</li>
+</ul>
+</li>
+<li>
+<h3 id="有效期不同"><a class="markdownIt-Anchor" href="#有效期不同"></a> 有效期不同:</h3>
+<ul>
+<li>
+<p>Cookie的有效期需要程序员<strong>自己设置</strong></p>
+</li>
+<li>
+<p>Session的有效期默认到<strong>浏览器关闭</strong>时失效</p>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="作用范围不同"><a class="markdownIt-Anchor" href="#作用范围不同"></a> 作用范围不同:</h3>
+<ul>
+<li>Cookie被客户端记录,每次请求时都会携带,对于服务器请求数量多的情况下会增加请求数据量</li>
+</ul>
+<ul>
+<li>Session只保存在服务器端,不会增加请求数据量</li>
+</ul>
+</li>
+<li>
+<h3 id="实现机制不同"><a class="markdownIt-Anchor" href="#实现机制不同"></a> 实现机制不同:</h3>
+<ul>
+<li>
+<p>Cookie通过检查客户浏览器的cookie来确定客户身份</p>
+</li>
+<li>
+<p>Session通过给客户浏览器分配一个<strong>特定的ID</strong>来识别客户身份。服务器通过匹配session ID来管理session</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="mermaid">graph TD
+A[客户端发起请求] --> B{请求是否包含sessionId?}
+B -- 包含 --> C[使用已存在的Session]
+B -- 不包含 --> D[创建一个新的Session]
+D --> E[生成一个唯一的sessionId]
+D --> F[为Session分配资源]
+E --> G[将sessionId返回给客户端]
+G --> H[客户端保存sessionId]
+C --> I[使用已存在的Session资源]
+I --> J[处理请求]
+J --> K[响应请求]
+K --> L[结束]
+F --> L[结束]</pre>
+]]></content>
+      <tags>
+        <tag>Computer Network</tag>
+        <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How to Develop AEM Components</title>
-    <url>/posts/AEM-dev/</url>
+    <url>/zh/posts/AEM-dev/</url>
     <content><![CDATA[<h2 id="prerequisites"><a class="markdownIt-Anchor" href="#prerequisites"></a> Prerequisites</h2>
 <ul>
 <li>Understanding how to configure components are on AEM pages</li>
@@ -174,118 +284,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title>CSS只显示两行</title>
-    <url>/posts/CSS%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%A4%E8%A1%8C/</url>
-    <content><![CDATA[<p><strong><code>-webkit-line-clamp</code></strong> CSS 属性可以把<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Block">块容器</a>中的内容限制为指定的行数。</p>
-<p>它只有在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 属性设置成 <code>-webkit-box</code> 或者 <code>-webkit-inline-box</code> 并且 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-orient"><code>box-orient</code></a> 属性设置成 <code>vertical</code>时才有效果。</p>
-<p>在大部分情况下，也需要设置 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow"><code>overflow</code></a> 属性为 <code>hidden</code>，否则，里面的内容不会被裁减，并且在内容显示为指定行数后还会显示省略号。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  display: -webkit-box;</span><br><span class="line">  text-overflow: ellipsis;</span><br><span class="line">  -webkit-line-clamp: 2;  /* 两行 */</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">   word-break: break-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>效果<br />
-<img src="https://s2.loli.net/2024/02/01/ljaoHIB9rkU4uXn.png" alt="css只展示两行png.png" /></p>
-<p>💡 其中， <code>word-break</code> 指定了怎样在单词内断行， 这里 <code>break-all</code> 将单词截断换行，由于这里只能显示 2 行，所以出现图中效果</p>
-]]></content>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Cookie &amp; Session</title>
-    <url>/posts/CookieSession/</url>
-    <content><![CDATA[<p>HTTP无状态（<u>一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接</u>），引入<code>cookie</code> 、<code>session</code>维持和跟踪用户状态。</p>
-<br />
-<blockquote>
-<p><code>Session</code></p>
-<p>​	用户与服务器建立连接的同时，服务器会自动为其分配一个SessionId</p>
-<p>​	cookie每次请求都把SessionId自动带到服务器</p>
-<p>​		当一个用户提交了表单时，浏览器会将用户的SessionId自动附加在HTTP头信息中，（这是浏览器的自动功能，用户不会察觉到），当服务器处理完这个表单后，将结果返回给SessionId所对应的用户。</p>
-</blockquote>
-<br />
-<ul>
-<li>
-<h3 id="存储位置不同"><a class="markdownIt-Anchor" href="#存储位置不同"></a> 存储位置不同:</h3>
-<ul>
-<li>
-<p>Cookie数据存放在客户的<strong>浏览器</strong>上</p>
-</li>
-<li>
-<p>Session数据放在<strong>服务器</strong>上</p>
-</li>
-</ul>
-</li>
-<li>
-<h3 id="安全性不同"><a class="markdownIt-Anchor" href="#安全性不同"></a> 安全性不同:</h3>
-<ul>
-<li>
-<p>Cookie不是很安全,别人可以分析存放在本地的COOKIE并进行COOKIE欺骗</p>
-</li>
-<li>
-<p>Session存放在服务器上,比较安全</p>
-</li>
-</ul>
-</li>
-<li>
-<h3 id="大小限制不同"><a class="markdownIt-Anchor" href="#大小限制不同"></a> 大小限制不同:</h3>
-<ul>
-<li>Cookie大小有<strong>限制</strong>,最大<u>4K</u>左右</li>
-</ul>
-<ul>
-<li>Session大小一般可设置<u>1M到几十M</u>,根据服务器的内存大小而定</li>
-</ul>
-</li>
-<li>
-<h3 id="有效期不同"><a class="markdownIt-Anchor" href="#有效期不同"></a> 有效期不同:</h3>
-<ul>
-<li>
-<p>Cookie的有效期需要程序员<strong>自己设置</strong></p>
-</li>
-<li>
-<p>Session的有效期默认到<strong>浏览器关闭</strong>时失效</p>
-</li>
-</ul>
-</li>
-<li>
-<h3 id="作用范围不同"><a class="markdownIt-Anchor" href="#作用范围不同"></a> 作用范围不同:</h3>
-<ul>
-<li>Cookie被客户端记录,每次请求时都会携带,对于服务器请求数量多的情况下会增加请求数据量</li>
-</ul>
-<ul>
-<li>Session只保存在服务器端,不会增加请求数据量</li>
-</ul>
-</li>
-<li>
-<h3 id="实现机制不同"><a class="markdownIt-Anchor" href="#实现机制不同"></a> 实现机制不同:</h3>
-<ul>
-<li>
-<p>Cookie通过检查客户浏览器的cookie来确定客户身份</p>
-</li>
-<li>
-<p>Session通过给客户浏览器分配一个<strong>特定的ID</strong>来识别客户身份。服务器通过匹配session ID来管理session</p>
-</li>
-</ul>
-</li>
-</ul>
-<pre class="mermaid">graph TD
-A[客户端发起请求] --> B{请求是否包含sessionId?}
-B -- 包含 --> C[使用已存在的Session]
-B -- 不包含 --> D[创建一个新的Session]
-D --> E[生成一个唯一的sessionId]
-D --> F[为Session分配资源]
-E --> G[将sessionId返回给客户端]
-G --> H[客户端保存sessionId]
-C --> I[使用已存在的Session资源]
-I --> J[处理请求]
-J --> K[响应请求]
-K --> L[结束]
-F --> L[结束]</pre>
-]]></content>
-      <tags>
-        <tag>Computer Network</tag>
-        <tag>http</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Create-React-App项目Template</title>
-    <url>/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
+    <url>/zh/posts/Create-React-App%E9%A1%B9%E7%9B%AETemplate/</url>
     <content><![CDATA[<p><a href="https://github.com/ye1223/CRA-template.git">💡项目地址</a><br />
 <br /></p>
 <h2 id=""><a class="markdownIt-Anchor" href="#"></a> </h2>
@@ -308,7 +308,7 @@ F --> L[结束]</pre>
   </entry>
   <entry>
     <title>Event Loop</title>
-    <url>/posts/EventLoop/</url>
+    <url>/zh/posts/EventLoop/</url>
     <content><![CDATA[<p>JS单线程，为了不阻塞线程，很多代码通过回调的方式异步执行</p>
 <p>JS代码执行顺序被打乱，就需要一种机制–事件循环，协调各个事件的执行顺序</p>
 <h3 id="浏览器"><a class="markdownIt-Anchor" href="#浏览器"></a> 浏览器</h3>
@@ -361,20 +361,15 @@ F --> L[结束]</pre>
       </tags>
   </entry>
   <entry>
-    <title>GPTPlus速通</title>
-    <url>/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>FUNNY_ERROR</title>
-    <url>/posts/FUNNY-ERROR/</url>
+    <url>/zh/posts/FUNNY-ERROR/</url>
     <content><![CDATA[<h2 id="1-immediate-写错位置-哭晕"><a class="markdownIt-Anchor" href="#1-immediate-写错位置-哭晕"></a> 1、immediate 写错位置 哭晕</h2>
 <figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> reCompolist = <span class="title function_">ref</span>([])</span><br><span class="line"><span class="title function_">watch</span>(</span><br><span class="line">  <span class="function">() =&gt;</span> props.<span class="property">list</span>,</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ;(reCompolist.<span class="property">value</span> <span class="keyword">as</span> <span class="built_in">any</span>) = props.<span class="property">list</span>.<span class="title function_">map</span>(</span><br><span class="line">      <span class="function">(<span class="params">row</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="attr">newRow</span>: <span class="title class_">Record</span>&lt;<span class="built_in">string</span>, <span class="built_in">any</span>&gt; = &#123;&#125;</span><br><span class="line">        props.<span class="property">labels</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">[key, _]</span>) =&gt;</span> &#123;</span><br><span class="line">          newRow[key] = row[key]</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> newRow</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">immediate</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
     <title>JS类型转换</title>
-    <url>/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+    <url>/zh/posts/JS%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<p>JS是动态类型语言，我们在定义一个变量其实并没有指定这个变量到底属于那种类型，只有到程序执行阶段才确定当前数据类型。</p>
 <p>而<font color=red>各种<strong>运算符</strong>对数据类型是有要求的</font>，所以就会触发类型转换机制（no matter 人为 or 隐式触发）</p>
 <h2 id="显示转换"><a class="markdownIt-Anchor" href="#显示转换"></a> 显示转换：</h2>
@@ -427,10 +422,10 @@ F --> L[结束]</pre>
   </entry>
   <entry>
     <title>NEW START</title>
-    <url>/posts/NEW-START/</url>
+    <url>/zh/posts/NEW-START/</url>
     <content><![CDATA[<ul>
 <li>迷茫是自由产生的旋涡</li>
-<li>顺其自然，随意地飘去吧</li>
+<li><s>顺其自然，随意地飘去吧</s></li>
 <li>真实自有万钧之力</li>
 <li>…</li>
 </ul>
@@ -441,7 +436,7 @@ F --> L[结束]</pre>
   </entry>
   <entry>
     <title>RENEW-vue2</title>
-    <url>/posts/RENEW-vue2/</url>
+    <url>/zh/posts/RENEW-vue2/</url>
     <content><![CDATA[<h3 id="1-关于生命周期"><a class="markdownIt-Anchor" href="#1-关于生命周期"></a> 1. 关于生命周期</h3>
 <h5 id="11-生命周期有哪些发送请求在created还是mounted"><a class="markdownIt-Anchor" href="#11-生命周期有哪些发送请求在created还是mounted"></a> 1.1 生命周期有哪些？发送请求在created还是mounted？</h5>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请求接口测试：https://fcm.52kfw.cn/index.php?_mall_id=1&amp;r=api/default/district</span><br></pre></td></tr></table></figure>
@@ -677,8 +672,13 @@ F --> L[结束]</pre>
 ]]></content>
   </entry>
   <entry>
+    <title>GPTPlus速通</title>
+    <url>/zh/posts/GPTPlus%E9%80%9F%E9%80%9A/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>RENEW-汇总</title>
-    <url>/posts/RENEW-%E6%B1%87%E6%80%BB/</url>
+    <url>/zh/posts/RENEW-%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h2 id="一-css"><a class="markdownIt-Anchor" href="#一-css"></a> 一、CSS</h2>
 <h3 id="1说一下css的盒模型"><a class="markdownIt-Anchor" href="#1说一下css的盒模型"></a> 1.说一下CSS的盒模型。</h3>
 <p>​        在HTML页面中的所有元素都可以看成是一个盒子<br />
@@ -1526,51 +1526,8 @@ setInterval最小执行时间是10ms</p>
 ]]></content>
   </entry>
   <entry>
-    <title>TCP</title>
-    <url>/posts/TCP/</url>
-    <content><![CDATA[<p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
-<p><strong>全双工（Full Duplex）</strong></p>
-<ol>
-<li>双向传输:TCP连接的两端都可以同时发送和接收数据包。</li>
-<li>双向流量控制:发送方和接收方都可以通过滑动窗口机制控制数据流量,防止对方缓冲区溢出。</li>
-<li>双向确认:发送的数据包可以得到对方的确认应答ACK。接收方也可以通过ACK告知发送方自己已经正确接收了数据。</li>
-<li>双向重传:如果任意一方没有收到确认或数据包丢失,都可以触发重传机制,直到数据正确发送。</li>
-<li>全双工通信:TCP的全双工特性使得双方可以同时进行发言而不会相互干扰,就像电话通话一样。</li>
-</ol>
-<blockquote>
-<p><code>ACK</code> 和<code>FIN</code> 是 TCP 协议中两个重要的控制标志(control flag)</p>
-<p><code>ACK(Acknowledgement) </code>确认号，表示确认号,确认接收端已正确接收到前面的数据</p>
-<p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
-</blockquote>
-<h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
-<img src="https://i.imgur.com/bJWYomc.png" alt="三次挥手示意图" style="width:50%" />
-<h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
-<p>一包数据可能被拆为多包数据发送</p>
-<p><strong>丢包问题？乱序问题？</strong></p>
-<p>TCP为每个链接建立了一个<mark>发送缓冲区</mark></p>
-<img src="https://s2.loli.net/2023/09/11/ACj3KLUHcNiVIMs.png" style="width:50%;" alt="传输示意图" />
-<blockquote>
-<p>一问一答的方式发送接收（发送端一次也可以发送多包数据，接收端只用回复一次ACK）</p>
-</blockquote>
-<blockquote>
-<p>发送端可以切割发送，接收端利用序列号和长度重组出完整的数据</p>
-</blockquote>
-<blockquote>
-<p>丢失了某个数据包，接收端可以要求发送端重传。</p>
-<p>接收端向发送端发送ACK=xxx，发送端重传，接收端收到再<strong>补齐</strong>数据</p>
-</blockquote>
-<h2 id="四次挥手"><a class="markdownIt-Anchor" href="#四次挥手"></a> 四次挥手👋🏻</h2>
-<p>这里以客户端取消l为例</p>
-<img src="https://s2.loli.net/2023/09/11/nrxG86lYUf7CqMX.png" alt="四次挥手示意图" style="width:50%;" />
-<p>Client等待一段时间，目的为了确保ACK成功发送给Server，否则Server重新发送FIN给client，再重新执行</p>
-]]></content>
-      <tags>
-        <tag>Computer Network</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SUMMARY</title>
-    <url>/posts/SUMMARY/</url>
+    <url>/zh/posts/SUMMARY/</url>
     <content><![CDATA[<h2 id="01-数据类型"><a class="markdownIt-Anchor" href="#01-数据类型"></a> 01 数据类型</h2>
 <p>基本数据类型：</p>
 <ul>
@@ -2340,7 +2297,7 @@ setInterval最小执行时间是10ms</p>
   </entry>
   <entry>
     <title>Volta node版本管理</title>
-    <url>/posts/Volta-node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</url>
+    <url>/zh/posts/Volta-node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h2 id="volta"><a class="markdownIt-Anchor" href="#volta"></a> volta</h2>
 <blockquote>
 <p>试了多种node版本工具<code>nvm</code> <code>fnm</code>，都没有成功下在离线状态下托管本地node包</p>
@@ -2391,7 +2348,7 @@ setInterval最小执行时间是10ms</p>
   </entry>
   <entry>
     <title>angular-ng</title>
-    <url>/posts/angular-ng/</url>
+    <url>/zh/posts/angular-ng/</url>
     <content><![CDATA[<h3 id="angualr"><a class="markdownIt-Anchor" href="#angualr"></a> Angualr</h3>
 <p>组件模式 AMD</p>
 <p>scope</p>
@@ -2488,23 +2445,51 @@ setInterval最小执行时间是10ms</p>
 ]]></content>
   </entry>
   <entry>
-    <title>btoa-atob</title>
-    <url>/posts/btoa-atob/</url>
-    <content><![CDATA[<p>今天在找登录token发先存于Cookie的access_token被加密成ASCII字符串，遂找到了两个window下的api</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// base64Encryption</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">encryptToken</span>(<span class="params">token</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> encryptedToken = <span class="title function_">btoa</span>(token)</span><br><span class="line">  <span class="keyword">return</span> encryptedToken</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">decryptToken</span>(<span class="params">encryptedToken</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> decryptedToken = <span class="title function_">atob</span>(encryptedToken)</span><br><span class="line">  <span class="keyword">return</span> decryptedToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Binary To ASCII</strong></p>
-<p><strong><code>btoa()</code></strong> 方法可以将一个<em>二进制字符串</em>（例如，将字符串中的每一个字节都视为一个二进制数据字节）编码为 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Base64">Base64</a> 编码的 ASCII 字符串。</p>
-<p>**ASCII To Binary **</p>
-<p><strong><code>atob()</code></strong> 对经过 base-64 编码的字符串进行解码</p>
-<p><img src="https://s2.loli.net/2024/02/19/6sy4PoWhdcw5BXJ.png" alt="bta atob" /></p>
+    <title>TCP</title>
+    <url>/zh/posts/TCP/</url>
+    <content><![CDATA[<p><strong style="color:red;">在不可靠的网络链路中，进行可靠的链接/断开</strong></p>
+<p><strong>全双工（Full Duplex）</strong></p>
+<ol>
+<li>双向传输:TCP连接的两端都可以同时发送和接收数据包。</li>
+<li>双向流量控制:发送方和接收方都可以通过滑动窗口机制控制数据流量,防止对方缓冲区溢出。</li>
+<li>双向确认:发送的数据包可以得到对方的确认应答ACK。接收方也可以通过ACK告知发送方自己已经正确接收了数据。</li>
+<li>双向重传:如果任意一方没有收到确认或数据包丢失,都可以触发重传机制,直到数据正确发送。</li>
+<li>全双工通信:TCP的全双工特性使得双方可以同时进行发言而不会相互干扰,就像电话通话一样。</li>
+</ol>
+<blockquote>
+<p><code>ACK</code> 和<code>FIN</code> 是 TCP 协议中两个重要的控制标志(control flag)</p>
+<p><code>ACK(Acknowledgement) </code>确认号，表示确认号,确认接收端已正确接收到前面的数据</p>
+<p><code>FIN (Finish)</code> 结束标志，表示发送端已经发送完数据,可以关闭连接了。</p>
+</blockquote>
+<h2 id="三次握手"><a class="markdownIt-Anchor" href="#三次握手"></a> 三次握手🤝</h2>
+<img src="https://i.imgur.com/bJWYomc.png" alt="三次挥手示意图" style="width:50%" />
+<h2 id="传输"><a class="markdownIt-Anchor" href="#传输"></a> 传输</h2>
+<p>一包数据可能被拆为多包数据发送</p>
+<p><strong>丢包问题？乱序问题？</strong></p>
+<p>TCP为每个链接建立了一个<mark>发送缓冲区</mark></p>
+<img src="https://s2.loli.net/2023/09/11/ACj3KLUHcNiVIMs.png" style="width:50%;" alt="传输示意图" />
+<blockquote>
+<p>一问一答的方式发送接收（发送端一次也可以发送多包数据，接收端只用回复一次ACK）</p>
+</blockquote>
+<blockquote>
+<p>发送端可以切割发送，接收端利用序列号和长度重组出完整的数据</p>
+</blockquote>
+<blockquote>
+<p>丢失了某个数据包，接收端可以要求发送端重传。</p>
+<p>接收端向发送端发送ACK=xxx，发送端重传，接收端收到再<strong>补齐</strong>数据</p>
+</blockquote>
+<h2 id="四次挥手"><a class="markdownIt-Anchor" href="#四次挥手"></a> 四次挥手👋🏻</h2>
+<p>这里以客户端取消l为例</p>
+<img src="https://s2.loli.net/2023/09/11/nrxG86lYUf7CqMX.png" alt="四次挥手示意图" style="width:50%;" />
+<p>Client等待一段时间，目的为了确保ACK成功发送给Server，否则Server重新发送FIN给client，再重新执行</p>
 ]]></content>
       <tags>
-        <tag>new found</tag>
+        <tag>Computer Network</tag>
       </tags>
   </entry>
   <entry>
     <title>computed与watch</title>
-    <url>/posts/computed%E4%B8%8Ewatch/</url>
+    <url>/zh/posts/computed%E4%B8%8Ewatch/</url>
     <content><![CDATA[<h3 id="计算属性computed"><a class="markdownIt-Anchor" href="#计算属性computed"></a> <strong>计算属性computed</strong></h3>
 <p>​	<u>适合用在模板渲染中，某个值是<strong>依赖了其它的响应式对象</strong>甚至是<strong>计算属性</strong>计算而来</u></p>
 <ul>
@@ -2532,7 +2517,7 @@ setInterval最小执行时间是10ms</p>
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/posts/hello-world/</url>
+    <url>/zh/posts/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2>
 <h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3>
@@ -2550,8 +2535,23 @@ setInterval最小执行时间是10ms</p>
 ]]></content>
   </entry>
   <entry>
+    <title>btoa-atob</title>
+    <url>/zh/posts/btoa-atob/</url>
+    <content><![CDATA[<p>今天在找登录token发先存于Cookie的access_token被加密成ASCII字符串，遂找到了两个window下的api</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// base64Encryption</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">encryptToken</span>(<span class="params">token</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> encryptedToken = <span class="title function_">btoa</span>(token)</span><br><span class="line">  <span class="keyword">return</span> encryptedToken</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">decryptToken</span>(<span class="params">encryptedToken</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> decryptedToken = <span class="title function_">atob</span>(encryptedToken)</span><br><span class="line">  <span class="keyword">return</span> decryptedToken</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Binary To ASCII</strong></p>
+<p><strong><code>btoa()</code></strong> 方法可以将一个<em>二进制字符串</em>（例如，将字符串中的每一个字节都视为一个二进制数据字节）编码为 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Base64">Base64</a> 编码的 ASCII 字符串。</p>
+<p>**ASCII To Binary **</p>
+<p><strong><code>atob()</code></strong> 对经过 base-64 编码的字符串进行解码</p>
+<p><img src="https://s2.loli.net/2024/02/19/6sy4PoWhdcw5BXJ.png" alt="bta atob" /></p>
+]]></content>
+      <tags>
+        <tag>new found</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTTP summary</title>
-    <url>/posts/http/</url>
+    <url>/zh/posts/http/</url>
     <content><![CDATA[<h2 id="http"><a class="markdownIt-Anchor" href="#http"></a> <mark>HTTP</mark></h2>
 <p><strong>Hyper Text Transfer Protocol</strong></p>
 <img src="https://s2.loli.net/2023/09/08/7HasE3ePGXuqtYn.png" alt="image-20230908155626605" style="width:50%;" />
@@ -2645,200 +2645,8 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>nodejs</title>
-    <url>/posts/nodejs/</url>
-    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
-<ol>
-<li><strong>运行时（Runtime)</strong><br />
-&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
-</ol>
-<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
-<ol start="2">
-<li>
-<p><strong>运行时库（Runtime Library）</strong><br />
-运行时库就是程序运行的时候所需要依赖的库。</p>
-</li>
-<li>
-<p><strong>运行时环境（Runtime environment）</strong><br />
-运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
-</li>
-</ol>
-<hr />
-<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
-<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
-<p>访问系统内核，访问本地文件，链接服务器…</p>
-<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
-<p><strong>跨平台</strong></p>
-<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
-<blockquote>
-<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
-</blockquote>
-<hr />
-<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
-<p>node <code>global</code></p>
-<p>浏览器 <code>window</code></p>
-<p><code>globalThis</code>根据环境自动判断</p>
-<p>ECMAScript中有的全局，如Math…</p>
-<ul>
-<li>
-<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
-</li>
-<li>
-<p><code>__filename</code> 当前文件路径（绝对路径）</p>
-</li>
-<li>
-<p><code>__extname</code> 文件后缀</p>
-</li>
-<li>
-<p><code>Buffer</code></p>
-</li>
-<li>
-<p><code>process</code>  处理进程</p>
-<ul>
-<li><code>process.argv</code> 获取参数数组</li>
-<li><code>process.cwd()</code> 目录</li>
-<li><code>process.exit()</code> 终止进程</li>
-<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
-<p>（相比，Apache，每一个请求创建一个线程）</p>
-<p>单线程，并发量为1</p>
-<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
-<blockquote>
-<p>主线程是单线程，io是libuv维护的线程池</p>
-</blockquote>
-<br/>
-<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
-<br/>
-<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
-<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
-<br/>  
-<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
-<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
-<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
-<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
-<hr />
-<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
-<ol>
-<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
-<li>I/O操作： 文件读写，数据库操作，网络请求</li>
-<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
-</ol>
-<br/>
-<blockquote>
-<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
-<p>微任务（promise）</p>
-<p>timer</p>
-<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
-<p>check</p>
-</blockquote>
-<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
-<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
-<br/>
-<blockquote>
-<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
-<p>nextTick先于下一个Tick执行</p>
-</blockquote>
-<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
-<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
-<p>为了健壮性：捕获并处理每一个错误</p>
-<ul>
-<li>
-<p>同步代码 try catch</p>
-</li>
-<li>
-<p>异步代码</p>
-<ul>
-<li>Promise (catch)</li>
-<li>async await trycatch</li>
-</ul>
-</li>
-</ul>
-<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
-<p>回调函数 --&gt; Promise —&gt; async await</p>
-<br/>
-<p>node官方的库</p>
-<p>遵循，错误优先风格</p>
-<br/>
-<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
-<br/>
-<blockquote>
-<p>平行</p>
-<p>顺序</p>
-</blockquote>
-<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
-<p>module并不是全局变量，每一个模块有他相应的模块</p>
-<br/>
-<p>核心模块（随着node）</p>
-<p>第三方模块</p>
-<p>自定义模块（引用路径）</p>
-<br/>
-<p>运行时加载 cmj，知道运行时候再报错</p>
-<p>编译时加载 esm</p>
-<p><code>import from</code> 写在模块顶层</p>
-<p><code>import()</code> （异步，返回promise）</p>
-<br/>
-<p><code>V8</code></p>
-<p>预编译阶段 （ESM</p>
-<p>-分配内存空间</p>
-<p>-确定作用域链…</p>
-<p>执行阶段 （CMJ</p>
- <br/>
-<hr />
-<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
-<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
-<br/>
-<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<hr />
-<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
-<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
-<br/>
-<p>i/o操作</p>
-<p>端到端数据交换</p>
-<br/>
-<p>加载 缓冲区 处理</p>
-<p>流模式 加载一点处理一点</p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
-<br/>
-<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
-<hr />
-<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
-<ul>
-<li>
-<p>TDK</p>
-<ul>
-<li>title</li>
-<li>description (meta)</li>
-<li>Key(meta)</li>
-</ul>
-</li>
-<li>
-<p>语义化标签</p>
-</li>
-<li>
-<p><code>&lt;a/&gt;</code> href</p>
-</li>
-<li>
-<p><code>&lt;img/&gt;</code> href alt</p>
-</li>
-<li>
-<p>一个页面一个h1 和 main标签</p>
-</li>
-<li>
-<p>…</p>
-</li>
-</ul>
-<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
-]]></content>
-  </entry>
-  <entry>
     <title>js红宝书</title>
-    <url>/posts/js%E7%BA%A2%E5%AE%9D%E4%B9%A6/</url>
+    <url>/zh/posts/js%E7%BA%A2%E5%AE%9D%E4%B9%A6/</url>
     <content><![CDATA[<h3 id="script标签"><a class="markdownIt-Anchor" href="#script标签"></a> <code>&lt;script&gt;</code>标签</h3>
 <ul>
 <li>
@@ -3382,148 +3190,200 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>npm</title>
-    <url>/posts/npm/</url>
-    <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
-<p>安装、卸载、更新、发布</p>
-<p><strong>version</strong> <strong>版本号x,y,z</strong></p>
-<p>主 次 补丁</p>
-<dl>
-<dt>^ 锁定从左边数第一个非0的</dt>
-<dd>锁定主版本or次版本</dd>
-</dl>
-<p>latest 最新版本</p>
-<h1 id="依赖"><a class="markdownIt-Anchor" href="#依赖"></a> 依赖</h1>
-<p>dependecies</p>
-<p>devDependencies 开发依赖</p>
-<p>peerDependencies 对等依赖，（插件不能凭空运行，需要依赖某一模块）</p>
-<h1 id="一些常用命令"><a class="markdownIt-Anchor" href="#一些常用命令"></a> 一些常用命令</h1>
-<ul>
-<li><code>npm config list</code> 查看npm配置信息</li>
-</ul>
-<img src="https://s2.loli.net/2023/09/02/cZmUGLrlnh74v9Y.png" alt="image-20230902172055264" style="width:50%;" />
-<ul>
-<li><code>npm get registry</code>  查看镜像源</li>
-<li><code>npm set registry xxxx</code>设置镜像源</li>
-<li><code>npm ls (-g)</code> 当前（全局）安装的可执行文件</li>
-</ul>
-<h1 id="npm-install-原理"><a class="markdownIt-Anchor" href="#npm-install-原理"></a> npm install 原理</h1>
-<p>安装依赖存放于根目录<code>node_modules</code>文件夹</p>
-<p>排序: .bin @系列 abcd排序</p>
-<p>广度优先，扁平化（理想情况下）处理下载</p>
-<blockquote>
-<p>非理想： node_modules下a b 模块依赖不同版本的c模块，会给b模块下再建立一个node_modules文件夹</p>
-</blockquote>
-<p><img src="https://s2.loli.net/2023/09/02/ybEQgwSzVoL2kA3.png" alt="img" /></p>
-<blockquote>
-<p>pakage-lock.json</p>
-<p>锁定版本号</p>
-<p>缓存： intergrity + verion + name 生成唯一的key，这个key在缓存文件中,</p>
-<p><code>npm config list</code> 查看中的cache</p>
-<p>index-v5 索引目录，记录content-v2的索引位置，对应的 intergrity + verion + name由算法生成的哈希值</p>
-<p>对应得上，就将这个加密的包解压到node_modules中</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>pakage-lock.json pakage.json</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>不一致</td>
-<td>按照pakage中的版本下载，并更新lock中的版本号</td>
-</tr>
-<tr>
-<td>一直</td>
-<td>先找缓存，没有再下载资源</td>
-</tr>
-</tbody>
-</table>
-<h1 id="npm-run"><a class="markdownIt-Anchor" href="#npm-run"></a> npm run</h1>
-<p>可执行命令都存在node_modules下的<code>.bin</code>文件夹中</p>
+    <title>nodejs</title>
+    <url>/zh/posts/nodejs/</url>
+    <content><![CDATA[<h1 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h1>
 <ol>
+<li><strong>运行时（Runtime)</strong><br />
+&quot;运行时&quot;就是程序运行的时候，也就是<strong>指令加载到内存并由CPU执行</strong>的时候。</li>
+</ol>
+<p>与之相对应的是“编译时”，其指代码编译的时候，也就是C代码编译成可执行文件的时候，此时指令没有被CPU执行。</p>
+<ol start="2">
 <li>
-<p>当前项目node_modules/.bin 中查找</p>
+<p><strong>运行时库（Runtime Library）</strong><br />
+运行时库就是程序运行的时候所需要依赖的库。</p>
 </li>
 <li>
-<p>全局的node_modules查找</p>
-</li>
-<li>
-<p>环境变量中查找</p>
-</li>
-<li>
-<p>报错</p>
+<p><strong>运行时环境（Runtime environment）</strong><br />
+运行环境（英语：Runtime environment）又称“运行时系统”（run-time system），指一种把半编译的运行码在目标机器上运行的环境。</p>
 </li>
 </ol>
-<p>也是有生命周期的</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;predev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 1.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 2.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postdev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 3.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p>运行 <code>npm run dev</code>, 自动执行了 1.js 2.js 3.js</p>
+<hr />
+<h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
+<p>Nodejs 只是一个js<strong>运行时环境</strong></p>
+<p>访问系统内核，访问本地文件，链接服务器…</p>
+<p>nodejs在<strong>浏览器之外</strong>运行<strong>v8引擎</strong></p>
+<p><strong>跨平台</strong></p>
+<p>适合干IO密集型应用，不适合CPU密集型（单线程）</p>
 <blockquote>
-<p>比如一个打包命令，之前可以做一个清理的任务，最后做一个发布的工作，比如写一个CI脚本顺便把代码提交了</p>
-<p>Vue-cli也是用了生命周期pretest: ‘yarn clean’</p>
+<p>CPU 密集型： 图像、音频处理需要大量的数据结构+算法</p>
 </blockquote>
-<h1 id="npx"><a class="markdownIt-Anchor" href="#npx"></a> npx</h1>
-<p>npm高版本自带的命令行工具</p>
-<p><strong>运行node_modules/.bin 下的可执行文件</strong></p>
+<hr />
+<h1 id="全局变量"><a class="markdownIt-Anchor" href="#全局变量"></a> 全局变量</h1>
+<p>node <code>global</code></p>
+<p>浏览器 <code>window</code></p>
+<p><code>globalThis</code>根据环境自动判断</p>
+<p>ECMAScript中有的全局，如Math…</p>
+<ul>
+<li>
+<p><code>__dirname</code> 当前文件所在目录(绝对路径)</p>
+</li>
+<li>
+<p><code>__filename</code> 当前文件路径（绝对路径）</p>
+</li>
+<li>
+<p><code>__extname</code> 文件后缀</p>
+</li>
+<li>
+<p><code>Buffer</code></p>
+</li>
+<li>
+<p><code>process</code>  处理进程</p>
+<ul>
+<li><code>process.argv</code> 获取参数数组</li>
+<li><code>process.cwd()</code> 目录</li>
+<li><code>process.exit()</code> 终止进程</li>
+<li><code>process.on('exit', ()=&gt;&#123;console.log('退出')&#125;)</code> 监听事件</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p><code>nodejs</code>应用在（<font color=red>长期运行!!</font><code>httpserver返回++counter</code>）<strong>单个进程</strong>中运行，无需为每个请求创建新的线程</p>
+<p>（相比，Apache，每一个请求创建一个线程）</p>
+<p>单线程，并发量为1</p>
+<p>采用了<strong>非阻塞</strong>的开发范式（事件循环机制） + v8引擎加持，轻松应对<strong>高并发</strong></p>
 <blockquote>
-<p>之前通过package.json 中的scripts 配合npm run实现，现在可通过npx运行不需要安装这个依赖包运行命令</p>
+<p>主线程是单线程，io是libuv维护的线程池</p>
 </blockquote>
-<ul>
-<li>
-<p>避免全局安装</p>
-<ul>
-<li>当前项目node_modules/.bin —&gt; 全局modules/.bin —&gt; 官网下载，用完删除（需要联网），减少内存占用</li>
-</ul>
-</li>
-<li>
-<p>总是使用最新版本</p>
-</li>
-<li>
-<p>执行任意npm包</p>
-</li>
-</ul>
+<br/>
+<p>当函数调用栈内有函数运行时，js不能处理其他请求</p>
+<br/>
+<p>异步模块（多线程）和事件循环（监听 派发，不占用单独线程）</p>
+<p>循环不停监听异步模块处理进度，等处理完成后，派发函数调用栈执行</p>
+<br/>  
+<p>最快的速度清空函数调用栈，把耗时的操作全部做异步处理</p>
+<p>node将【异步操作和对应的回调函数】封装成一个请求对象，交给底层的异步模块处理</p>
+<p>异步操作有结果之后，回调函数进入事件循环等待执行，</p>
+<p>事件循环在调用栈清空时，按照某个优先级顺序将回调函数推入到调用栈执行</p>
+<hr />
+<h1 id="node异步api"><a class="markdownIt-Anchor" href="#node异步api"></a> node异步API</h1>
+<ol>
+<li>定时器： <code>setTimeOut</code> <code> setInterval</code> （最小1ms，浏览器4ms）</li>
+<li>I/O操作： 文件读写，数据库操作，网络请求</li>
+<li>node独有的，<code>process.nextTick</code>、<code>setImmediate</code></li>
+</ol>
+<br/>
 <blockquote>
-<p>在一个项目中，<code>npm i vite</code></p>
-<p>没有全局安装，直接运行vite肯定是不行的，</p>
-<p>此时配合npx， <code>npx vite</code> 在项目中的node_modules/.bin中查找运行</p>
+<p>nextTick(<strong>优先级比事件循环队列更高</strong>)</p>
+<p>微任务（promise）</p>
+<p>timer</p>
+<p>–&gt;poll（当执行到这里时卡住，检查timer或者check队列有误需要 执行的）</p>
+<p>check</p>
 </blockquote>
-<h2 id="与npm区别"><a class="markdownIt-Anchor" href="#与npm区别"></a> 与npm区别</h2>
-<p>npx侧重执行命令</p>
-<p>npm侧重安装或卸载某个模块，不具备执行某个模块的功能</p>
-<h1 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h1>
-<ul>
-<li><code>npm addUser</code>（创建npm账号）</li>
-<li><code>npm login</code> 登录( 使用<strong>官方的源</strong>，而不是第三方镜像源)</li>
-<li><code>npm publish</code>  发布（同版本号不能重新发布，包名唯一）</li>
-</ul>
-<h1 id="构建npm私服"><a class="markdownIt-Anchor" href="#构建npm私服"></a> 构建npm私服</h1>
-<ul>
-<li>部署到内网集群，离线使用</li>
-<li>安全性</li>
-<li>提高包下载速度</li>
-</ul>
-<p>利用<code>verdaccio</code>库</p>
-<img src="https://s2.loli.net/2023/09/02/PZQCziu4qrKAsRk.png" alt="image-20230902172055264" style="width:50%;" />
-<ul>
-<li><code>npm i verdaccio -g</code></li>
-<li><code>verdaccio --listen 5000</code> 开启服务</li>
-<li>发包流程与之前的差不多
+<p>Poll 阻塞，从设计上，是想优先处理IO事件的</p>
+<p>Settimeout(,0)与setimmdeiate 放入io中使用，定时器，总会先执行check队列的操作</p>
+<br/>
+<blockquote>
+<p>Timer -&gt; check运行一周称为一个<code>Tick</code></p>
+<p>nextTick先于下一个Tick执行</p>
+</blockquote>
+<p><strong>异步代码进入异步模块以非阻塞的形式执行，对应的异步函数会在对应的异步代码执行完成后，派发到不同的队列中</strong></p>
+<h2 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理"></a> 异常处理</h2>
+<p>为了健壮性：捕获并处理每一个错误</p>
 <ul>
 <li>
-<img src="https://s2.loli.net/2023/09/02/zYhy9muZv8cWD3H.png" alt="image-20230902172055264" style="width:50%;" /></li>
+<p>同步代码 try catch</p>
+</li>
+<li>
+<p>异步代码</p>
+<ul>
+<li>Promise (catch)</li>
+<li>async await trycatch</li>
 </ul>
 </li>
 </ul>
+<h2 id="异步编程-流程控制"><a class="markdownIt-Anchor" href="#异步编程-流程控制"></a> 异步编程 流程控制</h2>
+<p>回调函数 --&gt; Promise —&gt; async await</p>
+<br/>
+<p>node官方的库</p>
+<p>遵循，错误优先风格</p>
+<br/>
+<p>回调函数，需要顺序执行，就要嵌套的写，但是导致回调地狱</p>
+<br/>
+<blockquote>
+<p>平行</p>
+<p>顺序</p>
+</blockquote>
+<h1 id="module"><a class="markdownIt-Anchor" href="#module"></a> module</h1>
+<p>module并不是全局变量，每一个模块有他相应的模块</p>
+<br/>
+<p>核心模块（随着node）</p>
+<p>第三方模块</p>
+<p>自定义模块（引用路径）</p>
+<br/>
+<p>运行时加载 cmj，知道运行时候再报错</p>
+<p>编译时加载 esm</p>
+<p><code>import from</code> 写在模块顶层</p>
+<p><code>import()</code> （异步，返回promise）</p>
+<br/>
+<p><code>V8</code></p>
+<p>预编译阶段 （ESM</p>
+<p>-分配内存空间</p>
+<p>-确定作用域链…</p>
+<p>执行阶段 （CMJ</p>
+ <br/>
+<hr />
+<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
+<p>js字符串不可变，所有对字符串的操作都要生成一个新的字符串</p>
+<br/>
+<p><code>fs</code>模块读取，不生命文件类型，默认返回的都是文件二进制缓冲区</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> buffer1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">5</span>) <span class="comment">//申请五个字节</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1.<span class="title function_">toString</span>())</span><br><span class="line">buffer1.<span class="title function_">write</span>(<span class="string">&#x27;string&#x27;</span>) <span class="comment">//多写入的部分不会写入</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buffer1, buffer1.<span class="title function_">toString</span>())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&#x27;a string&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<hr />
+<h1 id="stream"><a class="markdownIt-Anchor" href="#stream"></a> stream</h1>
+<p><img src="https://s2.loli.net/2023/09/03/JmQjx7fKbWprE1C.png" alt="image-20230601204439944.png" /></p>
+<br/>
+<p>i/o操作</p>
+<p>端到端数据交换</p>
+<br/>
+<p>加载 缓冲区 处理</p>
+<p>流模式 加载一点处理一点</p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/LGmBcjDfOF5giHV.png" alt="image-20230601204653589.png" /></p>
+<br/>
+<p><img src="https://s2.loli.net/2023/09/03/iLAFjDZa3q7Sxd5.png" alt="image-20230618200922252.png" /></p>
+<hr />
+<h1 id="seo"><a class="markdownIt-Anchor" href="#seo"></a> SEO</h1>
+<ul>
+<li>
+<p>TDK</p>
+<ul>
+<li>title</li>
+<li>description (meta)</li>
+<li>Key(meta)</li>
+</ul>
+</li>
+<li>
+<p>语义化标签</p>
+</li>
+<li>
+<p><code>&lt;a/&gt;</code> href</p>
+</li>
+<li>
+<p><code>&lt;img/&gt;</code> href alt</p>
+</li>
+<li>
+<p>一个页面一个h1 和 main标签</p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+<p>借助第三方库jsdom（jsdom模拟浏览器环境的库，可以在 Node.js 中使用 DOM API），服务端渲染</p>
 ]]></content>
-      <tags>
-        <tag>nodejs</tag>
-      </tags>
   </entry>
   <entry>
     <title>React小记</title>
-    <url>/posts/react%E5%B0%8F%E8%AE%B0/</url>
+    <url>/zh/posts/react%E5%B0%8F%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="react库和框架的区别是什么"><a class="markdownIt-Anchor" href="#react库和框架的区别是什么"></a> React库和框架的区别是什么？</h2>
 <ul>
 <li>页面组件化</li>
@@ -3820,8 +3680,68 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
+    <title>Typora图床</title>
+    <url>/zh/posts/typora%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
+<p><strong>图床平台</strong>：<a href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
+<p><strong>上传服务器</strong>：<a href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
+<p>手把手步骤：</p>
+<ul>
+<li>
+<p><strong><a href="http://sm.ms">sm.ms</a></strong></p>
+<ul>
+<li>注册</li>
+<li>获取<code>Token</code>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>PicGo</strong></p>
+<ul>
+<li>全局下载 CLI：<code>yarn add global picgo</code></li>
+<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
+<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
+<ul>
+<li><code>vim ~/.picgo/config.json</code></li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Typora</strong></p>
+<ul>
+<li>设置 &gt; 图像 &gt; 上传服务设置</li>
+<li>
+<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
+</li>
+</ul>
+</li>
+<li>
+<p><strong>使用</strong></p>
+<ul>
+<li>
+<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
+</li>
+</ul>
+</li>
+</ul>
+<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
+]]></content>
+      <tags>
+        <tag>utils</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>redux-toolkit学习</title>
-    <url>/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
+    <url>/zh/posts/redux-toolkit%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h1 id="redux-toolkit"><a class="markdownIt-Anchor" href="#redux-toolkit"></a> Redux-Toolkit</h1>
 <blockquote>
 <p>摘自官网</p>
@@ -3891,68 +3811,8 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
-    <title>Typora图床</title>
-    <url>/posts/typora%E5%9B%BE%E5%BA%8A/</url>
-    <content><![CDATA[<p>Llllllb, 购买了正版<code>Typora</code>之后，终于可以美美享受图床服务咯</p>
-<p><strong>图床平台</strong>：<a href="https://sm.ms/">sm.ms</a> <strong>5.00 GB</strong>免费空间</p>
-<p><strong>上传服务器</strong>：<a href="https://picgo.github.io/PicGo-Core-Doc/">PicGo</a></p>
-<p>手把手步骤：</p>
-<ul>
-<li>
-<p><strong><a href="http://sm.ms">sm.ms</a></strong></p>
-<ul>
-<li>注册</li>
-<li>获取<code>Token</code>
-<ul>
-<li>
-<img src="https://s2.loli.net/2024/02/17/yogM5hsDnjrlFG1.png" alt="smms-token" style="zoom: 33%; float: left;" />
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>PicGo</strong></p>
-<ul>
-<li>全局下载 CLI：<code>yarn add global picgo</code></li>
-<li>配置：<code>picgo set</code> 全部默认就行（图床选择 smms）</li>
-<li>查看配置：macos 默认保存在<code>~/.picgo</code>目录下
-<ul>
-<li><code>vim ~/.picgo/config.json</code></li>
-<li>
-<img src="https://s2.loli.net/2024/02/17/8gfPF5wTAIytm4X.png" alt="picgo-config.json" style="zoom:20%; float: left" />
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Typora</strong></p>
-<ul>
-<li>设置 &gt; 图像 &gt; 上传服务设置</li>
-<li>
-<img src="https://s2.loli.net/2024/02/17/SBaVRF3I6kLbP9f.png" alt="typora-picgo" style="zoom: 30%; float:left" />
-</li>
-</ul>
-</li>
-<li>
-<p><strong>使用</strong></p>
-<ul>
-<li>
-<img src="https://s2.loli.net/2024/02/17/xfaX5rnyosH6D7Y.gif" alt="erastour-loopy" style="zoom: 80%; float:left" />
-</li>
-</ul>
-</li>
-</ul>
-<p><font style="margin-top: 1em; font-style: italic; font-weight: bold; color: red">OMG 你怎么知道我 3.8.2024 要去<mark>THE ERAS TOUR Singapore</mark></font></p>
-]]></content>
-      <tags>
-        <tag>utils</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue3数据绑定之-sync</title>
-    <url>/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
+    <url>/zh/posts/vue3%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E4%B9%8B-sync/</url>
     <content><![CDATA[<p><s><strong><font color=red>啊啊啊啊学了这么久vue3还不知道<code>sync</code>已经在vue3中被剔除了！！！</font></strong></s></p>
 <p>在vue2中我们利用v-bind值给子组件，子组件props接受父组件传来的值</p>
 <p><img src="https://s2.loli.net/2023/08/04/seqYNjUDltL2Avd.png" alt="image-20230804094605352.png" /></p>
@@ -3979,7 +3839,7 @@ setInterval最小执行时间是10ms</p>
   </entry>
   <entry>
     <title>一键速通菲区Spotify</title>
-    <url>/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
+    <url>/zh/posts/%E4%B8%80%E9%94%AE%E9%80%9F%E9%80%9A%E8%8F%B2%E5%8C%BASpotify/</url>
     <content><![CDATA[<h3 id="prerequisite"><a class="markdownIt-Anchor" href="#prerequisite"></a> prerequisite</h3>
 <p>菲区电话卡、菲区梯子🪜</p>
 <h3 id="流程"><a class="markdownIt-Anchor" href="#流程"></a> 流程</h3>
@@ -4010,8 +3870,363 @@ setInterval最小执行时间是10ms</p>
       </tags>
   </entry>
   <entry>
+    <title>博客网站搭建</title>
+    <url>/zh/posts/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p><s>一个前端开发者没有一个博客像什么话呢？</s></p>
+<p>因为这个网上搜寻了一番，如何搭建一个博客。</p>
+<p>虽然也没什么好写的，而且分享的东西也只不过是别人嘴里吐出来的话罢了。（管他的， im just a 菜鸡🤡</p>
+<p>大部分人用的<code>hexo</code>这个静态站点生成器，而且也有很多现成的模版</p>
+<p>嘻嘻，最终被我发现了<code>Frame</code>这个主题。虽然开箱即用的功能没其他主题多，胜在这完美的UI，简约高级！！！</p>
+<p>加了一些新功能</p>
+<ul>
+<li>国际化（虽然也just用在了主页</li>
+<li>评论 disqus</li>
+<li>文章TOC</li>
+<li>还有一些小修改。。。</li>
+</ul>
+<p>最后也跟着网上的步骤直接部署在github page上，后也在用vercel一键部署，但是vercel被大陆block了，并且url也带着<code>.vercel</code>，真的有点丑</p>
+<p>后面又想着自己弄一个域名</p>
+<p><strong>秉持着能白嫖就白嫖的理念</strong>🤣</p>
+<p>​	域名平台肯定是想用：久闻盛名的免费域名平台<code>freenom</code>，好景不长，早已关闭了申请通道</p>
+<p>​	最后搜到了<code>namesoli</code>这个平台。第一年，在使用了优惠🐴后<code>.top</code>域名首年只要人民币7块</p>
+<p>​	在加个cdn就完美了</p>
+<p>​		  提到cdn肯定就想到某慈善家<code>cloudflare</code> ，直接选择free plan加速我想部署的vercel项目，利用边缘服务器，直接在大陆也可访问咯，但是感觉速度还是不如githubpage</p>
+<p><font size=5><strong>归根来说就是直接 <code>hexo github vercel namesoli cloudflare</code> 一把子梭哈，时刻羡慕米国人可以直接用上这么好的技术。。。。😇</strong> </font></p>
+<p>参考网站 <a href="https://blog.naibabiji.com/tutorial/namesilo-yu-ming-jie-xi-geng-huan-dns-jiao-cheng.html">NameSilo域名解析和DNS服务器修改教程</a></p>
+]]></content>
+      <tags>
+        <tag>blog</tag>
+        <tag>website</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>杂项</title>
+    <url>/zh/posts/%E6%9D%82%E9%A1%B9/</url>
+    <content><![CDATA[<p><mark>highlight</mark><br />
+​🈂️​</p>
+<h4 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>简单实现Toast组件</title>
+    <url>/zh/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
+    <content><![CDATA[<blockquote>
+<ul>
+<li>一个模版文件Toast.vue</li>
+<li>一个渲染挂载导出方法文件index.ts
+<ul>
+<li>通过Toast.success(‘xxxx’) 调用</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>这里UI使用<code>Flowbite</code>的<a href="https://flowbite.com/docs/components/toast/#colors">Toast</a>组件（需要配合tailwindcss）</p>
+<p><img src="https://s2.loli.net/2023/08/17/hrfHPm5M8LAZcv4.png" alt="image-20230817102433189.png" /></p>
+<h2 id="供给渲染的模板"><a class="markdownIt-Anchor" href="#供给渲染的模板"></a> 供给渲染的模板</h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">interface Props &#123;</span><br><span class="line">	visible: boolean</span><br><span class="line">	type: string</span><br><span class="line">	message: string</span><br><span class="line">&#125;</span><br><span class="line">const props = withDefaults(defineProps&lt;Props&gt;(), &#123;</span><br><span class="line">	visible: false,</span><br><span class="line">	type: &#x27;&#x27;,</span><br><span class="line">	message: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const status = props.type === &#x27;success&#x27; ? &#x27;success&#x27; : &#x27;danger&#x27;</span><br><span class="line">const toast = ref&lt;HTMLDivElement&gt;()</span><br><span class="line">const handleClose = () =&gt; &#123;</span><br><span class="line">	toast.value!.style.display = &#x27;none&#x27;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;Transition</span><br><span class="line">		name=&quot;toast&quot;</span><br><span class="line">		enter-active-class=&quot;transition ease-out duration-300&quot;</span><br><span class="line">		leave-active-class=&quot;transition ease-in duration-300&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;div class=&quot;fixed inset-0 h-0&quot; v-if=&quot;props.visible&quot;&gt;</span><br><span class="line">			&lt;div</span><br><span class="line">				:id=&quot;`toast-$&#123;status&#125;`&quot;</span><br><span class="line">				class=&quot;absolute top-5 left-1/2 -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800&quot;</span><br><span class="line">				role=&quot;alert&quot;</span><br><span class="line">				ref=&quot;toast&quot;</span><br><span class="line">			&gt;</span><br><span class="line">				&lt;div</span><br><span class="line">					v-if=&quot;props.type === &#x27;success&#x27;&quot;</span><br><span class="line">					class=&quot;inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-5 h-5&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;currentColor&quot;</span><br><span class="line">						viewBox=&quot;0 0 20 20&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							d=&quot;M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt; Check icon &lt;/span&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">				&lt;div</span><br><span class="line">					v-else-if=&quot;props.type === &#x27;error&#x27;&quot;</span><br><span class="line">					class=&quot;inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-5 h-5&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;currentColor&quot;</span><br><span class="line">						viewBox=&quot;0 0 20 20&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							d=&quot;M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt; Error icon &lt;/span&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;div class=&quot;ml-3 text-sm font-normal&quot;&gt;</span><br><span class="line">					&lt;!-- &#123;/* 不同 */&#125;  --&gt;</span><br><span class="line">					&#123;&#123; props.message &#125;&#125;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;button</span><br><span class="line">					type=&quot;button&quot;</span><br><span class="line">					class=&quot;ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700&quot;</span><br><span class="line">					data-dismiss-target=&quot;#toast-success&quot;</span><br><span class="line">					aria-label=&quot;Close&quot;</span><br><span class="line">					@click=&quot;handleClose&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt;Close&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-3 h-3&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;none&quot;</span><br><span class="line">						viewBox=&quot;0 0 14 14&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							stroke=&quot;currentColor&quot;</span><br><span class="line">							stroke-linecap=&quot;round&quot;</span><br><span class="line">							stroke-linejoin=&quot;round&quot;</span><br><span class="line">							stroke-width=&quot;2&quot;</span><br><span class="line">							d=&quot;m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">				&lt;/button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/Transition&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.toast-enter-from,</span><br><span class="line">.toast-leave-to &#123;</span><br><span class="line">	opacity: 0;</span><br><span class="line">	transform: translateY(-30px);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="导出toast方法提供给vue进行挂载"><a class="markdownIt-Anchor" href="#导出toast方法提供给vue进行挂载"></a> 导出toast方法，提供给Vue进行挂载</h2>
+<p>index.ts</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">//@ts-nocheck</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp, h &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ToastComponent</span> <span class="keyword">from</span> <span class="string">&#x27;./template/Toast.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ToastProps</span> &#123;</span><br><span class="line">	<span class="attr">visible</span>: <span class="built_in">boolean</span></span><br><span class="line">	<span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span> | <span class="string">&#x27;error&#x27;</span></span><br><span class="line">	<span class="attr">message</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ToastContainer</span> = <span class="title function_">createApp</span>(&#123;</span><br><span class="line">	<span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_">h</span>(<span class="title class_">ToastComponent</span>, <span class="variable language_">this</span>.<span class="property">toastProps</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">toastProps</span>: &#123;</span><br><span class="line">				<span class="attr">visible</span>: <span class="literal">false</span>,</span><br><span class="line">				<span class="attr">type</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">				<span class="attr">message</span>: <span class="string">&#x27;&#x27;</span> </span><br><span class="line">			&#125; <span class="keyword">as</span> <span class="built_in">unknown</span> <span class="keyword">as</span> <span class="title class_">ToastProps</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> toast = <span class="title class_">ToastContainer</span>.<span class="title function_">mount</span>(<span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(toast.<span class="property">$el</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Toast</span> = &#123;</span><br><span class="line">	<span class="title function_">success</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		toast.<span class="property">toastProps</span> = &#123;</span><br><span class="line">			<span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span>,</span><br><span class="line">			message</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			toast.<span class="property">toastProps</span>.<span class="property">visible</span> = <span class="literal">false</span></span><br><span class="line">		&#125;, <span class="number">3000</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">error</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		toast.<span class="property">toastProps</span> = &#123;</span><br><span class="line">			<span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">type</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">			message</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			toast.<span class="property">toastProps</span>.<span class="property">visible</span> = <span class="literal">false</span></span><br><span class="line">		&#125;, <span class="number">3000</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Toast</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 👨‍💻使用</h2>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Toast</span>.<span class="title function_">success</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="title class_">Toast</span>.<span class="title function_">error</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2023/08/17/ewqEhulLyJmUCKH.gif" alt="toast.gif" /></p>
+]]></content>
+      <tags>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>滑动验证</title>
+    <url>/zh/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
+    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
+<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
+<hr />
+<ul>
+<li>
+<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
+</li>
+</ul>
+<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
+<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
+<blockquote>
+<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
+<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
+]]></content>
+      <tags>
+        <tag>vue3</tag>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm</title>
+    <url>/zh/posts/npm/</url>
+    <content><![CDATA[<p><code>node package manager</code>  基于命令行的工具</p>
+<p>安装、卸载、更新、发布</p>
+<p><strong>version</strong> <strong>版本号x,y,z</strong></p>
+<p>主 次 补丁</p>
+<dl>
+<dt>^ 锁定从左边数第一个非0的</dt>
+<dd>锁定主版本or次版本</dd>
+</dl>
+<p>latest 最新版本</p>
+<h1 id="依赖"><a class="markdownIt-Anchor" href="#依赖"></a> 依赖</h1>
+<p>dependecies</p>
+<p>devDependencies 开发依赖</p>
+<p>peerDependencies 对等依赖，（插件不能凭空运行，需要依赖某一模块）</p>
+<h1 id="一些常用命令"><a class="markdownIt-Anchor" href="#一些常用命令"></a> 一些常用命令</h1>
+<ul>
+<li><code>npm config list</code> 查看npm配置信息</li>
+</ul>
+<img src="https://s2.loli.net/2023/09/02/cZmUGLrlnh74v9Y.png" alt="image-20230902172055264" style="width:50%;" />
+<ul>
+<li><code>npm get registry</code>  查看镜像源</li>
+<li><code>npm set registry xxxx</code>设置镜像源</li>
+<li><code>npm ls (-g)</code> 当前（全局）安装的可执行文件</li>
+</ul>
+<h1 id="npm-install-原理"><a class="markdownIt-Anchor" href="#npm-install-原理"></a> npm install 原理</h1>
+<p>安装依赖存放于根目录<code>node_modules</code>文件夹</p>
+<p>排序: .bin @系列 abcd排序</p>
+<p>广度优先，扁平化（理想情况下）处理下载</p>
+<blockquote>
+<p>非理想： node_modules下a b 模块依赖不同版本的c模块，会给b模块下再建立一个node_modules文件夹</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2023/09/02/ybEQgwSzVoL2kA3.png" alt="img" /></p>
+<blockquote>
+<p>pakage-lock.json</p>
+<p>锁定版本号</p>
+<p>缓存： intergrity + verion + name 生成唯一的key，这个key在缓存文件中,</p>
+<p><code>npm config list</code> 查看中的cache</p>
+<p>index-v5 索引目录，记录content-v2的索引位置，对应的 intergrity + verion + name由算法生成的哈希值</p>
+<p>对应得上，就将这个加密的包解压到node_modules中</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>pakage-lock.json pakage.json</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>不一致</td>
+<td>按照pakage中的版本下载，并更新lock中的版本号</td>
+</tr>
+<tr>
+<td>一直</td>
+<td>先找缓存，没有再下载资源</td>
+</tr>
+</tbody>
+</table>
+<h1 id="npm-run"><a class="markdownIt-Anchor" href="#npm-run"></a> npm run</h1>
+<p>可执行命令都存在node_modules下的<code>.bin</code>文件夹中</p>
+<ol>
+<li>
+<p>当前项目node_modules/.bin 中查找</p>
+</li>
+<li>
+<p>全局的node_modules查找</p>
+</li>
+<li>
+<p>环境变量中查找</p>
+</li>
+<li>
+<p>报错</p>
+</li>
+</ol>
+<p>也是有生命周期的</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;predev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 1.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 2.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;postdev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node 3.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>运行 <code>npm run dev</code>, 自动执行了 1.js 2.js 3.js</p>
+<blockquote>
+<p>比如一个打包命令，之前可以做一个清理的任务，最后做一个发布的工作，比如写一个CI脚本顺便把代码提交了</p>
+<p>Vue-cli也是用了生命周期pretest: ‘yarn clean’</p>
+</blockquote>
+<h1 id="npx"><a class="markdownIt-Anchor" href="#npx"></a> npx</h1>
+<p>npm高版本自带的命令行工具</p>
+<p><strong>运行node_modules/.bin 下的可执行文件</strong></p>
+<blockquote>
+<p>之前通过package.json 中的scripts 配合npm run实现，现在可通过npx运行不需要安装这个依赖包运行命令</p>
+</blockquote>
+<ul>
+<li>
+<p>避免全局安装</p>
+<ul>
+<li>当前项目node_modules/.bin —&gt; 全局modules/.bin —&gt; 官网下载，用完删除（需要联网），减少内存占用</li>
+</ul>
+</li>
+<li>
+<p>总是使用最新版本</p>
+</li>
+<li>
+<p>执行任意npm包</p>
+</li>
+</ul>
+<blockquote>
+<p>在一个项目中，<code>npm i vite</code></p>
+<p>没有全局安装，直接运行vite肯定是不行的，</p>
+<p>此时配合npx， <code>npx vite</code> 在项目中的node_modules/.bin中查找运行</p>
+</blockquote>
+<h2 id="与npm区别"><a class="markdownIt-Anchor" href="#与npm区别"></a> 与npm区别</h2>
+<p>npx侧重执行命令</p>
+<p>npm侧重安装或卸载某个模块，不具备执行某个模块的功能</p>
+<h1 id="发布npm包"><a class="markdownIt-Anchor" href="#发布npm包"></a> 发布npm包</h1>
+<ul>
+<li><code>npm addUser</code>（创建npm账号）</li>
+<li><code>npm login</code> 登录( 使用<strong>官方的源</strong>，而不是第三方镜像源)</li>
+<li><code>npm publish</code>  发布（同版本号不能重新发布，包名唯一）</li>
+</ul>
+<h1 id="构建npm私服"><a class="markdownIt-Anchor" href="#构建npm私服"></a> 构建npm私服</h1>
+<ul>
+<li>部署到内网集群，离线使用</li>
+<li>安全性</li>
+<li>提高包下载速度</li>
+</ul>
+<p>利用<code>verdaccio</code>库</p>
+<img src="https://s2.loli.net/2023/09/02/PZQCziu4qrKAsRk.png" alt="image-20230902172055264" style="width:50%;" />
+<ul>
+<li><code>npm i verdaccio -g</code></li>
+<li><code>verdaccio --listen 5000</code> 开启服务</li>
+<li>发包流程与之前的差不多
+<ul>
+<li>
+<img src="https://s2.loli.net/2023/09/02/zYhy9muZv8cWD3H.png" alt="image-20230902172055264" style="width:50%;" /></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>表格导出为excel</title>
+    <url>/zh/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
+    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
+<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
+<p><code>yarn add xlsx file-saver</code></p>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
+<blockquote>
+<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>enhanced</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试1</title>
+    <url>/zh/posts/%E9%9D%A2%E8%AF%951/</url>
+    <content><![CDATA[<p>主要围绕简历展开</p>
+<h2 id="自我介绍"><a class="markdownIt-Anchor" href="#自我介绍"></a> 自我介绍</h2>
+<blockquote>
+<p>​	从未准备过，每次都是“面试官你好，我是来自xx学校xx学院的学生，学习前端xx年了”，然后就戛然而止。。。</p>
+</blockquote>
+<h2 id="项目"><a class="markdownIt-Anchor" href="#项目"></a> 项目</h2>
+<ul>
+<li>
+<p>实习项目简介</p>
+</li>
+<li>
+<p>实习负责板块介绍</p>
+</li>
+<li>
+<p>难点，遇到什么问题</p>
+</li>
+<li>
+<p>对于技术上手快吗</p>
+</li>
+</ul>
+<h2 id="计网"><a class="markdownIt-Anchor" href="#计网"></a> 计网</h2>
+<ul>
+<li>Ajax 工作方式</li>
+<li>http请求响应过程</li>
+</ul>
+<h2 id="杂项"><a class="markdownIt-Anchor" href="#杂项"></a> 杂项</h2>
+<ul>
+<li>JWT
+<ul>
+<li>前端axios拦截 后端加密解密~</li>
+</ul>
+</li>
+<li>vue react 区别</li>
+<li>会不会后端（❓</li>
+<li>是否接受加班</li>
+</ul>
+<h2 id="反问"><a class="markdownIt-Anchor" href="#反问"></a> 反问</h2>
+<ul>
+<li>公司产品（自研？</li>
+<li>工作地点 &amp; 加班</li>
+<li>。。。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Interview</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>乐山</title>
+    <url>/zh/posts/gallery-%E4%B9%90%E5%B1%B1/</url>
+    <content><![CDATA[<p>寒假终于有机会出游（<strong>蹭的</strong>）（特别感谢我哥和我嫂子）🫰</p>
+<p>三天两晚，乐山城区、苏稽古镇、金口河</p>
+<p>（不得不说来乐山旅游的人真的太多多多了，城区每家店子人都爆满</p>
+<br />
+<p>吃的<code>板眼儿</code>多得<code>遭不住</code>  🆘​</p>
+<table>
+<thead>
+<tr>
+<th>炸串（排队排队）</th>
+<th>咔饼</th>
+<th>豆腐脑（不能接受勾了芡的食品）</th>
+<th>甜皮鸭</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/yRpOtF2.jpg" alt="油炸" /></td>
+<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/sSO8Tub.jpg" alt="20230202_144544" /></td>
+<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/xSqXXIP.jpg" alt="20230202_143741" /></td>
+<td>404忘记拍照了…</td>
+</tr>
+</tbody>
+</table>
+<p><code>苏稽翘脚牛肉</code>单拎出来，太好吃了 favorito~</p>
+<p><img src="https://images.weserv.nl/?url=https://i.imgur.com/YsVMSwR.jpg" alt="20230203_122113" /></p>
+<p>坐船看了乐山大佛，逛了苏稽古镇，当然最<strong>impressive</strong>的还是金口河大峡谷。。。</p>
+<blockquote>
+<p>人类真的特别特别渺小</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/i0uR66t.jpg" alt="20230203_160746" /></th>
+<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/C3Wh8C3.jpg" alt="20230203_150035" /></th>
+<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/3ROlK0A.jpg" alt="20230203_155615" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/Hp34XzF.jpg" alt="20230203_150324" /></td>
+<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/r4QpbWh.jpg" alt="20230203_144629" /></td>
+<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/63nBWhM.jpg" alt="20230203_150313" /></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>gallery</category>
+      </categories>
+  </entry>
+  <entry>
     <title>模块化 + webpack打包</title>
-    <url>/posts/webpack/</url>
+    <url>/zh/posts/webpack/</url>
     <content><![CDATA[<p>「模块化」是思想</p>
 <p><img src="https://s2.loli.net/2023/05/08/cqUElmXNyaRPnsG.png" alt="内容概要" /></p>
 <h2 id="模块化的演变过程"><a class="markdownIt-Anchor" href="#模块化的演变过程"></a> <mark>模块化的演变过程</mark></h2>
@@ -4720,223 +4935,8 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
 ]]></content>
   </entry>
   <entry>
-    <title>博客网站搭建</title>
-    <url>/posts/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<p><s>一个前端开发者没有一个博客像什么话呢？</s></p>
-<p>因为这个网上搜寻了一番，如何搭建一个博客。</p>
-<p>虽然也没什么好写的，而且分享的东西也只不过是别人嘴里吐出来的话罢了。（管他的， im just a 菜鸡🤡</p>
-<p>大部分人用的<code>hexo</code>这个静态站点生成器，而且也有很多现成的模版</p>
-<p>嘻嘻，最终被我发现了<code>Frame</code>这个主题。虽然开箱即用的功能没其他主题多，胜在这完美的UI，简约高级！！！</p>
-<p>加了一些新功能</p>
-<ul>
-<li>国际化（虽然也just用在了主页</li>
-<li>评论 disqus</li>
-<li>文章TOC</li>
-<li>还有一些小修改。。。</li>
-</ul>
-<p>最后也跟着网上的步骤直接部署在github page上，后也在用vercel一键部署，但是vercel被大陆block了，并且url也带着<code>.vercel</code>，真的有点丑</p>
-<p>后面又想着自己弄一个域名</p>
-<p><strong>秉持着能白嫖就白嫖的理念</strong>🤣</p>
-<p>​	域名平台肯定是想用：久闻盛名的免费域名平台<code>freenom</code>，好景不长，早已关闭了申请通道</p>
-<p>​	最后搜到了<code>namesoli</code>这个平台。第一年，在使用了优惠🐴后<code>.top</code>域名首年只要人民币7块</p>
-<p>​	在加个cdn就完美了</p>
-<p>​		  提到cdn肯定就想到某慈善家<code>cloudflare</code> ，直接选择free plan加速我想部署的vercel项目，利用边缘服务器，直接在大陆也可访问咯，但是感觉速度还是不如githubpage</p>
-<p><font size=5><strong>归根来说就是直接 <code>hexo github vercel namesoli cloudflare</code> 一把子梭哈，时刻羡慕米国人可以直接用上这么好的技术。。。。😇</strong> </font></p>
-<p>参考网站 <a href="https://blog.naibabiji.com/tutorial/namesilo-yu-ming-jie-xi-geng-huan-dns-jiao-cheng.html">NameSilo域名解析和DNS服务器修改教程</a></p>
-]]></content>
-      <tags>
-        <tag>blog</tag>
-        <tag>website</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>杂项</title>
-    <url>/posts/%E6%9D%82%E9%A1%B9/</url>
-    <content><![CDATA[<p><mark>highlight</mark><br />
-​🈂️​</p>
-<h4 id="2"><a class="markdownIt-Anchor" href="#2"></a> 2</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;111&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>滑动验证</title>
-    <url>/posts/%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</url>
-    <content><![CDATA[<p>最近在写一个注册表单的需要一个滑动验证模块。</p>
-<p>👨‍💻网上搜寻一番，发现了一个组件比较好用<a href="https://github.com/javaLuo/vue-puzzle-vcode"><code>vue3-puzzle-vcode</code></a></p>
-<hr />
-<ul>
-<li>
-<h3 id="配合element-plus-dialog-和-form-组件使用"><a class="markdownIt-Anchor" href="#配合element-plus-dialog-和-form-组件使用"></a> 配合<code>ELement-Plus</code>:  dialog 和 form 组件使用</h3>
-</li>
-</ul>
-<h4 id="login组件控制register表单组件显示"><a class="markdownIt-Anchor" href="#login组件控制register表单组件显示"></a> Login组件控制Register表单组件显示</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//login.vue</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import Register from &#x27;@/components/Register.vue&#x27;</span><br><span class="line">const registerDiaVisible = ref(false)</span><br><span class="line">const openRegisterDia = () =&gt; &#123;</span><br><span class="line">	registerDiaVisible.value = true</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">...</span><br><span class="line">&lt;Register v-model:registerDiaVisible=&quot;registerDiaVisible&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="register组件"><a class="markdownIt-Anchor" href="#register组件"></a> Register组件</h4>
-<p>（表单校验成功后，打开滑动验证组件，再次成功调用onSuccess）</p>
-<blockquote>
-<p>注意调整滑动验证组件的<code>z-index</code>，默认<code>el-dialog</code>组件层级高于<code>Vcode</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; formPost &#125; from &#x27;@/api/request&#x27;</span><br><span class="line">import &#123; ElMessage, FormInstance &#125; from &#x27;element-plus&#x27;</span><br><span class="line">import &#123; reactive, ref &#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123; RegisterForm &#125; from &#x27;@/ts/interfaces/login.interface&#x27;</span><br><span class="line">import Vcode from &#x27;vue3-puzzle-vcode&#x27;</span><br><span class="line">const props = defineProps&lt;&#123;</span><br><span class="line">	registerDiaVisible: boolean</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const emit = defineEmits&lt;&#123;</span><br><span class="line">	&#x27;update:registerDiaVisible&#x27;: [registerDiaVisible: boolean]</span><br><span class="line">&#125;&gt;()</span><br><span class="line"></span><br><span class="line">const handleCancel = () =&gt; &#123;</span><br><span class="line">	emit(&#x27;update:registerDiaVisible&#x27;, false)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//表单绑定的响应式对象</span><br><span class="line">const formData = reactive(&#123;</span><br><span class="line">	nickName: &#x27;&#x27;,</span><br><span class="line">	realName: &#x27;&#x27;,</span><br><span class="line">	pwd: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 表单的引用对象</span><br><span class="line">const formRef = ref()</span><br><span class="line">// 表单校验</span><br><span class="line">const rules = reactive(&#123;</span><br><span class="line">	nickName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入昵称&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位昵称&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	realName: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入用户名&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位用户名&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	],</span><br><span class="line">	pwd: [</span><br><span class="line">		&#123; required: true, message: &#x27;请输入密码&#x27;, trigger: &#x27;blur&#x27; &#125;,</span><br><span class="line">		&#123; min: 3, max: 10, message: &#x27;请输入3-10位密码&#x27;, trigger: &#x27;blur&#x27; &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const onClose = () =&gt; &#123;</span><br><span class="line">	isShow.value = !isShow.value</span><br><span class="line">&#125;</span><br><span class="line">const onSuccess = () =&gt; &#123;</span><br><span class="line">	// 滑动验证成功, 发送请求</span><br><span class="line">	formPost&lt;RegisterForm, string&gt;(&#123;</span><br><span class="line">		url: &#x27;/user/register&#x27;,</span><br><span class="line">		data: &#123; ...formData &#125;</span><br><span class="line">	&#125;)</span><br><span class="line">		.then(res =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.success(res.data)</span><br><span class="line">		&#125;)</span><br><span class="line">		.catch(err =&gt; &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">			ElMessage.error(err.msg)</span><br><span class="line">		&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const onSubmit = async (formEl: FormInstance | undefined) =&gt; &#123;</span><br><span class="line">	if (!formEl) return</span><br><span class="line">	formEl.validate((valid, fields) =&gt; &#123;</span><br><span class="line">		if (valid) &#123;</span><br><span class="line">			isShow.value = !isShow.value</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			console.log(&#x27;error submit!&#x27;, fields)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isShow = ref(false)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;el-dialog</span><br><span class="line">		title=&quot;用户注册&quot;</span><br><span class="line">		v-model=&quot;props.registerDiaVisible&quot;</span><br><span class="line">		:before-close=&quot;handleCancel&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;el-form :rules=&quot;rules&quot; :model=&quot;formData&quot; ref=&quot;formRef&quot;&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;昵称:&quot; label-width=&quot;120&quot; prop=&quot;nickName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.nickName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;姓名:&quot; label-width=&quot;120&quot; prop=&quot;realName&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.realName&quot; /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;el-form-item label=&quot;密码:&quot; label-width=&quot;120&quot; prop=&quot;pwd&quot;&gt;</span><br><span class="line">				&lt;el-input v-model=&quot;formData.pwd&quot; show-password /&gt;</span><br><span class="line">			&lt;/el-form-item&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;el-button @click=&quot;handleCancel&quot;&gt;取 消&lt;/el-button&gt;</span><br><span class="line">				&lt;el-button type=&quot;primary&quot; @click=&quot;onSubmit(formRef)&quot;&gt;</span><br><span class="line">					确 定</span><br><span class="line">				&lt;/el-button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/el-form&gt;</span><br><span class="line">	&lt;/el-dialog&gt;</span><br><span class="line">	&lt;Vcode :show=&quot;isShow&quot; @success=&quot;onSuccess&quot; @close=&quot;onClose&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">:global(.vue-puzzle-vcode) &#123;</span><br><span class="line">	z-index: 10000;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="final"><a class="markdownIt-Anchor" href="#final"></a> final</h3>
-<p><img src="https://s2.loli.net/2023/08/07/NnqX4AMTyiCYkuJ.gif" alt="滑动验证" /></p>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>简单实现Toast组件</title>
-    <url>/posts/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0Toast%E7%BB%84%E4%BB%B6/</url>
-    <content><![CDATA[<blockquote>
-<ul>
-<li>一个模版文件Toast.vue</li>
-<li>一个渲染挂载导出方法文件index.ts
-<ul>
-<li>通过Toast.success(‘xxxx’) 调用</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<p>这里UI使用<code>Flowbite</code>的<a href="https://flowbite.com/docs/components/toast/#colors">Toast</a>组件（需要配合tailwindcss）</p>
-<p><img src="https://s2.loli.net/2023/08/17/hrfHPm5M8LAZcv4.png" alt="image-20230817102433189.png" /></p>
-<h2 id="供给渲染的模板"><a class="markdownIt-Anchor" href="#供给渲染的模板"></a> 供给渲染的模板</h2>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import &#123; ref &#125; from &#x27;vue&#x27;</span><br><span class="line">interface Props &#123;</span><br><span class="line">	visible: boolean</span><br><span class="line">	type: string</span><br><span class="line">	message: string</span><br><span class="line">&#125;</span><br><span class="line">const props = withDefaults(defineProps&lt;Props&gt;(), &#123;</span><br><span class="line">	visible: false,</span><br><span class="line">	type: &#x27;&#x27;,</span><br><span class="line">	message: &#x27;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const status = props.type === &#x27;success&#x27; ? &#x27;success&#x27; : &#x27;danger&#x27;</span><br><span class="line">const toast = ref&lt;HTMLDivElement&gt;()</span><br><span class="line">const handleClose = () =&gt; &#123;</span><br><span class="line">	toast.value!.style.display = &#x27;none&#x27;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;Transition</span><br><span class="line">		name=&quot;toast&quot;</span><br><span class="line">		enter-active-class=&quot;transition ease-out duration-300&quot;</span><br><span class="line">		leave-active-class=&quot;transition ease-in duration-300&quot;</span><br><span class="line">	&gt;</span><br><span class="line">		&lt;div class=&quot;fixed inset-0 h-0&quot; v-if=&quot;props.visible&quot;&gt;</span><br><span class="line">			&lt;div</span><br><span class="line">				:id=&quot;`toast-$&#123;status&#125;`&quot;</span><br><span class="line">				class=&quot;absolute top-5 left-1/2 -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800&quot;</span><br><span class="line">				role=&quot;alert&quot;</span><br><span class="line">				ref=&quot;toast&quot;</span><br><span class="line">			&gt;</span><br><span class="line">				&lt;div</span><br><span class="line">					v-if=&quot;props.type === &#x27;success&#x27;&quot;</span><br><span class="line">					class=&quot;inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-5 h-5&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;currentColor&quot;</span><br><span class="line">						viewBox=&quot;0 0 20 20&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							d=&quot;M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt; Check icon &lt;/span&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">				&lt;div</span><br><span class="line">					v-else-if=&quot;props.type === &#x27;error&#x27;&quot;</span><br><span class="line">					class=&quot;inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-5 h-5&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;currentColor&quot;</span><br><span class="line">						viewBox=&quot;0 0 20 20&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							d=&quot;M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt; Error icon &lt;/span&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;div class=&quot;ml-3 text-sm font-normal&quot;&gt;</span><br><span class="line">					&lt;!-- &#123;/* 不同 */&#125;  --&gt;</span><br><span class="line">					&#123;&#123; props.message &#125;&#125;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">				&lt;button</span><br><span class="line">					type=&quot;button&quot;</span><br><span class="line">					class=&quot;ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700&quot;</span><br><span class="line">					data-dismiss-target=&quot;#toast-success&quot;</span><br><span class="line">					aria-label=&quot;Close&quot;</span><br><span class="line">					@click=&quot;handleClose&quot;</span><br><span class="line">				&gt;</span><br><span class="line">					&lt;span class=&quot;sr-only&quot;&gt;Close&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">					&lt;svg</span><br><span class="line">						class=&quot;w-3 h-3&quot;</span><br><span class="line">						aria-hidden=&quot;true&quot;</span><br><span class="line">						xmlns=&quot;http://www.w3.org/2000/svg&quot;</span><br><span class="line">						fill=&quot;none&quot;</span><br><span class="line">						viewBox=&quot;0 0 14 14&quot;</span><br><span class="line">					&gt;</span><br><span class="line">						&lt;path</span><br><span class="line">							stroke=&quot;currentColor&quot;</span><br><span class="line">							stroke-linecap=&quot;round&quot;</span><br><span class="line">							stroke-linejoin=&quot;round&quot;</span><br><span class="line">							stroke-width=&quot;2&quot;</span><br><span class="line">							d=&quot;m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6&quot;</span><br><span class="line">						/&gt;</span><br><span class="line">					&lt;/svg&gt;</span><br><span class="line">				&lt;/button&gt;</span><br><span class="line">			&lt;/div&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">	&lt;/Transition&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.toast-enter-from,</span><br><span class="line">.toast-leave-to &#123;</span><br><span class="line">	opacity: 0;</span><br><span class="line">	transform: translateY(-30px);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="导出toast方法提供给vue进行挂载"><a class="markdownIt-Anchor" href="#导出toast方法提供给vue进行挂载"></a> 导出toast方法，提供给Vue进行挂载</h2>
-<p>index.ts</p>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">//@ts-nocheck</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp, h &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ToastComponent</span> <span class="keyword">from</span> <span class="string">&#x27;./template/Toast.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">ToastProps</span> &#123;</span><br><span class="line">	<span class="attr">visible</span>: <span class="built_in">boolean</span></span><br><span class="line">	<span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span> | <span class="string">&#x27;error&#x27;</span></span><br><span class="line">	<span class="attr">message</span>: <span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ToastContainer</span> = <span class="title function_">createApp</span>(&#123;</span><br><span class="line">	<span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="title function_">h</span>(<span class="title class_">ToastComponent</span>, <span class="variable language_">this</span>.<span class="property">toastProps</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">toastProps</span>: &#123;</span><br><span class="line">				<span class="attr">visible</span>: <span class="literal">false</span>,</span><br><span class="line">				<span class="attr">type</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">				<span class="attr">message</span>: <span class="string">&#x27;&#x27;</span> </span><br><span class="line">			&#125; <span class="keyword">as</span> <span class="built_in">unknown</span> <span class="keyword">as</span> <span class="title class_">ToastProps</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> toast = <span class="title class_">ToastContainer</span>.<span class="title function_">mount</span>(<span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(toast.<span class="property">$el</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Toast</span> = &#123;</span><br><span class="line">	<span class="title function_">success</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		toast.<span class="property">toastProps</span> = &#123;</span><br><span class="line">			<span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">type</span>: <span class="string">&#x27;success&#x27;</span>,</span><br><span class="line">			message</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			toast.<span class="property">toastProps</span>.<span class="property">visible</span> = <span class="literal">false</span></span><br><span class="line">		&#125;, <span class="number">3000</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">error</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">		toast.<span class="property">toastProps</span> = &#123;</span><br><span class="line">			<span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">			<span class="attr">type</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">			message</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">			toast.<span class="property">toastProps</span>.<span class="property">visible</span> = <span class="literal">false</span></span><br><span class="line">		&#125;, <span class="number">3000</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Toast</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 👨‍💻使用</h2>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Toast</span>.<span class="title function_">success</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="title class_">Toast</span>.<span class="title function_">error</span>(<span class="string">&#x27;world&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2023/08/17/ewqEhulLyJmUCKH.gif" alt="toast.gif" /></p>
-]]></content>
-      <tags>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>表格导出为excel</title>
-    <url>/posts/%E8%A1%A8%E6%A0%BC%E5%AF%BC%E5%87%BA%E4%B8%BAexcel/</url>
-    <content><![CDATA[<p><strong>配合xlsx模块 + fileSaver模块</strong></p>
-<h2 id="️-下载"><a class="markdownIt-Anchor" href="#️-下载"></a> ⚙️ 下载</h2>
-<p><code>yarn add xlsx file-saver</code></p>
-<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 🔦 使用</h2>
-<blockquote>
-<p>​	tableData格式  [ { 	xxx: yyy 	},  …]</p>
-</blockquote>
-<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> excelTable = tableData.<span class="title function_">map</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line"> 	 <span class="comment">//格式化一下表格数据</span></span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="string">&#x27;系统编号&#x27;</span>: item.<span class="property">id</span>,</span><br><span class="line">			<span class="string">&#x27;账单时间&#x27;</span>: item.<span class="property">billTime</span>,</span><br><span class="line">			<span class="string">&#x27;类型&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?<span class="string">&#x27;收入&#x27;</span>:<span class="string">&#x27;支出&#x27;</span>,</span><br><span class="line">			<span class="string">&#x27;金额&#x27;</span>: item.<span class="property">natureName</span>=== <span class="string">&#x27;收入&#x27;</span>?item.<span class="property">amountMoney</span>:-item.<span class="property">amountMoney</span>,</span><br><span class="line">			<span class="string">&#x27;备注&#x27;</span>: item.<span class="property">remarks</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> worksheet = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">json_to_sheet</span>(excelTable)</span><br><span class="line">	<span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_new</span>()</span><br><span class="line">	<span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">book_append_sheet</span>(workbook, worksheet, <span class="string">&#x27;Sheet1&#x27;</span>)</span><br><span class="line">	<span class="keyword">const</span> excelBuffer = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workbook, &#123;</span><br><span class="line">		<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>,</span><br><span class="line">		<span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([excelBuffer], &#123; <span class="attr">type</span>: <span class="string">&#x27;application/vnd.ms-excel&#x27;</span> &#125;)</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(blob, <span class="string">&#x27;账单&#x27;</span>) <span class="comment">// 下载文件 文件名</span></span><br><span class="line">	&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>本来是想利用WebWorker在另一线程中处理数据，<s>在vite中还没配置好，on the way</s>~</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>enhanced</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试1</title>
-    <url>/posts/%E9%9D%A2%E8%AF%951/</url>
-    <content><![CDATA[<p>主要围绕简历展开</p>
-<h2 id="自我介绍"><a class="markdownIt-Anchor" href="#自我介绍"></a> 自我介绍</h2>
-<blockquote>
-<p>​	从未准备过，每次都是“面试官你好，我是来自xx学校xx学院的学生，学习前端xx年了”，然后就戛然而止。。。</p>
-</blockquote>
-<h2 id="项目"><a class="markdownIt-Anchor" href="#项目"></a> 项目</h2>
-<ul>
-<li>
-<p>实习项目简介</p>
-</li>
-<li>
-<p>实习负责板块介绍</p>
-</li>
-<li>
-<p>难点，遇到什么问题</p>
-</li>
-<li>
-<p>对于技术上手快吗</p>
-</li>
-</ul>
-<h2 id="计网"><a class="markdownIt-Anchor" href="#计网"></a> 计网</h2>
-<ul>
-<li>Ajax 工作方式</li>
-<li>http请求响应过程</li>
-</ul>
-<h2 id="杂项"><a class="markdownIt-Anchor" href="#杂项"></a> 杂项</h2>
-<ul>
-<li>JWT
-<ul>
-<li>前端axios拦截 后端加密解密~</li>
-</ul>
-</li>
-<li>vue react 区别</li>
-<li>会不会后端（❓</li>
-<li>是否接受加班</li>
-</ul>
-<h2 id="反问"><a class="markdownIt-Anchor" href="#反问"></a> 反问</h2>
-<ul>
-<li>公司产品（自研？</li>
-<li>工作地点 &amp; 加班</li>
-<li>。。。</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Interview</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>乐山</title>
-    <url>/posts/gallery-%E4%B9%90%E5%B1%B1/</url>
-    <content><![CDATA[<p>寒假终于有机会出游（<strong>蹭的</strong>）（特别感谢我哥和我嫂子）🫰</p>
-<p>三天两晚，乐山城区、苏稽古镇、金口河</p>
-<p>（不得不说来乐山旅游的人真的太多多多了，城区每家店子人都爆满</p>
-<br />
-<p>吃的<code>板眼儿</code>多得<code>遭不住</code>  🆘​</p>
-<table>
-<thead>
-<tr>
-<th>炸串（排队排队）</th>
-<th>咔饼</th>
-<th>豆腐脑（不能接受勾了芡的食品）</th>
-<th>甜皮鸭</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/yRpOtF2.jpg" alt="油炸" /></td>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/sSO8Tub.jpg" alt="20230202_144544" /></td>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/xSqXXIP.jpg" alt="20230202_143741" /></td>
-<td>404忘记拍照了…</td>
-</tr>
-</tbody>
-</table>
-<p><code>苏稽翘脚牛肉</code>单拎出来，太好吃了 favorito~</p>
-<p><img src="https://images.weserv.nl/?url=https://i.imgur.com/YsVMSwR.jpg" alt="20230203_122113" /></p>
-<p>坐船看了乐山大佛，逛了苏稽古镇，当然最<strong>impressive</strong>的还是金口河大峡谷。。。</p>
-<blockquote>
-<p>人类真的特别特别渺小</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/i0uR66t.jpg" alt="20230203_160746" /></th>
-<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/C3Wh8C3.jpg" alt="20230203_150035" /></th>
-<th><img src="https://images.weserv.nl/?url=https://i.imgur.com/3ROlK0A.jpg" alt="20230203_155615" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/Hp34XzF.jpg" alt="20230203_150324" /></td>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/r4QpbWh.jpg" alt="20230203_144629" /></td>
-<td><img src="https://images.weserv.nl/?url=https://i.imgur.com/63nBWhM.jpg" alt="20230203_150313" /></td>
-</tr>
-</tbody>
-</table>
-]]></content>
-      <categories>
-        <category>gallery</category>
-      </categories>
-  </entry>
-  <entry>
     <title>大理</title>
-    <url>/posts/gallery-%E5%A4%A7%E7%90%86/</url>
+    <url>/zh/posts/gallery-%E5%A4%A7%E7%90%86/</url>
     <content><![CDATA[<hr />
 <p style="font-style: italic; font-size: 20px; font-weight:bold;">
 永远怀念那一个自由的夏天
@@ -4977,13 +4977,8 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
       </categories>
   </entry>
   <entry>
-    <title>&#39;tag&#39;</title>
-    <url>/posts/zh-CN-tag-index/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>新加坡</title>
-    <url>/posts/gallery-%E6%96%B0%E5%8A%A0%E5%9D%A1/</url>
+    <url>/zh/posts/gallery-%E6%96%B0%E5%8A%A0%E5%9D%A1/</url>
     <content><![CDATA[<p>去新加坡看了泰勒斯威夫特时代巡回演唱会哦！！</p>
 <p><img src="https://s2.loli.net/2024/04/28/p1PBMcQqO9JUFzl.jpg" alt="20240307_125216" /></p>
 <p><img src="https://s2.loli.net/2024/04/28/G6Xfk3haBNny8As.jpg" alt="20240307_132647" /></p>
@@ -5004,5 +4999,10 @@ You can also set it to ‘none’ to disable any default behavior. Learn more: <
       <categories>
         <category>gallery</category>
       </categories>
+  </entry>
+  <entry>
+    <title>&#39;tag&#39;</title>
+    <url>/posts/zh-CN-tag-index/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

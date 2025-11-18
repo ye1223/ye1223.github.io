@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- <html lang="en,zh-CN,default"> -->
+<!-- <html lang="en,zh,default"> -->
 <html lang="en" class="default-theme">
 
 
@@ -18,7 +18,7 @@
 
 
 
-<title>Levy&#39;s Blog</title>
+<title>CSS只显示两行 | Levy&#39;s Blog</title>
 
 
 
@@ -73,15 +73,10 @@
 
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NWC5DVZN8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-5NWC5DVZN8');
-</script>
+<!-- Google Analytics removed due to connection issues in mainland China -->
+<!-- 
+如果需要网站统计，建议使用国内服务如百度统计或友盟统计
+-->
 
 <body>
   <!-- <div class="image-preview-mask">
@@ -175,14 +170,6 @@
 
                           <!-- Some tags or posts doesn't have alternative language version, so we don't render language switcher for them -->
                           
-                            <li class="menu-item">
-                              <!-- get_config('alternative_lang')) 要替换成的语言 -->
-                              <!-- <a style="cursor:not-allowed;" onclick="return false" href="/zh-CN/love-counter/index.html"> -->
-                              <a href="/zh-CN/love-counter/index.html">
-                                中文
-                              </a>
-                            </li>
-                            
           </ul>
           <!-- <button id="theme-toggle">切换主题</button> -->
       </nav>
@@ -214,346 +201,55 @@
           <article id="post">
   
     <div class="post-head">
+    
     <div class="post-info">
-        <div class="post-title">
+        <div class="tag-list">
             
-            
-                *Untitled
-            
-            
+
+                
+                    <span class="post-tag">
+                        <a href="/tags/CSS/">
+                            CSS
+                        </a>
+                    </span>
+                    
+                        
         </div>
+        <div class="post-title">
+
+            
+                CSS只显示两行
+                    
+        </div>
+        <span class="post-date">
+            Feb 1, 2024
+        </span>
+        <span class="post-word-count">
+            171 words / 约35秒
+
+            <span class="post-word-count-tooltip">支持中英文内容统计</span>
+        </span>
+
+        
     </div>
-    <div class="h-line-primary"></div>
+    <div class="post-img">
+        
+                <div class="h-line-primary"></div>
+                
+    </div>
 </div>
     <div class="post-content">
     <!-- <-page.content -->
     <div class="toc"></div>
 <div class="post-body">
-    <!DOCTYPE html>
-<html lang="zh-CN" class="default-theme">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Love Counter | Levy's Blog.🦊</title>
-  
-  <!-- 引入主题样式 -->
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/color_mode/classic.css">
-  <link rel="stylesheet" href="/css/color_mode/dark.css">
-  
-  <!-- 引入字体 -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
-  </style>
-  
-  <!-- 自定义样式 -->
-  <style>
-    .love-counter-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
-      font-family: 'Inter', 'Noto Sans SC', sans-serif;
-    }
-    
-    .love-header {
-      margin-bottom: 3rem;
-    }
-    
-    .love-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #e91e63;
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 4px rgba(233, 30, 99, 0.3);
-    }
-    
-    .love-subtitle {
-      font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 2rem;
-    }
-    
-    .counter-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    
-    .counter-item {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 15px;
-      padding: 1.5rem;
-      color: white;
-      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .counter-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
-    }
-    
-    .counter-number {
-      font-size: 2rem;
-      font-weight: 700;
-      font-family: 'Roboto Mono', monospace;
-      margin-bottom: 0.5rem;
-    }
-    
-    .counter-label {
-      font-size: 0.9rem;
-      opacity: 0.9;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .milliseconds {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-    }
-    
-    .total-time {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
-      font-size: 1.1rem;
-      padding: 2rem;
-    }
-    
-    .total-time .counter-number {
-      font-size: 1.5rem;
-    }
-    
-    .love-message {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      border-radius: 15px;
-      padding: 2rem;
-      color: white;
-      margin-top: 2rem;
-      box-shadow: 0 8px 32px rgba(240, 147, 251, 0.3);
-    }
-    
-    .love-message h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .love-message p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      opacity: 0.95;
-    }
-    
-    .heart-animation {
-      display: inline-block;
-      animation: heartbeat 1.5s ease-in-out infinite;
-    }
-    
-    @keyframes heartbeat {
-      0% { transform: scale(1); }
-      14% { transform: scale(1.3); }
-      28% { transform: scale(1); }
-      42% { transform: scale(1.3); }
-      70% { transform: scale(1); }
-    }
-    
-    .floating-hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-    
-    .floating-heart {
-      position: absolute;
-      color: rgba(233, 30, 99, 0.1);
-      font-size: 1.5rem;
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-    }
-    
-    @media (max-width: 768px) {
-      .love-counter-container {
-        padding: 1rem;
-      }
-      
-      .love-title {
-        font-size: 2rem;
-      }
-      
-      .counter-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-      
-      .counter-item {
-        padding: 1rem;
-      }
-      
-      .counter-number {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
-</head>
+    <p><strong><code>-webkit-line-clamp</code></strong> CSS 属性可以把<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Block">块容器</a>中的内容限制为指定的行数。</p>
+<p>它只有在 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 属性设置成 <code>-webkit-box</code> 或者 <code>-webkit-inline-box</code> 并且 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-orient"><code>box-orient</code></a> 属性设置成 <code>vertical</code>时才有效果。</p>
+<p>在大部分情况下，也需要设置 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow"><code>overflow</code></a> 属性为 <code>hidden</code>，否则，里面的内容不会被裁减，并且在内容显示为指定行数后还会显示省略号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  display: -webkit-box;</span><br><span class="line">  text-overflow: ellipsis;</span><br><span class="line">  -webkit-line-clamp: 2;  /* 两行 */</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">   word-break: break-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果<br />
+<img src="https://s2.loli.net/2024/02/01/ljaoHIB9rkU4uXn.png" alt="css只展示两行png.png" /></p>
+<p>💡 其中， <code>word-break</code> 指定了怎样在单词内断行， 这里 <code>break-all</code> 将单词截断换行，由于这里只能显示 2 行，所以出现图中效果</p>
 
-<body>
-  <!-- 浮动爱心背景 -->
-  <div class="floating-hearts" id="floatingHearts"></div>
-  
-  <div class="love-counter-container">
-    <div class="love-header">
-      <h1 class="love-title">
-        <span class="heart-animation">💕</span> 
-        我们的爱情计时器 
-        <span class="heart-animation">💕</span>
-      </h1>
-      <p class="love-subtitle">从我们相遇的那一刻开始，每一分每一秒都是珍贵的回忆</p>
-    </div>
-    
-    <div class="counter-grid">
-      <div class="counter-item">
-        <div class="counter-number" id="years">0</div>
-        <div class="counter-label">年</div>
-      </div>
-      
-      <div class="counter-item">
-        <div class="counter-number" id="months">0</div>
-        <div class="counter-label">月</div>
-      </div>
-      
-      <div class="counter-item">
-        <div class="counter-number" id="days">0</div>
-        <div class="counter-label">天</div>
-      </div>
-      
-      <div class="counter-item">
-        <div class="counter-number" id="hours">0</div>
-        <div class="counter-label">时</div>
-      </div>
-      
-      <div class="counter-item">
-        <div class="counter-number" id="minutes">0</div>
-        <div class="counter-label">分</div>
-      </div>
-      
-      <div class="counter-item">
-        <div class="counter-number" id="seconds">0</div>
-        <div class="counter-label">秒</div>
-      </div>
-      
-      <div class="counter-item milliseconds">
-        <div class="counter-number" id="milliseconds">0</div>
-        <div class="counter-label">毫秒</div>
-      </div>
-      
-      <div class="counter-item total-time">
-        <div class="counter-number" id="totalTime">0 天 0 小时 0 分钟 0 秒</div>
-        <div class="counter-label">总时间</div>
-      </div>
-    </div>
-    
-    <div class="love-message">
-      <h3>💖 我们的故事 💖</h3>
-      <p>从 <span id="startDate">2024年1月1日</span> 开始，我们已经携手走过了这么长的时间。</p>
-      <p>每一天都因为有你而变得更加美好，每一秒都值得珍惜。</p>
-      <p>愿我们的爱情像时间一样永恒，像星辰一样闪耀！</p>
-    </div>
-  </div>
-
-  <script>
-    // 设置开始时间（请修改为你想要的时间）
-    const startDate = new Date('2024-01-01T00:00:00.000');
-    
-    // 更新开始日期显示
-    document.getElementById('startDate').textContent = startDate.toLocaleDateString('zh-CN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-    
-    function updateCounter() {
-      const now = new Date();
-      const diff = now - startDate;
-      
-      if (diff < 0) {
-        // 如果开始时间在未来，显示倒计时
-        const futureDiff = Math.abs(diff);
-        updateDisplay(futureDiff, true);
-      } else {
-        // 正常计时
-        updateDisplay(diff, false);
-      }
-    }
-    
-    function updateDisplay(diff, isCountdown) {
-      const milliseconds = diff % 1000;
-      const seconds = Math.floor(diff / 1000) % 60;
-      const minutes = Math.floor(diff / (1000 * 60)) % 60;
-      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const months = Math.floor(days / 30.44);
-      const years = Math.floor(days / 365.25);
-      
-      // 更新显示
-      document.getElementById('milliseconds').textContent = milliseconds.toString().padStart(3, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('days').textContent = days.toString();
-      document.getElementById('months').textContent = months.toString();
-      document.getElementById('years').textContent = years.toString();
-      
-      // 更新总时间显示
-      const totalText = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
-      document.getElementById('totalTime').textContent = totalText;
-    }
-    
-    // 创建浮动爱心
-    function createFloatingHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'floating-heart';
-      heart.innerHTML = '💕';
-      heart.style.left = Math.random() * 100 + '%';
-      heart.style.animationDelay = Math.random() * 6 + 's';
-      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      
-      document.getElementById('floatingHearts').appendChild(heart);
-      
-      // 动画结束后移除元素
-      setTimeout(() => {
-        if (heart.parentNode) {
-          heart.parentNode.removeChild(heart);
-        }
-      }, 9000);
-    }
-    
-    // 初始化
-    updateCounter();
-    
-    // 每毫秒更新一次（为了精确显示毫秒）
-    setInterval(updateCounter, 1);
-    
-    // 每2秒创建一个浮动爱心
-    setInterval(createFloatingHeart, 2000);
-    
-    // 页面加载时创建一些初始爱心
-    for (let i = 0; i < 5; i++) {
-      setTimeout(() => createFloatingHeart(), i * 500);
-    }
-  </script>
-</body>
-</html> 
 </div>
 <div class="toc-menu-container">
     <img class="icon toc-menu" alt="">
@@ -691,8 +387,125 @@
 <script>
     window.onload = detectors();
 </script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/zh/posts/AEM-dev/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/zh/posts/AEM/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
 
-    <img src="/icon/" alt="">
+    
+      <div class="post-comment">
+    
+        
+
+                
+                    
+                        <div id="disqus_thread"></div>
+                        <div id='tip' style="display: none; color: gray; font-style: italic; font-size: 0.9em;">" Please use a proxy to
+                            use the comment function in 🇨🇳"</div>
+                        <script>
+                            /**
+                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+
+                            /* var disqus_config = function () {
+                                this.page.url = 'http://example.com/zh/posts/CSS%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%A4%E8%A1%8C/';  // Replace PAGE_URL with your page's canonical URL variable
+                                this.page.identifier = 'zh/posts/CSS只显示两行/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                this.language = 'en'
+                            }; */
+
+                            /* (function () { // DON'T EDIT BELOW THIS LINE
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-ye1223-github-io.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })(); */
+
+
+
+
+                            function loadDisqus() {
+                                // 检测是否存在评论
+                                if (!document.querySelector('#disqus_thread iframe')) {
+                                    document.getElementById('tip').style.display = 'block'
+                                } else {
+                                    document.getElementById('tip').style.display = 'none'
+                                }
+                                // Disqus 安装代码
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://http-ye1223-github-io.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                                window.disqus_config = function () {
+                                    this.page.url = 'http://example.com/zh/posts/CSS%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%A4%E8%A1%8C/';
+                                    this.page.identifier = 'zh/posts/CSS只显示两行/';
+                                    this.language = 'en'
+                                };
+                                // 如果你和我一样在用 DisqusJS，loadDisqus() 里就应该是 DisqusJS 的初始化代码 new DisqusJS({...})
+                            }
+
+                            // 通过检查 window 对象确认是否在浏览器中运行
+                            var runningOnBrowser = typeof window !== "undefined";
+                            // 通过检查 scroll 事件 API 和 User-Agent 来匹配爬虫
+                            var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+                            // 检查当前浏览器是否支持 IntersectionObserver API
+                            var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+
+                            // 检测
+                            /* const iframeObserver = new IntersectionObserver((entries)=>{
+                                if(entries[0].isIntersecting){
+                                    iframeObserver.disconnect()
+                                }
+                            })
+                            iframeObserver.observe(document.querySelector('#disqus_thread iframe')) */
+
+                            // 一个小 hack，将耗时任务包裹在 setTimeout(() => { }, 1) 中，可以推迟到 Event Loop 的任务队列中、等待主调用栈清空后才执行，在绝大部分浏览器中都有效
+                            // 其实这个 hack 本来是用于优化骨架屏显示的。一些浏览器总是等 JavaScript 执行完了才开始页面渲染，导致骨架屏起不到降低 FCP 的优化效果，所以通过 hack 将耗时函数放到骨架屏渲染完成后再进行。
+                            setTimeout(function () {
+                                if (!isBot && supportsIntersectionObserver) {
+                                    // 当前环境不是爬虫、并且浏览器兼容 IntersectionObserver API
+                                    var disqus_observer = new IntersectionObserver(function (entries) {
+                                        // 当前视窗中已出现 Disqus 评论框所在位置
+                                        if (entries[0].isIntersecting) {
+                                            // 加载 Disqus
+                                            loadDisqus();
+                                            // 停止当前的 Observer
+                                            disqus_observer.disconnect();
+                                        }
+                                    }, { threshold: [0] });
+                                    // 设置让 Observer 观察 #disqus_thread 元素
+                                    disqus_observer.observe(document.getElementById('disqus_thread'));
+                                } else {
+                                    // 当前环境是爬虫、或当前浏览器其不兼容 IntersectionObserver API
+                                    // 直接加载 Disqus
+                                    loadDisqus();
+                                }
+                            }, 1)
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a
+                                target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        
+
+
+
+</div>
+     
   
 </article>
         </div>
