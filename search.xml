@@ -18,7 +18,35 @@
 <p>就这样简简单单总结一下吧（往年貌似都没写过XD👊<br />
 以我的SOTY - the subway 结束一下子，对了，别忘了打开🪜收听Spotify</p>
 </blockquote>
-<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2SsY5k7UWFqgye3PUMG3Oq?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>]]></content>
+<div class="spotify">
+   <iframe data-testid="embed-iframe" id="spotify-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2SsY5k7UWFqgye3PUMG3Oq?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <p id="err-tips">❌Could not connect to Spotify service, please refersh or check your Network.</p>
+</div>
+<script>
+    const errTips = document.querySelector('.spotify #err-tips')
+    const spotifyIframe = document.getElementById('spotify-iframe');
+    let timeout;
+
+    spotifyIframe.addEventListener('load', function () {
+        // console.log('Spotify歌曲已成功加载');
+        clearTimeout(timeout); // 取消超时计时器
+    });
+
+    spotifyIframe.addEventListener('error', function () {
+        // console.log('Spotify歌曲加载失败');
+        errTips.style.display = 'block'
+        spotifyIframe.style.display = 'none'
+        clearTimeout(timeout); // 取消超时计时器
+        spotifyIframe.src = ''; // 停止加载
+    });
+
+    timeout = setTimeout(function () {
+        // console.log('加载超时，停止加载');
+        errTips.style.display = 'block'
+        spotifyIframe.style.display = 'none'
+        spotifyIframe.src = ''; // 停止加载
+    }, 10000); // 设置超时时间为10秒
+</script>]]></content>
   </entry>
   <entry>
     <title>How to Develop AEM Components</title>
